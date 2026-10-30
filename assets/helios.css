@@ -37,7 +37,12 @@
 .helios-topbar__contact svg { vertical-align:-3px; margin-right:4px; }
 .helios-topbar__store { justify-self:end; white-space:nowrap; }
 .helios-announcement { display:flex; align-items:center; justify-content:space-between; gap:12px; width:min(40vw,650px); text-align:center; font-size:14px; }
-.helios-announcement > div { flex:1; }
+.helios-announcement > div { flex:1; position:relative; height:22px; overflow:hidden; }
+.helios-announcement { position:relative; }
+.helios-announcement [data-helios-slide] { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.helios-announcement [data-helios-slide][hidden] { display:none; }
+.helios-announcement .helios-announcement__pause { position:absolute; right:32px; min-width:20px; min-height:22px; width:20px; height:22px; font-size:10px; opacity:0; transition:opacity .2s; }
+.helios-announcement:hover .helios-announcement__pause,.helios-announcement:focus-within .helios-announcement__pause { opacity:1; }
 .helios-announcement button { background:transparent; border:0; color:inherit; min-width:32px; min-height:36px; font-size:20px; }
 .helios-menu > summary { display:flex; align-items:center; min-height:44px; cursor:pointer; list-style:none; font-size:14px; }
 .helios-menu > summary::-webkit-details-marker,.helios-discover > summary::-webkit-details-marker { display:none; }

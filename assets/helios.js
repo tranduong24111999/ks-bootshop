@@ -49,12 +49,11 @@ class HeliosCarousel extends HTMLElement {
   show (index, automatic = false) {
     if (!this.slides.length) return
     const previous = this.slides[this.index]
-    const direction = index >= this.index ? 1 : -1
     this.transition?.cancel()
     this.exitTransition?.cancel()
     this.index = (index + this.slides.length) % this.slides.length
     const current = this.slides[this.index]
-    const animated = this.classList.contains('helios-hero') && !this.motion.matches && current !== previous
+    const animated = !this.motion.matches && current !== previous
     this.slides.forEach((slide, position) => {
       slide.hidden = position !== this.index && !(animated && slide === previous)
       slide.inert = position !== this.index
@@ -63,9 +62,17 @@ class HeliosCarousel extends HTMLElement {
       slide.style.zIndex = position === this.index ? '2' : '1'
     })
     if (animated) {
-      const timing = { duration: 700, easing: 'cubic-bezier(.25,.46,.45,.94)' }
-      this.transition = current.animate([{ transform: `translateX(${direction * 100}%)` }, { transform: 'translateX(0)' }], timing)
-      this.exitTransition = previous.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${-direction * 100}%)` }], timing)
+      if (this.classList.contains('helios-hero')) {
+        // Keep the outgoing image fully visible underneath: the blend never passes through black.
+        this.transition = current.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 1400,
+          easing: 'cubic-bezier(.4,0,.2,1)'
+        })
+      } else {
+        const timing = { duration: 450, easing: 'cubic-bezier(.25,.46,.45,.94)' }
+        this.transition = current.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], timing)
+        this.exitTransition = previous.animate([{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-8px)' }], timing)
+      }
       this.transition.finished.then(() => { if (previous !== this.slides[this.index]) previous.hidden = true }).catch(() => {})
     }
     this.querySelectorAll('[data-helios-dot]').forEach(dot => dot.setAttribute('aria-current', String(Number(dot.dataset.heliosDot) === this.index)))
@@ -84,7 +91,8 @@ class HeliosCarousel extends HTMLElement {
     if (toggle) {
       toggle.hidden = !eligible
       toggle.textContent = this.paused ? '▷' : 'Ⅱ'
-      toggle.setAttribute('aria-label', this.paused ? 'Tiếp tục tự động chuyển banner' : 'Tạm dừng tự động chuyển banner')
+      const label = this.classList.contains('helios-announcement') ? 'thông báo' : 'banner'
+      toggle.setAttribute('aria-label', `${this.paused ? 'Tiếp tục' : 'Tạm dừng'} tự động chuyển ${label}`)
     }
     if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')

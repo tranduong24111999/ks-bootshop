@@ -21,10 +21,11 @@
 <header class="helios-header">
   <div class="helios-topbar">
     <div class="helios-topbar__contact"><a href="tel:0981956116">{% render 'svg-icons', icon: 'phone', size: 15 %} Hotline: 0981.956.116</a><a href="mailto:support@helios.vn">{% render 'svg-icons', icon: 'mail', size: 15 %} Email: support@helios.vn</a></div>
-    <helios-carousel class="helios-announcement" aria-label="Thông báo HELIOS">
+    <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="Thông báo HELIOS">
       <button type="button" data-helios-prev aria-label="Thông báo trước">‹</button>
       <div><span data-helios-slide>{{ section.settings.announcement | escape }}</span><span data-helios-slide hidden>{{ section.settings.secondary_announcement | escape }}</span></div>
       <button type="button" data-helios-next aria-label="Thông báo tiếp theo">›</button>
+      <button class="helios-announcement__pause" type="button" data-helios-toggle aria-label="Tạm dừng tự động chuyển thông báo">Ⅱ</button>
     </helios-carousel>
     <a class="helios-topbar__store" href="{{ stores_url }}">Hệ thống cửa hàng</a>
   </div>
@@ -73,6 +74,7 @@
   "settings": [
     { "type": "text", "id": "announcement", "label": "Thông điệp", "default": "ĐÁNH SÁNG TRỌN ĐỜI" },
     { "type": "text", "id": "secondary_announcement", "label": "Thông báo thứ hai", "default": "HELIOS LÀM DẤU ẤN CỦA BẢN LĨNH" },
+    { "type": "range", "id": "announcement_autoplay", "label": "Tự chuyển thông báo (0: tắt)", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 5 },
     { "type": "page", "id": "feedback_page", "label": "Trang Feedback" },
     { "type": "page", "id": "collab_page", "label": "Trang Collab" },
     { "type": "page", "id": "stores_page", "label": "Trang hệ thống cửa hàng" },

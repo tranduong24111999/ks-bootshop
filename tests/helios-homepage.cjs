@@ -189,7 +189,7 @@ async function main () {
       assert.equal(await hero.locator('[data-helios-status]').textContent(), '3 / 3')
       const summary = page.locator('[data-helios-menu] > summary')
       if (width >= 768) {
-        await page.waitForTimeout(750)
+        await page.waitForTimeout(1500)
         await summary.hover()
         await page.waitForTimeout(300)
         assert(await page.locator('[data-helios-menu]').evaluate(el => el.open), 'Desktop mega menu must open on hover')
@@ -229,7 +229,7 @@ async function main () {
       await page.locator('.helios-logo').focus()
       await page.evaluate(() => scrollTo(0, 0))
       await page.mouse.move(0, 890)
-      await page.waitForTimeout(800)
+      await page.waitForTimeout(1500)
       await page.screenshot({ path: path.join(artifacts, 'homepage-' + width + '.png'), fullPage: true })
       const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()
       assert.deepEqual(axe.violations.map(v => ({ id: v.id, elements: v.nodes.map(n => n.target) })), [], 'Accessibility violations at ' + width)
@@ -255,8 +255,29 @@ async function main () {
     await page.mouse.move(0, 0)
     const rotating = page.locator('.helios-hero')
     const activeIndex = () => rotating.evaluate(el => el.index)
-    await page.clock.fastForward(7100)
+    const announcements = page.locator('.helios-announcement')
+    await page.clock.fastForward(4900)
+    assert.equal(await announcements.evaluate(el => el.index), 0, 'Announcement must wait for five seconds')
+    await page.clock.fastForward(200)
+    assert.equal(await announcements.evaluate(el => el.index), 1, 'Announcement must rotate without clicking')
+    await page.clock.fastForward(2000)
     assert.equal(await activeIndex(), 1, 'Banner must autoplay after seven seconds')
+    const blend = await rotating.evaluate(el => {
+      const animation = el.transition
+      animation.pause()
+      animation.currentTime = 700
+      const incoming = el.slides[el.index]
+      const outgoing = el.slides[(el.index + el.slides.length - 1) % el.slides.length]
+      const result = { duration: animation.effect.getTiming().duration, opacity: Number(getComputedStyle(incoming).opacity), underneath: Number(getComputedStyle(outgoing).opacity), visible: !outgoing.hidden, transforms: animation.effect.getKeyframes().some(frame => frame.transform) }
+      animation.finish()
+      return result
+    })
+    assert.equal(blend.duration, 1400)
+    assert(blend.opacity > 0 && blend.opacity < 1, 'Incoming image must be partially transparent mid-transition')
+    assert.equal(blend.underneath, 1, 'Outgoing image must remain opaque underneath to avoid black flashes')
+    assert.equal(blend.visible, true)
+    assert.equal(blend.transforms, false, 'Hero must blend instead of sliding a whole image across the screen')
+    console.log('PASS: five-second announcement autoplay and 1.4-second image blend with no black gap')
     await rotating.hover()
     await page.clock.fastForward(7100)
     assert.equal(await activeIndex(), 2, 'Banner must keep rotating while the pointer rests over it')
