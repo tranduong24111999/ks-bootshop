@@ -8,7 +8,6 @@ class HeliosCarousel extends HTMLElement {
     this.index = 0
     this.interval = Number(this.dataset.autoplay) * 1000 || 0
     this.paused = false
-    this.hovered = false
     this.focused = false
     this.editorPaused = false
     this.motion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -20,15 +19,14 @@ class HeliosCarousel extends HTMLElement {
       this.paused = !this.paused
       this.updateAutoplay()
     }, { signal })
-    this.addEventListener('pointerenter', event => {
-      if (event.pointerType !== 'mouse') return
-      this.hovered = true
+    // Pointer interaction must not leave autoplay suspended on the resume button.
+    this.addEventListener('pointerdown', () => { this.focused = false; this.updateAutoplay() }, { signal })
+    this.addEventListener('focusin', event => {
+      this.focused = event.target.matches(':focus-visible')
       this.updateAutoplay()
     }, { signal })
-    this.addEventListener('pointerleave', () => { this.hovered = false; this.updateAutoplay() }, { signal })
-    this.addEventListener('focusin', () => { this.focused = true; this.updateAutoplay() }, { signal })
     this.addEventListener('focusout', event => {
-      this.focused = this.contains(event.relatedTarget)
+      this.focused = this.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible')
       this.updateAutoplay()
     }, { signal })
     document.addEventListener('visibilitychange', () => this.updateAutoplay(), { signal })
@@ -62,7 +60,7 @@ class HeliosCarousel extends HTMLElement {
       toggle.textContent = this.paused ? 'Tiếp tục' : 'Tạm dừng'
       toggle.setAttribute('aria-label', this.paused ? 'Tiếp tục tự động chuyển banner' : 'Tạm dừng tự động chuyển banner')
     }
-    if (eligible && !this.paused && !this.hovered && !this.focused && !this.editorPaused && !document.hidden) {
+    if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
       if (nextImage) nextImage.loading = 'eager'
       this.timer = window.setInterval(() => this.show(this.index + 1, true), this.interval)
