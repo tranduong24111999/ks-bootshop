@@ -213,14 +213,10 @@ class ProductMediaGallery extends HTMLElement {
     const openZoom = () => {
       const image = this.querySelector('.swiper-main .swiper-slide-active img')
       if (!image) return
-      const url = new URL(image.currentSrc || image.src, window.location.href)
-      url.searchParams.set('width', '2000')
-      url.searchParams.delete('height')
-      const enlarged = dialog.querySelector('img')
-      enlarged.src = url.toString()
-      enlarged.alt = image.alt || enlarged.alt
+      const mediaId = image.closest('[data-media-id]')?.dataset.mediaId
+      const enlarged = Array.from(dialog.querySelectorAll('[data-zoom-media-id]')).find(item => item.dataset.zoomMediaId === mediaId)
       if (!dialog.open) dialog.showModal()
-      dialog.scrollTop = 0
+      dialog.scrollTop = enlarged?.offsetTop || 0
     }
     this.querySelector('[data-gallery-zoom]')?.addEventListener('click', openZoom)
     this.querySelector('.swiper-main')?.addEventListener('click', event => {

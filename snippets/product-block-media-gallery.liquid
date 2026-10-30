@@ -32,7 +32,7 @@
                 assign media_loading = 'lazy' 
               endif
             %}
-            <div class="swiper-slide" lazy="{% if media_loading == 'lazy' %}true{% endif %}">
+            <div class="swiper-slide" data-media-id="{{ media.id }}" lazy="{% if media_loading == 'lazy' %}true{% endif %}">
               {% case media.media_type %}
                 {% when 'image' %}
                   {% render 'image-url', img: media, size: 800, orientation: block.settings.img_orientation, loading: media_loading, class: '' %}
@@ -74,6 +74,6 @@
         {% endfor %}
       </div>
     </div>
-    {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="Ảnh sản phẩm phóng to"><button type="button" data-gallery-close aria-label="Đóng ảnh phóng to">×</button><img src="{{ product.featured_image | image_url: width: 2000 }}" width="2000" height="2000" alt="{{ product.title | escape }}" loading="lazy"></dialog>{% endif %}
+    {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="Ảnh sản phẩm phóng to"><button type="button" data-gallery-close aria-label="Đóng ảnh phóng to">×</button>{% for media in product.media %}{% if media.media_type == 'image' %}<img data-zoom-media-id="{{ media.id }}" src="{{ media | image_url: width: 2000 }}" width="{{ media.width }}" height="{{ media.height }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">{% endif %}{% endfor %}</dialog>{% endif %}
   </product-media-gallery>
 {% endif %}
