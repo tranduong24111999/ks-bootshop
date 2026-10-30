@@ -1,0 +1,55 @@
+<section class="helios-collections helios-container" aria-labelledby="helios-collections-{{ section.id }}">
+  <div class="helios-section-heading">
+    <div><p class="helios-eyebrow">TÌM DẤU ẤN CỦA BẠN</p><h2 id="helios-collections-{{ section.id }}">{{ section.settings.heading | escape }}</h2></div>
+    <a class="helios-text-link" href="{{ routes.collections_url }}">TẤT CẢ BỘ SƯU TẬP <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
+  </div>
+  <div class="helios-collection-grid">
+    {% for block in section.blocks %}
+      {% liquid
+        assign chosen_collection = block.settings.collection
+        assign tile_title = block.settings.title | default: chosen_collection.title
+        assign tile_image = block.settings.image | default: chosen_collection.featured_image
+        assign tile_asset = 'helios-category-' | append: block.settings.artwork | append: '.webp'
+        assign tile_url = chosen_collection.url
+        if tile_url == blank
+          assign query = block.settings.query | url_encode
+          if query != blank
+            assign tile_url = routes.search_url | append: '?type=product&q=' | append: query
+          else
+            assign tile_url = routes.all_products_collection_url
+            if block.settings.artwork == '1'
+              assign tile_url = tile_url | append: '?sort_by=created-descending'
+            endif
+          endif
+        endif
+      %}
+      <a class="helios-collection-tile" href="{{ tile_url }}" {{ block.shopify_attributes }}>
+        {% if tile_image != blank %}
+          {{ tile_image | image_url: width: 1000 | image_tag: widths: '360,600,800,1000', sizes: '(max-width: 749px) 50vw, 33vw', loading: 'lazy', alt: tile_title }}
+        {% else %}
+          <img src="{{ tile_asset | asset_url }}" width="800" height="800" loading="lazy" alt="{{ tile_title | escape }}">
+        {% endif %}
+        <span class="helios-collection-tile__caption">{{ tile_title | escape }} <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "HELIOS · Bộ sưu tập",
+  "enabled_on": { "templates": ["index"] },
+  "max_blocks": 6,
+  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề", "default": "KHÁM PHÁ CHẾ TÁC" }],
+  "blocks": [{
+    "type": "collection", "name": "Danh mục",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Tiêu đề", "default": "TRANG SỨC BẠC" },
+      { "type": "collection", "id": "collection", "label": "Bộ sưu tập thực tế" },
+      { "type": "text", "id": "query", "label": "Từ khóa tìm kiếm nếu chưa chọn bộ sưu tập" },
+      { "type": "image_picker", "id": "image", "label": "Ảnh thay thế" },
+      { "type": "select", "id": "artwork", "label": "Ảnh HELIOS có sẵn", "default": "1", "options": [{ "value": "1", "label": "Chế tác mới" }, { "value": "2", "label": "Nhẫn bạc" }, { "value": "3", "label": "Mặt dây chuyền" }, { "value": "4", "label": "Khuyên tai" }, { "value": "5", "label": "Vòng tay" }, { "value": "6", "label": "Tất cả chế tác" }] }
+    ]
+  }],
+  "presets": [{ "name": "HELIOS · Bộ sưu tập" }]
+}
+{% endschema %}

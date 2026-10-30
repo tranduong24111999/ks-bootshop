@@ -1,0 +1,32 @@
+<footer class="helios-footer">
+  <section class="helios-newsletter helios-container" aria-labelledby="helios-newsletter-heading">
+    <div><p class="helios-eyebrow">KEEP IN TOUCH</p><h2 id="helios-newsletter-heading">ĐĂNG KÝ NHẬN THÔNG TIN</h2><p>Sản phẩm, bộ sưu tập và những câu chuyện mới nhất từ HELIOS.</p></div>
+    {% assign newsletter_id = 'HeliosNewsletter-' | append: section.id %}
+    {% form 'customer', id: newsletter_id, class: 'helios-newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label class="visually-hidden" for="HeliosEmail-{{ section.id }}">Địa chỉ email</label>
+      <div class="helios-newsletter__field"><input id="HeliosEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="Địa chỉ email của bạn" required {% if form.errors %}aria-invalid="true" aria-describedby="HeliosEmailError-{{ section.id }}"{% endif %}><button type="submit" aria-label="Đăng ký nhận tin">→</button></div>
+      {% if form.posted_successfully? %}<p role="status" tabindex="-1">Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.</p>{% endif %}
+      {% if form.errors %}<div id="HeliosEmailError-{{ section.id }}" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+      {% if shop.privacy_policy != blank %}<p class="helios-newsletter__notice">Thông tin được xử lý theo <a href="{{ shop.privacy_policy.url }}">chính sách bảo mật</a>.</p>{% endif %}
+    {% endform %}
+  </section>
+  <div class="helios-footer__grid helios-container">
+    <div class="helios-footer__brand"><h2>KẾT NỐI VỚI CHÚNG TÔI</h2><img src="{{ 'helios-logo.webp' | asset_url }}" alt="HELIOS" width="180" height="49" loading="lazy"><p>HELIOS không làm phụ kiện.<br>HELIOS làm dấu ấn của bản lĩnh.</p><p>Mỗi chế tác mang một tinh thần riêng, được hoàn thiện bằng tay bởi nghệ nhân Việt.</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}</div>
+    <nav aria-label="Khám phá HELIOS"><h2>KHÁM PHÁ HELIOS</h2><a href="{{ routes.all_products_collection_url }}">Tất cả sản phẩm</a><a href="{{ routes.collections_url }}">Bộ sưu tập</a><a href="{{ routes.root_url }}#helios-story">Câu chuyện HELIOS</a><a href="{{ routes.search_url }}">Tìm kiếm chế tác</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">Tài khoản của bạn</a>{% endif %}</nav>
+    <nav aria-label="Chăm sóc khách hàng"><h2>CHĂM SÓC KHÁCH HÀNG</h2>{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}<a href="{{ routes.cart_url }}">Giỏ hàng của bạn</a>{% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">Liên hệ</a>{% endif %}</nav>
+  </div>
+  <div class="helios-footer__bottom helios-container"><span>© {{ 'now' | date: '%Y' }} HELIOS. All rights reserved.</span><span>HANDCRAFTED IN VIETNAM</span>{% if shop.enabled_payment_types.size > 0 %}{% render 'payment-icons' %}{% endif %}</div>
+</footer>
+{% schema %}
+{
+  "name": "HELIOS · Footer",
+  "limit": 1,
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "link_list", "id": "support_menu", "label": "Menu chăm sóc khách hàng" },
+    { "type": "page", "id": "contact_page", "label": "Trang liên hệ có sẵn" },
+    { "type": "richtext", "id": "contact", "label": "Thông tin liên hệ đã xác minh", "default": "<p>CÔNG TY TNHH SUNROCK STUDIO<br>Số 3 Nguyễn Viết Xuân, Phường Phương Liệt, Hà Nội<br>MST: 0111155418</p><p>Hotline: <a href=\"tel:0981956116\">0981.956.116</a><br>Email: <a href=\"mailto:support@helios.vn\">support@helios.vn</a></p>" }
+  ]
+}
+{% endschema %}

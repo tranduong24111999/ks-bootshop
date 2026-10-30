@@ -1,0 +1,69 @@
+<helios-carousel class="helios-hero" role="region" aria-roledescription="băng chuyền" aria-label="Bộ sưu tập HELIOS">
+  <h1 class="visually-hidden">{{ section.settings.heading | escape }}</h1>
+  <div class="helios-hero__slides">
+    {% for block in section.blocks %}
+      {% liquid
+        assign desktop_asset = 'helios-hero-desktop.jpg'
+        assign mobile_asset = 'helios-hero-mobile.jpg'
+        assign desktop_width = 1900
+        assign desktop_height = 900
+        if block.settings.artwork == 'bird'
+          assign desktop_asset = 'helios-bird-desktop.webp'
+          assign mobile_asset = 'helios-bird-mobile.webp'
+          assign desktop_width = 1592
+          assign desktop_height = 754
+        endif
+        assign destination = block.settings.collection.url | default: routes.all_products_collection_url
+        assign image_alt = block.settings.title
+      %}
+      <div class="helios-hero__slide" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+        <a href="{{ destination }}" aria-label="{{ block.settings.title | escape }} — Khám phá bộ sưu tập">
+          <picture>
+            {% if block.settings.mobile != blank %}
+              <source media="(max-width: 749px)" srcset="{{ block.settings.mobile | image_url: width: 800 }} 800w, {{ block.settings.mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
+            {% else %}
+              <source media="(max-width: 749px)" srcset="{{ mobile_asset | asset_url }}">
+            {% endif %}
+            {% if block.settings.desktop != blank %}
+              {% if forloop.first %}
+                {{ block.settings.desktop | image_url: width: 2400 | image_tag: widths: '1000,1500,2000,2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
+              {% else %}
+                {{ block.settings.desktop | image_url: width: 2400 | image_tag: widths: '1000,1500,2000,2400', sizes: '100vw', loading: 'lazy', alt: image_alt }}
+              {% endif %}
+            {% else %}
+              <img src="{{ desktop_asset | asset_url }}" alt="{{ image_alt | escape }}" width="{{ desktop_width }}" height="{{ desktop_height }}" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            {% endif %}
+          </picture>
+          <span class="helios-hero__title">{{ block.settings.title | escape }}</span>
+          <span class="helios-hero__cta">KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.blocks.size > 1 %}
+    <div class="helios-hero__controls" hidden data-helios-controls>
+      <button type="button" data-helios-prev aria-label="Banner trước">←</button>
+      <span data-helios-status aria-live="polite" aria-atomic="true">1 / {{ section.blocks.size }}</span>
+      <button type="button" data-helios-next aria-label="Banner tiếp theo">→</button>
+    </div>
+  {% endif %}
+</helios-carousel>
+{% schema %}
+{
+  "name": "HELIOS · Banner",
+  "enabled_on": { "templates": ["index"] },
+  "max_blocks": 5,
+  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề trang", "default": "HELIOS — Dấu ấn của bản lĩnh" }],
+  "blocks": [{
+    "type": "slide", "name": "Banner",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Mô tả banner", "default": "HELIOS Signature Collections" },
+      { "type": "select", "id": "artwork", "label": "Ảnh HELIOS có sẵn", "options": [{ "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }], "default": "signature" },
+      { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
+      { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
+      { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }
+    ]
+  }],
+  "presets": [{ "name": "HELIOS · Banner", "blocks": [{ "type": "slide" }] }]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+{% liquid
+  assign main_menu = section.settings.menu
+  assign newest = collections['new-in']
+  assign newest_url = newest.url
+  if newest_url == blank
+    assign newest_url = routes.all_products_collection_url | append: '?sort_by=created-descending'
+  endif
+%}
+<header class="helios-header">
+  <div class="helios-announcement">{{ section.settings.announcement | escape }}</div>
+  <div class="helios-header__inner">
+    <details class="helios-menu" data-helios-menu>
+      <summary aria-label="Mở menu"><span class="helios-menu__bars" aria-hidden="true"></span><span class="helios-menu__label">MENU</span></summary>
+      <nav class="helios-menu__panel" aria-label="Menu chính">
+        <button class="helios-menu__close" type="button" data-helios-menu-close aria-label="Đóng menu">ĐÓNG <span aria-hidden="true">×</span></button>
+        {% if main_menu.links != blank %}
+          {% for link in main_menu.links %}
+            {% if link.links != blank %}
+              <details class="helios-submenu">
+                <summary>{{ link.title | escape }}</summary>
+                <a href="{{ link.url }}">Xem tất cả {{ link.title | escape }}</a>
+                {% for child in link.links %}
+                  <a href="{{ child.url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.title | escape }}</a>
+                  {% for grandchild in child.links %}<a class="helios-submenu__child" href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a>{% endfor %}
+                {% endfor %}
+              </details>
+            {% else %}
+              <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <a href="{{ routes.all_products_collection_url }}">TẤT CẢ SẢN PHẨM</a>
+          <a href="{{ newest_url }}">MỚI NHẤT</a>
+          {% for collection in collections limit: 8 %}
+            {% if collection.handle != 'all' and collection.products_count > 0 %}<a href="{{ collection.url }}">{{ collection.title | escape }}</a>{% endif %}
+          {% endfor %}
+          <a href="{{ routes.collections_url }}">BỘ SƯU TẬP</a>
+          <a href="{{ routes.root_url }}#helios-story">CÂU CHUYỆN HELIOS</a>
+        {% endif %}
+      </nav>
+    </details>
+    <a class="helios-logo" href="{{ routes.root_url }}" aria-label="HELIOS — Trang chủ">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 500 | image_tag: width: 220, loading: 'eager', alt: 'HELIOS' }}
+      {% else %}
+        <img src="{{ 'helios-logo.webp' | asset_url }}" alt="HELIOS" width="220" height="60" loading="eager">
+      {% endif %}
+    </a>
+    <nav class="helios-header__links" aria-label="Khám phá">
+      <a href="{{ newest_url }}">NEW IN</a>
+      <a href="{{ routes.collections_url }}">BỘ SƯU TẬP</a>
+      <a href="{{ routes.root_url }}#helios-story">DISCOVER</a>
+    </nav>
+    <div class="helios-header__actions">
+      <a href="{{ routes.search_url }}" aria-label="Tìm kiếm" class="helios-icon">{% render 'svg-icons', icon: 'search' %}</a>
+      {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}" aria-label="Tài khoản" class="helios-icon helios-account">{% render 'svg-icons', icon: 'account' %}</a>{% endif %}
+      <a href="{{ routes.cart_url }}" class="helios-icon helios-cart" aria-label="Giỏ hàng" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" aria-controls="offcanvas-cart">
+        {% render 'svg-icons', icon: 'cart' %}{% render 'cart-count-badge' %}
+      </a>
+    </div>
+  </div>
+</header>
+{% schema %}
+{
+  "name": "HELIOS · Header",
+  "limit": 1,
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "text", "id": "announcement", "label": "Thông điệp", "default": "HELIOS KHÔNG LÀM PHỤ KIỆN. HELIOS LÀM DẤU ẤN CỦA BẢN LĨNH." },
+    { "type": "image_picker", "id": "logo", "label": "Logo (mặc định dùng logo HELIOS)" },
+    { "type": "link_list", "id": "menu", "label": "Menu chính" }
+  ]
+}
+{% endschema %}
