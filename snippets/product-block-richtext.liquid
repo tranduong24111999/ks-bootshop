@@ -13,7 +13,9 @@
   {% endunless %}
   {% if block.settings.description != blank or block.settings.product_description != false %}
     <div class="description rte mb-0 {{ block.settings.description_font_size }} {{ block.settings.description_classes }}">
-      {{ block.settings.description }}
+      {% if block.settings.description contains 'product.metafields.descriptors.subtitle.value' %}
+        {% if product.metafields.descriptors.subtitle.value != blank %}<p>{{ product.metafields.descriptors.subtitle.value | escape }}</p>{% endif %}
+      {% else %}{{ block.settings.description }}{% endif %}
       {% if block.settings.product_description %}
         {{ product.description }}
       {% endif %}

@@ -1,0 +1,4 @@
+<div class="container py-6">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% schema %}
+{ "name": "Apps", "settings": [], "blocks": [{ "type": "@app" }], "presets": [{ "name": "Apps" }] }
+{% endschema %}

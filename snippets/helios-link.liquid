@@ -1,0 +1,21 @@
+{% liquid
+  assign destination = blank
+  if kind == 'page'
+    assign destination = pages[handle].url
+  else
+    assign destination = collections[handle].url
+  endif
+  if destination == blank
+    if query == blank
+      assign destination = routes.all_products_collection_url
+    else
+      assign encoded_query = query | url_encode
+      assign search_type = 'product'
+      if kind == 'page'
+        assign search_type = 'page'
+      endif
+      assign destination = routes.search_url | append: '?type=' | append: search_type | append: '&q=' | append: encoded_query
+    endif
+  endif
+%}
+<a href="{{ destination }}">{{ label | escape }}</a>

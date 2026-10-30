@@ -1,0 +1,331 @@
+{
+  "source": "https://helios.vn/products/michigan-iced-out-ring",
+  "captured_at": "2026-10-30",
+  "note": "Public product facts for local tests only; never imported into Shopify.",
+  "product": {
+    "id": 15432914763997,
+    "title": "MICHIGAN ICED-OUT RING",
+    "handle": "michigan-iced-out-ring",
+    "url": "/products/michigan-iced-out-ring",
+    "price": 295000000,
+    "compare_at_price": 295000000,
+    "available": true,
+    "variants": [
+      {
+        "id": 68196026187997,
+        "title": "Size 8",
+        "option1": "Size 8",
+        "option2": null,
+        "option3": null,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "MICHIGAN ICED-OUT RING - Size 8",
+        "public_title": "Size 8",
+        "options": [
+          "Size 8"
+        ],
+        "price": 295000000,
+        "weight": 0,
+        "compare_at_price": 295000000,
+        "inventory_management": "shopify",
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      {
+        "id": 68196026220765,
+        "title": "Size 9",
+        "option1": "Size 9",
+        "option2": null,
+        "option3": null,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "MICHIGAN ICED-OUT RING - Size 9",
+        "public_title": "Size 9",
+        "options": [
+          "Size 9"
+        ],
+        "price": 295000000,
+        "weight": 0,
+        "compare_at_price": 295000000,
+        "inventory_management": "shopify",
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      {
+        "id": 68196026155229,
+        "title": "Size 10",
+        "option1": "Size 10",
+        "option2": null,
+        "option3": null,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "MICHIGAN ICED-OUT RING - Size 10",
+        "public_title": "Size 10",
+        "options": [
+          "Size 10"
+        ],
+        "price": 295000000,
+        "weight": 0,
+        "compare_at_price": 295000000,
+        "inventory_management": "shopify",
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      {
+        "id": 68196026122461,
+        "title": "Size 11",
+        "option1": "Size 11",
+        "option2": null,
+        "option3": null,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "MICHIGAN ICED-OUT RING - Size 11",
+        "public_title": "Size 11",
+        "options": [
+          "Size 11"
+        ],
+        "price": 295000000,
+        "weight": 0,
+        "compare_at_price": 295000000,
+        "inventory_management": "shopify",
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      },
+      {
+        "id": 68196026253533,
+        "title": "Pre-order",
+        "option1": "Pre-order",
+        "option2": null,
+        "option3": null,
+        "sku": null,
+        "requires_shipping": true,
+        "taxable": true,
+        "featured_image": null,
+        "available": true,
+        "name": "MICHIGAN ICED-OUT RING - Pre-order",
+        "public_title": "Pre-order",
+        "options": [
+          "Pre-order"
+        ],
+        "price": 325000000,
+        "weight": 0,
+        "compare_at_price": 325000000,
+        "inventory_management": "shopify",
+        "barcode": null,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "quantity_price_breaks": [],
+        "requires_selling_plan": false,
+        "selling_plan_allocations": []
+      }
+    ],
+    "options": [
+      {
+        "name": "Size",
+        "position": 1,
+        "values": [
+          "Size 8",
+          "Size 9",
+          "Size 10",
+          "Size 11",
+          "Pre-order"
+        ]
+      }
+    ],
+    "images": [
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734",
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00385_2__optimized.webp?v=1792487706",
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-1.jpg?v=1792487759",
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_1.webp?v=1792487734",
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_3.webp?v=1792487734",
+      "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+    ],
+    "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734",
+    "media": [
+      {
+        "alt": null,
+        "id": 46194893390045,
+        "position": 1,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1000,
+          "width": 1000,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1000,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734",
+        "width": 1000
+      },
+      {
+        "alt": null,
+        "id": 46194889949405,
+        "position": 2,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1000,
+          "width": 1000,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00385_2__optimized.webp?v=1792487706"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1000,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00385_2__optimized.webp?v=1792487706",
+        "width": 1000
+      },
+      {
+        "alt": null,
+        "id": 46194898993373,
+        "position": 3,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1080,
+          "width": 1080,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/preview_images/888ffa3cfb3a462dbf49c1dd7936e010.thumbnail.0000000000.jpg?v=1792487844"
+        },
+        "aspect_ratio": 1.0,
+        "duration": 17050,
+        "media_type": "video",
+        "sources": [
+          {
+            "format": "mp4",
+            "height": 480,
+            "mime_type": "video/mp4",
+            "url": "https://cdn.shopify.com/videos/c/vp/888ffa3cfb3a462dbf49c1dd7936e010/888ffa3cfb3a462dbf49c1dd7936e010.SD-480p-1.2Mbps-98226215.mp4",
+            "width": 480
+          },
+          {
+            "format": "mp4",
+            "height": 1080,
+            "mime_type": "video/mp4",
+            "url": "https://cdn.shopify.com/videos/c/vp/888ffa3cfb3a462dbf49c1dd7936e010/888ffa3cfb3a462dbf49c1dd7936e010.HD-1080p-4.8Mbps-98226215.mp4",
+            "width": 1080
+          },
+          {
+            "format": "mp4",
+            "height": 720,
+            "mime_type": "video/mp4",
+            "url": "https://cdn.shopify.com/videos/c/vp/888ffa3cfb3a462dbf49c1dd7936e010/888ffa3cfb3a462dbf49c1dd7936e010.HD-720p-3.0Mbps-98226215.mp4",
+            "width": 720
+          },
+          {
+            "format": "m3u8",
+            "height": 1080,
+            "mime_type": "application/x-mpegURL",
+            "url": "https://cdn.shopify.com/videos/c/vp/888ffa3cfb3a462dbf49c1dd7936e010/888ffa3cfb3a462dbf49c1dd7936e010.m3u8",
+            "width": 1080
+          }
+        ]
+      },
+      {
+        "alt": null,
+        "id": 46194895159517,
+        "position": 4,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1000,
+          "width": 1000,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-1.jpg?v=1792487759"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1000,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-1.jpg?v=1792487759",
+        "width": 1000
+      },
+      {
+        "alt": null,
+        "id": 46194893357277,
+        "position": 5,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1000,
+          "width": 1000,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_1.webp?v=1792487734"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1000,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_1.webp?v=1792487734",
+        "width": 1000
+      },
+      {
+        "alt": null,
+        "id": 46194893422813,
+        "position": 6,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1000,
+          "width": 1000,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_3.webp?v=1792487734"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1000,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_3.webp?v=1792487734",
+        "width": 1000
+      },
+      {
+        "alt": null,
+        "id": 37258185212125,
+        "position": 7,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 1500,
+          "width": 1500,
+          "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+        },
+        "aspect_ratio": 1.0,
+        "height": 1500,
+        "media_type": "image",
+        "src": "https://cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197",
+        "width": 1500
+      }
+    ],
+    "tags": []
+  }
+}
