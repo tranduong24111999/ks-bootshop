@@ -38,7 +38,7 @@ class PredictiveSearch extends HTMLElement {
         this.results.innerHTML = resultsMarkup
 
         this.emptyContainer.setAttribute('hidden', 'hidden')
-        this.cartUpsells.setAttribute('hidden', 'hidden')
+        this.cartUpsells?.setAttribute('hidden', 'hidden')
         this.input.setAttribute('aria-expanded', 'true')
         this.status.textContent = this.querySelector('#predictive-search-results').dataset.resultsText
 
@@ -51,7 +51,7 @@ class PredictiveSearch extends HTMLElement {
       }
     } else {
       this.emptyContainer.removeAttribute('hidden')
-      this.cartUpsells.removeAttribute('hidden')
+      this.cartUpsells?.removeAttribute('hidden')
       this.results.innerHTML = ''
       this.input.setAttribute('aria-expanded', 'false')
       this.input.removeAttribute('aria-activedescendant')

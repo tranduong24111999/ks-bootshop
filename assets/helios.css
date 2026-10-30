@@ -283,3 +283,22 @@
  .helios-theme .product-media-gallery .swiper-thumbs .swiper-scrollbar { display:none; }
 }
 @media(max-width:767px) { .helios-theme.helios-menu-open { overflow:hidden; } }
+
+/* Full-screen search with a line that draws after the panel opens. */
+#offcanvas-search.helios-search { --bs-offcanvas-height:100dvh; --bs-offcanvas-transition:transform .55s cubic-bezier(.22,1,.36,1); height:100dvh; max-height:none; border:0; background:#000; color:#fff; }
+.helios-search predictive-search { display:block; width:100%; height:100%; overflow:auto; }
+.helios-search .offcanvas-header { border:0; padding:24px 32px; }
+.helios-search .offcanvas-title { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.helios-search .btn-close { margin-left:auto; color:#fff; }
+.helios-search .offcanvas-body { width:min(100%,850px); margin:clamp(50px,16vh,180px) auto 0; padding:0 32px 60px; }
+.helios-search .search-form { margin:0; }
+.helios-search .form-control-wrapper { position:relative; display:flex; align-items:center; padding-bottom:16px; border:0; }
+.helios-search .form-control-wrapper::after { content:""; position:absolute; bottom:0; left:0; width:100%; height:2px; background:#fff; transform:scaleX(0); transform-origin:left; transition:transform 1s cubic-bezier(.22,1,.36,1) .25s; }
+.helios-search.show .form-control-wrapper::after { transform:scaleX(1); }
+.helios-search .form-control-wrapper .form-control { min-width:0; padding:0 64px 0 0; border:0; border-radius:0; background:transparent; color:#fff; font-size:clamp(24px,3vw,36px); box-shadow:none; outline:none; }
+.helios-search .form-control::placeholder { color:#fff; opacity:1; }
+#offcanvas-search .form-control-wrapper button[type="submit"] { background:transparent; border:0; height:44px; opacity:1; position:absolute; right:0; top:50%; transform:translateY(-65%); padding:0; color:#fff; }
+.helios-search .form-control-wrapper:focus-within::after { height:3px; }
+.helios-search .search-empty { display:none; }
+@media(max-width:575.98px) { .helios-search .offcanvas-body { padding-inline:24px; } .helios-search .offcanvas-header { padding:20px 24px; } }
+@media(prefers-reduced-motion:reduce) { #offcanvas-search.helios-search { --bs-offcanvas-transition:none; } .helios-search .form-control-wrapper::after { transition:none; } }

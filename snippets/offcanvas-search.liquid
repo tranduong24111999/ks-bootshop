@@ -1,6 +1,6 @@
 {% liquid
   assign resources_type = 'query,product'
-  
+
   if settings.search_collections
     assign resources_type = resources_type | append: ',collection'
   endif
@@ -14,10 +14,10 @@
 
 <div
   id="offcanvas-search"
-  class="offcanvas-search offcanvas offcanvas-end" 
-  tabindex="-1" 
+  class="offcanvas-search helios-search offcanvas offcanvas-top"
+  tabindex="-1"
   aria-labelledby="offcanvas-search-label">
-  <predictive-search 
+  <predictive-search
     class="predictive-search"
     data-img-orientation="{{ settings.product_img_orientation }}"
     data-img-border="{{ settings.product_img_border }}"
@@ -26,12 +26,12 @@
     data-resources-type="{{ resources_type }}">
     <div class="offcanvas-header">
       <h2 id="offcanvas-search-label" class="offcanvas-title">
-        {{ 'general.search.title' | t }}
+        Tìm kiếm
       </h2>
       <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="{{ 'general.accessibility.close' | t }}">
-        {% render 'svg-icons', icon: 'x' %}
+        {% render 'svg-icons', icon: 'x', size: 24 %}
       </button>
-    </div> 
+    </div>
     <div class="offcanvas-body">
       <form action="{{ routes.search_url }}" class="search-form mb-6" method="get" role="search">
         <input name="options[prefix]" type="hidden" value="last">
@@ -48,20 +48,20 @@
             aria-haspopup="listbox"
             aria-autocomplete="list"
             aria-label="{{ 'general.search.input_label' | t }}"
-            placeholder="{{ 'general.search.input_label' | t }}"
-            autocorrect="off" 
-            autocomplete="off" 
+            placeholder="Gõ để tìm kiếm"
+            autocorrect="off"
+            autocomplete="off"
             autocapitalize="off"
             spellcheck="false">
           <button type="submit" class="btn btn-link" aria-label="{{ 'general.search.btn_label' | t }}">
-            {% render 'svg-icons', icon: 'search', size: 20, class: '' %}
+            {% render 'svg-icons', icon: 'arrow-right', size: 40, class: '' %}
           </button>
         </div>
         <div id="predictive-search" tabindex="-1"></div>
         <span id="predictive-search-status" class="visually-hidden" role="status"></span>
       </form>
       <div class="search-empty pt-4 pb-11 text-center" {% if settings.rtl_langs contains request.locale.iso_code %}hidden{% endif %}>
-        {{ 'general.search.empty_html' | t }} 
+        {{ 'general.search.empty_html' | t }}
         <button class="btn btn-outline-primary" type="button" data-bs-dismiss="offcanvas">
           {{ 'general.search.continue_shopping' | t }}
         </button>

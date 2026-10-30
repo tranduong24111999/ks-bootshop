@@ -137,7 +137,7 @@ async function main () {
   const html = '<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HELIOS component validation</title>' +
     fonts + '<link rel="stylesheet" href="/assets/vendor-bootstrap.min.css"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/helios.css">' +
     '<script src="/assets/vendor-bootstrap.bundle.min.js" defer></script><script src="/assets/helios.js" defer></script></head><body class="helios-theme page-type-index">' + markup +
-    '<div class="offcanvas offcanvas-end" id="offcanvas-cart" tabindex="-1" aria-label="Giỏ hàng"><div class="offcanvas-body">Giỏ hàng<button data-bs-dismiss="offcanvas">Đóng</button></div></div><div class="offcanvas offcanvas-top" id="offcanvas-search" tabindex="-1" aria-label="Tìm kiếm"><div class="offcanvas-body"><form action="/search" role="search"><input name="q" type="search" aria-label="Tìm kiếm chế tác"><button>Tìm kiếm</button></form><button data-bs-dismiss="offcanvas">Đóng tìm kiếm</button></div></div></body></html>'
+    '<div class="offcanvas offcanvas-end" id="offcanvas-cart" tabindex="-1" aria-label="Giỏ hàng"><div class="offcanvas-body">Giỏ hàng<button data-bs-dismiss="offcanvas">Đóng</button></div></div>' + await engine.renderFile('offcanvas-search', context) + '</body></html>'
   fs.writeFileSync(path.join(artifacts, 'rendered.html'), html)
   const mime = { '.css': 'text/css', '.js': 'application/javascript', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }
   const server = http.createServer((req, res) => {
@@ -243,7 +243,13 @@ async function main () {
       await page.locator('#offcanvas-cart').waitFor({ state: 'hidden' })
       await page.locator('.helios-header__actions a[aria-label="Tìm kiếm"]').click()
       await page.locator('#offcanvas-search.show').waitFor()
-      await page.locator('#offcanvas-search [data-bs-dismiss="offcanvas"]').click()
+      await page.waitForTimeout(1400)
+      const searchInput = page.locator('#offcanvas-search input[name="q"]')
+      assert.equal(await searchInput.getAttribute('placeholder'), 'Gõ để tìm kiếm')
+      assert.equal(await page.locator('#offcanvas-search form').getAttribute('action'), '/search')
+      assert.equal(await page.locator('#offcanvas-search').evaluate(el => Math.round(el.getBoundingClientRect().height)), await page.evaluate(() => innerHeight))
+      assert.equal(await page.locator('#offcanvas-search .form-control-wrapper').evaluate(el => getComputedStyle(el, '::after').transform), 'matrix(1, 0, 0, 1, 0, 0)')
+      await page.locator('#offcanvas-search .btn-close').click()
       await page.locator('#offcanvas-search').waitFor({ state: 'hidden' })
       const invalidLinks = await page.locator('a').evaluateAll(links => links.map(a => a.getAttribute('href')).filter(href => !href || href === '#' || (!(href.startsWith('#') && document.getElementById(href.slice(1))) && !href.startsWith('/') && !href.startsWith('mailto:') && !href.startsWith('tel:') && href !== 'http://online.gov.vn/Home/WebDetails/140048' && !/^https:\/\/(www\.)?(facebook\.com|youtube\.com|instagram\.com|tiktok\.com|pinterest\.com)\//.test(href))))
       assert.deepEqual(invalidLinks, [], 'Invalid internal links')
