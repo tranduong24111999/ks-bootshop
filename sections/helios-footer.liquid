@@ -1,32 +1,101 @@
 <footer class="helios-footer">
-  <section class="helios-newsletter helios-container" aria-labelledby="helios-newsletter-heading">
-    <div><p class="helios-eyebrow">KEEP IN TOUCH</p><h2 id="helios-newsletter-heading">ĐĂNG KÝ NHẬN THÔNG TIN</h2><p>Sản phẩm, bộ sưu tập và những câu chuyện mới nhất từ HELIOS.</p></div>
-    {% assign newsletter_id = 'HeliosNewsletter-' | append: section.id %}
-    {% form 'customer', id: newsletter_id, class: 'helios-newsletter__form' %}
-      <input type="hidden" name="contact[tags]" value="newsletter">
-      <label class="visually-hidden" for="HeliosEmail-{{ section.id }}">Địa chỉ email</label>
-      <div class="helios-newsletter__field"><input id="HeliosEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="Địa chỉ email của bạn" required {% if form.errors %}aria-invalid="true" aria-describedby="HeliosEmailError-{{ section.id }}"{% endif %}><button type="submit" aria-label="Đăng ký nhận tin">→</button></div>
-      {% if form.posted_successfully? %}<p role="status" tabindex="-1">Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.</p>{% endif %}
-      {% if form.errors %}<div id="HeliosEmailError-{{ section.id }}" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
-      {% if shop.privacy_policy != blank %}<p class="helios-newsletter__notice">Thông tin được xử lý theo <a href="{{ shop.privacy_policy.url }}">chính sách bảo mật</a>.</p>{% endif %}
-    {% endform %}
+  <section class="helios-newsletter" aria-labelledby="helios-newsletter-heading" style="background-image: url({{ 'helios-newsletter.jpg' | asset_url }});">
+    <div class="helios-newsletter__content" data-helios-reveal><h2 id="helios-newsletter-heading">ĐĂNG KÝ NHẬN THÔNG TIN</h2><p>Đăng ký nhận thông tin về sản phẩm và sự kiện mới nhất từ chúng tôi!</p>
+      {% assign newsletter_id = 'HeliosNewsletter-' | append: section.id %}
+      {% form 'customer', id: newsletter_id, class: 'helios-newsletter__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="HeliosEmail-{{ section.id }}">Địa chỉ email</label>
+        <div class="helios-newsletter__field"><input id="HeliosEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="Email của bạn" required {% if form.errors %}aria-invalid="true" aria-describedby="HeliosEmailError-{{ section.id }}"{% endif %}><button type="submit" aria-label="Đăng ký nhận tin">{% render 'svg-icons', icon: 'arrow-right', size: 24 %}</button></div>
+        {% if form.posted_successfully? %}<p role="status" tabindex="-1">Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.</p>{% endif %}
+        {% if form.errors %}<div id="HeliosEmailError-{{ section.id }}" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+        {% if shop.privacy_policy != blank %}<p class="helios-newsletter__notice">Thông tin được xử lý theo <a href="{{ shop.privacy_policy.url }}">chính sách bảo mật</a>.</p>{% endif %}
+      {% endform %}
+    </div>
   </section>
-  <div class="helios-footer__grid helios-container">
-    <div class="helios-footer__brand"><h2>KẾT NỐI VỚI CHÚNG TÔI</h2><img src="{{ 'helios-logo.webp' | asset_url }}" alt="HELIOS" width="180" height="49" loading="lazy"><p>HELIOS không làm phụ kiện.<br>HELIOS làm dấu ấn của bản lĩnh.</p><p>Mỗi chế tác mang một tinh thần riêng, được hoàn thiện bằng tay bởi nghệ nhân Việt.</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}</div>
-    <nav aria-label="Khám phá HELIOS"><h2>KHÁM PHÁ HELIOS</h2><a href="{{ routes.all_products_collection_url }}">Tất cả sản phẩm</a><a href="{{ routes.collections_url }}">Bộ sưu tập</a><a href="{{ routes.root_url }}#helios-story">Câu chuyện HELIOS</a><a href="{{ routes.search_url }}">Tìm kiếm chế tác</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">Tài khoản của bạn</a>{% endif %}</nav>
-    <nav aria-label="Chăm sóc khách hàng"><h2>CHĂM SÓC KHÁCH HÀNG</h2>{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}<a href="{{ routes.cart_url }}">Giỏ hàng của bạn</a>{% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">Liên hệ</a>{% endif %}</nav>
+  <div class="helios-footer__frame">
+    <div class="helios-footer__grid">
+      <div class="helios-footer__brand" id="helios-story"><h2>KẾT NỐI VỚI CHÚNG TÔI</h2><p>HELIOS là thương hiệu trang sức bạc thủ công cho nam, tạo nên những dấu ấn mang tính biểu tượng của bản lĩnh và hành trình trưởng thành, dành cho những người đàn ông dám lựa chọn, dám giữ lấy khác biệt và sống tự do theo cách của mình. Mỗi chế tác mang một tinh thần riêng, được hoàn thiện bằng tay bởi nghệ nhân Việt.</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<a class="helios-registration" href="http://online.gov.vn/Home/WebDetails/140048" aria-label="Xem thông tin đăng ký của helios.vn tại Bộ Công Thương"><img src="{{ 'helios-registration.png' | asset_url }}" width="155" height="59" loading="lazy" alt="Thông tin đăng ký helios.vn tại Bộ Công Thương"></a><div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
+      <nav aria-label="Chăm sóc khách hàng"><h2>CHĂM SÓC KHÁCH HÀNG</h2>
+        {% if section.settings.support_menu.links != blank %}{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}
+          {% assign support_handles = 'huong-dan-thanh-toan|giao-hang|chinh-sach-bao-hanh|chinh-sach-doi-tra-san-pham|chinh-sach-doi-tra-dip-sale|chinh-sach-bao-mat-moi|bang-gia-phi-dieu-chinh-san-pham|feedback' | split: '|' %}
+          {% assign support_labels = 'Hướng dẫn thanh toán|Chính sách giao hàng|Chính sách bảo hành|Chính sách đổi trả|Chính sách đổi trả dịp sale|Chính sách bảo mật|Bảng giá phí điều chỉnh sản phẩm|Feedback' | split: '|' %}
+          {% for handle in support_handles %}{% assign label = support_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
+        {% endif %}
+        {% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}
+      </nav>
+      <nav aria-label="Về chúng tôi"><h2>VỀ CHÚNG TÔI</h2>
+        <a href="{{ routes.root_url }}#helios-story">Câu chuyện của Helios</a>
+        {% assign about_handles = 'he-thong-cua-hang|helios-tuyen-dung|membership-by-helios|quy-trinh-phat-trien-san-pham|helios-partnership' | split: '|' %}
+        {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by Helios|Xưởng Online|Collab' | split: '|' %}
+        {% for handle in about_handles %}{% assign label = about_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
+      </nav>
+      <nav aria-label="Dành cho khách hàng"><h2>DÀNH CHO KHÁCH HÀNG</h2>
+        {% if blogs['news'].url != blank %}<a href="{{ blogs['news'].url }}">Blog</a>{% else %}<a href="{{ routes.search_url }}?type=article&amp;q=helios">Blog</a>{% endif %}
+        {% render 'helios-link', kind: 'page', handle: 'huong-dan-bao-quan', label: 'Hướng dẫn bảo quản sản phẩm', query: 'bảo quản' %}
+        {% render 'helios-link', kind: 'page', handle: 'size-chart', label: 'Hướng dẫn đo Size', query: 'size' %}
+        {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'Helios Partnership', query: 'partnership' %}
+        {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">Liên hệ</a>{% endif %}
+      </nav>
+    </div>
+    <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} HELIOS. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>
   </div>
-  <div class="helios-footer__bottom helios-container"><span>© {{ 'now' | date: '%Y' }} HELIOS. All rights reserved.</span><span>HANDCRAFTED IN VIETNAM</span>{% if shop.enabled_payment_types.size > 0 %}{% render 'payment-icons' %}{% endif %}</div>
 </footer>
 {% schema %}
 {
   "name": "HELIOS · Footer",
   "limit": 1,
-  "enabled_on": { "groups": ["footer"] },
+  "enabled_on": {
+    "groups": [
+      "footer"
+    ]
+  },
   "settings": [
-    { "type": "link_list", "id": "support_menu", "label": "Menu chăm sóc khách hàng" },
-    { "type": "page", "id": "contact_page", "label": "Trang liên hệ có sẵn" },
-    { "type": "richtext", "id": "contact", "label": "Thông tin liên hệ đã xác minh", "default": "<p>CÔNG TY TNHH SUNROCK STUDIO<br>Số 3 Nguyễn Viết Xuân, Phường Phương Liệt, Hà Nội<br>MST: 0111155418</p><p>Hotline: <a href=\"tel:0981956116\">0981.956.116</a><br>Email: <a href=\"mailto:support@helios.vn\">support@helios.vn</a></p>" }
+    {
+      "type": "link_list",
+      "id": "support_menu",
+      "label": "Menu chăm sóc khách hàng"
+    },
+    {
+      "type": "page",
+      "id": "contact_page",
+      "label": "Trang liên hệ có sẵn"
+    },
+    {
+      "type": "richtext",
+      "id": "contact",
+      "label": "Thông tin liên hệ đã xác minh",
+      "default": "<p>CÔNG TY TNHH SUNROCK STUDIO</p><p>Địa chỉ: Số 3 Nguyễn Viết Xuân, Phường Phương Liệt, Hà Nội</p><p>MST: 0111155418</p><p>Hotline hỗ trợ:<br>– Hà Nội: <a href=\"tel:0393278668\">039.327.8668</a><br>– Hồ Chí Minh: <a href=\"tel:0794302899\">0794.302.899</a></p><p>Phản Ánh Chất Lượng Dịch Vụ: <a href=\"tel:0981956116\">0981.956.116</a></p><p>Email: <a href=\"mailto:support@helios.vn\">support@helios.vn</a></p>"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook",
+      "label": "Facebook",
+      "default": "https://www.facebook.com/Official.Heliosvn/"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube",
+      "label": "Youtube",
+      "default": "https://www.youtube.com/@heliosbrand_official"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram",
+      "label": "Instagram",
+      "default": "https://www.instagram.com/heliosofficial__/"
+    },
+    {
+      "type": "url",
+      "id": "social_tiktok",
+      "label": "Tiktok",
+      "default": "https://tiktok.com/@heliosjewels"
+    },
+    {
+      "type": "url",
+      "id": "social_pinterest",
+      "label": "Pinterest",
+      "default": "https://www.pinterest.com/Heliosjewelsvn/"
+    }
   ]
 }
 {% endschema %}

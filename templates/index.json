@@ -31,7 +31,7 @@
         "bird"
       ],
       "settings": {
-        "autoplay": 5
+        "autoplay": 7
       }
     },
     "helios_products": {
@@ -98,14 +98,15 @@
         "category_2",
         "category_3",
         "category_4",
-        "category_5",
-        "category_6"
+        "category_6",
+        "category_5"
       ],
       "settings": {}
     },
     "helios_story": {
       "type": "helios-story",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     }
   },
   "order": [

@@ -1,0 +1,22 @@
+{% assign detail_blocks = blocks | where: 'type', 'collapse' %}
+{% if detail_blocks.size > 0 %}
+{% if style != 'tabs' %}
+  {% for detail in detail_blocks %}{% render 'product-block-collapse', block: detail %}{% endfor %}
+{% else %}
+<helios-tabs class="helios-tabs">
+  <div class="helios-tabs__list" data-helios-tab-list aria-label="Thông tin sản phẩm">
+    {% for detail in detail_blocks %}<a href="#HeliosPanel-{{ section_id }}-{{ detail.id }}" id="HeliosTab-{{ section_id }}-{{ detail.id }}" aria-controls="HeliosPanel-{{ section_id }}-{{ detail.id }}" data-helios-tab>{{ detail.settings.title | escape }}</a>{% endfor %}
+  </div>
+  {% for detail in detail_blocks %}
+    <section id="HeliosPanel-{{ section_id }}-{{ detail.id }}" aria-labelledby="HeliosTab-{{ section_id }}-{{ detail.id }}" class="helios-tabs__panel" data-helios-panel tabindex="0" {{ detail.shopify_attributes }}>
+      <h3>{{ detail.settings.title | escape }}</h3>
+      {% if detail.settings.product_description %}{{ product.description }}
+      {% elsif detail.settings.description contains '[page:' %}
+        {% assign page_handle = detail.settings.description | split: '[page:' | last | split: ']' | first %}
+        {% if pages[page_handle].content != blank %}{{ pages[page_handle].content }}{% else %}{% render 'helios-link', kind: 'page', handle: page_handle, label: detail.settings.title, query: detail.settings.title %}{% endif %}
+      {% else %}{{ detail.settings.description }}{% endif %}
+    </section>
+  {% endfor %}
+</helios-tabs>
+{% endif %}
+{% endif %}

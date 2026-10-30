@@ -19,7 +19,7 @@
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
         assign image_alt = block.settings.title
       %}
-      <div class="helios-hero__slide{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
         <a href="{{ destination }}" aria-label="{{ block.settings.title | escape }} — Khám phá bộ sưu tập">
           <picture>
             {% if block.settings.mobile != blank %}
@@ -37,8 +37,8 @@
               <img src="{{ desktop_asset | asset_url }}" alt="{{ image_alt | escape }}" width="{{ desktop_width }}" height="{{ desktop_height }}" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
             {% endif %}
           </picture>
-          <span class="helios-hero__title">{{ block.settings.title | escape }}</span>
-          <span class="helios-hero__cta">KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+          <span class="helios-hero__title" hidden>{{ block.settings.title | escape }}</span>
+          <span class="helios-hero__cta" hidden>KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
         </a>
       </div>
     {% endfor %}
@@ -46,9 +46,10 @@
   {% if section.blocks.size > 1 %}
     <div class="helios-hero__controls" hidden data-helios-controls>
       <button type="button" data-helios-prev aria-label="Banner trước">←</button>
-      <span data-helios-status aria-live="off" aria-atomic="true">1 / {{ section.blocks.size }}</span>
+      <div class="helios-hero__dots">{% for block in section.blocks %}<button type="button" class="helios-hero__dot" data-helios-dot="{{ forloop.index0 }}" aria-label="Xem banner {{ forloop.index }}: {{ block.settings.title | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>{% endfor %}</div>
+      <span class="visually-hidden" data-helios-status aria-live="off" aria-atomic="true">1 / {{ section.blocks.size }}</span>
       <button type="button" data-helios-next aria-label="Banner tiếp theo">→</button>
-      <button type="button" data-helios-toggle aria-label="Tạm dừng tự động chuyển banner">Tạm dừng</button>
+      <button type="button" data-helios-toggle aria-label="Tạm dừng tự động chuyển banner"><span aria-hidden="true">Ⅱ</span></button>
     </div>
   {% endif %}
 </helios-carousel>
@@ -57,7 +58,7 @@
   "name": "HELIOS · Banner",
   "enabled_on": { "templates": ["index"] },
   "max_blocks": 5,
-  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề trang", "default": "HELIOS — Dấu ấn của bản lĩnh" }, { "type": "range", "id": "autoplay", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 5, "label": "Tự chuyển banner (0: tắt)" }],
+  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề trang", "default": "HELIOS — Dấu ấn của bản lĩnh" }, { "type": "range", "id": "autoplay", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 7, "label": "Tự chuyển banner (0: tắt)" }],
   "blocks": [{
     "type": "slide", "name": "Banner",
     "settings": [

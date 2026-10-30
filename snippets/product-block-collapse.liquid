@@ -48,7 +48,7 @@
       <div class="collapse-inner description rte mb-0 {{ block.settings.description_font_size }}">
         {% if block.settings.description contains '[page' %}
           {% assign page_handle = block.settings.description | split: '[page:' | last | split: ']' | first %}
-          {{ pages[page_handle].content }}
+          {% if pages[page_handle].content != blank %}{{ pages[page_handle].content }}{% else %}{% render 'helios-link', kind: 'page', handle: page_handle, label: block.settings.title, query: block.settings.title %}{% endif %}
         {% elsif block.settings.product_description %}
           {{ product.description }}
         {% else %}

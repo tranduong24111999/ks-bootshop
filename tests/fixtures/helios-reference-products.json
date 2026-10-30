@@ -1,0 +1,193 @@
+{
+  "source": "https://helios.vn/",
+  "captured_at": "2026-10-30",
+  "note": "Read-only public reference catalog for local visual tests only. Never imported into Shopify.",
+  "products": [
+    {
+      "id": 15445322891485,
+      "title": "SCORPIO 23 PENDANT",
+      "handle": "scorpio-23-pendant",
+      "url": "/products/scorpio-23-pendant",
+      "price": 225000000,
+      "price_min": 225000000,
+      "price_max": 225000000,
+      "price_varies": false,
+      "compare_at_price": 225000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcb_c_p-1_optimized.webp?v=1792730856",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcb_c_p-2_optimized.webp?v=1792730856",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/conceptbocap-1.jpg?v=1792732112",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/conceptbocap-2.jpg?v=1792732112",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcb_c_p-1_optimized.webp?v=1792730856"
+    },
+    {
+      "id": 15432914763997,
+      "title": "MICHIGAN ICED-OUT RING",
+      "handle": "michigan-iced-out-ring",
+      "url": "/products/michigan-iced-out-ring",
+      "price": 295000000,
+      "price_min": 295000000,
+      "price_max": 325000000,
+      "price_varies": true,
+      "compare_at_price": 295000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00385_2__optimized.webp?v=1792487706",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-1.jpg?v=1792487759",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_1.webp?v=1792487734",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_3.webp?v=1792487734",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/michigan-iced-out-ring_2.webp?v=1792487734"
+    },
+    {
+      "id": 15432913092829,
+      "title": "TOBA LOTUS SPINNING RING",
+      "handle": "toba-lotus-spinning-ring",
+      "url": "/products/toba-lotus-spinning-ring",
+      "price": 285000000,
+      "price_min": 285000000,
+      "price_max": 315000000,
+      "price_varies": true,
+      "compare_at_price": 285000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/TOBA-1_optimized.webp?v=1792483427",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/toba-lotus-spinning-ring.webp?v=1792483743",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/toba-1_1.jpg?v=1792486519",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/TOBA-2_optimized.webp?v=1792483428",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/TOBA-3_optimized.webp?v=1792483428",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/TOBA-1_optimized.webp?v=1792483427"
+    },
+    {
+      "id": 15432912797917,
+      "title": "WITHERED JACK PENDANT",
+      "handle": "withered-jack-pendant",
+      "url": "/products/withered-jack-pendant",
+      "price": 345000000,
+      "price_min": 345000000,
+      "price_max": 345000000,
+      "price_varies": false,
+      "compare_at_price": 345000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/withered-jack-pendant_3.webp?v=1792205834",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC01350_36ef0670-9586-48c5-9cf7-fc3e96e7d252.jpg?v=1792213077",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hlwconcept-41.jpg?v=1792213077",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/withered-jack-pendant_4.webp?v=1792205834",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/withered-jack-pendant_2.webp?v=1792205834",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/withered-jack-pendant_1.webp?v=1792205834",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hlwconcept-2.jpg?v=1792213076",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hlwconcept-31.jpg?v=1792213076",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/packaging_HLW-1_optimized.webp?v=1793073158"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/withered-jack-pendant_3.webp?v=1792205834"
+    },
+    {
+      "id": 15415878353117,
+      "title": "ROTORUA LOTUS DRILL PENDANT",
+      "handle": "rotorua-lotus-drill-pendant",
+      "url": "/products/rotorua-lotus-drill-pendant",
+      "price": 295000000,
+      "price_min": 295000000,
+      "price_max": 295000000,
+      "price_varies": false,
+      "compare_at_price": 295000000,
+      "available": true,
+      "tags": [
+        "tonao"
+      ],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcdrill-1_1__optimized.webp?v=1791454348",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00395.jpg?v=1791516474",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/drill-2.jpg?v=1791454929",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcdrill-3_1__optimized.webp?v=1791454349",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcdrill-2_1__optimized.webp?v=1791454348",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/mdcdrill-1_1__optimized.webp?v=1791454348"
+    },
+    {
+      "id": 15414174351581,
+      "title": "JARA CHRYSABER RING",
+      "handle": "jara-chrysaber-ring",
+      "url": "/products/jara-chrysaber-ring",
+      "price": 115000000,
+      "price_min": 115000000,
+      "price_max": 145000000,
+      "price_varies": true,
+      "compare_at_price": 115000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/JARACHRYSABERRING-0_1__optimized_2c236f82-885d-47b3-b021-74e6898dc13f.webp?v=1791454165",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00387.jpg?v=1791516671",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/chrysaber-c1_optimized.webp?v=1791455023",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/JARACHRYSABERRING-2_1__optimized_c2231b93-5cf2-481d-835e-1f726f48f62b.webp?v=1791454165",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/JARACHRYSABERRING-1_1__optimized_0bfeb246-85d8-4a2c-bb79-9eb14f70c2b8.webp?v=1791454165",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/JARACHRYSABERRING-0_1__optimized_2c236f82-885d-47b3-b021-74e6898dc13f.webp?v=1791454165"
+    },
+    {
+      "id": 15411778617565,
+      "title": "ELAFO CHRYSABER CUFF",
+      "handle": "elafo-chrysaber-cuff",
+      "url": "/products/elafo-chrysaber-cuff",
+      "price": 325000000,
+      "price_min": 325000000,
+      "price_max": 325000000,
+      "price_varies": false,
+      "compare_at_price": 325000000,
+      "available": true,
+      "tags": [
+        "tonao"
+      ],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/ELAFOCHRYSABERCUFF-1_1__optimized.webp?v=1791436902",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC00406_fed8114f-4b91-4e34-a3f9-c4fc25305902.jpg?v=1791619227",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/chrysaber-c2_optimized.webp?v=1791455072",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/2aOboR6lMsXYHgUDusx1bbGmBZ032OPq8WhOORLU.jpg?v=1792490518",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/ELAFOCHRYSABERCUFF-3_1__optimized.webp?v=1791436902",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/ELAFOCHRYSABERCUFF-2_1__optimized.webp?v=1791436902",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/ELAFOCHRYSABERCUFF-1_1__optimized.webp?v=1791436902"
+    },
+    {
+      "id": 9670158319837,
+      "title": "VERMILION BIRD RING",
+      "handle": "vermilion-bird-ring",
+      "url": "/products/vermilion-bird-ring",
+      "price": 295000000,
+      "price_min": 295000000,
+      "price_max": 325000000,
+      "price_varies": true,
+      "compare_at_price": 295000000,
+      "available": true,
+      "tags": [],
+      "images": [
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/nh_nchut_c-1_optimized.webp?v=1789629979",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/DSC02402_1.jpg?v=1789700876",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/infornhanchutuoccopy.jpg?v=1790307036",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/chutuoc-1-1x1_optimized.webp?v=1789709088",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/nh_nchut_c-4_optimized.webp?v=1789629979",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/nh_nchut_c-2_optimized.webp?v=1789629979",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/nh_nchut_c-3_optimized.webp?v=1789629979",
+        "//cdn.shopify.com/s/files/1/0644/2958/8701/files/hop1500_4e214c0f-7ac0-42ad-9e7a-58f84616e4ce.jpg?v=1774242197"
+      ],
+      "featured_image": "//cdn.shopify.com/s/files/1/0644/2958/8701/files/nh_nchut_c-1_optimized.webp?v=1789629979"
+    }
+  ]
+}

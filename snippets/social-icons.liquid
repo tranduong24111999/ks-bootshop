@@ -1,4 +1,4 @@
-{% assign social_accounts = 'Facebook, Instagram, X, Tiktok, Pinterest, Snapchat, YouTube, Linkedin, GitHub' | split: ', ' %}
+{% assign social_accounts = social_accounts | default: 'Facebook, Instagram, X, Tiktok, Pinterest, Snapchat, YouTube, Linkedin, GitHub' | split: ', ' %}
 
 {% if settings.social_title != blank and show_title %}
   <p class="social-icons-title">

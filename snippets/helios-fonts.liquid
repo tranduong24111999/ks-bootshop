@@ -1,0 +1,6 @@
+{{ 'helios-futura.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{{ 'helios-copperplate.ttf' | asset_url | preload_tag: as: 'font', type: 'font/ttf', crossorigin: 'anonymous' }}
+<style>
+  @font-face { font-family: Helios Futura; src: url({{ 'helios-futura.woff2' | asset_url }}) format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
+  @font-face { font-family: Helios Copperplate; src: url({{ 'helios-copperplate.ttf' | asset_url }}) format('truetype'); font-style: normal; font-weight: 100 900; font-display: swap; }
+</style>

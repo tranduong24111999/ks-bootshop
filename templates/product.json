@@ -28,7 +28,7 @@
           }
         },
         "judge_me_reviews_preview_badge_J3NUWe": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
@@ -36,7 +36,7 @@
           "settings": {
             "title": "",
             "title_font_size": "h6",
-            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}<\/p>",
+            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}</p>",
             "description_font_size": "",
             "product_description": false,
             "description_classes": "opacity-70",
@@ -63,7 +63,7 @@
           }
         },
         "subscriptions_app_block_4aHTie": {
-          "type": "shopify:\/\/apps\/subscriptions\/blocks\/app-block\/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "settings": {
             "color_text_title": "#212529",
             "color_text_body": "#212529",
@@ -72,7 +72,7 @@
             "border_thickness": 1,
             "border_radius": 8,
             "supporting_text_title": "Purchase options",
-            "subscription_policy_url": "shopify:\/\/policies\/privacy-policy",
+            "subscription_policy_url": "shopify://policies/privacy-policy",
             "product": "{{product}}"
           }
         },
@@ -108,12 +108,12 @@
             "label": "What we promise",
             "max_width": "460",
             "img_size": 24,
-            "img_1": "shopify:\/\/shop_images\/icon-star.svg",
-            "text_1": "<p>Commitment to<br\/>Excellence<\/p>",
-            "img_2": "shopify:\/\/shop_images\/hand-thumbs-up.svg",
-            "text_2": "<p>100% Satisfaction<br\/>Guarantee<\/p>",
-            "img_3": "shopify:\/\/shop_images\/icon-truck.svg",
-            "text_3": "<p>Free Shipping<br\/>Over $90<\/p>",
+            "img_1": "shopify://shop_images/icon-star.svg",
+            "text_1": "<p>Commitment to<br/>Excellence</p>",
+            "img_2": "shopify://shop_images/hand-thumbs-up.svg",
+            "text_2": "<p>100% Satisfaction<br/>Guarantee</p>",
+            "img_3": "shopify://shop_images/icon-truck.svg",
+            "text_3": "<p>Free Shipping<br/>Over $90</p>",
             "text_4": "",
             "pt": 0,
             "pb": 7
@@ -123,7 +123,7 @@
           "type": "collapse",
           "settings": {
             "icon_size": 20,
-            "title": "Product Details",
+            "title": "Thông tin chi tiết",
             "title_font_family": "",
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
@@ -135,7 +135,7 @@
             "border_bottom_width": 0,
             "border_color": "border-body",
             "border_opacity": 100,
-            "open_by_default": true,
+            "open_by_default": false,
             "pt": 0,
             "pb": 0
           }
@@ -144,12 +144,12 @@
           "type": "collapse",
           "settings": {
             "icon_size": 20,
-            "title": "Shipping Information",
+            "title": "Chính sách mua hàng",
             "title_font_family": "",
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
-            "description": "<p>Feel free to create additional blocks like this for <strong>Shipping, Payments, etc <\/strong>through the Shopify Theme editor. Also, you may easily adjust their order by dragging and dropping.<\/p>",
+            "description": "<p>[page:giao-hang]</p>",
             "product_description": false,
             "description_font_size": "fs-md",
             "border_top_width": 1,
@@ -165,12 +165,12 @@
           "type": "collapse",
           "settings": {
             "icon_size": 20,
-            "title": "Returns & Warranty",
+            "title": "Chính sách bảo hành",
             "title_font_family": "",
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
-            "description": "<p>To return an item to us, follow the directions listed on the return exchange form included with your order. If you don’t have this form available, you can download one by clicking here<\/p>",
+            "description": "<p>[page:chinh-sach-bao-hanh]</p>",
             "product_description": false,
             "description_font_size": "fs-md",
             "border_top_width": 1,
@@ -196,9 +196,30 @@
           "type": "liquid",
           "disabled": true,
           "settings": {
-            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ 'now' | date: \"%b %d, %Y\" }}<\/b><\/p>",
+            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ 'now' | date: \"%b %d, %Y\" }}</b></p>",
             "pt": 3,
             "pb": 3
+          }
+        },
+        "helios_care": {
+          "type": "collapse",
+          "settings": {
+            "icon_size": 20,
+            "title": "Hướng dẫn bảo quản sản phẩm",
+            "title_font_family": "",
+            "title_font_size": "fs-md",
+            "title_text_transform": "text-capitalize",
+            "title_letter_spacing": 1,
+            "description": "<p>[page:huong-dan-bao-quan]</p>",
+            "product_description": false,
+            "description_font_size": "fs-md",
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_color": "border-body",
+            "border_opacity": 100,
+            "open_by_default": false,
+            "pt": 0,
+            "pb": 0
           }
         }
       },
@@ -216,6 +237,7 @@
         "11016cfc-fdff-46f2-9b6b-26a6e68b7653",
         "9ecd1e68-8c4b-4330-ac14-7459a1896521",
         "0f571c64-329e-4ea3-9c76-ebf86266226a",
+        "helios_care",
         "separator_cWJNG3",
         "liquid_iDU3Rg"
       ],
@@ -231,14 +253,15 @@
         "border_opacity": 100,
         "container_max_width": "",
         "pt": 10,
-        "pb": 10
+        "pb": 10,
+        "details_style": "accordion"
       }
     },
     "1710322973d29fae05": {
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_XNFVCT": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         }
       },
@@ -264,9 +287,9 @@
         "limit": 8,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
-        "header_title": "Recommended Products",
+        "header_title": "CÓ THỂ BẠN SẼ THÍCH",
         "header_title_font_size": "h3",
-        "header_description": "<p>Add on optional description for this section<\/p>",
+        "header_description": "",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,

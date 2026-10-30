@@ -33,6 +33,7 @@
   {{ content_for_header }}
 
   {% render 'styles-scripts' %}
+  {% render 'helios-fonts' %}
   {{ 'helios.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'helios.js' | asset_url }}" defer></script>
 </head>

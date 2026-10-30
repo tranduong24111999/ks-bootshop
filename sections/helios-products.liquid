@@ -4,13 +4,10 @@
 %}
 {% if featured_collection.products_count > 0 %}
   <section class="helios-products helios-container" aria-labelledby="helios-products-{{ section.id }}">
-    <div class="helios-section-heading">
-      <div><p class="helios-eyebrow">HANDCRAFTED BY HELIOS</p><h2 id="helios-products-{{ section.id }}">{{ heading | escape }}</h2></div>
-      <a class="helios-text-link" href="{{ featured_collection.url | default: routes.all_products_collection_url }}">XEM TẤT CẢ <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
-    </div>
+    <h2 id="helios-products-{{ section.id }}" class="visually-hidden">{{ heading | escape }}</h2>
     <ul class="helios-product-grid" role="list">
       {% for product in featured_collection.products limit: section.settings.limit %}
-        <li>{% render 'product-card', product: product %}</li>
+        <li>{% render 'helios-product-card', product: product %}</li>
       {% endfor %}
     </ul>
   </section>

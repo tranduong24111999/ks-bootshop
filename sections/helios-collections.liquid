@@ -1,8 +1,5 @@
 <section class="helios-collections helios-container" aria-labelledby="helios-collections-{{ section.id }}">
-  <div class="helios-section-heading">
-    <div><p class="helios-eyebrow">TÌM DẤU ẤN CỦA BẠN</p><h2 id="helios-collections-{{ section.id }}">{{ section.settings.heading | escape }}</h2></div>
-    <a class="helios-text-link" href="{{ routes.collections_url }}">TẤT CẢ BỘ SƯU TẬP <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
-  </div>
+  <h2 id="helios-collections-{{ section.id }}" class="visually-hidden">{{ section.settings.heading | escape }}</h2>
   <div class="helios-collection-grid">
     {% for block in section.blocks %}
       {% liquid
@@ -23,13 +20,13 @@
           endif
         endif
       %}
-      <a class="helios-collection-tile" href="{{ tile_url }}" {{ block.shopify_attributes }}>
+      <a class="helios-collection-tile helios-collection-tile--{{ block.settings.artwork }}" href="{{ tile_url }}" {{ block.shopify_attributes }}>
         {% if tile_image != blank %}
           {{ tile_image | image_url: width: 1000 | image_tag: widths: '360,600,800,1000', sizes: '(max-width: 749px) 50vw, 33vw', loading: 'lazy', alt: tile_title }}
         {% else %}
           <img src="{{ tile_asset | asset_url }}" width="800" height="800" loading="lazy" alt="{{ tile_title | escape }}">
         {% endif %}
-        <span class="helios-collection-tile__caption">{{ tile_title | escape }} <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+        <span class="helios-collection-tile__caption">{{ tile_title | escape }}</span>
       </a>
     {% endfor %}
   </div>
