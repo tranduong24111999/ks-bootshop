@@ -1,11 +1,11 @@
 <!doctype html>
-<html 
+<html
   lang="{{ request.locale.iso_code }}"
   class="{% if request.design_mode %}design-mode{% endif %}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <meta name="theme-color" content="#0c0c0c">
 
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -13,6 +13,8 @@
 
   {%- unless settings.favicon == blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: '32', height: '32' }}">
+  {%- else -%}
+      <link rel="icon" type="image/jpeg" href="{{ 'helios-favicon.jpg' | asset_url }}">
   {%- endunless -%}
 
   <title>
@@ -31,13 +33,15 @@
   {{ content_for_header }}
 
   {% render 'styles-scripts' %}
+  {{ 'helios.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'helios.js' | asset_url }}" defer></script>
 </head>
 
-<body class="{{ request.page_type | prepend: 'page-type-' }}">
+<body class="helios-theme {{ request.page_type | prepend: 'page-type-' }}">
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>
-  
+
   <div id="header-group" class="sticky-top">
     {% sections 'header-group' %}
   </div>
@@ -58,4 +62,4 @@
   %}
 </body>
 </html>
-    
+
