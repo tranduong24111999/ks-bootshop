@@ -220,6 +220,7 @@ class ProductMediaGallery extends HTMLElement {
       enlarged.src = url.toString()
       enlarged.alt = image.alt || enlarged.alt
       if (!dialog.open) dialog.showModal()
+      dialog.scrollTop = 0
     }
     this.querySelector('[data-gallery-zoom]')?.addEventListener('click', openZoom)
     this.querySelector('.swiper-main')?.addEventListener('click', event => {

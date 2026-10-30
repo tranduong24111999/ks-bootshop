@@ -38,11 +38,12 @@
  .helios-product-faq__item > summary { font-size:14px; padding-block:16px; }
 }
 .helios-gallery-zoom { position:absolute; top:12px; right:12px; z-index:2; width:40px; height:40px; border:1px solid #777; color:#fff; background:#0008; font-size:25px; }
-.helios-gallery-dialog { color:#fff; background:#000; border:1px solid #555; padding:40px 15px 15px; width:min(95vw,1200px); max-height:95dvh; }
+.helios-gallery-dialog { position:fixed; inset:0; margin:0; padding:0; border:0; width:100%; max-width:none; height:100dvh; max-height:none; overflow:auto; overscroll-behavior:contain; color:#fff; background:#000; }
+html:has(.helios-gallery-dialog[open]) { overflow:hidden; }
 .helios-gallery-dialog::backdrop { background:#000d; }
 .helios-gallery-dialog:not([open]) { display:none; }
-.helios-gallery-dialog img { display:block; width:100%; max-height:82dvh; height:auto; object-fit:contain; }
-.helios-gallery-dialog [data-gallery-close] { position:absolute; top:0; right:8px; min-width:40px; min-height:40px; color:#fff; background:#000; border:0; font-size:30px; }
+.helios-gallery-dialog img { display:block; width:100%; max-width:none; max-height:none; height:auto; }
+.helios-gallery-dialog [data-gallery-close] { position:fixed; top:max(20px,env(safe-area-inset-top)); right:max(20px,env(safe-area-inset-right)); z-index:2; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:50%; color:#000; background:#fff; font-size:30px; line-height:1; }
 .page-type-product .swiper-main-wrapper { position:relative; }
 .page-type-product product-media-gallery[data-media-count="1"] .swiper-controls { display:none; }
 @media(min-width:1024px) {
