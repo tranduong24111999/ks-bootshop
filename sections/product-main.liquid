@@ -22,6 +22,7 @@
   <div 
     class="container" 
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
+    <nav class="helios-product-breadcrumb" aria-label="Điều hướng trang"><a href="{{ routes.root_url }}">HOME</a><span aria-hidden="true">/</span><span>{{ product.title | escape }}</span></nav>
     <div 
       class="product-contents position-relative"
       data-quick-view-contents
@@ -38,7 +39,10 @@
           <div id="product-inner-{{ product.id }}">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
-                <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="id" data-variant-id data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" {% unless product.has_only_default_variant %}disabled{% endunless %}>
+                {% unless product.has_only_default_variant %}
+                  <noscript><style>.product-options { display:none; }</style><label for="VariantNoScript-{{ section.id }}">Mẫu / size</label><select id="VariantNoScript-{{ section.id }}" name="id">{% for variant in product.variants %}<option value="{{ variant.id }}" {% if variant.id == product.selected_or_first_available_variant.id %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }} — {{ variant.price | money_with_currency }}</option>{% endfor %}</select></noscript>
+                {% endunless %}
                 {% liquid
                   for block in section.blocks
                     case block.type
@@ -480,6 +484,10 @@
       "name": "Add to cart button",
       "limit": 1,
       "settings": [
+        {"type": "text", "id": "atc_label", "label": "Nút thêm vào giỏ", "default": "Thêm vào giỏ hàng"},
+        {"type": "text", "id": "buy_label", "label": "Nút mua ngay", "default": "Mua ngay"},
+        {"type": "text", "id": "sold_out_label", "label": "Thông báo hết hàng", "default": "Hết hàng"},
+        {"type": "text", "id": "unavailable_label", "label": "Mẫu không khả dụng", "default": "Không có mẫu này"},
         {
           "type": "checkbox",
           "id": "show_qty_field",

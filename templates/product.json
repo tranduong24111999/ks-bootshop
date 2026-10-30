@@ -99,7 +99,11 @@
             "buy_btn_color": "btn-outline-secondary",
             "buy_btn_size": "",
             "pt": 0,
-            "pb": 6
+            "pb": 6,
+            "atc_label": "Thêm vào giỏ hàng",
+            "buy_label": "Mua ngay",
+            "sold_out_label": "Hết hàng",
+            "unavailable_label": "Không có mẫu này"
           }
         },
         "08894b72-c532-44db-9228-5f14c9841895": {
@@ -117,7 +121,8 @@
             "text_4": "",
             "pt": 0,
             "pb": 7
-          }
+          },
+          "disabled": true
         },
         "11016cfc-fdff-46f2-9b6b-26a6e68b7653": {
           "type": "collapse",
@@ -226,9 +231,9 @@
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
+        "095886ab-f46a-4a25-9d3d-e7c79235921b",
         "judge_me_reviews_preview_badge_J3NUWe",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
-        "095886ab-f46a-4a25-9d3d-e7c79235921b",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
         "subscriptions_app_block_4aHTie",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
@@ -271,38 +276,10 @@
       "settings": {}
     },
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41": {
-      "type": "featured-products",
+      "type": "helios-product-recommendations",
       "settings": {
-        "bg_color": "bg-body text-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-body",
-        "border_opacity": 100,
-        "container_max_width": "",
-        "products": [],
-        "collection": "",
-        "limit": 8,
-        "recommended_mode": true,
-        "recommended_mode_intent": "related",
         "header_title": "CÓ THỂ BẠN SẼ THÍCH",
-        "header_title_font_size": "h3",
-        "header_description": "",
-        "header_description_font_size": "fs-md",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": true,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 2,
-        "breakpoint_desktop": 4,
-        "pt": 2,
-        "pb": 11
+        "limit": 8
       }
     },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
@@ -316,12 +293,60 @@
         "pt": 0,
         "pb": 0
       }
+    },
+    "helios_product_editorial": {
+      "type": "helios-product-editorial",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Helios có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?",
+            "answer": "<p>Vui lòng liên hệ HELIOS để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Helios có thu mua sản phẩm cũ không?",
+            "answer": "<p>Vui lòng liên hệ bộ phận chăm sóc khách hàng để kiểm tra chính sách áp dụng cho sản phẩm của bạn.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Sau bao lâu tôi sẽ nhận được hàng?",
+            "answer": "<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ HELIOS để xác nhận.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Sản phẩm nhẫn của Helios có thể tăng hoặc hạ size không?",
+            "answer": "<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ HELIOS để được tư vấn về phạm vi, chi phí áp dụng.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Helios có cung cấp dịch vụ gói quà không?",
+            "answer": "<p>Nếu cần thiệp hoặc đóng gói quà, vui lòng trao đổi với bộ phận chăm sóc khách hàng trước khi đặt đơn.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "1710322973d29fae05",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
-    "20426219-2b04-4ec4-9f23-1ed81a76c181"
+    "helios_product_editorial"
   ]
 }

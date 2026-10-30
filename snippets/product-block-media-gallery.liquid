@@ -18,6 +18,7 @@
     data-product-id="{{ product.id }}"
     data-initial-slide="{{ initial_slide }}"
     data-speed="{{ block.settings.speed }}"
+    data-media-count="{{ product.media.size }}"
     data-thumbs-per-view="{{ block.settings.thumbs_per_view }}">
     <div class="swiper-main-wrapper {{ block.settings.img_border }}">
       <div 
@@ -52,6 +53,7 @@
           </div>
         </div>
       </div>
+      {% if block.settings.full_screen %}<button type="button" class="helios-gallery-zoom" data-gallery-zoom aria-label="Phóng to ảnh sản phẩm">⤢</button>{% endif %}
     </div>
     <div 
       class="swiper-thumbs swiper mt-4" 
@@ -72,5 +74,6 @@
         {% endfor %}
       </div>
     </div>
+    {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="Ảnh sản phẩm phóng to"><button type="button" data-gallery-close aria-label="Đóng ảnh phóng to">×</button><img src="{{ product.featured_image | image_url: width: 2000 }}" width="2000" height="2000" alt="{{ product.title | escape }}" loading="lazy"></dialog>{% endif %}
   </product-media-gallery>
 {% endif %}

@@ -44,15 +44,19 @@ async function renderSection (id, config, extra = {}) {
   const schema = JSON.parse(source.match(/{% schema %}([\s\S]*?){% endschema %}/)[1])
   source = source.replace(/{% schema %}[\s\S]*?{% endschema %}/, '')
   // Shopify owns customer form generation and submission; test its inner fields locally.
-  source = source.replace(/{% form '(?:customer|localization)'[^%]*%}/g, '<form action="/contact" method="post">')
+  source = source.replace(/{% form '(customer|localization|product)'[^%]*%}/g, (match, type) => type === 'product'
+    ? '<form action="/cart/add" method="post" id="ProductForm-' + extra.product.id + '" data-productid="' + extra.product.id + '" data-variants="' + escapeHtml(JSON.stringify(extra.product.variants)) + '">'
+    : '<form action="/contact" method="post">')
     .replace(/{% endform %}/g, '</form>')
   const defaults = fields => Object.fromEntries((fields || []).filter(s => s.default !== undefined).map(s => [s.id, s.default]))
-  const blocks = (config.block_order || []).map(key => {
+  const blocks = (config.block_order || []).filter(key => !config.blocks[key].disabled && !config.blocks[key].type.startsWith('shopify://')).map(key => {
     const block = config.blocks[key]
     const definition = schema.blocks.find(b => b.type === block.type)
-    return { id: key, type: block.type, settings: { ...defaults(definition.settings), ...block.settings } }
+    return { id: key, type: block.type, settings: { ...defaults(definition?.settings), ...block.settings } }
   })
-  return engine.parseAndRender(source, { ...context, ...extra, section: { id, settings: { ...defaults(schema.settings), ...config.settings }, blocks } })
+  const scope = { ...context, ...extra, section: { id, settings: { ...defaults(schema.settings), ...config.settings }, blocks } }
+  engine.options.globals = scope
+  return engine.parseAndRender(source, scope)
 }
 
 async function main () {
@@ -316,4 +320,5 @@ async function main () {
     await new Promise(resolve => server.close(resolve))
   }
 }
-main().catch(error => { console.error(error); process.exitCode = 1 })
+module.exports = { engine, renderSection, context, read, root }
+if (require.main === module) main().catch(error => { console.error(error); process.exitCode = 1 })

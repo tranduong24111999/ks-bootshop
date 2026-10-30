@@ -1,0 +1,48 @@
+{% liquid
+  assign candidates = section.settings.products
+  assign personalized = false
+  if recommendations.performed and recommendations.products_count > 0
+    assign candidates = recommendations.products
+    assign personalized = true
+  elsif candidates == blank
+    assign related_collection = section.settings.collection
+    if related_collection == blank
+      for candidate_collection in product.collections
+        if candidate_collection.products_count > 1
+          assign related_collection = candidate_collection
+          break
+        endif
+      endfor
+    endif
+    assign candidates = related_collection.products | default: collections.all.products
+  endif
+  assign rendered_count = 0
+%}
+{% capture related_cards %}
+  {% for related_product in candidates %}
+    {% if related_product.id != product.id %}
+      <li class="helios-related__item" data-product-id="{{ related_product.id }}">{% render 'helios-product-card', product: related_product %}</li>
+      {% assign rendered_count = rendered_count | plus: 1 %}
+      {% if rendered_count >= section.settings.limit %}{% break %}{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% if rendered_count > 0 %}
+  <helios-recommendations class="helios-related" data-product-id="{{ product.id }}" data-personalized="{{ personalized }}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id | url_encode }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.limit }}&amp;intent=related" aria-labelledby="HeliosRelated-{{ section.id }}">
+    <div class="helios-related__heading"><h2 id="HeliosRelated-{{ section.id }}">{{ section.settings.header_title | escape }}</h2><div class="helios-related__controls"><button type="button" data-related-prev aria-label="Sản phẩm gợi ý trước">←</button><button type="button" data-related-next aria-label="Sản phẩm gợi ý tiếp theo">→</button></div></div>
+    <ul class="helios-related__items" data-recommendation-items role="list">{{ related_cards }}</ul>
+  </helios-recommendations>
+{% elsif request.design_mode %}<p class="helios-editor-notice">Cần ít nhất một sản phẩm khác đã xuất bản để hiển thị gợi ý.</p>{% endif %}
+{% schema %}
+{
+  "name": "HELIOS · Gợi ý",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "header_title", "label": "Tiêu đề", "default": "CÓ THỂ BẠN SẼ THÍCH" },
+    { "type": "product_list", "id": "products", "label": "Sản phẩm chọn thủ công (tùy chọn)", "limit": 8 },
+    { "type": "collection", "id": "collection", "label": "Bộ sưu tập dự phòng" },
+    { "type": "range", "id": "limit", "label": "Số sản phẩm tối đa", "min": 4, "max": 8, "step": 4, "default": 8 }
+  ],
+  "presets": [{ "name": "HELIOS · Gợi ý" }]
+}
+{% endschema %}

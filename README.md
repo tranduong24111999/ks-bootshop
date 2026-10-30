@@ -2,6 +2,8 @@
 
 ## HELIOS homepage
 
+Luồng mua hàng, gợi ý sản phẩm và kiểm thử: [docs/helios-purchase-flow.md](docs/helios-purchase-flow.md).
+
 Trang chủ HELIOS, hướng dẫn cấu hình, ảnh desktop/mobile và giới hạn kiểm thử: [docs/helios-homepage.md](docs/helios-homepage.md).
 
 Free Shopify theme powered by the Bootstrap framework (v5), developed respecting <a rel="nofollow" href="https://shopify.dev/tutorials/review-theme-store-requirements">Shopify theme requirements</a>, accessibility best practices, and of course our own experience developing high-quality themes for more than 15 years. We aim to make this project the most complete, robust, and awesome Shopify Theme for the Bootstrap framework.

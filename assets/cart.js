@@ -3,6 +3,16 @@
   https://www.kondasoft.com
 */
 
+async function requestCart (url, options) {
+  const controller = new AbortController()
+  const timer = window.setTimeout(() => controller.abort(), 10000)
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal })
+    const data = await response.json()
+    return { response, data }
+  } finally { window.clearTimeout(timer) }
+}
+
 class Cart extends HTMLElement {
   constructor () {
     super()
@@ -27,17 +37,17 @@ class Cart extends HTMLElement {
     formData.append('sections', ['cart-count-badge', 'offcanvas-cart'])
     formData.append('sections_url', window.location.pathname)
 
-    const response = await fetch(`${window.Shopify.routes.cart_add_url}.js`, {
+    const { response, data } = await requestCart(`${window.Shopify.routes.cart_add_url}.js`, {
       method: 'POST',
       body: formData
     })
-    console.log(response)
-    const data = await response.json()
-    console.log(data)
 
     if (response.ok) {
       window.dispatchEvent(new CustomEvent('kt.cart.added', { detail: data }))
-      this.reloadCartElements(data.sections)
+      if (!this.reloadCartElements(data.sections)) {
+        window.location.href = window.Shopify.routes.cart_url
+        return { ok: true }
+      }
     } else {
       this.showError(data.description)
     }
@@ -49,60 +59,68 @@ class Cart extends HTMLElement {
         window.bootstrap.Offcanvas.getOrCreateInstance(offcanvas).hide()
       }
     })
+    return { ok: response.ok, error: data.description }
   }
 
   async change (id, quantity) {
     this.classList.add('loading')
-
-    const response = await fetch(`${window.Shopify.routes.cart_change_url}.js`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id,
-        quantity,
-        sections: ['cart-count-badge', 'offcanvas-cart'],
-        sections_url: window.location.pathname
+    try {
+      const { response, data } = await requestCart(`${window.Shopify.routes.cart_change_url}.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          quantity,
+          sections: ['cart-count-badge', 'offcanvas-cart'],
+          sections_url: window.location.pathname
+        })
       })
-    })
-    console.log(response)
-    const data = await response.json()
-    console.log(data)
 
-    if (response.ok) {
-      window.dispatchEvent(new CustomEvent('kt.cart.changed', { detail: data }))
-      this.reloadCartElements(data.sections)
-    } else {
-      this.showError(data.description)
+      if (response.ok) {
+        window.dispatchEvent(new CustomEvent('kt.cart.changed', { detail: data }))
+        if (!this.reloadCartElements(data.sections)) window.location.href = window.Shopify.routes.cart_url
+      } else {
+        this.showError(data.description)
+      }
+    } catch {
+      this.showError('Không thể cập nhật giỏ hàng. Vui lòng thử lại.')
+    } finally {
+      this.classList.remove('loading')
     }
-
-    this.classList.remove('loading')
   }
 
   reloadCartElements (sections) {
-    for (const [key, value] of Object.entries(sections)) {
+    let updatedCart = false
+    for (const [key, value] of Object.entries(sections || {})) {
+      if (!value) continue
       const newDoc = new DOMParser().parseFromString(value, 'text/html')
 
       switch (key) {
       case 'cart-count-badge':
         document.querySelectorAll('.cart-count-badge').forEach(elem => {
           const newDoc = new DOMParser().parseFromString(value, 'text/html')
-          elem.replaceWith(newDoc.querySelector('.cart-count-badge'))
+          const badge = newDoc.querySelector('.cart-count-badge')
+          if (badge) elem.replaceWith(badge)
         })
         break
       case 'offcanvas-cart':
-        this.replaceWith(newDoc.querySelector('cart-container'))
+        if (newDoc.querySelector('cart-container')) {
+          this.replaceWith(newDoc.querySelector('cart-container'))
+          updatedCart = true
+        }
         break
       }
     }
 
     window.dispatchEvent(new CustomEvent('kt.cart.reloaded'))
+    return updatedCart
   }
 
   showError (message) {
     const alert = this.querySelector('.alert')
 
     if (alert) {
-      alert.querySelector('[data-alert-msg]').innerHTML = message
+      alert.querySelector('[data-alert-msg]').textContent = message
       alert.removeAttribute('hidden')
     }
   }

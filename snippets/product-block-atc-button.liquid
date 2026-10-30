@@ -17,7 +17,7 @@
         <button 
           class="btn btn-qty-minus"
           type="button"
-          onclick="--this.nextElementSibling.value, this.nextElementSibling.value == 1 ?  this.disabled = true : ''" 
+          data-quantity-change="-1"
           aria-label="{{ 'general.accessibility.decrease_qty' | t }}"
           disabled>
           {% render 'svg-icons', icon: 'minus', size: 14 %}
@@ -26,13 +26,15 @@
           class="form-control {{ block.settings.atc_btn_size | replace: 'btn-', 'form-control-' }}" 
           name="quantity"
           type="number"
-          value="1"
-          min="1"
+          value="{{ current_variant.quantity_rule.min | default: 1 }}"
+          min="{{ current_variant.quantity_rule.min | default: 1 }}"
+          step="{{ current_variant.quantity_rule.increment | default: 1 }}"
+          {% if current_variant.quantity_rule.max != blank %}max="{{ current_variant.quantity_rule.max }}"{% endif %}
           aria-label="{{ 'product.quantity' | t }}">
         <button 
           class="btn btn-qty-plus"
           type="button"
-          onclick="++this.previousElementSibling.value, this.previousElementSibling.previousElementSibling.disabled = false" 
+          data-quantity-change="1"
           aria-label="{{ 'general.accessibility.increase_qty' | t }}">
           {% render 'svg-icons', icon: 'plus', size: 14 %}
         </button>
@@ -40,15 +42,18 @@
     {% endif %}
     <button
       class="btn btn-atc {{ block.settings.atc_btn_color }} {{ block.settings.atc_btn_size }}"
+      data-label-available="{{ block.settings.atc_label | escape }}"
+      data-label-sold-out="{{ block.settings.sold_out_label | escape }}"
+      data-label-unavailable="{{ block.settings.unavailable_label | escape }}"
       type="submit"
       name="add"
       {% unless current_variant.available %}
         disabled
       {% endunless %}>
       {% if current_variant.available %}
-        {{ 'product.add_to_cart' | t }}
+        {% if block.settings.atc_label != blank %}{{ block.settings.atc_label | escape }}{% else %}{{ 'product.add_to_cart' | t }}{% endif %}
       {% else %}
-        {{ 'product.sold_out' | t }}
+        {% if block.settings.sold_out_label != blank %}{{ block.settings.sold_out_label | escape }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
       {% endif %}
     </button>
   </div>
@@ -66,7 +71,7 @@
       {% unless current_variant.available %}
         disabled
       {% endunless %}>
-      {{ 'product.buy_it_now' | t }}
+      {% if block.settings.buy_label != blank %}{{ block.settings.buy_label | escape }}{% else %}{{ 'product.buy_it_now' | t }}{% endif %}
     </button>
   {% endif %}
 

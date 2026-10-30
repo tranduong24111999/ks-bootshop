@@ -36,6 +36,10 @@
   {% render 'helios-fonts' %}
   {{ 'helios.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'helios.js' | asset_url }}" defer></script>
+  {% if request.page_type == 'product' %}
+    {{ 'helios-product.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'helios-product.js' | asset_url }}" defer></script>
+  {% endif %}
 </head>
 
 <body class="helios-theme {{ request.page_type | prepend: 'page-type-' }}">

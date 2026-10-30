@@ -278,8 +278,8 @@
  .helios-theme .product-media-gallery { display:grid; grid-template-columns:95px minmax(0,1fr); align-items:start; gap:10px; }
  .helios-theme .product-media-gallery .swiper-main-wrapper { grid-column:2; min-width:0; }
  .helios-theme .product-media-gallery .swiper-thumbs { grid-column:1; grid-row:1; margin-top:0!important; width:100%; }
- .helios-theme .product-media-gallery .swiper-thumbs .swiper-wrapper { flex-direction:column; transform:none!important; gap:10px; }
- .helios-theme .product-media-gallery .swiper-thumbs .swiper-slide { width:100%!important; height:auto; margin-right:0!important; }
+
+
  .helios-theme .product-media-gallery .swiper-thumbs .swiper-scrollbar { display:none; }
 }
 @media(max-width:767px) { .helios-theme.helios-menu-open { overflow:hidden; } }
