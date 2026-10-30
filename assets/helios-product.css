@@ -60,3 +60,10 @@
 @media(max-width:767px) { .page-type-product .product-price { font-size:20px!important; } }
 .page-type-product .swiper-thumbs .swiper-slide { opacity:.6; transition:opacity .2s; }
 .page-type-product .swiper-thumbs .swiper-slide-thumb-active,.page-type-product .swiper-thumbs .swiper-slide:hover { opacity:1; }
+
+/* Circular magnifier follows the native pointer only over zoomable images. */
+@media (hover:hover) and (pointer:fine) {
+  .page-type-product product-media-gallery.has-image-zoom .swiper-main .swiper-slide img {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23000' fill-opacity='.75' stroke='%23fff' stroke-width='1'/%3E%3Cpath d='M24 32h16M32 24v16' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") 32 32, zoom-in;
+  }
+}

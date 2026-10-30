@@ -126,6 +126,7 @@ async function main () {
       }
       assert(await page.locator('.helios-related__item').count() > 0, 'Recommendations fallback must be visible before API results')
       assert.equal(await page.locator('product-media-gallery').evaluate(el => el.thumbs.params.direction), width >= 1024 ? 'vertical' : 'horizontal')
+      await page.locator('.swiper-main .swiper-slide-active img').click(); await page.locator('.helios-gallery-dialog[open]').waitFor(); await page.keyboard.press('Escape')
       await page.locator('[data-gallery-zoom]').click(); await page.locator('.helios-gallery-dialog[open]').waitFor(); await page.keyboard.press('Escape'); assert.equal(await page.locator('.helios-gallery-dialog').evaluate(el => el.open), false)
       await page.locator('.swiper-main .swiper-button-next').click(); await page.waitForTimeout(400)
       assert.equal(await page.locator('product-media-gallery').evaluate(el => el.main.activeIndex), 1)

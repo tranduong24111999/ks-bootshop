@@ -209,7 +209,8 @@ class ProductMediaGallery extends HTMLElement {
   initZoom () {
     const dialog = this.querySelector('.helios-gallery-dialog')
     if (!dialog) return
-    this.querySelector('[data-gallery-zoom]')?.addEventListener('click', () => {
+    this.classList.add('has-image-zoom')
+    const openZoom = () => {
       const image = this.querySelector('.swiper-main .swiper-slide-active img')
       if (!image) return
       const url = new URL(image.currentSrc || image.src, window.location.href)
@@ -218,7 +219,11 @@ class ProductMediaGallery extends HTMLElement {
       const enlarged = dialog.querySelector('img')
       enlarged.src = url.toString()
       enlarged.alt = image.alt || enlarged.alt
-      dialog.showModal()
+      if (!dialog.open) dialog.showModal()
+    }
+    this.querySelector('[data-gallery-zoom]')?.addEventListener('click', openZoom)
+    this.querySelector('.swiper-main')?.addEventListener('click', event => {
+      if (this.main.allowClick && event.target.closest('.swiper-slide-active img')) openZoom()
     })
     dialog.querySelector('[data-gallery-close]').addEventListener('click', () => dialog.close())
     dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close() })
