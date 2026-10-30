@@ -12,18 +12,63 @@
 {% schema %}
 {
   "name": "HELIOS · Chế tác & FAQ",
-  "enabled_on": { "templates": ["product"] },
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "heading", "label": "Tiêu đề", "default": "10 NĂM RÈN BẠC - MỘT ĐỜI TẠC BẢN LĨNH" },
-    { "type": "richtext", "id": "description", "label": "Nội dung", "default": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Việt, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>" },
-    { "type": "url", "id": "film_url", "label": "Video MP4 thương hiệu", "default": "https://helios.vn/cdn/shop/videos/c/vp/c9f006cb17ef468da3ab4d6b24ea7d05/c9f006cb17ef468da3ab4d6b24ea7d05.HD-720p-4.5Mbps-95845063.mp4?v=0" },
-    { "type": "text", "id": "faq_heading", "label": "Tiêu đề FAQ", "default": "Câu Hỏi Thường Gặp!" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Tiêu đề",
+      "default": "10 NĂM RÈN BẠC - MỘT ĐỜI TẠC BẢN LĨNH"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Nội dung",
+      "default": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Việt, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>"
+    },
+    {
+      "type": "url",
+      "id": "film_url",
+      "label": "Video MP4 thương hiệu"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "Tiêu đề FAQ",
+      "default": "Câu Hỏi Thường Gặp!"
+    }
   ],
-  "blocks": [{ "type": "question", "name": "Câu hỏi", "settings": [
-    { "type": "text", "id": "question", "label": "Câu hỏi" },
-    { "type": "richtext", "id": "answer", "label": "Trả lời" },
-    { "type": "page", "id": "page", "label": "Dùng nội dung trang có sẵn (tùy chọn)" }
-  ] }],
-  "presets": [{ "name": "HELIOS · Chế tác & FAQ" }]
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Câu hỏi",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Câu hỏi"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Trả lời"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Dùng nội dung trang có sẵn (tùy chọn)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HELIOS · Chế tác & FAQ"
+    }
+  ]
 }
 {% endschema %}

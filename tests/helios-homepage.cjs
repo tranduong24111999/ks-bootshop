@@ -8,6 +8,22 @@ const { chromium } = require('playwright')
 const { AxeBuilder } = require('@axe-core/playwright')
 
 const root = path.resolve(__dirname, '..')
+// Theme Check does not enforce these Shopify upload-time schema constraints.
+for (const file of fs.readdirSync(path.join(root, 'sections')).filter(file => file.endsWith('.liquid'))) {
+  const source = fs.readFileSync(path.join(root, 'sections', file), 'utf8')
+  const match = source.match(/{% schema %}([\s\S]*?){% endschema %}/)
+  if (!match) continue
+  const schema = JSON.parse(match[1])
+  for (const setting of [...(schema.settings || []), ...(schema.blocks || []).flatMap(block => block.settings || [])]) {
+    const label = file + ': ' + setting.id
+    if (setting.type === 'url' && typeof setting.default === 'string') {
+      assert(!/^https?:/.test(setting.default), label + ': external URL belongs in template/group settings, not schema default')
+    }
+    if (setting.type === 'range') {
+      assert((setting.max - setting.min) / (setting.step || 1) >= 2, label + ': range requires at least three selectable values')
+    }
+  }
+}
 const artifacts = process.env.HELIOS_TEST_ARTIFACTS || '/tmp/helios-test-artifacts'
 fs.mkdirSync(artifacts, { recursive: true })
 const read = file => fs.readFileSync(path.join(root, file), 'utf8')

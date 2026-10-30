@@ -4,7 +4,13 @@
   "sections": {
     "helios_footer": {
       "type": "helios-footer",
-      "settings": {}
+      "settings": {
+        "social_facebook": "https://www.facebook.com/Official.Heliosvn/",
+        "social_youtube": "https://www.youtube.com/@heliosbrand_official",
+        "social_instagram": "https://www.instagram.com/heliosofficial__/",
+        "social_tiktok": "https://tiktok.com/@heliosjewels",
+        "social_pinterest": "https://www.pinterest.com/Heliosjewelsvn/"
+      }
     }
   },
   "order": [
