@@ -320,6 +320,7 @@
     "sold_out_upper": "SOLD OUT",
     "new_badge": "NEW",
     "craft_image": "Discover HELIOS craftsmanship",
-    "store_image": "HELIOS stores"
+    "store_image": "HELIOS stores",
+    "language_unpublished": "Not enabled"
   }
 }

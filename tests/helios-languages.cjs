@@ -19,7 +19,7 @@ for (const [code, locale] of Object.entries(locales)) {
   }
 }
 async function main () {
-  const available_languages = [{ iso_code: 'vi', endonym: 'Tiếng Việt' }, { iso_code: 'en', endonym: 'English' }, { iso_code: 'ko', endonym: '한국어' }, { iso_code: 'ja', endonym: '日本語' }]
+  const available_languages = [{ iso_code: 'vi', endonym_name: 'Tiếng Việt' }, { iso_code: 'en', endonym_name: 'English' }, { iso_code: 'ko', endonym_name: '한국어' }, { iso_code: 'ja', endonym_name: '日本語' }]
   for (const language of available_languages) {
     const scope = { ...context, request: { locale: { iso_code: language.iso_code } }, localization: { language, available_languages } }
     engine.options.globals = scope
@@ -37,7 +37,9 @@ async function main () {
   const scope = { ...context, localization: { language: available_languages[0], available_languages: [available_languages[0]] } }
   engine.options.globals = scope
   const single = await engine.renderFile('helios-language', scope)
-  assert(!single.includes('name="language_code"'), 'Do not offer unpublished languages')
+  assert(single.includes('data-helios-language'), 'Keep language button visible with a single published language')
+  assert.equal((single.match(/disabled title=/g) || []).length, 3, 'Disable the three unpublished languages')
+  assert(single.includes('Tiếng Việt'), 'Current language must have a visible native label')
   const fs = require('node:fs')
   const path = require('node:path')
   const http = require('node:http')
@@ -81,6 +83,6 @@ async function main () {
     await browser?.close()
     await new Promise(resolve => server.close(resolve))
   }
-  console.log('PASS: vi/en/ko/ja key and interpolation parity, translated header/text, Shopify localization POST, current selection, unpublished languages hidden')
+  console.log('PASS: vi/en/ko/ja key and interpolation parity, translated header/text, Shopify localization POST, current selection, unpublished languages disabled')
 }
 main().catch(error => { console.error(error); process.exitCode = 1 })

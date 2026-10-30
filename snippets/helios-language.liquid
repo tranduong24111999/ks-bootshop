@@ -1,14 +1,22 @@
-{% if localization.available_languages.size > 1 %}
-  <details class="helios-language" data-helios-language>
-    <summary>{{ localization.language.endonym | escape }} {% render 'svg-icons', icon: 'chevron-down', size: 12 %}</summary>
-    {% form 'localization', id: form_id, class: 'helios-language__options' %}
-      {% for language in localization.available_languages %}
-        {% if language.iso_code == 'vi' or language.iso_code == 'en' or language.iso_code == 'ko' or language.iso_code == 'ja' %}
-          <button type="submit" name="language_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}>{{ language.endonym | escape }}</button>
-        {% endif %}
-      {% endfor %}
-    {% endform %}
-  </details>
-{% else %}
-  <span class="helios-language-label">{{ localization.language.endonym | escape }}</span>
-{% endif %}
+{% liquid
+  assign language_codes = 'vi,en,ko,ja' | split: ','
+  assign language_names = 'Tiếng Việt,English,한국어,日本語' | split: ','
+  assign current_code = localization.language.iso_code | default: request.locale.iso_code
+  assign current_name = localization.language.endonym_name | default: request.locale.endonym_name
+  for code in language_codes
+    if code == current_code
+      assign current_name = language_names[forloop.index0]
+    endif
+  endfor
+%}
+<details class="helios-language" data-helios-language>
+  <summary>{{ current_name | default: 'English' | escape }} {% render 'svg-icons', icon: 'chevron-down', size: 12 %}</summary>
+  {% form 'localization', id: form_id, class: 'helios-language__options' %}
+    {% for code in language_codes %}
+      {% assign published_language = localization.available_languages | where: 'iso_code', code | first %}
+      <button type="submit" name="language_code" value="{{ code }}" lang="{{ code }}" {% if code == current_code %}aria-current="true"{% endif %} {% if published_language == blank %}disabled title="{{ 'helios.language_unpublished' | t | escape }}"{% endif %}>
+        {{ language_names[forloop.index0] }}{% if published_language == blank %}<small>{{ 'helios.language_unpublished' | t }}</small>{% endif %}
+      </button>
+    {% endfor %}
+  {% endform %}
+</details>

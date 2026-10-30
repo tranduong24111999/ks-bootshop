@@ -312,3 +312,7 @@
 .helios-language__options [aria-current] { text-decoration:underline; text-underline-offset:5px; }
 .helios-mobile-language { display:none; }
 @media(max-width:767.98px) { .helios-mobile-language { display:block; margin-top:20px; } .helios-mobile-language .helios-language { display:block; } .helios-mobile-language .helios-language__options { position:static; } .helios-mobile-language .helios-language-label { display:block; } }
+
+.helios-language__options button:disabled { opacity:.5; cursor:not-allowed; background:transparent; }
+.helios-language__options small { display:block; font-size:10px; }
+@media(max-width:767.98px) { .helios-header__actions > .helios-language { display:none; } }

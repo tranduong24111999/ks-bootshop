@@ -2,7 +2,7 @@
 
 The theme ships `vi.json`, `en.default.json`, `ko.json`, and `ja.json`. Existing KS BootShop interface keys have translations in all four files. HELIOS interface keys cover navigation, search, product controls, recommendations, gallery, newsletter, footer, announcements, and the shipped product FAQ defaults.
 
-The header uses Shopify's native localization POST form. It offers only Vietnamese, English, Korean, and Japanese that Shopify exposes in `localization.available_languages`; unpublished/unavailable languages are never fabricated. Desktop has a black dropdown; mobile has the same control inside the menu. Native form submission works without JavaScript. Shopify handles the language URL and current-page redirect.
+The header uses Shopify's native localization POST form. It always displays the language button and all four native language names. Only languages Shopify exposes in `localization.available_languages` are enabled; unavailable languages are labeled and disabled. It reads Shopify’s `endonym_name` field, with native labels as a fallback. Desktop has a black dropdown; mobile has the same control inside the menu. Native form submission works without JavaScript. Shopify handles the language URL and current-page redirect.
 
 `helios-text` translates recognized shipped Vietnamese defaults while leaving merchant-authored and Shopify-translated settings intact. It does not translate product records or alter catalog data. Rich-text fallbacks preserve the existing Shopify content.
 
