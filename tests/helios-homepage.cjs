@@ -138,6 +138,18 @@ async function main () {
       assert.equal(await page.locator('body').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(0, 0, 0)')
       assert(await page.evaluate(() => document.fonts.check('15px "Helios Futura"')), 'Reference body font must load')
       assert(await page.evaluate(() => document.fonts.check('15px "Helios Copperplate"')), 'Reference heading font must load')
+      if (width >= 768) {
+        const navigation = page.locator('.helios-header__inner')
+        await page.mouse.move(0, 890)
+        await page.waitForTimeout(350)
+        assert.equal(await navigation.evaluate(el => getComputedStyle(el).backgroundColor), 'rgba(0, 0, 0, 0)', 'Header must be fully transparent without hover')
+        await page.locator('.helios-logo').hover()
+        await page.waitForTimeout(350)
+        assert.equal(await navigation.evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(0, 0, 0)', 'Header must turn black on hover')
+        await page.mouse.move(0, 890)
+        await page.waitForTimeout(350)
+        assert.equal(await navigation.evaluate(el => getComputedStyle(el).backgroundColor), 'rgba(0, 0, 0, 0)', 'Header must return to transparent after pointer leaves')
+      }
       const expectedHeroHeight = width < 768 ? width * 1.25 : width * 900 / 1900
       assert(Math.abs((await page.locator('.helios-hero').boundingBox()).height - expectedHeroHeight) < 2, 'Hero geometry must match the reference')
       if (width < 768) {

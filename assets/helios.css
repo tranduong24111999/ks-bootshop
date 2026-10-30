@@ -10,8 +10,11 @@
 .helios-container { width:100%; max-width:none; margin:0 auto; }
 .helios-header { color:#f2f2f2; background:#000; }
 .page-type-index .helios-header { background:transparent; }
-.helios-header__inner { display:grid; grid-template-columns:minmax(0,1fr) 180px minmax(0,1fr); gap:24px; align-items:center; min-height:74px; padding:10px 24px; background:rgba(0,0,0,.65); transition:background .3s; }
-.helios-theme.has-helios-scrolled .helios-header__inner { background:#000; }
+.helios-header__inner { display:grid; grid-template-columns:minmax(0,1fr) 180px minmax(0,1fr); gap:24px; align-items:center; min-height:74px; padding:10px 24px; background:#000; transition:background-color .3s ease; }
+.page-type-index .helios-header__inner { background:transparent; }
+.page-type-index .helios-header__inner:hover,
+.page-type-index .helios-header__inner:has(:focus-visible),
+.helios-theme.page-type-index.helios-menu-open .helios-header__inner { background:#000; }
 .helios-header a { text-decoration:none; }
 .helios-header__left { display:flex; align-items:center; gap:36px; min-width:0; }
 .helios-logo { display:inline-flex; justify-self:center; }
