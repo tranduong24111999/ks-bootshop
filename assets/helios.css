@@ -4,15 +4,28 @@
 .helios-theme #header-group { z-index: 1030; }
 .helios-container { width: min(100% - 80px, 1440px); margin-inline: auto; }
 .helios-header { color: #fff; background: #0c0c0c; }
-.helios-announcement { padding: 10px 20px; border-bottom: 1px solid #333; font-size: 10px; text-align: center; letter-spacing: .14em; line-height: 1.6; }
-.helios-header__inner { display: grid; grid-template-columns: auto 220px 1fr auto; align-items: center; gap: 40px; min-height: 100px; padding: 16px 40px; }
+.helios-topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 0 20px; min-height: 36px; color: #111; background: #ffb91b; font-size: 12px; }
+.helios-topbar__contact { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 12px; font-size: 11px; }
+.helios-topbar__contact a { white-space: nowrap; }
+.helios-topbar__contact svg { vertical-align: -3px; margin-right: 3px; }
+.helios-topbar__store { justify-self: end; }
+.helios-announcement { display: flex; justify-content: space-between; align-items: center; width: min(35vw, 650px); gap: 12px; text-align: center; font-size: 12px; line-height: 1.5; }
+.helios-announcement button { border: 0; background: transparent; color: inherit; min-height: 36px; min-width: 28px; font-size: 20px; }
+.helios-announcement > div { flex: 1; }
+.helios-header__left { display: flex; align-items: center; gap: 24px; min-width: 0; }
+.helios-language, .helios-language-label { display: flex; align-items: center; font-size: 11px; white-space: nowrap; }
+.helios-language select { background: #111; border: 0; color: #fff; max-width: 110px; min-height: 44px; }
+.helios-language button { background: transparent; color: inherit; border: 0; min-width: 28px; min-height: 44px; }
+.helios-account__label { font-size: 11px; white-space: nowrap; }
+.helios-account__icon { display: none; }
+.helios-header__inner { display: grid; grid-template-columns: minmax(0, 1fr) 180px minmax(0, 1fr); align-items: center; gap: 24px; min-height: 78px; padding: 12px 24px; }
 .helios-header a { color: inherit; text-decoration: none; }
-.helios-logo { display: inline-flex; }
-.helios-logo img { width: 200px; height: auto; }
-.helios-header__links { display: flex; justify-content: center; gap: 32px; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.helios-logo { display: inline-flex; justify-self: center; }
+.helios-logo img { width: 170px; height: auto; }
+.helios-header__links { display: flex; justify-content: center; gap: 24px; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
 .helios-header__links a { padding: 14px 0; }
 .helios-header__links a:hover { text-decoration: underline; text-underline-offset: 7px; }
-.helios-header__actions { display: flex; gap: 14px; }
+.helios-header__actions { display: flex; align-items: center; justify-self: end; gap: 12px; }
 .helios-icon { display: flex; position: relative; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; }
 .helios-icon svg { width: 23px; height: 23px; }
 .helios-cart .cart-count-badge { position: absolute; top: 0; right: 0; min-width: 18px; border-radius: 50%; background: #fff; color: #111; font-size: 10px; }
@@ -41,6 +54,8 @@
 .helios-hero__cta { position: absolute; z-index: 1; bottom: 34px; left: 40px; display: flex; gap: 24px; align-items: center; padding: 14px 20px; background: #111; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; border: 1px solid #fff9; }
 .helios-hero__slide a:hover .helios-hero__cta { background: #fff; color: #111; }
 .helios-hero__controls { position: absolute; z-index: 2; right: 40px; bottom: 34px; display: flex; align-items: center; gap: 16px; padding: 3px 8px; background: #111; font-size: 12px; }
+.helios-hero__slide--artwork > a::after, .helios-hero__slide--artwork .helios-hero__title { display: none; }
+.helios-hero__controls [data-helios-toggle] { font-size: 10px; padding-inline: 8px; }
 .helios-hero__controls button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: #fff; font-size: 22px; }
 .helios-products, .helios-collections { padding-block: 64px; }
 .helios-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
@@ -92,17 +107,25 @@
 .helios-footer__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-block: 24px; border-top: 1px solid #373737; color: #bbb; font-size: 10px; letter-spacing: .06em; }
 .helios-editor-notice { padding-block: 40px; }
 @media (max-width: 1100px) {
-  .helios-header__inner { gap: 24px; grid-template-columns: auto 180px 1fr auto; padding-inline: 24px; }
-  .helios-logo img { width: 180px; }
-  .helios-header__links { gap: 20px; font-size: 10px; }
+  .helios-header__inner { gap: 16px; grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr); padding-inline: 20px; }
+  .helios-header__left, .helios-header__links { gap: 14px; }
+  .helios-language-label, .helios-account__label { display: none; }
+  .helios-account__icon { display: inline; }
+  .helios-topbar__contact { font-size: 10px; }
+  .helios-logo img { width: 150px; }
+  .helios-header__links { gap: 14px; font-size: 10px; }
   .helios-menu__label { display: none; }
 }
 @media (max-width: 749px) {
   .helios-container { width: calc(100% - 32px); }
-  .helios-announcement { font-size: 8px; padding: 9px 20px; letter-spacing: .06em; }
+  .helios-topbar { grid-template-columns: 1fr; gap: 0; padding: 0 12px; }
+  .helios-topbar__contact { justify-content: center; padding-top: 6px; gap: 6px; font-size: 9px; }
+  .helios-topbar__store { display: none; }
+  .helios-announcement { width: 100%; font-size: 11px; }
+  .helios-announcement button { min-height: 30px; }
   .helios-header__inner { grid-template-columns: 1fr auto 1fr; gap: 8px; min-height: 74px; padding: 10px 16px; }
   .helios-logo img { width: 138px; }
-  .helios-header__links, .helios-account { display: none; }
+  .helios-header__links, .helios-account, .helios-language, .helios-language-label { display: none; }
   .helios-header__actions { justify-content: end; gap: 2px; }
   .helios-icon { min-width: 40px; }
   .helios-icon svg { width: 21px; height: 21px; }
@@ -112,6 +135,8 @@
   .helios-hero__title { left: 16px; bottom: 90px; max-width: calc(100% - 32px); font-size: 32px; }
   .helios-hero__cta { left: 16px; bottom: 20px; padding: 13px; gap: 12px; font-size: 9px; }
   .helios-hero__controls { right: 16px; bottom: 20px; gap: 3px; padding-inline: 0; }
+  .helios-hero__cta { bottom: 80px; }
+  .helios-hero__title { bottom: 145px; }
   .helios-hero__controls button { min-width: 36px; }
   .helios-products, .helios-collections { padding-block: 36px; }
   .helios-section-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 24px; }

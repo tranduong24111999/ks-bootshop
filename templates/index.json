@@ -3,6 +3,13 @@
     "helios_hero": {
       "type": "helios-hero",
       "blocks": {
+        "jack": {
+          "type": "slide",
+          "settings": {
+            "title": "Withered Jack Pendant",
+            "artwork": "jack"
+          }
+        },
         "signature": {
           "type": "slide",
           "settings": {
@@ -19,10 +26,13 @@
         }
       },
       "block_order": [
+        "jack",
         "signature",
         "bird"
       ],
-      "settings": {}
+      "settings": {
+        "autoplay": 5
+      }
     },
     "helios_products": {
       "type": "helios-products",

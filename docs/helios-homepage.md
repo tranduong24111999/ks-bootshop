@@ -4,8 +4,8 @@ Tham chiếu: https://helios.vn/, đọc ngày 30/10/2026. Thay trang chủ demo
 
 ## Các phần có thể cấu hình
 
-- **HELIOS · Header**: thông điệp, logo thay thế, menu Shopify. Nếu chưa chọn menu, hiển thị các bộ sưu tập thực tế đang có sản phẩm cùng các route Shopify chuẩn. Hỗ trợ menu ba cấp, tìm kiếm, tài khoản và ngăn giỏ hàng KS BootShop.
-- **HELIOS · Banner**: hai bộ ảnh Signature Collections và Chu Tước, ảnh desktop/mobile độc lập, có thể thay từng ảnh và chọn bộ sưu tập đích. Không tự động chuyển slide. Nếu chưa chọn bộ sưu tập thì dẫn đến tất cả sản phẩm.
+- **HELIOS · Header**: thanh vàng hotline/email, thông báo có nút trước/sau, liên kết hệ thống cửa hàng; hàng menu NEW IN / FEEDBACK / COLLAB / DISCOVER, logo giữa màn hình desktop, ngôn ngữ và tài khoản. Chọn các trang Feedback/Collab/cửa hàng có sẵn trong Theme Editor; nếu chưa có trang thì dùng tìm kiếm trang Shopify. Logo và menu Shopify có thể thay thế. Nếu chưa chọn menu, hiển thị các bộ sưu tập thực tế đang có sản phẩm cùng các route Shopify chuẩn. Hỗ trợ menu ba cấp, tìm kiếm, tài khoản và ngăn giỏ hàng KS BootShop.
+- **HELIOS · Banner**: ba bộ ảnh Withered Jack (banner đầu), Signature Collections và Chu Tước, ảnh desktop/mobile độc lập, có thể thay từng ảnh và chọn bộ sưu tập đích. Tự chuyển mỗi 5 giây mặc định; có thể đặt 0 để tắt hoặc chọn 1–10 giây trong Theme Editor. Có nút tạm dừng/tiếp tục; tự dừng khi hover, focus bàn phím, tab ẩn hoặc chọn block trong Theme Editor. Không tự chạy khi người dùng bật giảm chuyển động. Nếu chưa chọn bộ sưu tập thì dẫn đến tất cả sản phẩm.
 - **HELIOS · Sản phẩm**: chọn bộ sưu tập và số lượng 4/8/12. Mặc định lấy `collections.all.products` của cửa hàng. Dùng nguyên `product-card`, giá, biến thể, trạng thái tồn kho và `product-form` của KS BootShop. Không dựng thẻ sản phẩm mẫu khi danh mục trống.
 - **HELIOS · Bộ sưu tập**: sáu ô hình ảnh; chọn bộ sưu tập thực tế cho từng ô trong trình chỉnh sửa giao diện. Nếu chưa chọn, liên kết tìm kiếm theo từ khóa tương ứng, không giả định cửa hàng có các handle của helios.vn. Ô sản phẩm mới dùng danh sách sản phẩm sắp xếp mới nhất.
 - **HELIOS · Câu chuyện**: ảnh, tiêu đề, nội dung và trang Shopify có sẵn. Khi chưa chọn trang, nút dẫn đến tất cả sản phẩm. Liên kết “Câu chuyện HELIOS” trong menu dẫn tới section này trên trang chủ.
@@ -25,7 +25,7 @@ shopify theme check --no-input --output json
 
 Trên Linux thiếu thư viện hệ thống, dùng `npx playwright install --with-deps chromium`. Trong môi trường hạn chế sandbox, cần quyền mở cổng loopback và chạy Chromium cho bài kiểm thử cục bộ.
 
-`npm run test:helios` dựng các section bằng LiquidJS, kiểm tra cấu hình JSON/CSS, danh mục trống, route bộ sưu tập, banner đúng kích thước, thao tác menu bằng bàn phím, chuyển banner, mở/đóng ngăn giỏ hàng Bootstrap, dữ liệu form nhận tin, chế độ giảm chuyển động và dự phòng khi tắt JavaScript. Chạy Chromium ở 320/375/390/768/1440 px, kiểm tra axe WCAG 2/2.1 AA và lỗi JavaScript. Ảnh kết quả nằm ở `/tmp/helios-test-artifacts` hoặc thư mục `HELIOS_TEST_ARTIFACTS`.
+`npm run test:helios` dựng các section bằng LiquidJS, kiểm tra cấu hình JSON/CSS, danh mục trống, route bộ sưu tập, banner đúng kích thước, thao tác menu bằng bàn phím, chuyển banner thủ công và tự động sau 5 giây, dừng/tiếp tục, hover/focus và reduced-motion, mở/đóng ngăn giỏ hàng Bootstrap, dữ liệu form nhận tin, chế độ giảm chuyển động và dự phòng khi tắt JavaScript. Chạy Chromium ở 320/375/390/768/1440 px, kiểm tra axe WCAG 2/2.1 AA và lỗi JavaScript. Ảnh kết quả nằm ở `/tmp/helios-test-artifacts` hoặc thư mục `HELIOS_TEST_ARTIFACTS`.
 
 LiquidJS trong bài kiểm thử chỉ mô phỏng các bộ lọc/tag cần cho section, form khách hàng và khung giỏ hàng. Đây **không phải** bản render đầy đủ của Shopify; không kiểm chứng submit nhận tin, thêm sản phẩm thật, giá/biến thể thật, thanh toán hoặc app của cửa hàng. Không có sản phẩm giả trong dữ liệu kiểm thử hay theme.
 
@@ -47,6 +47,8 @@ Kiểm tra chỉ đọc `shopify theme list` nhận HTTP **401 Invalid API key o
 | --- | --- |
 | `helios-logo.webp` | `logo-w.webp?v=1739845232&width=500` |
 | `helios-favicon.jpg` | `464413022_945803257578038_2084379289906124096_n.jpg?crop=center&height=48&v=1764122552&width=48` |
+| `helios-jack-desktop.jpg` | `1792214586807_2359740545583841509_g8350574569212514233_ec5911f747452a3da38f9a89ae502594.jpg?v=1792216997&width=2000` |
+| `helios-jack-mobile.jpg` | `1792215672930_2359740545583841509_g8350574569212514233_376533b719882ef3e7726dfd39ec78b4.jpg?v=1792216996&width=800` |
 | `helios-hero-desktop.jpg` | `banner_copy2.jpg?v=1791603985&width=2000` |
 | `helios-hero-mobile.jpg` | `banner_copy.jpg?v=1791603985&width=800` |
 | `helios-bird-desktop.webp` | `banner_19.9_optimized_2.webp?v=1789708979&width=2000` |
@@ -54,4 +56,4 @@ Kiểm tra chỉ đọc `shopify theme list` nhận HTTP **401 Invalid API key o
 | `helios-category-1.webp` … `helios-category-6.webp` | `1_optimized.webp` … `6_optimized.webp`, `?v=1789469983&width=800` |
 | `helios-story.jpg` | `z7748804682457_8bf676db49e4c1d1f0f30e5ca28bcfca.jpg?v=1776767409&width=1000` |
 
-Ảnh dưới màn hình đầu tải lazy; banner đầu được ưu tiên tải. Mobile dùng ảnh 4:5 riêng, thay vì cắt banner desktop. Không autoplay, không thêm thư viện JavaScript vào storefront. Giữ quyền sử dụng ảnh/nhận diện HELIOS phù hợp trước khi đưa vào vận hành.
+Ảnh dưới màn hình đầu tải lazy; banner đầu được ưu tiên tải. Mobile dùng ảnh 4:5 riêng, thay vì cắt banner desktop. Autoplay có kiểm soát và tôn trọng giảm chuyển động; không thêm thư viện JavaScript vào storefront. Giữ quyền sử dụng ảnh/nhận diện HELIOS phù hợp trước khi đưa vào vận hành.
