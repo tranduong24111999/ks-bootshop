@@ -8,6 +8,20 @@ const { chromium } = require('playwright')
 const { AxeBuilder } = require('@axe-core/playwright')
 
 const root = path.resolve(__dirname, '..')
+for (const directory of ['templates', 'sections']) {
+  for (const entry of fs.readdirSync(path.join(root, directory), { recursive: true })) {
+    if (!entry.endsWith('.json')) continue
+    const file = path.join(directory, entry)
+    const source = fs.readFileSync(path.join(root, file), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\//, '')
+    const config = JSON.parse(source)
+    if (!config.sections || !config.order) continue
+    assert.deepEqual([...config.order].sort(), Object.keys(config.sections).sort(), file + ': section order must contain every section exactly once')
+    for (const section of Object.values(config.sections)) {
+      if (!section.blocks) continue
+      assert.deepEqual([...(section.block_order || [])].sort(), Object.keys(section.blocks).sort(), file + ': block order must contain every block exactly once')
+    }
+  }
+}
 // Theme Check does not enforce these Shopify upload-time schema constraints.
 for (const file of fs.readdirSync(path.join(root, 'sections')).filter(file => file.endsWith('.liquid'))) {
   const source = fs.readFileSync(path.join(root, 'sections', file), 'utf8')
