@@ -21,28 +21,29 @@
 <header class="helios-header">
   <div class="helios-topbar">
     <div class="helios-topbar__contact"><a href="tel:0981956116">{% render 'svg-icons', icon: 'phone', size: 15 %} Hotline: 0981.956.116</a><a href="mailto:support@helios.vn">{% render 'svg-icons', icon: 'mail', size: 15 %} Email: support@helios.vn</a></div>
-    <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="Thông báo HELIOS">
-      <button type="button" data-helios-prev aria-label="Thông báo trước">‹</button>
-      <div><span data-helios-slide>{{ section.settings.announcement | escape }}</span><span data-helios-slide hidden>{{ section.settings.secondary_announcement | escape }}</span></div>
-      <button type="button" data-helios-next aria-label="Thông báo tiếp theo">›</button>
-      <button class="helios-announcement__pause" type="button" data-helios-toggle aria-label="Tạm dừng tự động chuyển thông báo">Ⅱ</button>
+    <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="{{ 'helios.announcements' | t | escape }}">
+      <button type="button" data-helios-prev aria-label="{{ 'helios.announcement_prev' | t | escape }}">‹</button>
+      <div><span data-helios-slide>{% render 'helios-text', value: section.settings.announcement %}</span><span data-helios-slide hidden>{% render 'helios-text', value: section.settings.secondary_announcement %}</span></div>
+      <button type="button" data-helios-next aria-label="{{ 'helios.announcement_next' | t | escape }}">›</button>
+      <button class="helios-announcement__pause" type="button" data-helios-toggle aria-label="{{ 'helios.announcement_pause' | t | escape }}">Ⅱ</button>
     </helios-carousel>
-    <a class="helios-topbar__store" href="{{ stores_url }}">Hệ thống cửa hàng</a>
+    <a class="helios-topbar__store" href="{{ stores_url }}">{{ 'helios.stores' | t }}</a>
   </div>
   <div class="helios-header__inner">
     <div class="helios-header__left">
     <details class="helios-menu" data-helios-menu data-helios-disclosure>
-      <summary aria-label="Mở menu"><span class="helios-menu__bars" aria-hidden="true"></span><span class="helios-menu__label">MENU</span></summary>
-      <nav class="helios-menu__panel" aria-label="Menu chính">
-        <button class="helios-menu__close" type="button" data-helios-menu-close aria-label="Đóng menu">ĐÓNG <span aria-hidden="true">×</span></button>
+      <summary aria-label="{{ 'helios.menu_open' | t | escape }}"><span class="helios-menu__bars" aria-hidden="true"></span><span class="helios-menu__label">MENU</span></summary>
+      <nav class="helios-menu__panel" aria-label="{{ 'helios.menu_main' | t | escape }}">
+        <button class="helios-menu__close" type="button" data-helios-menu-close aria-label="{{ 'helios.menu_close' | t | escape }}">{{ 'helios.close_upper' | t }} <span aria-hidden="true">×</span></button>
         {% render 'helios-mega-menu', menu: main_menu, stores_url: stores_url, newest_url: newest_url, feedback_url: feedback_url, collab_url: collab_url %}
+        <div class="helios-mobile-language">{% assign mobile_language_form_id = 'HeliosMobileLanguage-' | append: section.id %}{% render 'helios-language', form_id: mobile_language_form_id %}</div>
       </nav>
     </details>
-    <nav class="helios-header__links" aria-label="Khám phá">
-      <a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><details class="helios-discover" data-helios-disclosure><summary>DISCOVER</summary><nav aria-label="Khám phá HELIOS"><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ routes.collections_url }}">BỘ SƯU TẬP</a>{% render 'helios-link', handle: '10-nam-ren-bac-magazine', label: 'TẠP CHÍ 10 NĂM', query: '10 năm', kind: 'page' %}</nav></details>
+    <nav class="helios-header__links" aria-label="{{ 'helios.discover' | t | escape }}">
+      <a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><details class="helios-discover" data-helios-disclosure><summary>DISCOVER</summary><nav aria-label="{{ 'helios.explore' | t | escape }}"><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ routes.collections_url }}">{{ 'helios.collections' | t }}</a>{% render 'helios-link', handle: '10-nam-ren-bac-magazine', label: 'TẠP CHÍ 10 NĂM', query: '10 năm', kind: 'page' %}</nav></details>
     </nav>
     </div>
-    <a class="helios-logo" href="{{ routes.root_url }}" aria-label="HELIOS — Trang chủ">
+    <a class="helios-logo" href="{{ routes.root_url }}" aria-label="{{ 'helios.home' | t | escape }}">
       {% if section.settings.logo != blank %}
         {{ section.settings.logo | image_url: width: 500 | image_tag: width: 220, loading: 'eager', alt: 'HELIOS' }}
       {% else %}
@@ -50,17 +51,11 @@
       {% endif %}
     </a>
     <div class="helios-header__actions">
-      {% if localization.available_languages.size > 1 %}
-        {% form 'localization', class: 'helios-language' %}
-          <label class="visually-hidden" for="HeliosLanguage-{{ section.id }}">Ngôn ngữ</label>
-          <select id="HeliosLanguage-{{ section.id }}" name="language_code">
-            {% for language in localization.available_languages %}<option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym | escape }}</option>{% endfor %}
-          </select><button type="submit" aria-label="Đổi ngôn ngữ">→</button>
-        {% endform %}
-      {% else %}<span class="helios-language-label">{{ localization.language.endonym | default: 'Tiếng Việt' | escape }}</span>{% endif %}
-      <a href="{{ routes.search_url }}" aria-label="Tìm kiếm" class="helios-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search" aria-controls="offcanvas-search">{% render 'svg-icons', icon: 'search' %}</a>
-      {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}" aria-label="Tài khoản" class="helios-icon helios-account"><span class="helios-account__label">Đăng ký / Đăng nhập</span><span class="helios-account__icon">{% render 'svg-icons', icon: 'account' %}</span></a>{% endif %}
-      <a href="{{ routes.cart_url }}" class="helios-icon helios-cart" aria-label="Giỏ hàng" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" aria-controls="offcanvas-cart">
+      {% assign language_form_id = 'HeliosLanguage-' | append: section.id %}
+      {% render 'helios-language', form_id: language_form_id %}
+      <a href="{{ routes.search_url }}" aria-label="{{ 'helios.search' | t | escape }}" class="helios-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search" aria-controls="offcanvas-search">{% render 'svg-icons', icon: 'search' %}</a>
+      {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}" aria-label="{{ 'helios.account' | t | escape }}" class="helios-icon helios-account"><span class="helios-account__label">{{ 'helios.login' | t }}</span><span class="helios-account__icon">{% render 'svg-icons', icon: 'account' %}</span></a>{% endif %}
+      <a href="{{ routes.cart_url }}" class="helios-icon helios-cart" aria-label="{{ 'helios.cart' | t | escape }}" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" aria-controls="offcanvas-cart">
         {% render 'svg-icons', icon: 'cart' %}{% render 'cart-count-badge' %}
       </a>
     </div>

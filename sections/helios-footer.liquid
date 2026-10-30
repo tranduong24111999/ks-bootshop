@@ -1,23 +1,23 @@
 <footer class="helios-footer">
   {% unless request.page_type == 'product' %}
   <section class="helios-newsletter" aria-labelledby="helios-newsletter-heading" style="background-image: url({{ 'helios-newsletter.jpg' | asset_url }});">
-    <div class="helios-newsletter__content" data-helios-reveal><h2 id="helios-newsletter-heading">ĐĂNG KÝ NHẬN THÔNG TIN</h2><p>Đăng ký nhận thông tin về sản phẩm và sự kiện mới nhất từ chúng tôi!</p>
+    <div class="helios-newsletter__content" data-helios-reveal><h2 id="helios-newsletter-heading">{{ 'helios.newsletter' | t }}</h2><p>{{ 'helios.newsletter_description' | t }}</p>
       {% assign newsletter_id = 'HeliosNewsletter-' | append: section.id %}
       {% form 'customer', id: newsletter_id, class: 'helios-newsletter__form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <label class="visually-hidden" for="HeliosEmail-{{ section.id }}">Địa chỉ email</label>
-        <div class="helios-newsletter__field"><input id="HeliosEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="Email của bạn" required {% if form.errors %}aria-invalid="true" aria-describedby="HeliosEmailError-{{ section.id }}"{% endif %}><button type="submit" aria-label="Đăng ký nhận tin">{% render 'svg-icons', icon: 'arrow-right', size: 24 %}</button></div>
-        {% if form.posted_successfully? %}<p role="status" tabindex="-1">Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.</p>{% endif %}
+        <label class="visually-hidden" for="HeliosEmail-{{ section.id }}">{{ 'helios.email' | t }}</label>
+        <div class="helios-newsletter__field"><input id="HeliosEmail-{{ section.id }}" type="email" name="contact[email]" autocomplete="email" placeholder="{{ 'helios.your_email' | t | escape }}" required {% if form.errors %}aria-invalid="true" aria-describedby="HeliosEmailError-{{ section.id }}"{% endif %}><button type="submit" aria-label="{{ 'helios.subscribe' | t | escape }}">{% render 'svg-icons', icon: 'arrow-right', size: 24 %}</button></div>
+        {% if form.posted_successfully? %}<p role="status" tabindex="-1">{{ 'helios.thanks' | t }}</p>{% endif %}
         {% if form.errors %}<div id="HeliosEmailError-{{ section.id }}" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
-        {% if shop.privacy_policy != blank %}<p class="helios-newsletter__notice">Thông tin được xử lý theo <a href="{{ shop.privacy_policy.url }}">chính sách bảo mật</a>.</p>{% endif %}
+        {% if shop.privacy_policy != blank %}<p class="helios-newsletter__notice">{{ 'helios.privacy_notice' | t }} <a href="{{ shop.privacy_policy.url }}">{{ 'helios.privacy_link' | t }}</a>.</p>{% endif %}
       {% endform %}
     </div>
   </section>
   {% endunless %}
   <div class="helios-footer__frame">
     <div class="helios-footer__grid">
-      <div class="helios-footer__brand" id="helios-story"><h2>KẾT NỐI VỚI CHÚNG TÔI</h2><p>HELIOS là thương hiệu trang sức bạc thủ công cho nam, tạo nên những dấu ấn mang tính biểu tượng của bản lĩnh và hành trình trưởng thành, dành cho những người đàn ông dám lựa chọn, dám giữ lấy khác biệt và sống tự do theo cách của mình. Mỗi chế tác mang một tinh thần riêng, được hoàn thiện bằng tay bởi nghệ nhân Việt.</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<a class="helios-registration" href="http://online.gov.vn/Home/WebDetails/140048" aria-label="Xem thông tin đăng ký của helios.vn tại Bộ Công Thương"><img src="{{ 'helios-registration.png' | asset_url }}" width="155" height="59" loading="lazy" alt="Thông tin đăng ký helios.vn tại Bộ Công Thương"></a><div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
-      <nav aria-label="Chăm sóc khách hàng"><h2>CHĂM SÓC KHÁCH HÀNG</h2>
+      <div class="helios-footer__brand" id="helios-story"><h2>{{ 'helios.connect' | t }}</h2><p>{{ 'helios.brand_story' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<a class="helios-registration" href="http://online.gov.vn/Home/WebDetails/140048" aria-label="{{ 'helios.registration_link' | t | escape }}"><img src="{{ 'helios-registration.png' | asset_url }}" width="155" height="59" loading="lazy" alt="{{ 'helios.registration_alt' | t | escape }}"></a><div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
+      <nav aria-label="{{ 'helios.support_nav' | t | escape }}"><h2>{{ 'helios.support' | t }}</h2>
         {% if section.settings.support_menu.links != blank %}{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}
           {% assign support_handles = 'huong-dan-thanh-toan|giao-hang|chinh-sach-bao-hanh|chinh-sach-doi-tra-san-pham|chinh-sach-doi-tra-dip-sale|chinh-sach-bao-mat-moi|bang-gia-phi-dieu-chinh-san-pham|feedback' | split: '|' %}
           {% assign support_labels = 'Hướng dẫn thanh toán|Chính sách giao hàng|Chính sách bảo hành|Chính sách đổi trả|Chính sách đổi trả dịp sale|Chính sách bảo mật|Bảng giá phí điều chỉnh sản phẩm|Feedback' | split: '|' %}
@@ -25,18 +25,18 @@
         {% endif %}
         {% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}
       </nav>
-      <nav aria-label="Về chúng tôi"><h2>VỀ CHÚNG TÔI</h2>
-        <a href="{{ routes.root_url }}#helios-story">Câu chuyện của Helios</a>
+      <nav aria-label="{{ 'helios.about_nav' | t | escape }}"><h2>{{ 'helios.about' | t }}</h2>
+        <a href="{{ routes.root_url }}#helios-story">{{ 'helios.story' | t }}</a>
         {% assign about_handles = 'he-thong-cua-hang|helios-tuyen-dung|membership-by-helios|quy-trinh-phat-trien-san-pham|helios-partnership' | split: '|' %}
         {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by Helios|Xưởng Online|Collab' | split: '|' %}
         {% for handle in about_handles %}{% assign label = about_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
       </nav>
-      <nav aria-label="Dành cho khách hàng"><h2>DÀNH CHO KHÁCH HÀNG</h2>
+      <nav aria-label="{{ 'helios.customers_nav' | t | escape }}"><h2>{{ 'helios.customers' | t }}</h2>
         {% if blogs['news'].url != blank %}<a href="{{ blogs['news'].url }}">Blog</a>{% else %}<a href="{{ routes.search_url }}?type=article&amp;q=helios">Blog</a>{% endif %}
         {% render 'helios-link', kind: 'page', handle: 'huong-dan-bao-quan', label: 'Hướng dẫn bảo quản sản phẩm', query: 'bảo quản' %}
         {% render 'helios-link', kind: 'page', handle: 'size-chart', label: 'Hướng dẫn đo Size', query: 'size' %}
         {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'Helios Partnership', query: 'partnership' %}
-        {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">Liên hệ</a>{% endif %}
+        {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'helios.contact' | t }}</a>{% endif %}
       </nav>
     </div>
     <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} HELIOS. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>

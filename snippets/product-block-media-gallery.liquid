@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      {% if block.settings.full_screen %}<button type="button" class="helios-gallery-zoom" data-gallery-zoom aria-label="Phóng to ảnh sản phẩm">⤢</button>{% endif %}
+      {% if block.settings.full_screen %}<button type="button" class="helios-gallery-zoom" data-gallery-zoom aria-label="{{ 'helios.zoom' | t | escape }}">⤢</button>{% endif %}
     </div>
     <div 
       class="swiper-thumbs swiper mt-4" 
@@ -74,6 +74,6 @@
         {% endfor %}
       </div>
     </div>
-    {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="Ảnh sản phẩm phóng to"><button type="button" data-gallery-close aria-label="Đóng ảnh phóng to">×</button>{% for media in product.media %}{% if media.media_type == 'image' %}<img data-zoom-media-id="{{ media.id }}" src="{{ media | image_url: width: 2000 }}" width="{{ media.width }}" height="{{ media.height }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">{% endif %}{% endfor %}</dialog>{% endif %}
+    {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="{{ 'helios.zoom_title' | t | escape }}"><button type="button" data-gallery-close aria-label="{{ 'helios.zoom_close' | t | escape }}">×</button>{% for media in product.media %}{% if media.media_type == 'image' %}<img data-zoom-media-id="{{ media.id }}" src="{{ media | image_url: width: 2000 }}" width="{{ media.width }}" height="{{ media.height }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">{% endif %}{% endfor %}</dialog>{% endif %}
   </product-media-gallery>
 {% endif %}

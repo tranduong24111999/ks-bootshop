@@ -3,12 +3,12 @@
     {% if section.settings.image != blank %}
       {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '500,800,1000,1400', sizes: '(max-width: 749px) 100vw, 50vw', loading: 'lazy', alt: 'Thế giới chế tác HELIOS' }}
     {% else %}
-      <img src="{{ 'helios-story.jpg' | asset_url }}" alt="Thế giới chế tác HELIOS" width="1000" height="1250" loading="lazy">
+      <img src="{{ 'helios-story.jpg' | asset_url }}" alt="{{ 'helios.craft_world' | t | escape }}" width="1000" height="1250" loading="lazy">
     {% endif %}
   </div>
   <div class="helios-story__content">
     <p class="helios-eyebrow">HELIOS · HANDCRAFTED IN VIETNAM</p>
-    <h2 id="helios-story-title">{{ section.settings.heading | escape }}</h2>
+    <h2 id="helios-story-title">{% render 'helios-text', value: section.settings.heading %}</h2>
     <div class="helios-story__text">{{ section.settings.text }}</div>
     {% if section.settings.page != blank %}
       <a class="helios-button helios-button--light" href="{{ section.settings.page.url }}">CÂU CHUYỆN HELIOS <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>

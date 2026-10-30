@@ -1,5 +1,5 @@
 <section class="helios-collections helios-container" aria-labelledby="helios-collections-{{ section.id }}">
-  <h2 id="helios-collections-{{ section.id }}" class="visually-hidden">{{ section.settings.heading | escape }}</h2>
+  <h2 id="helios-collections-{{ section.id }}" class="visually-hidden">{% render 'helios-text', value: section.settings.heading %}</h2>
   <div class="helios-collection-grid">
     {% for block in section.blocks %}
       {% liquid
@@ -24,9 +24,9 @@
         {% if tile_image != blank %}
           {{ tile_image | image_url: width: 1000 | image_tag: widths: '360,600,800,1000', sizes: '(max-width: 749px) 50vw, 33vw', loading: 'lazy', alt: tile_title }}
         {% else %}
-          <img src="{{ tile_asset | asset_url }}" width="800" height="800" loading="lazy" alt="{{ tile_title | escape }}">
+          <img src="{{ tile_asset | asset_url }}" width="800" height="800" loading="lazy" alt="{% render 'helios-text', value: tile_title %}">
         {% endif %}
-        <span class="helios-collection-tile__caption">{{ tile_title | escape }}</span>
+        <span class="helios-collection-tile__caption">{% render 'helios-text', value: tile_title %}</span>
       </a>
     {% endfor %}
   </div>

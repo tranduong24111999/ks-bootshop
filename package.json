@@ -5,7 +5,8 @@
     "bs-js": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js assets/vendor-bootstrap.bundle.min.js",
     "swiper": "cp node_modules/swiper/swiper-bundle.min.js assets/vendor-swiper.bundle.min.js && cp node_modules/swiper/swiper-bundle.min.css assets/vendor-swiper.bundle.min.css",
     "test:helios": "node tests/helios-homepage.cjs",
-    "test:helios-product": "node tests/helios-product.cjs"
+    "test:helios-product": "node tests/helios-product.cjs",
+    "test:helios-languages": "node tests/helios-languages.cjs"
   },
   "watch": {
     "bs-scss": {

@@ -135,7 +135,7 @@ class ProductForm extends HTMLElement {
     event.preventDefault()
     if (this.submitting) return
     if (!this.form.reportValidity() || !this.validSelection()) {
-      this.showError('Vui lòng chọn mẫu/size còn hàng và số lượng hợp lệ.')
+      this.showError((window.theme.locales.helios?.invalid_selection || 'Vui lòng chọn mẫu/size còn hàng và số lượng hợp lệ.'))
       return
     }
     this.showError('')
@@ -145,8 +145,8 @@ class ProductForm extends HTMLElement {
     this.adjustButtons()
     try {
       const result = await cart.add(new FormData(this.form))
-      if (result?.ok === false) this.showError(result.error || 'Không thể thêm sản phẩm. Vui lòng thử lại.')
-    } catch { this.showError('Không thể kết nối giỏ hàng. Vui lòng thử lại.') } finally {
+      if (result?.ok === false) this.showError(result.error || (window.theme.locales.helios?.cart_add_error || 'Không thể thêm sản phẩm. Vui lòng thử lại.'))
+    } catch { this.showError((window.theme.locales.helios?.cart_network_error || 'Không thể kết nối giỏ hàng. Vui lòng thử lại.')) } finally {
       this.submitting = false
       this.atcBtn.classList.remove('loading')
       this.atcBtn.setAttribute('aria-busy', 'false')
@@ -157,7 +157,7 @@ class ProductForm extends HTMLElement {
   onClickBuyBtn (event) {
     event.preventDefault()
     if (this.submitting || !this.form.reportValidity() || !this.validSelection()) {
-      this.showError('Vui lòng chọn mẫu/size còn hàng và số lượng hợp lệ.')
+      this.showError((window.theme.locales.helios?.invalid_selection || 'Vui lòng chọn mẫu/size còn hàng và số lượng hợp lệ.'))
       return
     }
     this.buyBtn.classList.add('loading')

@@ -42,18 +42,18 @@
     {% endif %}
     <button
       class="btn btn-atc {{ block.settings.atc_btn_color }} {{ block.settings.atc_btn_size }}"
-      data-label-available="{{ block.settings.atc_label | escape }}"
-      data-label-sold-out="{{ block.settings.sold_out_label | escape }}"
-      data-label-unavailable="{{ block.settings.unavailable_label | escape }}"
+      data-label-available="{% render 'helios-text', value: block.settings.atc_label %}"
+      data-label-sold-out="{% render 'helios-text', value: block.settings.sold_out_label %}"
+      data-label-unavailable="{% render 'helios-text', value: block.settings.unavailable_label %}"
       type="submit"
       name="add"
       {% unless current_variant.available %}
         disabled
       {% endunless %}>
       {% if current_variant.available %}
-        {% if block.settings.atc_label != blank %}{{ block.settings.atc_label | escape }}{% else %}{{ 'product.add_to_cart' | t }}{% endif %}
+        {% if block.settings.atc_label != blank %}{% render 'helios-text', value: block.settings.atc_label %}{% else %}{{ 'product.add_to_cart' | t }}{% endif %}
       {% else %}
-        {% if block.settings.sold_out_label != blank %}{{ block.settings.sold_out_label | escape }}{% else %}{{ 'product.sold_out' | t }}{% endif %}
+        {% if block.settings.sold_out_label != blank %}{% render 'helios-text', value: block.settings.sold_out_label %}{% else %}{{ 'product.sold_out' | t }}{% endif %}
       {% endif %}
     </button>
   </div>
@@ -71,7 +71,7 @@
       {% unless current_variant.available %}
         disabled
       {% endunless %}>
-      {% if block.settings.buy_label != blank %}{{ block.settings.buy_label | escape }}{% else %}{{ 'product.buy_it_now' | t }}{% endif %}
+      {% if block.settings.buy_label != blank %}{% render 'helios-text', value: block.settings.buy_label %}{% else %}{{ 'product.buy_it_now' | t }}{% endif %}
     </button>
   {% endif %}
 

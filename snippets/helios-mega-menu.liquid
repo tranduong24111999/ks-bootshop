@@ -8,11 +8,11 @@
     {% endfor %}
   {% else %}
     <details class="helios-mega__group" open><summary>ALL PRODUCTS</summary><div>
-      <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">MỚI NHẤT</a>
+      <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">{{ 'helios.newest' | t }}</a>
       {% render 'helios-link', handle: 'nguoi-moi-nen-chon', label: 'NGƯỜI MỚI NÊN CHỌN', query: 'bạc' %}
       {% render 'helios-link', handle: 'san-pham-an-tuong', label: 'ẤN TƯỢNG NHẤT', query: 'bạc' %}
       {% render 'helios-link', handle: 'nhan-bac-doi', label: 'NHẪN ĐÔI', query: 'nhẫn đôi' %}
-      <a class="helios-menu-mobile-only" href="{{ routes.all_products_collection_url }}">TẤT CẢ SẢN PHẨM</a>
+      <a class="helios-menu-mobile-only" href="{{ routes.all_products_collection_url }}">{{ 'helios.all_products' | t }}</a>
     </div></details>
     <details class="helios-mega__group" open><summary>JEWELRY</summary><div>
       {% render 'helios-link', handle: 'nhan-bac-nam', label: 'NHẪN BẠC', query: 'nhẫn' %}
@@ -31,7 +31,7 @@
   {% endif %}
 </div>
 <div class="helios-mega__promos">
-  <a href="{{ routes.all_products_collection_url }}" class="helios-mega__promo"><img src="{{ 'helios-story.jpg' | asset_url }}" width="1000" height="1250" alt="Khám phá chế tác HELIOS" loading="lazy"><span>KHÁM PHÁ CHẾ TÁC<span class="helios-mega__button">Khám phá</span></span></a>
-  <a href="{{ stores_url }}" class="helios-mega__promo"><img src="{{ 'helios-store.jpg' | asset_url }}" width="800" height="1066" alt="Hệ thống cửa hàng HELIOS" loading="lazy"><span>HỆ THỐNG CỬA HÀNG<span class="helios-mega__button">Tìm ngay</span></span></a>
+  <a href="{{ routes.all_products_collection_url }}" class="helios-mega__promo"><img src="{{ 'helios-story.jpg' | asset_url }}" width="1000" height="1250" alt="{{ 'helios.craft_image' | t | escape }}" loading="lazy"><span>{{ 'helios.craft' | t }}<span class="helios-mega__button">{{ 'helios.discover' | t }}</span></span></a>
+  <a href="{{ stores_url }}" class="helios-mega__promo"><img src="{{ 'helios-store.jpg' | asset_url }}" width="800" height="1066" alt="{{ 'helios.store_image' | t | escape }}" loading="lazy"><span>{{ 'helios.stores_upper' | t }}<span class="helios-mega__button">{{ 'helios.find' | t }}</span></span></a>
 </div>
-<div class="helios-menu-mobile-only helios-menu-mobile-links"><a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ stores_url }}">HỆ THỐNG CỬA HÀNG</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">Đăng ký / Đăng nhập</a>{% endif %}</div>
+<div class="helios-menu-mobile-only helios-menu-mobile-links"><a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ stores_url }}">{{ 'helios.stores_upper' | t }}</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">{{ 'helios.login' | t }}</a>{% endif %}</div>

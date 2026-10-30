@@ -92,8 +92,9 @@ class HeliosCarousel extends HTMLElement {
     if (toggle) {
       toggle.hidden = !eligible
       toggle.textContent = this.paused ? '▷' : 'Ⅱ'
-      const label = this.classList.contains('helios-announcement') ? 'thông báo' : 'banner'
-      toggle.setAttribute('aria-label', `${this.paused ? 'Tiếp tục' : 'Tạm dừng'} tự động chuyển ${label}`)
+      const key = (this.classList.contains('helios-announcement') ? 'announcement' : 'hero') + (this.paused ? '_resume' : '_pause')
+      const label = window.theme?.locales?.helios?.[key]
+      if (label) toggle.setAttribute('aria-label', label)
     }
     if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
@@ -113,7 +114,7 @@ if (!customElements.get('helios-carousel')) customElements.define('helios-carous
 
 // Delegation also supports header sections replaced by the Shopify theme editor.
 document.addEventListener('click', event => {
-  document.querySelectorAll('[data-helios-disclosure][open]').forEach(menu => {
+  document.querySelectorAll('[data-helios-disclosure][open], [data-helios-language][open]').forEach(menu => {
     if (event.target.closest('[data-helios-menu-close]')) {
       menu.open = false
       menu.querySelector('summary').focus()
@@ -122,7 +123,7 @@ document.addEventListener('click', event => {
 })
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return
-  document.querySelectorAll('[data-helios-disclosure][open]').forEach(menu => {
+  document.querySelectorAll('[data-helios-disclosure][open], [data-helios-language][open]').forEach(menu => {
     menu.open = false
     menu.querySelector('summary').focus()
   })

@@ -302,3 +302,13 @@
 .helios-search .search-empty { display:none; }
 @media(max-width:575.98px) { .helios-search .offcanvas-body { padding-inline:24px; } .helios-search .offcanvas-header { padding:20px 24px; } }
 @media(prefers-reduced-motion:reduce) { #offcanvas-search.helios-search { --bs-offcanvas-transition:none; } .helios-search .form-control-wrapper::after { transition:none; } }
+
+.helios-language { position:relative; display:block; }
+.helios-language > summary { display:flex; align-items:center; gap:8px; min-height:44px; cursor:pointer; list-style:none; }
+.helios-language > summary::-webkit-details-marker { display:none; }
+.helios-language__options { position:absolute; top:100%; right:0; z-index:20; min-width:130px; padding:8px 0; margin:0; background:#000; border:1px solid #555; }
+.helios-language__options button { display:block; width:100%; padding:10px 16px; text-align:left; color:#ddd; }
+.helios-language__options button:hover,.helios-language__options button:focus-visible { background:#222; color:#fff; }
+.helios-language__options [aria-current] { text-decoration:underline; text-underline-offset:5px; }
+.helios-mobile-language { display:none; }
+@media(max-width:767.98px) { .helios-mobile-language { display:block; margin-top:20px; } .helios-mobile-language .helios-language { display:block; } .helios-mobile-language .helios-language__options { position:static; } .helios-mobile-language .helios-language-label { display:block; } }

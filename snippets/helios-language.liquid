@@ -1,0 +1,14 @@
+{% if localization.available_languages.size > 1 %}
+  <details class="helios-language" data-helios-language>
+    <summary>{{ localization.language.endonym | escape }} {% render 'svg-icons', icon: 'chevron-down', size: 12 %}</summary>
+    {% form 'localization', id: form_id, class: 'helios-language__options' %}
+      {% for language in localization.available_languages %}
+        {% if language.iso_code == 'vi' or language.iso_code == 'en' or language.iso_code == 'ko' or language.iso_code == 'ja' %}
+          <button type="submit" name="language_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}>{{ language.endonym | escape }}</button>
+        {% endif %}
+      {% endfor %}
+    {% endform %}
+  </details>
+{% else %}
+  <span class="helios-language-label">{{ localization.language.endonym | escape }}</span>
+{% endif %}

@@ -47,7 +47,26 @@ engine.registerFilter('url_encode', value => encodeURIComponent(value))
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
 engine.registerFilter('preload_tag', (url, ...args) => '<link rel="preload" href="' + url + '" ' + args.map(([k, v]) => k + '="' + escapeHtml(v) + '"').join(' ') + '>')
 engine.registerFilter('handleize', value => String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-'))
-engine.registerFilter('t', value => value === 'general.accessibility.social_media_links' ? 'Mạng xã hội' : value)
+engine.registerFilter('t', (key, ...args) => {
+  const code = engine.options.globals?.request?.locale?.iso_code || 'vi'
+  const locale = JSON.parse(read('locales/' + (code === 'en' ? 'en.default' : code) + '.json'))
+  let value = key.split('.').reduce((object, part) => object?.[part], locale)
+  if (typeof value !== 'string') return key
+  for (const [name, replacement] of args) value = value.replaceAll('{{ ' + name + ' }}', replacement)
+  return value
+})
+engine.registerTag('form', {
+  parse (token, tokens) {
+    this.templates = []
+    const stream = this.liquid.parser.parseStream(tokens).on('tag:endform', () => stream.stop()).on('template', template => this.templates.push(template))
+    stream.start()
+  },
+  * render (context, emitter) {
+    emitter.write('<form action="/localization" method="post" class="helios-language__options">')
+    yield this.liquid.renderer.renderTemplates(this.templates, context, emitter)
+    emitter.write('</form>')
+  }
+})
 engine.registerFilter('image_url', image => image?.src || image || '')
 engine.registerFilter('image_tag', (url, ...args) => {
   const attributes = Object.fromEntries(args)

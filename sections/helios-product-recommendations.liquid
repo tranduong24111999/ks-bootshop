@@ -29,7 +29,7 @@
 {% endcapture %}
 {% if rendered_count > 0 %}
   <helios-recommendations class="helios-related" data-product-id="{{ product.id }}" data-personalized="{{ personalized }}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id | url_encode }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.limit }}&amp;intent=related" aria-labelledby="HeliosRelated-{{ section.id }}">
-    <div class="helios-related__heading"><h2 id="HeliosRelated-{{ section.id }}">{{ section.settings.header_title | escape }}</h2><div class="helios-related__controls"><button type="button" data-related-prev aria-label="Sản phẩm gợi ý trước">←</button><button type="button" data-related-next aria-label="Sản phẩm gợi ý tiếp theo">→</button></div></div>
+    <div class="helios-related__heading"><h2 id="HeliosRelated-{{ section.id }}">{% render 'helios-text', value: section.settings.header_title %}</h2><div class="helios-related__controls"><button type="button" data-related-prev aria-label="{{ 'helios.related_prev' | t | escape }}">←</button><button type="button" data-related-next aria-label="{{ 'helios.related_next' | t | escape }}">→</button></div></div>
     <ul class="helios-related__items" data-recommendation-items role="list">{{ related_cards }}</ul>
   </helios-recommendations>
 {% elsif request.design_mode %}<p class="helios-editor-notice">Cần ít nhất một sản phẩm khác đã xuất bản để hiển thị gợi ý.</p>{% endif %}

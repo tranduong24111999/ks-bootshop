@@ -1,11 +1,11 @@
 <section class="helios-product-editorial" aria-labelledby="HeliosEditorial-{{ section.id }}">
   <helios-brand-film class="helios-brand-film">
-    {% if section.settings.film_url != blank %}<video controls muted playsinline loop preload="none" poster="{{ 'helios-craft-poster.jpg' | asset_url }}" aria-label="Nghệ nhân và hành trình chế tác HELIOS"><source src="{{ section.settings.film_url }}" type="video/mp4"></video>{% else %}<img src="{{ 'helios-craft-poster.jpg' | asset_url }}" width="1600" height="682" loading="lazy" alt="Nghệ nhân chế tác HELIOS">{% endif %}
-    <div class="helios-brand-film__caption"><h2 id="HeliosEditorial-{{ section.id }}">{{ section.settings.heading | escape }}</h2><div>{{ section.settings.description }}</div></div>
+    {% if section.settings.film_url != blank %}<video controls muted playsinline loop preload="none" poster="{{ 'helios-craft-poster.jpg' | asset_url }}" aria-label="{{ 'helios.artisans' | t | escape }}"><source src="{{ section.settings.film_url }}" type="video/mp4"></video>{% else %}<img src="{{ 'helios-craft-poster.jpg' | asset_url }}" width="1600" height="682" loading="lazy" alt="{{ 'helios.artisan_image' | t | escape }}">{% endif %}
+    <div class="helios-brand-film__caption"><h2 id="HeliosEditorial-{{ section.id }}">{% render 'helios-text', value: section.settings.heading %}</h2><div>{% render 'helios-text', value: section.settings.description, html: true %}</div></div>
   </helios-brand-film>
   {% if section.blocks.size > 0 %}
-    <div class="helios-product-faq"><h2>{{ section.settings.faq_heading | escape }}</h2>
-      {% for block in section.blocks %}<details class="helios-product-faq__item" {{ block.shopify_attributes }}><summary>{{ block.settings.question | escape }}<span aria-hidden="true">+</span></summary><div>{% if block.settings.page != blank %}{{ block.settings.page.content }}{% else %}{{ block.settings.answer }}{% endif %}</div></details>{% endfor %}
+    <div class="helios-product-faq"><h2>{% render 'helios-text', value: section.settings.faq_heading %}</h2>
+      {% for block in section.blocks %}<details class="helios-product-faq__item" {{ block.shopify_attributes }}><summary>{% render 'helios-text', value: block.settings.question %}<span aria-hidden="true">+</span></summary><div>{% if block.settings.page != blank %}{{ block.settings.page.content }}{% else %}{% render 'helios-text', value: block.settings.answer, html: true %}{% endif %}</div></details>{% endfor %}
     </div>
   {% endif %}
 </section>

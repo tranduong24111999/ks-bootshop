@@ -18,4 +18,4 @@
     endif
   endif
 %}
-<a href="{{ destination }}">{{ label | escape }}</a>
+<a href="{{ destination }}">{% render 'helios-text', value: label %}</a>

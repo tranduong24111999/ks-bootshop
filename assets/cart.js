@@ -83,7 +83,7 @@ class Cart extends HTMLElement {
         this.showError(data.description)
       }
     } catch {
-      this.showError('Không thể cập nhật giỏ hàng. Vui lòng thử lại.')
+      this.showError((window.theme.locales.helios?.cart_update_error || 'Không thể cập nhật giỏ hàng. Vui lòng thử lại.'))
     } finally {
       this.classList.remove('loading')
     }
