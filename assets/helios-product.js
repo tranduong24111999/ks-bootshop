@@ -55,3 +55,95 @@ class HeliosBrandFilm extends HTMLElement {
   disconnectedCallback () { this.observer?.disconnect(); this.video?.pause() }
 }
 if (!customElements.get('helios-brand-film')) customElements.define('helios-brand-film', HeliosBrandFilm)
+
+// Only recommendation cards opt in. Never start offscreen media or manufacture product footage.
+if (!customElements.get('helios-product-media')) {
+  class HeliosProductMedia extends HTMLElement {
+    connectedCallback () {
+      this.controller?.abort()
+      this.controller = new AbortController()
+      const { signal } = this.controller
+      this.video = this.querySelector('[data-motion-video]')
+      if (this.video) { this.video.muted = true; this.video.defaultMuted = true; this.video.playsInline = true }
+      this.second = this.querySelector('.helios-product-card__second')
+      this.button = this.closest('article')?.querySelector('[data-card-motion-toggle]')
+      this.motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+      this.visible = false
+      this.paused = false
+      this.focused = false
+      this.videoFailed = false
+      if (!('IntersectionObserver' in window)) return
+      this.observer?.disconnect()
+      this.observer = new IntersectionObserver(entries => {
+        this.visible = entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= 0.25)
+        this.update()
+      }, { threshold: 0.25 })
+      this.observer.observe(this)
+      this.button?.addEventListener('click', () => { this.paused = !this.paused; this.update() }, { signal })
+      this.motion.addEventListener('change', () => this.update(), { signal })
+      document.addEventListener('visibilitychange', () => this.update(), { signal })
+      const article = this.closest('article')
+      article?.addEventListener('focusin', event => { this.focused = event.target.matches(':focus-visible'); this.update() }, { signal })
+      article?.addEventListener('focusout', event => {
+        this.focused = !!(event.relatedTarget && article.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible'))
+        this.update()
+      }, { signal })
+      this.video?.addEventListener('playing', () => { if (this.canPlay()) this.classList.add('is-video-ready') }, { signal })
+      this.video?.addEventListener('error', () => this.failVideo(), { signal })
+      this.video?.querySelector('source')?.addEventListener('error', () => this.failVideo(), { signal })
+      this.update()
+    }
+
+    failVideo () {
+      if (this.videoFailed) return
+      this.videoFailed = true
+      this.video?.pause()
+      this.classList.remove('is-video-ready')
+      this.update()
+    }
+
+    canPlay () { return this.isConnected && this.visible && !this.motion.matches && !this.paused && !this.focused && !document.hidden }
+
+    update () {
+      window.clearTimeout(this.timer)
+      const available = !!((this.video && !this.videoFailed) || this.second)
+      const enabled = available && !this.motion.matches
+      this.classList.toggle('is-motion-enabled', enabled)
+      if (this.button) {
+        this.button.hidden = !enabled
+        this.button.textContent = this.paused ? '▷' : 'Ⅱ'
+        this.button.setAttribute('aria-label', this.paused ? this.button.dataset.resumeLabel : this.button.dataset.pauseLabel)
+      }
+      if (!this.canPlay()) {
+        this.video?.pause()
+        if (!enabled) this.classList.remove('is-video-ready', 'is-motion-second')
+        return
+      }
+      if (this.video && !this.videoFailed) {
+        const source = this.video.querySelector('source')
+        if (source?.dataset.src && !source.getAttribute('src')) { source.src = source.dataset.src; this.video.load() }
+        this.video.play().then(() => {
+          if (!this.canPlay()) this.video.pause()
+        }).catch(error => {
+          if (!this.isConnected || !this.canPlay() || this.videoFailed || error.name === 'AbortError') return
+          this.failVideo()
+        })
+      } else if (this.second) {
+        this.second.loading = 'eager'
+        this.timer = window.setTimeout(() => {
+          if (!this.canPlay()) return
+          if (this.second.complete && this.second.naturalWidth > 0) this.classList.toggle('is-motion-second')
+          this.update()
+        }, 5000 + (Number(this.dataset.offset) || 0) % 4 * 300)
+      }
+    }
+
+    disconnectedCallback () {
+      window.clearTimeout(this.timer)
+      this.video?.pause()
+      this.observer?.disconnect()
+      this.controller?.abort()
+    }
+  }
+  customElements.define('helios-product-media', HeliosProductMedia)
+}

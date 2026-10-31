@@ -10,7 +10,8 @@
     "test:helios-feedback": "node tests/helios-feedback.cjs",
     "test:helios-collab": "node tests/helios-collab.cjs",
     "test:helios-journal": "node tests/helios-journal.cjs",
-    "test:helios-reviews": "node tests/helios-reviews.cjs"
+    "test:helios-reviews": "node tests/helios-reviews.cjs",
+    "test:helios-media": "node tests/helios-recommendation-motion.cjs"
   },
   "watch": {
     "bs-scss": {

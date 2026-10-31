@@ -355,6 +355,8 @@
     "journal_source": "Bài viết gốc trên HELIOS",
     "customer_reviews": "Đánh giá của khách hàng",
     "no_reviews": "Chưa có đánh giá cho sản phẩm này.",
-    "reviews_setup": "Thêm block Review Widget của Judge.me và bật App embed trong trình chỉnh sửa theme."
+    "reviews_setup": "Thêm block Review Widget của Judge.me và bật App embed trong trình chỉnh sửa theme.",
+    "product_motion_pause": "Tạm dừng chuyển động ảnh sản phẩm",
+    "product_motion_resume": "Tiếp tục chuyển động ảnh sản phẩm"
   }
 }

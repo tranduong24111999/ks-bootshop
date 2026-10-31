@@ -1,11 +1,24 @@
+{% liquid
+  assign motion_source = blank
+  if animate_media
+    assign motion_video = product.media | where: 'media_type', 'video' | first
+    assign motion_source = motion_video.sources | where: 'format', 'mp4' | sort: 'width' | first
+  endif
+%}
 <article class="helios-product-card" data-helios-reveal>
   <a href="{{ product.url }}" class="helios-product-card__media" aria-label="{{ product.title | escape }}">
+    {% if animate_media %}<helios-product-media data-offset="{{ motion_offset | default: 0 }}">{% endif %}
     {% if product.featured_image != blank %}
       {{ product.featured_image | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__first', alt: product.title }}
       {% if product.images.size > 1 %}{{ product.images[1] | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__second', alt: product.title }}{% endif %}
     {% else %}<span class="helios-product-card__no-image">{{ product.title | escape }}</span>{% endif %}
+    {% if animate_media %}
+      {% if motion_source.url != blank %}<video muted playsinline loop preload="none" data-motion-video aria-hidden="true" tabindex="-1"><source data-src="{{ motion_source.url | escape }}" type="video/mp4"></video>{% endif %}
+      </helios-product-media>
+    {% endif %}
     {% unless product.available %}<span class="helios-product-card__badge">HẾT HÀNG</span>{% else %}{% if product.tags contains 'new' or product.tags contains 'new-in' or product.tags contains 'Mới' %}<span class="helios-product-card__badge">MỚI</span>{% endif %}{% endunless %}
   </a>
+  {% if animate_media %}<button type="button" data-card-motion-toggle hidden data-pause-label="{{ 'helios.product_motion_pause' | t | escape }}" data-resume-label="{{ 'helios.product_motion_resume' | t | escape }}" aria-label="{{ 'helios.product_motion_pause' | t | escape }}">Ⅱ</button>{% endif %}
   <a href="{{ product.url }}" class="helios-product-card__caption"><div class="helios-product-card__title-row"><h3>{{ product.title | escape }}</h3>{% if product.metafields.reviews.rating.value != blank %}<span class="helios-product-card__rating" aria-label="Đánh giá {{ product.metafields.reviews.rating.value.rating }} trên {{ product.metafields.reviews.rating.value.scale_max }}">{{ product.metafields.reviews.rating.value.rating }} <span aria-hidden="true">★</span></span>{% endif %}</div>
     <div class="helios-product-card__price">{% if product.price_varies %}Từ {% endif %}{{ product.price | money_with_currency }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money_with_currency }}</s>{% endif %}</div>
   </a>

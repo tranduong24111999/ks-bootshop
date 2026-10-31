@@ -21,7 +21,7 @@
 {% capture related_cards %}
   {% for related_product in candidates %}
     {% if related_product.id != product.id %}
-      <li class="helios-related__item" data-product-id="{{ related_product.id }}">{% render 'helios-product-card', product: related_product %}</li>
+      <li class="helios-related__item" data-product-id="{{ related_product.id }}">{% render 'helios-product-card', product: related_product, animate_media: section.settings.media_motion, motion_offset: forloop.index0 %}</li>
       {% assign rendered_count = rendered_count | plus: 1 %}
       {% if rendered_count >= section.settings.limit %}{% break %}{% endif %}
     {% endif %}
@@ -38,6 +38,7 @@
   "name": "HELIOS · Gợi ý",
   "enabled_on": { "templates": ["product"] },
   "settings": [
+    { "type": "checkbox", "id": "media_motion", "label": "Chuyển động ảnh/video sản phẩm", "default": true },
     { "type": "text", "id": "header_title", "label": "Tiêu đề", "default": "CÓ THỂ BẠN SẼ THÍCH" },
     { "type": "product_list", "id": "products", "label": "Sản phẩm chọn thủ công (tùy chọn)", "limit": 8 },
     { "type": "collection", "id": "collection", "label": "Bộ sưu tập dự phòng" },

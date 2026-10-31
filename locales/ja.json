@@ -355,6 +355,8 @@
     "journal_source": "HELIOSの原文を読む",
     "customer_reviews": "カスタマーレビュー",
     "no_reviews": "この商品にはまだレビューがありません。",
-    "reviews_setup": "Judge.me Review Widgetブロックを追加し、テーマエディターでアプリ埋め込みを有効にしてください。"
+    "reviews_setup": "Judge.me Review Widgetブロックを追加し、テーマエディターでアプリ埋め込みを有効にしてください。",
+    "product_motion_pause": "商品メディアを一時停止",
+    "product_motion_resume": "商品メディアを再生"
   }
 }
