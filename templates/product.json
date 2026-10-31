@@ -1,26 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
       "type": "product-main",
       "blocks": {
-        "judge_me_reviews_review_widget_77dHUP": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        },
         "8abeac2d-7b60-4697-891c-4d6201789d31": {
           "type": "media_gallery",
           "settings": {
@@ -223,10 +205,14 @@
             "pt": 3,
             "pb": 3
           }
+        },
+        "judge_me_reviews_preview_badge_J3NUWe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_77dHUP",
+        "judge_me_reviews_preview_badge_J3NUWe",
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
         "095886ab-f46a-4a25-9d3d-e7c79235921b",
@@ -348,7 +334,7 @@
         "judge_me_reviews_review_widget_cE4MAR": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
-            "review_data": "sample_data",
+            "review_data": "real_data",
             "max_width": 1200,
             "show_shop_reviews": false,
             "empty_state": "empty_widget"
@@ -358,7 +344,9 @@
       "block_order": [
         "judge_me_reviews_review_widget_cE4MAR"
       ],
-      "settings": {}
+      "settings": {
+        "helios_product_reviews": true
+      }
     },
     "17934361130fdd24f4": {
       "type": "apps",
@@ -372,10 +360,10 @@
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "1710322973d29fae05",
+    "17934359457af1e718",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
     "helios_product_editorial",
-    "17934359457af1e718",
     "17934361130fdd24f4",
     "1793436127403c7acc"
   ]

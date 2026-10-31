@@ -27,3 +27,8 @@
 .helios-product-reviews__empty { text-align:center; padding:24px 0; }
 .helios-product-reviews__setup { border:1px dashed #777; padding:16px; font-size:14px; }
 @media(max-width:767.98px) { .helios-product-reviews { padding:30px 16px 48px; } .helios-product-reviews .jdgm-rev-widg__title { font-size:22px; } .helios-product-reviews .jdgm-rev__body { font-size:14px; } .helios-product-reviews .jdgm-write-rev-link { max-width:100%; } }
+
+helios-review-diagnostics { display:block; }
+.helios-review-diagnostics { margin-top:24px; padding:16px; border:1px dashed #777; font-size:14px; }
+.helios-review-diagnostics [data-review-status] { white-space:pre-line; overflow-wrap:anywhere; }
+.helios-review-diagnostics button { padding:8px 12px; border:1px solid #777; background:#111; color:#fff; }

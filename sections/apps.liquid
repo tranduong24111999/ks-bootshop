@@ -1,4 +1,23 @@
-<div class="container py-6">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% liquid
+  assign helios_reviews = false
+  if section.settings.helios_product_reviews and request.page_type == 'product'
+    assign helios_reviews = true
+  endif
+%}
+{% if helios_reviews %}{{ 'helios-reviews.css' | asset_url | stylesheet_tag }}{% endif %}
+<div class="{% if helios_reviews %}helios-product-reviews{% else %}container py-6{% endif %}" {% if helios_reviews %}role="region" aria-label="{{ 'helios.customer_reviews' | t | escape }}" data-helios-reviews-root data-product-id="{{ product.id }}" data-product-handle="{{ product.handle | escape }}"{% endif %}>
+  {% if helios_reviews %}
+    <div class="helios-review-widget-mount">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+    {% render 'helios-review-diagnostics', product: product %}
+  {% else %}
+    {% for block in section.blocks %}{% render block %}{% endfor %}
+  {% endif %}
+</div>
 {% schema %}
-{ "name": "Apps", "settings": [], "blocks": [{ "type": "@app" }], "presets": [{ "name": "Apps" }] }
+{
+  "name": "Apps",
+  "settings": [{ "type": "checkbox", "id": "helios_product_reviews", "label": "Giao diện đánh giá HELIOS", "default": false }],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "Apps" }]
+}
 {% endschema %}
