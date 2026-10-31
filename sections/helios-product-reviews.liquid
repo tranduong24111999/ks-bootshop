@@ -1,9 +1,7 @@
 {{ 'helios-reviews.css' | asset_url | stylesheet_tag }}
 <section class="helios-product-reviews" aria-label="{{ 'helios.customer_reviews' | t | escape }}">
-  {% capture reviews_app %}{% for block in section.blocks %}{% render block %}{% endfor %}{% endcapture %}
-  {% assign app_markup = reviews_app | strip %}
-  {% if app_markup != blank %}
-    {{ reviews_app }}
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}{% render block %}{% endfor %}
   {% elsif product.metafields.judgeme.widget != blank %}
     <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-auto-install="false">{{ product.metafields.judgeme.widget }}</div>
   {% else %}

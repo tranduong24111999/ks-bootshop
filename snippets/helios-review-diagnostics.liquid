@@ -1,0 +1,11 @@
+{% if request.design_mode %}
+  <script src="{{ 'helios-review-diagnostics.js' | asset_url }}" defer></script>
+  <helios-review-diagnostics data-product-id="{{ product.id }}" data-product-handle="{{ product.handle | escape }}">
+    <details class="helios-review-diagnostics"><summary>Kiểm tra Judge.me — chỉ trong trình sửa theme</summary>
+      <p>Shopify Product ID: <code>{{ product.id }}</code><br>Product Handle: <code>{{ product.handle | escape }}</code></p>
+      <p data-review-status role="status">Đang kiểm tra Review Widget…</p>
+      <button type="button" data-review-check>Kiểm tra lại</button>
+      <p>Đối chiếu cùng Product ID/Handle trong Judge.me → Product management. Tổng số review trong app không phải số review được phép hiển thị của sản phẩm này. Không đổi trạng thái Hidden hoặc đăng dữ liệu demo để xử lý lỗi giao diện.</p>
+    </details>
+  </helios-review-diagnostics>
+{% endif %}
