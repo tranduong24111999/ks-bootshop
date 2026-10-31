@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "story": {
+      "type": "helios-collab-story",
+      "settings": {}
+    }
+  },
+  "order": [
+    "story"
+  ]
+}

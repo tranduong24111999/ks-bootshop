@@ -1,0 +1,15 @@
+{{ 'helios-collab.css' | asset_url | stylesheet_tag }}
+<article class="helios-collab-story">
+  {% capture collab_url %}{% render 'helios-collab-url' %}{% endcapture %}
+  <a href="{{ collab_url | strip }}">← Collab</a>
+  <h1>{{ 'helios.collab_article_title' | t }}</h1>
+  <div class="helios-collab-story__body rte">{% render 'helios-collab-story-content' %}</div>
+  <p class="helios-collab-story__source"><a href="https://helios.vn/blogs/collab/khi-logo-buc-tuong-duoc-che-tac-tu-bac" target="_blank" rel="noopener">{{ 'helios.collab_source' | t }} ↗</a></p>
+</article>
+{% schema %}
+{
+  "name": "HELIOS · Collab article",
+  "enabled_on": { "templates": ["index"] },
+  "settings": []
+}
+{% endschema %}

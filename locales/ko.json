@@ -326,6 +326,12 @@
     "feedback_description": "HELIOS 커뮤니티의 사진",
     "feedback_product": "상품 보기",
     "feedback_source": "HELIOS 커뮤니티 둘러보기",
-    "home_short": "홈"
+    "home_short": "홈",
+    "collab_article_title": "은으로 탄생한 BỨC TƯỜNG 로고…",
+    "collab_excerpt": "은과 음악으로 전하는 Bức Tường의 이야기.",
+    "collab_read": "더 읽기",
+    "collab_end": "마지막 글입니다",
+    "collab_categories": "카테고리",
+    "collab_source": "HELIOS 원문 보기"
   }
 }

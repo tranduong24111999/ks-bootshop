@@ -1,0 +1,19 @@
+{% liquid
+  assign destination = article.url
+  assign headline = article.title
+  assign summary = article.excerpt_or_content | strip_html | truncate: 160
+  assign photo = blank
+  if article.image != blank
+    assign photo = article.image | image_url: width: 2000
+  endif
+  if article == blank
+    assign destination = routes.root_url | append: '?view=collab-story'
+    assign headline = 'helios.collab_article_title' | t
+    assign summary = 'helios.collab_excerpt' | t
+    assign photo = 'helios-collab-interview.jpg' | asset_url
+  endif
+%}
+<article class="helios-collab__banner">
+  <a class="helios-collab__image" href="{{ destination }}" aria-label="{{ headline | escape }}">{% if photo != blank %}<img src="{{ photo }}" width="1500" height="1875" alt="{{ headline | escape }}" loading="lazy">{% endif %}</a>
+  <div class="helios-collab__caption"><h2><a href="{{ destination }}">{{ headline | escape }}</a></h2><p>{{ summary | escape }}</p><a class="helios-collab__read" href="{{ destination }}">{{ 'helios.collab_read' | t }}</a></div>
+</article>

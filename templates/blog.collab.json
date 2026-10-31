@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "collab": {
+      "type": "helios-collab",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collab"
+  ]
+}

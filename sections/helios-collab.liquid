@@ -1,0 +1,32 @@
+{{ 'helios-collab.css' | asset_url | stylesheet_tag }}
+<section class="helios-collab" aria-labelledby="HeliosCollab-{{ section.id }}">
+  <header class="helios-collab__header"><h1 id="HeliosCollab-{{ section.id }}">Collab</h1>
+    <nav aria-label="{{ 'helios.collab_categories' | t | escape }}">
+      <a href="{{ routes.root_url }}#helios-story">World of Helios</a>
+      {% render 'helios-link', handle: 'nhan-bac-nam', label: 'NHẪN BẠC', query: 'nhẫn' %}
+      {% render 'helios-link', handle: 'day-chuyen-bac-s925', label: 'DÂY CHUYỀN BẠC', query: 'dây chuyền' %}
+      {% render 'helios-link', handle: 'vong-tay-bac-nam', label: 'VÒNG TAY BẠC', query: 'vòng tay' %}
+      <a href="{{ routes.all_products_collection_url }}">{{ 'helios.all_products' | t }}</a>
+    </nav>
+  </header>
+  <div class="helios-collab__stack">
+    {% assign collab_blog = section.settings.blog | default: blogs['collab'] %}
+    {% if collab_blog.articles.size > 0 %}
+      {% paginate collab_blog.articles by 8 %}
+        {% for article in collab_blog.articles %}{% render 'helios-collab-card', article: article %}{% endfor %}
+        {% if paginate.pages > 1 %}<nav class="helios-collab__pagination" aria-label="{{ 'general.accessibility.pagination' | t | escape }}">{{ paginate | default_pagination }}</nav>{% endif %}
+      {% endpaginate %}
+    {% else %}
+      {% render 'helios-collab-card' %}
+    {% endif %}
+  </div>
+  <p class="helios-collab__end">{{ 'helios.collab_end' | t }}</p>
+</section>
+{% schema %}
+{
+  "name": "HELIOS · Collab",
+  "enabled_on": { "templates": ["index", "page", "blog"] },
+  "settings": [{ "type": "blog", "id": "blog", "label": "Blog Collab có sẵn (tùy chọn)" }],
+  "presets": [{ "name": "HELIOS · Collab" }]
+}
+{% endschema %}

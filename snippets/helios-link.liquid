@@ -11,6 +11,12 @@
     endcapture
     assign destination = destination | strip
   endif
+  if kind == 'page' and handle == 'helios-partnership' and label == 'Collab'
+    capture destination
+      render 'helios-collab-url'
+    endcapture
+    assign destination = destination | strip
+  endif
   if destination == blank
     if query == blank
       assign destination = routes.all_products_collection_url
