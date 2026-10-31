@@ -17,7 +17,7 @@ class HeliosRecommendations extends HTMLElement {
   }
 
   async load () {
-    if (!this.dataset.url || this.dataset.personalized === 'true') return
+    if (!this.dataset.url || this.dataset.personalized === 'true' || this.dataset.manual === 'true') return
     const timer = window.setTimeout(() => this.controller.abort(), 8000)
     try {
       const response = await fetch(this.dataset.url, { signal: this.controller.signal })
@@ -90,7 +90,6 @@ if (!customElements.get('helios-product-media')) {
       }, { signal })
       this.video?.addEventListener('playing', () => { if (this.canPlay()) this.classList.add('is-video-ready') }, { signal })
       this.video?.addEventListener('error', () => this.failVideo(), { signal })
-      this.video?.querySelector('source')?.addEventListener('error', () => this.failVideo(), { signal })
       this.update()
     }
 
@@ -120,8 +119,8 @@ if (!customElements.get('helios-product-media')) {
         return
       }
       if (this.video && !this.videoFailed) {
-        const source = this.video.querySelector('source')
-        if (source?.dataset.src && !source.getAttribute('src')) { source.src = source.dataset.src; this.video.load() }
+        // Assign a direct src only in view. Empty <source> nodes can emit a premature error before lazy initialization.
+        if (this.video.dataset.motionSrc && !this.video.getAttribute('src')) { this.video.src = this.video.dataset.motionSrc; this.video.load() }
         this.video.play().then(() => {
           if (!this.canPlay()) this.video.pause()
         }).catch(error => {

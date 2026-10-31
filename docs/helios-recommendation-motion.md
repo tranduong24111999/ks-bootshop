@@ -9,3 +9,12 @@ A native video-frame becomes visible after `playing`, leaving the product image 
 The reference product cards expose first/second image hover layers and some reference products have native videos. This implementation adds automatic media movement to fulfill the requested recommendation effect; it does not claim that every source card uses video or that a source-store video exists in the destination product media.
 
 Validation: `npm run test:helios-media` uses local images and a generated two-second MP4 fixture outside the theme. It verifies actual MP4 playback, image blending at 390/1440px, pause/resume, offscreen loading/playback, reduced motion, failed-source fallback, cleanup, no overflow and zero runtime errors. Test footage is not shipped as a product asset. Shopify synchronization is separate from local validation.
+
+
+## Reference order and missing-video follow-up
+
+The product template now orders its active content as product detail → native reviews → separator → craft video/FAQ → recommendations → footer. The two empty Apps sections are disabled, while their settings remain stored. Recommendations explicitly enable motion and select the real handles Toba, Hawaii, Floris, Michigan Lotus in that order. A selected/manual list takes precedence over automatic personalization, so the API cannot reshuffle it. The current product is still excluded if it occurs in that list.
+
+Hawaii and Floris have exact-handle fallback videos copied byte-for-byte from their verified public source product media (480px MP4). The source URLs, checksums and media IDs are recorded in helios-card-videos-source.json. These are actual product recordings, not generated animations. Native destination product videos remain preferred. Other handles do not receive either clip.
+
+An intermittent media initialization failure was reproduced during browser tests: a lazy `<source>` without a src could emit an early error and mark a valid video failed before the URL was assigned. Cards now set video.src directly only when visible, avoiding empty source children. Tests play both real bundled clips even with empty product.media, as well as testing native clips, error fallback, manual product order, section order and cleanup. Requires ffmpeg to generate the separate local test fixture.

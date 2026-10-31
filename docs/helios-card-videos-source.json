@@ -1,0 +1,25 @@
+{
+  "retrieved": "2026-10-31",
+  "videos": [
+    {
+      "product_handle": "hawaii-helios-silver",
+      "source_product_url": "https://helios.vn/products/hawaii-helios-silver",
+      "source_media_id": 35916921569501,
+      "source_video_url": "https://cdn.shopify.com/videos/c/vp/6482789abde548768c8ea38580709b1a/6482789abde548768c8ea38580709b1a.SD-480p-1.5Mbps-47426338.mp4",
+      "asset": "helios-hawaii-card.mp4",
+      "bytes": 3546552,
+      "sha256": "7f1551d131d815952c0032ca06c5ea7eed802bbfa55abef07db913678de810dd",
+      "usage": "Exact handle fallback only when native Shopify product video is absent; no product or review records imported."
+    },
+    {
+      "product_handle": "floris-helios-black-silver",
+      "source_product_url": "https://helios.vn/products/floris-helios-black-silver",
+      "source_media_id": 39389079830749,
+      "source_video_url": "https://cdn.shopify.com/videos/c/vp/a69d7f9f7365441b8278c877ab87fbd6/a69d7f9f7365441b8278c877ab87fbd6.SD-480p-1.2Mbps-92099966.mp4",
+      "asset": "helios-floris-card.mp4",
+      "bytes": 3123931,
+      "sha256": "28b4cd0fbfb14240cdf01cae69d6f2675337f975f97a091b5294d57ef9c2cbfb",
+      "usage": "Exact handle fallback only when native Shopify product video is absent; no product or review records imported."
+    }
+  ]
+}

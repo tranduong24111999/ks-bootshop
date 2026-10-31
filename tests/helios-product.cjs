@@ -51,6 +51,8 @@ async function main () {
   const template = JSON.parse(read('templates/product.json'))
   const mainSection = Object.entries(template.sections).find(([, section]) => section.type === 'product-main')
   const recSection = Object.entries(template.sections).find(([, section]) => section.type === 'helios-product-recommendations')
+  // Exercise automatic API fallback separately from the merchant's curated production list.
+  recSection[1].settings.products = []
   const editorial = Object.entries(template.sections).find(([, section]) => section.type === 'helios-product-editorial')
   const mainMarkup = await renderSection(mainSection[0], mainSection[1], { product })
   const fallback = await renderSection(recSection[0], recSection[1], { product })

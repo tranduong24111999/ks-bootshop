@@ -262,9 +262,15 @@
       "type": "helios-product-recommendations",
       "settings": {
         "header_title": "CÓ THỂ BẠN SẼ THÍCH",
-        "products": [],
+        "products": [
+          "toba-lotus-spinning-ring",
+          "hawaii-helios-silver",
+          "floris-helios-black-silver",
+          "michigan-lotus-helios-black-silver"
+        ],
         "collection": "",
-        "limit": 8
+        "limit": 4,
+        "media_motion": true
       }
     },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
@@ -357,20 +363,22 @@
     },
     "17934361130fdd24f4": {
       "type": "apps",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "1793436127403c7acc": {
       "type": "apps",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     }
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
-    "1710322973d29fae05",
-    "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
+    "17934359457af1e718",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
     "helios_product_editorial",
-    "17934359457af1e718",
+    "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
+    "1710322973d29fae05",
     "17934361130fdd24f4",
     "1793436127403c7acc"
   ]

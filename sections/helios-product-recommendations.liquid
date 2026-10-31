@@ -1,7 +1,10 @@
 {% liquid
   assign candidates = section.settings.products
   assign personalized = false
-  if recommendations.performed and recommendations.products_count > 0
+  assign manual = false
+  if candidates != blank
+    assign manual = true
+  elsif recommendations.performed and recommendations.products_count > 0
     assign candidates = recommendations.products
     assign personalized = true
   elsif candidates == blank
@@ -28,7 +31,7 @@
   {% endfor %}
 {% endcapture %}
 {% if rendered_count > 0 %}
-  <helios-recommendations class="helios-related" data-product-id="{{ product.id }}" data-personalized="{{ personalized }}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id | url_encode }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.limit }}&amp;intent=related" aria-labelledby="HeliosRelated-{{ section.id }}">
+  <helios-recommendations class="helios-related" data-product-id="{{ product.id }}" data-personalized="{{ personalized }}" data-manual="{{ manual }}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id | url_encode }}&amp;product_id={{ product.id }}&amp;limit={{ section.settings.limit }}&amp;intent=related" aria-labelledby="HeliosRelated-{{ section.id }}">
     <div class="helios-related__heading"><h2 id="HeliosRelated-{{ section.id }}">{% render 'helios-text', value: section.settings.header_title %}</h2><div class="helios-related__controls"><button type="button" data-related-prev aria-label="{{ 'helios.related_prev' | t | escape }}">←</button><button type="button" data-related-next aria-label="{{ 'helios.related_next' | t | escape }}">→</button></div></div>
     <ul class="helios-related__items" data-recommendation-items role="list">{{ related_cards }}</ul>
   </helios-recommendations>

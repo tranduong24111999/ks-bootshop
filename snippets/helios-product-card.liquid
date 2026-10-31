@@ -3,9 +3,16 @@
   if animate_media
     assign motion_video = product.media | where: 'media_type', 'video' | first
     assign motion_source = motion_video.sources | where: 'format', 'mp4' | sort: 'width' | first
+    assign motion_url = motion_source.url
+    if motion_url == blank
+      capture motion_url
+        render 'helios-card-video-fallback', handle: product.handle
+      endcapture
+      assign motion_url = motion_url | strip
+    endif
   endif
 %}
-<article class="helios-product-card" data-helios-reveal>
+<article class="helios-product-card" data-product-handle="{{ product.handle | escape }}" data-helios-reveal>
   <a href="{{ product.url }}" class="helios-product-card__media" aria-label="{{ product.title | escape }}">
     {% if animate_media %}<helios-product-media data-offset="{{ motion_offset | default: 0 }}">{% endif %}
     {% if product.featured_image != blank %}
@@ -13,7 +20,7 @@
       {% if product.images.size > 1 %}{{ product.images[1] | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__second', alt: product.title }}{% endif %}
     {% else %}<span class="helios-product-card__no-image">{{ product.title | escape }}</span>{% endif %}
     {% if animate_media %}
-      {% if motion_source.url != blank %}<video muted playsinline loop preload="none" data-motion-video aria-hidden="true" tabindex="-1"><source data-src="{{ motion_source.url | escape }}" type="video/mp4"></video>{% endif %}
+      {% if motion_url != blank %}<video muted playsinline loop preload="none" data-motion-video data-motion-src="{{ motion_url | escape }}" aria-hidden="true" tabindex="-1"></video>{% endif %}
       </helios-product-media>
     {% endif %}
     {% unless product.available %}<span class="helios-product-card__badge">HẾT HÀNG</span>{% else %}{% if product.tags contains 'new' or product.tags contains 'new-in' or product.tags contains 'Mới' %}<span class="helios-product-card__badge">MỚI</span>{% endif %}{% endunless %}
