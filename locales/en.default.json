@@ -332,6 +332,17 @@
     "collab_read": "Read more",
     "collab_end": "END OF JOURNAL",
     "collab_categories": "Categories",
-    "collab_source": "Original article on HELIOS"
+    "collab_source": "Original article on HELIOS",
+    "journal_world-of-helios": "World of Helios",
+    "journal_nhan": "Ring",
+    "journal_day-chuyen": "Necklace",
+    "journal_vong-tay": "Bracelet",
+    "journal_bac": "Silver",
+    "journal_da": "Stone",
+    "journal_kinh": "Glasses",
+    "journal_story": "STORY",
+    "journal_craft": "The art of jewelry craftsmanship",
+    "journal_watch": "Watch story",
+    "journal_source": "Original article on HELIOS"
   }
 }

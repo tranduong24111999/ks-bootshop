@@ -42,7 +42,7 @@
   {% endif %}
 </head>
 
-<body class="helios-theme {% if template.suffix == 'collab' or template.suffix == 'collab-story' %}page-type-collab{% elsif template.suffix == 'feedback' %}page-type-feedback{% else %}{{ request.page_type | prepend: 'page-type-' }}{% endif %}">
+<body class="helios-theme {% if template.suffix contains 'journal-' %}page-type-journal{% elsif template.suffix == 'collab' or template.suffix == 'collab-story' %}page-type-collab{% elsif template.suffix == 'feedback' %}page-type-feedback{% else %}{{ request.page_type | prepend: 'page-type-' }}{% endif %}">
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>

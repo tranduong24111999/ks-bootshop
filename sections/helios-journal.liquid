@@ -1,0 +1,39 @@
+{{ 'helios-journal.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'helios-journal.js' | asset_url }}" defer></script>
+{% liquid
+  assign category = section.settings.category | default: 'world-of-helios'
+  assign handles = 'world-of-helios,nhan,day-chuyen,vong-tay,bac,da,kinh' | split: ','
+  assign title_key = 'helios.journal_' | append: category
+  assign source_key = category | append: '-' | append: section.settings.source_page
+  assign journal_blog = section.settings.blog | default: blogs[category]
+%}
+<helios-journal class="helios-journal" aria-labelledby="HeliosJournal-{{ section.id }}">
+  <header class="helios-journal__header"><h1 id="HeliosJournal-{{ section.id }}">{{ title_key | t }}</h1><nav aria-label="{{ 'helios.collab_categories' | t | escape }}">
+    {% for handle in handles %}{% capture category_url %}{% render 'helios-journal-url', category: handle %}{% endcapture %}{% assign label_key = 'helios.journal_' | append: handle %}<a href="{{ category_url | strip }}" {% if handle == category %}aria-current="page"{% endif %}>{{ label_key | t }}</a>{% endfor %}
+  </nav></header>
+  <div class="helios-journal__stack">
+    {% if journal_blog.articles.size > 0 %}
+      {% paginate journal_blog.articles by 10 %}
+        {% for article in journal_blog.articles %}{% render 'helios-journal-card', article: article %}{% if forloop.index == 3 or forloop.index == 6 or forloop.index == 9 %}{% render 'helios-journal-film' %}{% endif %}{% endfor %}
+        {% if paginate.pages > 1 %}<nav class="helios-journal__pagination" aria-label="{{ 'general.accessibility.pagination' | t | escape }}">{{ paginate | default_pagination }}</nav>{% endif %}
+      {% endpaginate %}
+    {% else %}
+      {% render 'helios-journal-lists', source_key: source_key %}
+    {% endif %}
+  </div>
+  <dialog class="helios-journal__dialog" aria-label="{{ 'helios.journal_watch' | t | escape }}"><button type="button" data-journal-close aria-label="{{ 'general.accessibility.close' | t | escape }}">×</button><video controls playsinline preload="none"></video></dialog>
+</helios-journal>
+{% schema %}
+{
+  "name": "HELIOS · Journal",
+  "enabled_on": { "templates": ["index", "blog", "page"] },
+  "settings": [
+    { "type": "select", "id": "category", "label": "Chuyên mục", "default": "world-of-helios", "options": [
+      { "value": "world-of-helios", "label": "World of Helios" }, { "value": "nhan", "label": "Nhẫn" }, { "value": "day-chuyen", "label": "Dây chuyền" }, { "value": "vong-tay", "label": "Vòng tay" }, { "value": "bac", "label": "Bạc" }, { "value": "da", "label": "Đá" }, { "value": "kinh", "label": "Kính" }
+    ] },
+    { "type": "range", "id": "source_page", "label": "Trang tư liệu World of Helios", "min": 1, "max": 6, "step": 1, "default": 1 },
+    { "type": "blog", "id": "blog", "label": "Blog Shopify có sẵn (tùy chọn)" }
+  ],
+  "presets": [{ "name": "HELIOS · Journal" }]
+}
+{% endschema %}

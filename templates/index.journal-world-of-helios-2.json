@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "journal": {
+      "type": "helios-journal",
+      "settings": {
+        "category": "world-of-helios",
+        "source_page": 2
+      }
+    }
+  },
+  "order": [
+    "journal"
+  ]
+}

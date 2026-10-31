@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "story": {
+      "type": "helios-journal-story",
+      "settings": {
+        "story_id": 62
+      }
+    }
+  },
+  "order": [
+    "story"
+  ]
+}

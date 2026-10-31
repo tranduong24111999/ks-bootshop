@@ -1,0 +1,34 @@
+.helios-journal { display:block; color:#fff; background:#000; }
+.helios-journal__header { position:sticky; top:var(--helios-header-height); z-index:20; backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:space-between; gap:28px; padding:20px; background:#000e; border-bottom:1px solid #ffffff14; }
+.helios-journal__header h1 { margin:0; font-size:clamp(24px,2.8vw,42px); letter-spacing:.12em; text-transform:uppercase; flex-shrink:0; }
+.helios-journal__header nav { display:flex; gap:28px; overflow-x:auto; min-width:0; }
+.helios-journal__header nav a { flex-shrink:0; font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.5; padding:5px 0; text-decoration:none; border-bottom:1px solid transparent; transition:opacity .3s,border-color .3s; }
+.helios-journal__header nav a:hover,.helios-journal__header nav a[aria-current],.helios-journal__header nav a:focus-visible { opacity:1; border-bottom-color:#fff; }
+.helios-journal__stack { display:flex; flex-direction:column; gap:20px; padding:0 20px 60px; }
+.helios-journal__banner { position:relative; display:flex; justify-content:center; width:100%; height:80vh; min-height:500px; overflow:hidden; }
+.helios-journal__image { position:absolute; inset:0; }
+.helios-journal__image img,.helios-journal__film > video { width:100%; height:100%; object-fit:cover; filter:brightness(.7); transition:filter .5s; }
+.helios-journal__image:hover img { filter:brightness(.6); }
+.helios-journal__film > video { position:absolute; inset:0; }
+.helios-journal__caption { position:relative; z-index:1; width:min(100%,900px); min-width:0; padding:40px; text-align:center; pointer-events:none; }
+.helios-journal__caption a { pointer-events:auto; text-decoration:none; }
+.helios-journal__caption h2 { margin:0 0 10px; font-family:'Helios Futura',sans-serif; font-size:13px; font-weight:400; text-transform:uppercase; letter-spacing:.1em; }
+.helios-journal__caption p { font-size:clamp(1.8rem,4vw,3.5rem); text-transform:uppercase; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-bottom:10px; margin-bottom:10px; }
+.helios-journal__read { font-size:11px; letter-spacing:.2em; text-transform:uppercase; padding-bottom:5px; border-bottom:1px solid #ffffff60; }
+.helios-journal__pagination { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; padding:40px 0; }
+.helios-journal__pagination a,.helios-journal__pagination span { display:grid; place-items:center; min-width:44px; min-height:44px; border:1px solid #555; text-decoration:none; }
+.helios-journal__pagination [aria-current] { border-color:#fff; background:#fff; color:#000; }
+.helios-journal__dialog { position:fixed; inset:0; margin:0; padding:0; border:0; background:#000; color:#fff; width:100%; max-width:none; height:100dvh; max-height:none; }
+.helios-journal__dialog:not([open]) { display:none; }
+.helios-journal__dialog::backdrop { background:#000e; }
+.helios-journal__dialog video { display:block; width:100%; height:100%; object-fit:contain; }
+.helios-journal__dialog button { position:absolute; top:20px; right:20px; z-index:2; width:44px; height:44px; border:0; border-radius:50%; background:#fff; color:#000; font-size:28px; }
+html:has(.helios-journal__dialog[open]) { overflow:hidden; }
+.helios-journal-story { max-width:1000px; margin:auto; padding:40px 24px 80px; }
+.helios-journal-story h1 { font-size:clamp(24px,3vw,40px); margin:32px 0; overflow-wrap:anywhere; }
+.helios-journal-story__body { font-size:17px; line-height:1.8; overflow-wrap:anywhere; }
+.helios-journal-story__body img,.helios-journal-story__body video { display:block; width:100%; max-width:100%; height:auto; margin:24px auto; }
+.helios-journal-story__source { font-size:13px; padding-top:32px; }
+@media(max-width:1100px) { .helios-journal__header { flex-direction:column; align-items:flex-start; gap:16px; } .helios-journal__header nav { width:100%; gap:20px; } }
+@media(max-width:767.98px) { .helios-journal__stack { padding-inline:12px; gap:15px; } .helios-journal__banner { height:60vh; min-height:400px; } .helios-journal__caption { padding:30px 20px; } .helios-journal__caption h2 { font-size:11px; } .helios-journal__caption p { font-size:1.4rem; } }
+@media(prefers-reduced-motion:reduce) { .helios-journal__image img,.helios-journal__film > video,.helios-journal__header nav a { transition:none; } }

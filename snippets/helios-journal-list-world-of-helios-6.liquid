@@ -1,0 +1,15 @@
+{% capture source_title %}Concluding a Journey of Nearly 10 Years at HELIOS Le Thanh Nghi{% endcapture %}{% capture source_excerpt %}CLOSING A NEARLY 10-YEAR JOURNEY AT HELIOS LE THANH NGHI In August 2018, amidst the scorching Hanoi summer, HELIOS opened...{% endcapture %}
+{% render 'helios-journal-card', article: articles["world-of-helios/khep-lai-hanh-trinh-gan-10-nam-tai-helios-le-thanh-nghi"], source_title: source_title, source_excerpt: source_excerpt, source_image: "https://helios.vn/cdn/shop/articles/loi_cam_on_le_thanh_nghi_1x1_e4eb6ddb-fdc6-450f-836b-61b968c5fabd.jpg?v=1779422161&width=2000", source_asset: "", story_id: 51 %}
+{% capture source_title %}ELEPHANTS, MUSTARD FLOWERS, AND THE SUN GOD HELIOS{% endcapture %}{% capture source_excerpt %}THE ELEPHANT, THE MUSTARD GREEN, AND THE SUN GOD - HELIOS Chapter I: The Wandering Elephant of the Central Highlands...{% endcapture %}
+{% render 'helios-journal-card', article: articles["world-of-helios/voi-hoa-cai-va-than-mat-troi-helios"], source_title: source_title, source_excerpt: source_excerpt, source_image: "https://helios.vn/cdn/shop/articles/z7436098341567_a47cf536914ecad1bf94454b64bf65f2_ce0379f6-b905-417e-b5d0-8671df184305.jpg?v=1776911877&width=2000", source_asset: "", story_id: 52 %}
+{% capture source_title %}Patina: When Time Creates a Personal Mark on Your Jewelry{% endcapture %}{% capture source_excerpt %}In many people's minds, silver jewelry is most beautiful when it is always shiny and flawless. However, HELIOS believes that...{% endcapture %}
+{% render 'helios-journal-card', article: articles["world-of-helios/patina-khi-thoi-gian-tao-nen-dau-an-ca-nhan-cho-mon-trang-suc-cua-ban"], source_title: source_title, source_excerpt: source_excerpt, source_image: "https://helios.vn/cdn/shop/articles/IMG_7235_ae2008d3-542d-40a5-8103-6283e4b9501a.jpg?v=1776912240&width=2000", source_asset: "", story_id: 53 %}
+{% render 'helios-journal-film' %}
+<nav class="helios-journal__pagination" aria-label="{{ 'general.accessibility.pagination' | t | escape }}">
+{% capture page_url %}{% render 'helios-journal-url', category: 'world-of-helios', page_number: 1 %}{% endcapture %}<a href="{{ page_url | strip }}">1</a>
+{% capture page_url %}{% render 'helios-journal-url', category: 'world-of-helios', page_number: 2 %}{% endcapture %}<a href="{{ page_url | strip }}">2</a>
+{% capture page_url %}{% render 'helios-journal-url', category: 'world-of-helios', page_number: 3 %}{% endcapture %}<a href="{{ page_url | strip }}">3</a>
+{% capture page_url %}{% render 'helios-journal-url', category: 'world-of-helios', page_number: 4 %}{% endcapture %}<a href="{{ page_url | strip }}">4</a>
+{% capture page_url %}{% render 'helios-journal-url', category: 'world-of-helios', page_number: 5 %}{% endcapture %}<a href="{{ page_url | strip }}">5</a>
+<span aria-current="page">6</span>
+</nav>

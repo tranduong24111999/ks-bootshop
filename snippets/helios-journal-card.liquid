@@ -1,0 +1,20 @@
+{% liquid
+  assign headline = article.title | default: source_title
+  assign summary = article.excerpt_or_content | strip_html | truncate: 180
+  assign photo = source_image
+  if source_asset != blank
+    assign photo = source_asset | asset_url
+  endif
+  if article.image != blank
+    assign photo = article.image | image_url: width: 2000
+  endif
+  assign destination = article.url
+  if destination == blank
+    assign destination = routes.root_url | append: '?view=journal-story-' | append: story_id
+    assign summary = source_excerpt
+  endif
+%}
+<article class="helios-journal__banner">
+  <a class="helios-journal__image" href="{{ destination }}" aria-label="{{ headline | escape }}">{% if photo != blank %}<img src="{{ photo }}" width="2000" height="938" alt="{{ headline | escape }}" loading="lazy">{% endif %}</a>
+  <div class="helios-journal__caption"><h2><a href="{{ destination }}">{{ headline | escape }}</a></h2><p>{{ summary | escape }}</p><a class="helios-journal__read" href="{{ destination }}">{{ 'helios.collab_read' | t }}</a></div>
+</article>

@@ -2,7 +2,7 @@
 <section class="helios-collab" aria-labelledby="HeliosCollab-{{ section.id }}">
   <header class="helios-collab__header"><h1 id="HeliosCollab-{{ section.id }}">Collab</h1>
     <nav aria-label="{{ 'helios.collab_categories' | t | escape }}">
-      <a href="{{ routes.root_url }}#helios-story">World of Helios</a>
+      {% capture journal_url %}{% render 'helios-journal-url' %}{% endcapture %}<a href="{{ journal_url | strip }}">World of Helios</a>
       {% render 'helios-link', handle: 'nhan-bac-nam', label: 'NHẪN BẠC', query: 'nhẫn' %}
       {% render 'helios-link', handle: 'day-chuyen-bac-s925', label: 'DÂY CHUYỀN BẠC', query: 'dây chuyền' %}
       {% render 'helios-link', handle: 'vong-tay-bac-nam', label: 'VÒNG TAY BẠC', query: 'vòng tay' %}

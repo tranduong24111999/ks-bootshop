@@ -40,7 +40,7 @@
       </nav>
     </details>
     <nav class="helios-header__links" aria-label="{{ 'helios.discover' | t | escape }}">
-      <a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><details class="helios-discover" data-helios-disclosure><summary>DISCOVER</summary><nav aria-label="{{ 'helios.explore' | t | escape }}"><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ routes.collections_url }}">{{ 'helios.collections' | t }}</a>{% render 'helios-link', handle: '10-nam-ren-bac-magazine', label: 'TẠP CHÍ 10 NĂM', query: '10 năm', kind: 'page' %}</nav></details>
+      <a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><details class="helios-discover" data-helios-disclosure><summary>DISCOVER</summary><nav aria-label="{{ 'helios.explore' | t | escape }}">{% capture journal_url %}{% render 'helios-journal-url' %}{% endcapture %}<a href="{{ journal_url | strip }}">WORLD OF HELIOS</a><a href="{{ routes.root_url }}#helios-story">ABOUT HELIOS</a><a href="{{ routes.collections_url }}">{{ 'helios.collections' | t }}</a>{% render 'helios-link', handle: '10-nam-ren-bac-magazine', label: 'TẠP CHÍ 10 NĂM', query: '10 năm', kind: 'page' %}</nav></details>
     </nav>
     </div>
     <a class="helios-logo" href="{{ routes.root_url }}" aria-label="{{ 'helios.home' | t | escape }}">
