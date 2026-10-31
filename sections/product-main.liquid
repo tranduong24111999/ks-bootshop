@@ -4,6 +4,9 @@
 
 <section 
   id="product-main{{ product.id }}" 
+  data-helios-product-main
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle | escape }}"
   class="
     product-main
     {{ section.settings.bg_color }} 

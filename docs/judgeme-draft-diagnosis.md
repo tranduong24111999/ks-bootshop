@@ -38,3 +38,15 @@ Read-only GitHub inspection found Shopify's latest synchronization at `3f1ad7ba1
 6. Check browser Network/Console for failed Judge.me requests or blocked scripts. Confirm returned reviews belong to this product. Check another product to rule out a shared/mismatched widget ID; test desktop/mobile, sorting, pagination and media using the actual app.
 
 No Shopify theme publication, app moderation change or review import is performed by this fix.
+
+## Como-specific follow-up
+
+Requested product: Como Lotus Signet Helios Silver, handle `como-lotus-signet-helios-silver`. Its title/handle are present in the user-supplied 232-product catalog. The user reports 3 Published Product Reviews; that count has not been independently read from the app.
+
+The destination URL `https://0bs0d1-1e.myshopify.com/products/como-lotus-signet-helios-silver` still returns the password page. Its public `.js` endpoint returned no product JSON. Theme-list API authentication still fails with 401. The destination Shopify Product ID, assigned product template, actual Judge.me request/response and the rendering of those three real reviews therefore remain unverified. No source-store Product ID has been substituted.
+
+Product-main's app slot is rendered by `{% render block %}` inside the product purchase form. Keeping a full review widget there risks placing a review form inside the purchase form. The draft keeps only a native preview badge there; the full Review Widget is outside the form in an Apps section. This is a structural integration correction, not proof of the live Como symptom's root cause. `sample_data` is a verified configuration issue/preview selection; its effect on live traffic depends on Judge.me's app version and cannot be concluded from the template alone.
+
+Added read-only context markers to product-main and extended editor diagnostics to compare Product main, purchase form, native widget ID/handle and `/products/HANDLE` in the browser URL. No ID is rewritten and no real widget is reinitialized. Reexecuting the diagnostics script is guarded to avoid duplicate custom-element declarations during theme-editor reloads.
+
+Como regression uses the real catalog handle/title but an explicitly named `LOCAL_TEST_COMO_ID` and pre-existing local fixture markup. It verifies matching/mismatched main/form/widget contexts and repeat script loading, not the live Como Product ID or real Published reviews. The draft still requires a valid Theme Access connection and/or accessible draft preview before live acceptance can be claimed.

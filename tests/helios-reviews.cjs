@@ -42,6 +42,13 @@ async function main () {
   const legacyEmpty = await renderSection('legacy', { type: 'helios-product-reviews', settings: {} }, { product: { id: 123, metafields: {} } })
   assert(legacyEmpty.includes('Chưa có đánh giá') && !legacyEmpty.includes('5.00'))
   const pages = { '/a': htmlA, '/b': htmlB, '/hidden': await renderApps(a, widget('111', 0)), '/missing': await renderApps(a, '<!-- app not rendered -->') }
+  // Handle/title come from the supplied catalog. Product ID is an explicit local marker, NOT the unknown live Como ID.
+  const como = { id: 'LOCAL_TEST_COMO_ID', handle: 'como-lotus-signet-helios-silver', title: 'Como Lotus Signet Helios Silver' }
+  const mainSource = read('sections/product-main.liquid')
+  const attrs = mainSource.match(/data-helios-product-main[\s\S]*?(?=\s+class=)/)[0]
+  const mainContext = await engine.parseAndRender('<section ' + attrs + '><form action="/cart/add" data-productid="{{ product.id }}"></form></section>', { product: como })
+  pages['/products/' + como.handle] = mainContext + await renderApps(como, widget(como.id))
+
   const server = http.createServer((req, res) => {
     if (req.url.startsWith('/assets/')) {
       const file = path.join(root, req.url); if (!fs.existsSync(file)) { res.writeHead(404); res.end(); return }
@@ -79,9 +86,24 @@ async function main () {
     assert((await page.locator('[data-review-status]').textContent()).includes('Chưa tìm thấy Review Widget'))
     await page.locator('.helios-review-widget-mount').evaluate((el, html) => { el.innerHTML = html }, widget('111'))
     await page.waitForFunction(() => document.querySelector('[data-review-status]').textContent.includes('Widget gắn đúng Shopify Product ID 111'))
+    await page.goto(base + '/products/como-lotus-signet-helios-silver')
+    await page.locator('helios-review-diagnostics summary').click()
+    await page.addScriptTag({ url: base + '/assets/helios-review-diagnostics.js' })
+    assert.equal(await page.locator('.jdgm-review-widget').getAttribute('data-id'), 'LOCAL_TEST_COMO_ID')
+    assert.equal(await page.locator('[data-helios-product-main]').getAttribute('data-product-handle'), 'como-lotus-signet-helios-silver')
+    let status = await page.locator('[data-review-status]').textContent()
+    assert(status.includes('Context Product main: ID=LOCAL_TEST_COMO_ID; handle=como-lotus-signet-helios-silver'))
+    assert(!status.includes('SAI CONTEXT') && !status.includes('SAI HANDLE'))
+    await page.locator('[data-helios-product-main]').evaluate(el => { el.dataset.productId = 'WRONG_LOCAL_ID'; el.querySelector('form').dataset.productid = 'WRONG_FORM_ID' })
+    await page.locator('[data-review-check]').click()
+    status = await page.locator('[data-review-status]').textContent()
+    assert(status.includes('SAI CONTEXT:') && status.includes('SAI CONTEXT FORM:'))
+    await page.locator('.jdgm-review-widget').evaluate(el => { el.dataset.productHandle = 'wrong-product' })
+    await page.locator('[data-review-check]').click()
+    assert((await page.locator('[data-review-status]').textContent()).includes('SAI WIDGET HANDLE:'))
     await page.goto(base + '/public'); assert.equal(await page.locator('helios-review-diagnostics').count(), 0)
     assert.deepEqual(errors, [])
-    console.log('PASS: native app section, preserved app/embed IDs, product A/B binding, no duplicate manual widget, black styling and visible review rows at 390/1440px, missing/delayed/mismatched/duplicate widget diagnostics, hidden rows remain absent, diagnostics editor-only, zero runtime errors. Live Judge.me and Shopify not emulated.')
+    console.log('PASS: Como catalog handle / explicit local test ID and Product main/form/widget context diagnostics (live ID unverified); native app section, preserved app/embed IDs, product A/B binding, no duplicate manual widget, black styling and visible review rows at 390/1440px, missing/delayed/mismatched/duplicate widget diagnostics, hidden rows remain absent, diagnostics editor-only, zero runtime errors. Live Judge.me and Shopify not emulated.')
   } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)) }
 }
 main().catch(error => { console.error(error); process.exitCode = 1 })
