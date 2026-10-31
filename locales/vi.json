@@ -343,6 +343,9 @@
     "journal_story": "CÂU CHUYỆN",
     "journal_craft": "Nghệ thuật chế tác trang sức",
     "journal_watch": "Xem câu chuyện",
-    "journal_source": "Bài viết gốc trên HELIOS"
+    "journal_source": "Bài viết gốc trên HELIOS",
+    "customer_reviews": "Đánh giá của khách hàng",
+    "no_reviews": "Chưa có đánh giá cho sản phẩm này.",
+    "reviews_setup": "Thêm block Review Widget của Judge.me và bật App embed trong trình chỉnh sửa theme."
   }
 }

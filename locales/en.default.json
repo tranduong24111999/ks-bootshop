@@ -343,6 +343,9 @@
     "journal_story": "STORY",
     "journal_craft": "The art of jewelry craftsmanship",
     "journal_watch": "Watch story",
-    "journal_source": "Original article on HELIOS"
+    "journal_source": "Original article on HELIOS",
+    "customer_reviews": "Customer Reviews",
+    "no_reviews": "There are no reviews for this product yet.",
+    "reviews_setup": "Add the Judge.me Review Widget block and enable its app embed in the theme editor."
   }
 }

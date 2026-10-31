@@ -11,3 +11,7 @@ Routes: native `blogs.collab.url?view=collab` when available; explicitly chosen 
 UI labels and the fallback title/excerpt are supplied in vi/en/ko/ja. The full original article remains Vietnamese source content. Native Shopify article translations remain owned by Translate & Adapt; theme locale files do not translate blog records.
 
 `npm run test:helios-collab` covers native/fallback routes, header links, native article preservation, read-more/return navigation, decoded source images, and 390/1440px overflow. Tests use local blog fixtures without mutating Shopify. GitHub integration logs are needed to confirm Shopify saved the update.
+
+## Menu correction
+
+The user subsequently clarified that the COLLAB menu itself should open World of Helios. `helios-collab-url` now delegates to `helios-journal-url` for `world-of-helios`. The standalone Collab reference views remain available without replacing existing data.

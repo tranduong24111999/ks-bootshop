@@ -1,0 +1,29 @@
+/* Judge.me owns reviews, totals, filtering, submission and media. These rules only style its real widgets. */
+.helios-product-reviews { width:min(100%,1240px); margin:0 auto; padding:40px 20px 64px; color:#d2d2d2; background:#000; }
+.helios-product-reviews .jdgm-widget { --jdgm-primary-color:#f2f2f2!important; --jdgm-secondary-color:rgba(242,242,242,.12)!important; --jdgm-star-color:#f2f2f2!important; --jdgm-write-review-text-color:#fff; --jdgm-write-review-bg-color:#000; --jdgm-paginate-color:#fff; --jdgm-border-radius:0; color:#d2d2d2; }
+.helios-product-reviews .jdgm-rev-widg { margin:0; padding:0; border:0; }
+.helios-product-reviews .jdgm-rev-widg__title,.helios-product-reviews__empty h2 { color:#fff; text-align:center; font-family:'Helios Copperplate',serif; font-size:24px; margin:0 0 30px; }
+.helios-product-reviews .jdgm-rev-widg__header { text-align:center; }
+.helios-product-reviews .jdgm-rev-widg__summary,.helios-product-reviews .jdgm-histogram { margin-bottom:24px; }
+.helios-product-reviews .jdgm-star,.helios-product-reviews .jdgm-rev__rating { color:#f2f2f2; }
+.helios-product-reviews .jdgm-histogram__bar { background:#242424; height:6px; border-radius:5px; }
+.helios-product-reviews .jdgm-histogram__bar-content { background:#f2f2f2; border-radius:5px; }
+.helios-product-reviews .jdgm-histogram__frequency { color:#d2d2d2; }
+.helios-product-reviews .jdgm-write-rev-link,.helios-product-reviews .jdgm-btn { background:#000; color:#fff; border:1px solid #ddd; border-radius:4px; padding:12px 24px; font-family:'Helios Futura',sans-serif; }
+.helios-product-reviews .jdgm-write-rev-link:hover,.helios-product-reviews .jdgm-btn:hover { background:#fff; color:#000; }
+.helios-product-reviews .jdgm-gallery { padding-block:24px 32px; border-block:1px solid #262626; }
+.helios-product-reviews .jdgm-gallery__thumbnail-wrapper,.helios-product-reviews .jdgm-gallery__thumbnail { border-radius:4px; overflow:hidden; }
+.helios-product-reviews .jdgm-sort-dropdown-wrapper { margin:26px 0; }
+.helios-product-reviews .jdgm-sort-dropdown { background:#000; color:#fff; border:1px solid #aaa; padding:12px 32px 12px 20px; border-radius:0; font-family:'Helios Futura',sans-serif; }
+.helios-product-reviews .jdgm-rev { border-color:#262626; padding:28px 0; }
+.helios-product-reviews .jdgm-rev__author { color:#d2d2d2; }
+.helios-product-reviews .jdgm-rev__icon { border-radius:50%; }
+.helios-product-reviews .jdgm-rev__body { font-family:'Helios Futura',sans-serif; font-size:15px; line-height:1.6; margin-top:20px; }
+.helios-product-reviews .jdgm-rev__pics { margin-top:22px; }
+.helios-product-reviews .jdgm-rev__pic-link { border-radius:4px; overflow:hidden; }
+.helios-product-reviews .jdgm-form input:not([type=checkbox]):not([type=radio]),.helios-product-reviews .jdgm-form textarea { background:#080808; color:#fff; border:1px solid #777; padding:12px; border-radius:0; }
+.helios-product-reviews .jdgm-form label { color:#ddd; }
+.helios-product-reviews .jdgm-form input:focus-visible,.helios-product-reviews .jdgm-form textarea:focus-visible,.helios-product-reviews a:focus-visible,.helios-product-reviews button:focus-visible,.helios-product-reviews select:focus-visible { outline:2px solid #fab320; outline-offset:3px; }
+.helios-product-reviews__empty { text-align:center; padding:24px 0; }
+.helios-product-reviews__setup { border:1px dashed #777; padding:16px; font-size:14px; }
+@media(max-width:767.98px) { .helios-product-reviews { padding:30px 16px 48px; } .helios-product-reviews .jdgm-rev-widg__title { font-size:22px; } .helios-product-reviews .jdgm-rev__body { font-size:14px; } .helios-product-reviews .jdgm-write-rev-link { max-width:100%; } }

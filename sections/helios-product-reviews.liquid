@@ -1,0 +1,22 @@
+{{ 'helios-reviews.css' | asset_url | stylesheet_tag }}
+<section class="helios-product-reviews" aria-label="{{ 'helios.customer_reviews' | t | escape }}">
+  {% capture reviews_app %}{% for block in section.blocks %}{% render block %}{% endfor %}{% endcapture %}
+  {% assign app_markup = reviews_app | strip %}
+  {% if app_markup != blank %}
+    {{ reviews_app }}
+  {% elsif product.metafields.judgeme.widget != blank %}
+    <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-auto-install="false">{{ product.metafields.judgeme.widget }}</div>
+  {% else %}
+    <div class="helios-product-reviews__empty"><h2>{{ 'helios.customer_reviews' | t }}</h2><p>{{ 'helios.no_reviews' | t }}</p></div>
+    {% if request.design_mode %}<p class="helios-product-reviews__setup">{{ 'helios.reviews_setup' | t }}</p>{% endif %}
+  {% endif %}
+</section>
+{% schema %}
+{
+  "name": "HELIOS · Product reviews",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "HELIOS · Product reviews" }]
+}
+{% endschema %}

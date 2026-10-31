@@ -19,8 +19,10 @@ async function main () {
   assert(listing.includes('/?view=collab-story'))
   assert(listing.includes('/assets/helios-collab-interview.jpg'))
   assert(!listing.includes('href=""'))
-  assert.equal(await engine.renderFile('helios-collab-url', context), '/?view=collab')
-  assert.equal(await engine.renderFile('helios-collab-url', { ...context, blogs: { collab: { url: '/blogs/collab' } } }), '/blogs/collab?view=collab')
+  assert.equal(await engine.renderFile('helios-collab-url', context), '/?view=journal-world-of-helios-1')
+  const worldScope = { ...context, blogs: { 'world-of-helios': { url: '/blogs/world-of-helios' } } }
+  engine.options.globals = worldScope
+  assert.equal(await engine.renderFile('helios-collab-url', worldScope), '/blogs/world-of-helios?view=journal-world-of-helios-1')
   const native = await renderSection('native-collab', config, { blogs: { collab: { articles: [{ title: 'Existing store article', url: '/blogs/collab/existing', excerpt_or_content: 'Existing article content', image: { src: '/assets/helios-collab-interview.jpg' } }] } } })
   assert(native.includes('/blogs/collab/existing'))
   assert(!native.includes('?view=collab-story'))
@@ -30,7 +32,7 @@ async function main () {
   assert(story.includes('helios-collab-story-3.jpg'))
   const headerConfig = Object.values(JSON.parse(read('sections/header-group.json')).sections).find(x => x.type === 'helios-header')
   const header = await renderSection('collab-header', headerConfig)
-  assert(header.includes('href="/?view=collab">COLLAB'))
+  assert(header.includes('href="/?view=journal-world-of-helios-1">COLLAB'))
   const server = http.createServer((req, res) => {
     if (req.url.startsWith('/assets/')) {
       const file = path.join(root, req.url.split('?')[0]); if (!fs.existsSync(file)) { res.writeHead(404); res.end(); return }
@@ -58,7 +60,7 @@ async function main () {
         await image.scrollIntoViewIfNeeded()
         await image.evaluate(el => el.decode())
       }
-      await page.locator('.helios-collab-story > a').click(); await page.waitForURL('**/?view=collab')
+      await page.locator('.helios-collab-story > a').click(); await page.waitForURL('**/?view=journal-world-of-helios-1')
     }
     console.log('PASS: header/native-blog/fallback routes, existing articles preserved, reference banner, local story navigation and three decoded article images, 390/1440px no overflow')
   } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)) }

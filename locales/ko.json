@@ -343,6 +343,9 @@
     "journal_story": "이야기",
     "journal_craft": "주얼리 제작의 예술",
     "journal_watch": "영상 보기",
-    "journal_source": "HELIOS 원문 보기"
+    "journal_source": "HELIOS 원문 보기",
+    "customer_reviews": "고객 리뷰",
+    "no_reviews": "이 상품에는 아직 리뷰가 없습니다.",
+    "reviews_setup": "Judge.me Review Widget 블록을 추가하고 테마 편집기에서 앱 임베드를 활성화하세요."
   }
 }

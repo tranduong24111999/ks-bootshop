@@ -343,6 +343,9 @@
     "journal_story": "ストーリー",
     "journal_craft": "ジュエリー制作の芸術",
     "journal_watch": "ストーリーを見る",
-    "journal_source": "HELIOSの原文を読む"
+    "journal_source": "HELIOSの原文を読む",
+    "customer_reviews": "カスタマーレビュー",
+    "no_reviews": "この商品にはまだレビューがありません。",
+    "reviews_setup": "Judge.me Review Widgetブロックを追加し、テーマエディターでアプリ埋め込みを有効にしてください。"
   }
 }

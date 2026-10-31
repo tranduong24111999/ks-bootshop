@@ -1,1 +1,1 @@
-{%- if blogs['collab'].url != blank -%}{{- blogs['collab'].url -}}?view=collab{%- elsif selected_page.url != blank -%}{{- selected_page.url -}}?view=collab{%- else -%}{{- routes.root_url -}}?view=collab{%- endif -%}
+{%- render 'helios-journal-url', category: 'world-of-helios' -%}

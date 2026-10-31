@@ -9,7 +9,8 @@
     "test:helios-languages": "node tests/helios-languages.cjs",
     "test:helios-feedback": "node tests/helios-feedback.cjs",
     "test:helios-collab": "node tests/helios-collab.cjs",
-    "test:helios-journal": "node tests/helios-journal.cjs"
+    "test:helios-journal": "node tests/helios-journal.cjs",
+    "test:helios-reviews": "node tests/helios-reviews.cjs"
   },
   "watch": {
     "bs-scss": {
