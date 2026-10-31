@@ -5,7 +5,8 @@ const http = require('node:http')
 const { chromium } = require('playwright')
 const { engine, context, renderSection, read, root } = require('./helios-homepage.cjs')
 engine.registerFilter('stylesheet_tag', url => '<link rel="stylesheet" href="' + url + '">')
-const config = JSON.parse(read('templates/product.json')).sections['1710322973d29fae05']
+const productTemplate = JSON.parse(read('templates/product.json'))
+const config = Object.values(productTemplate.sections).find(section => section.type === 'apps' && section.settings.helios_product_reviews)
 // Shopify renders app blocks on its servers. Replace that single tag only in the local harness.
 async function renderApps (product, widget, editor = true) {
   const source = read('sections/apps.liquid').replace(/{% schema %}[\s\S]*?{% endschema %}/, '').replace('{% render block %}', '{{ block.fixture_markup }}')
@@ -20,7 +21,11 @@ async function main () {
   assert.equal(config.type, 'apps', 'Use standard Shopify app section')
   assert.equal(config.settings.helios_product_reviews, true)
   assert.equal(Object.values(config.blocks).filter(x => x.type.includes('/review_widget/')).length, 1)
-  assert(config.blocks.judge_me_reviews_review_widget_XNFVCT.type.includes('/judge-me-reviews/blocks/review_widget/'))
+  const reviewBlocks = Object.values(productTemplate.sections).filter(section => !section.disabled).flatMap(section => Object.values(section.blocks || {})).filter(block => block.type.includes('/judge-me-reviews/blocks/review_widget/'))
+  assert.equal(reviewBlocks.length, 1, 'Only one active full Review Widget across the whole template')
+  assert.equal(reviewBlocks[0].settings.review_data, 'real_data')
+  assert.equal(reviewBlocks[0].settings.show_shop_reviews, false)
+  assert.equal(productTemplate.sections['1710322973d29fae05'].disabled, true, 'Keep legacy empty section disabled')
   assert(!read('sections/apps.liquid').includes('capture reviews_app'))
   assert(!read('sections/apps.liquid').includes('metafields.judgeme.widget'), 'Do not render a second manual widget alongside the app block')
   const settings = JSON.parse(read('config/settings_data.json')).current

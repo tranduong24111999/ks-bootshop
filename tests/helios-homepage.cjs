@@ -40,7 +40,10 @@ for (const file of fs.readdirSync(path.join(root, 'sections')).filter(file => fi
 }
 const artifacts = process.env.HELIOS_TEST_ARTIFACTS || '/tmp/helios-test-artifacts'
 fs.mkdirSync(artifacts, { recursive: true })
-const read = file => fs.readFileSync(path.join(root, file), 'utf8')
+const read = file => {
+  const source = fs.readFileSync(path.join(root, file), 'utf8')
+  return file.endsWith('.json') ? source.replace(/^\s*\/\*[\s\S]*?\*\//, '') : source
+}
 const engine = new Liquid({ root: path.join(root, 'snippets'), extname: '.liquid' })
 engine.registerFilter('asset_url', name => '/assets/' + name)
 engine.registerFilter('url_encode', value => encodeURIComponent(value))
