@@ -1,3 +1,6 @@
+{% if page.handle == 'feedback' %}
+  {% section 'helios-feedback' %}
+{% else %}
 <article class="page py-10">
   <div class="container">
     <h1 class="title mb-4">
@@ -8,3 +11,4 @@
     </div>
   </div>
 </article>
+{% endif %}

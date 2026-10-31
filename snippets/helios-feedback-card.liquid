@@ -1,0 +1,30 @@
+{% liquid
+  assign destination = profile | default: 'https://helios.vn/pages/feedback'
+  assign photo = artwork | asset_url
+  if image != blank
+    assign photo = image | image_url: width: 900
+  endif
+  assign photo_alt = caption | default: 'HELIOS'
+%}
+<article class="helios-feedback__card" {{ attributes }}>
+  <div class="helios-feedback__visual">
+    <a class="helios-feedback__image" href="{{ destination | escape }}" target="_blank" rel="noopener"><img src="{{ photo }}" width="900" height="1200" alt="{{ photo_alt | escape }}" loading="lazy"></a>
+    {% if selected_product != blank or handles.size > 0 %}
+      <div class="helios-feedback__products">
+        {% if selected_product != blank %}
+          <a href="{{ selected_product.url }}">{% if selected_product.featured_image != blank %}<img src="{{ selected_product.featured_image | image_url: width: 120 }}" width="60" height="60" alt="" loading="lazy">{% endif %}{{ selected_product.title | escape }}</a>
+        {% else %}
+          {% for handle in handles %}
+            {% assign linked_product = all_products[handle] %}
+            {% if linked_product != blank %}
+              <a href="{{ linked_product.url }}">{% if linked_product.featured_image != blank %}<img src="{{ linked_product.featured_image | image_url: width: 120 }}" width="60" height="60" alt="" loading="lazy">{% endif %}{{ linked_product.title | escape }}</a>
+            {% else %}
+              {% assign search_term = handle | replace: '-', ' ' | url_encode %}<a href="{{ routes.search_url }}?type=product&amp;q={{ search_term }}">{{ 'helios.feedback_product' | t }}</a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <a class="helios-feedback__caption" href="{{ destination | escape }}" target="_blank" rel="noopener"><img src="{{ photo }}" width="40" height="40" alt="" loading="lazy"><span>{{ caption | escape }}</span></a>
+</article>

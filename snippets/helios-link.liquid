@@ -5,6 +5,12 @@
   else
     assign destination = collections[handle].url
   endif
+  if kind == 'page' and handle == 'feedback'
+    capture destination
+      render 'helios-feedback-url'
+    endcapture
+    assign destination = destination | strip
+  endif
   if destination == blank
     if query == blank
       assign destination = routes.all_products_collection_url

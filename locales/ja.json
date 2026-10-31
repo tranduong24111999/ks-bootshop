@@ -321,6 +321,11 @@
     "new_badge": "新着",
     "craft_image": "HELIOSのものづくりを知る",
     "store_image": "HELIOSの店舗",
-    "language_unpublished": "未設定"
+    "language_unpublished": "未設定",
+    "feedback_community": "HELIOS コミュニティ",
+    "feedback_description": "HELIOSコミュニティの写真",
+    "feedback_product": "商品を見る",
+    "feedback_source": "HELIOSコミュニティを見る",
+    "home_short": "ホーム"
   }
 }

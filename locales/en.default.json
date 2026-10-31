@@ -321,6 +321,11 @@
     "new_badge": "NEW",
     "craft_image": "Discover HELIOS craftsmanship",
     "store_image": "HELIOS stores",
-    "language_unpublished": "Not enabled"
+    "language_unpublished": "Not enabled",
+    "feedback_community": "HELIOS COMMUNITY",
+    "feedback_description": "Images from the HELIOS community",
+    "feedback_product": "View product",
+    "feedback_source": "Explore the HELIOS community",
+    "home_short": "Home"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "feedback": {
+      "type": "helios-feedback",
+      "settings": {}
+    }
+  },
+  "order": [
+    "feedback"
+  ]
+}

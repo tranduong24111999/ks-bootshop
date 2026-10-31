@@ -42,7 +42,7 @@
   {% endif %}
 </head>
 
-<body class="helios-theme {{ request.page_type | prepend: 'page-type-' }}">
+<body class="helios-theme {% if template.suffix == 'feedback' %}page-type-feedback{% else %}{{ request.page_type | prepend: 'page-type-' }}{% endif %}">
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>

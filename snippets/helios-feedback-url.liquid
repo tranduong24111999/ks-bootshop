@@ -1,0 +1,2 @@
+{%- assign feedback_page = selected_page | default: pages['feedback'] -%}
+{%- if feedback_page.url != blank -%}{{- feedback_page.url -}}?view=feedback{%- else -%}{{- routes.root_url -}}?view=feedback{%- endif -%}

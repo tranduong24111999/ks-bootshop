@@ -1,11 +1,11 @@
 {% liquid
   assign main_menu = section.settings.menu
-  assign feedback_url = section.settings.feedback_page.url | default: pages['feedback'].url
+  capture feedback_url
+    render 'helios-feedback-url', selected_page: section.settings.feedback_page
+  endcapture
+  assign feedback_url = feedback_url | strip
   assign collab_url = section.settings.collab_page.url | default: pages['helios-partnership'].url
   assign stores_url = section.settings.stores_page.url | default: pages['he-thong-cua-hang'].url
-  if feedback_url == blank
-    assign feedback_url = routes.search_url | append: '?type=page&q=feedback'
-  endif
   if collab_url == blank
     assign collab_url = routes.search_url | append: '?type=page&q=collab'
   endif

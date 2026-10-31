@@ -1,0 +1,25 @@
+.helios-feedback { max-width:1600px; margin:auto; padding:16px 20px 70px; color:#d2d2d2; }
+.helios-feedback__breadcrumbs { display:flex; gap:12px; font-size:13px; margin-bottom:32px; }
+.helios-feedback h1 { text-align:center; font-size:clamp(28px,3vw,40px); margin:24px 0 40px; }
+.helios-feedback__intro { max-width:850px; margin:0 auto 32px; }
+.helios-feedback__grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:40px 12px; }
+.helios-feedback__card { min-width:0; }
+.helios-feedback__visual { position:relative; overflow:hidden; }
+.helios-feedback__image { display:block; }
+.helios-feedback__image > img { display:block; width:100%; height:500px; object-fit:cover; }
+.helios-feedback__products { display:flex; align-items:center; gap:12px; padding:12px; position:absolute; bottom:0; left:0; width:100%; background:#000; transform:translateY(100%); visibility:hidden; transition:transform .5s ease,visibility .5s; }
+.helios-feedback__visual:hover .helios-feedback__products,.helios-feedback__visual:focus-within .helios-feedback__products { transform:translateY(0); visibility:visible; }
+.helios-feedback__products a { display:flex; align-items:center; gap:10px; font-size:12px; }
+.helios-feedback__products img { width:60px; height:60px; object-fit:cover; }
+.helios-feedback__caption { display:flex; align-items:center; gap:12px; padding-top:15px; font-size:14px; }
+.helios-feedback__caption > img { width:40px; height:40px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+.helios-feedback__source { margin:40px 0 0; text-align:center; font-size:13px; }
+@media(max-width:767.98px) {
+ .helios-feedback { padding-inline:12px; }
+ .helios-feedback__grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 10px; }
+ .helios-feedback__image > img { height:250px; }
+ .helios-feedback__caption { font-size:12px; gap:8px; align-items:flex-start; }
+ .helios-feedback__caption > img { width:32px; height:32px; }
+ .helios-feedback__products { position:static; transform:none; visibility:visible; padding:8px; }
+}
+@media(prefers-reduced-motion:reduce) { .helios-feedback__products { transition:none; } }

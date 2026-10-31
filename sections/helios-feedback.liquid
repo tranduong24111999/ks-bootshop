@@ -1,0 +1,30 @@
+{{ 'helios-feedback.css' | asset_url | stylesheet_tag }}
+<section class="helios-feedback" aria-labelledby="HeliosFeedback-{{ section.id }}">
+  <nav class="helios-feedback__breadcrumbs" aria-label="{{ 'general.accessibility.pagination' | t | escape }}"><a href="{{ routes.root_url }}">{{ 'helios.home_short' | t }}</a><span aria-hidden="true">/</span><span aria-current="page">Feedback</span></nav>
+  <h1 id="HeliosFeedback-{{ section.id }}">Feedback</h1>
+  {% if page.content != blank %}<div class="helios-feedback__intro rte">{{ page.content }}</div>{% endif %}
+  <div class="helios-feedback__grid">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.settings.image != blank %}{% render 'helios-feedback-card', image: block.settings.image, caption: block.settings.caption, profile: block.settings.profile, selected_product: block.settings.product, attributes: block.shopify_attributes %}{% endif %}
+      {% endfor %}
+    {% else %}
+      {% render 'helios-feedback-defaults' %}
+    {% endif %}
+  </div>
+  {% if section.blocks.size == 0 %}<p class="helios-feedback__source"><a href="https://helios.vn/pages/feedback" target="_blank" rel="noopener">{{ 'helios.feedback_source' | t }} ↗</a></p>{% endif %}
+</section>
+{% schema %}
+{
+  "name": "HELIOS · Feedback",
+  "enabled_on": { "templates": ["index", "page"] },
+  "settings": [],
+  "blocks": [{ "type": "image", "name": "Ảnh cộng đồng", "settings": [
+    { "type": "image_picker", "id": "image", "label": "Ảnh đã được phép sử dụng" },
+    { "type": "text", "id": "caption", "label": "Tên / chú thích thật" },
+    { "type": "url", "id": "profile", "label": "Liên kết bài đăng / trang cá nhân" },
+    { "type": "product", "id": "product", "label": "Sản phẩm có trong ảnh" }
+  ] }],
+  "presets": [{ "name": "HELIOS · Feedback" }]
+}
+{% endschema %}
