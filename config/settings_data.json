@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#0d6efd",
@@ -6,8 +15,8 @@
     "color_body_color": "#212529",
     "container_max_width": 1350,
     "border_radius": 0.3,
-    "logo": "shopify:\/\/shop_images\/logo.png",
-    "favicon": "shopify:\/\/shop_images\/favicon.png",
+    "logo": "shopify://shop_images/logo.png",
+    "favicon": "shopify://shop_images/favicon.png",
     "font_body": "sans-serif",
     "font_headings": "ubuntu_n4",
     "btn_text_transform": "none",
@@ -49,7 +58,7 @@
     "social_x": "#",
     "social_tiktok": "#",
     "social_youtube": "#",
-    "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
+    "checkout_logo_image": "shopify://shop_images/logo.png",
     "checkout_logo_size": "small",
     "checkout_accent_color": "#dc3545",
     "checkout_button_color": "#dc3545",
@@ -90,7 +99,7 @@
     "content_for_index": [],
     "blocks": {
       "14060646107696862457": {
-        "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
       }
