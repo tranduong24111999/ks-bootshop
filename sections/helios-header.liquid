@@ -47,7 +47,7 @@
       {% if section.settings.logo != blank %}
         {{ section.settings.logo | image_url: width: 500 | image_tag: width: 220, loading: 'eager', alt: 'WES FREED' }}
       {% else %}
-        <img class="wes-freed-logo" src="{{ 'wes-freed-logo.png' | asset_url }}" alt="WES FREED — Jewelry & Accessories" width="1774" height="887" loading="eager">
+        <img class="wes-freed-logo" src="{{ 'wes-freed-header-logo.png' | asset_url }}" style="--wes-freed-mask: url('{{ 'wes-freed-header-logo.png' | asset_url }}');" alt="WES FREED" width="2048" height="683" loading="eager">
       {% endif %}
     </a>
     <div class="helios-header__actions">
