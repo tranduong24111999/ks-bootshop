@@ -316,3 +316,8 @@
 .helios-language__options button:disabled { opacity:.5; cursor:not-allowed; background:transparent; }
 .helios-language__options small { display:block; font-size:10px; }
 @media(max-width:767.98px) { .helios-header__actions > .helios-language { display:none; } }
+/* Keep the taller WES FREED lockup within the existing header. */
+.helios-logo img.wes-freed-logo { width:150px; height:54px; object-fit:contain; mix-blend-mode:screen; }
+@media (max-width:767px) {
+ .helios-logo img.wes-freed-logo { width:120px; height:42px; }
+}
