@@ -34,12 +34,12 @@
 {%- when 'Địa chỉ email' -%}{{- 'helios.email' | t -}}
 {%- when 'Email của bạn' -%}{{- 'helios.your_email' | t -}}
 {%- when 'Đăng ký nhận tin' -%}{{- 'helios.subscribe' | t -}}
-{%- when 'Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.' -%}{{- 'helios.thanks' | t -}}
+{%- when 'Cảm ơn bạn đã đăng ký nhận tin từ HELIOS.' or 'Cảm ơn bạn đã đăng ký nhận tin từ WES FREED.' -%}{{- 'helios.thanks' | t -}}
 {%- when 'KẾT NỐI VỚI CHÚNG TÔI' -%}{{- 'helios.connect' | t -}}
 {%- when 'CHĂM SÓC KHÁCH HÀNG' -%}{{- 'helios.support' | t -}}
 {%- when 'VỀ CHÚNG TÔI' -%}{{- 'helios.about' | t -}}
 {%- when 'DÀNH CHO KHÁCH HÀNG' -%}{{- 'helios.customers' | t -}}
-{%- when 'Câu chuyện của Helios' -%}{{- 'helios.story' | t -}}
+{%- when 'Câu chuyện của Helios' or 'Câu chuyện của WES FREED' -%}{{- 'helios.story' | t -}}
 {%- when 'Hướng dẫn thanh toán' -%}{{- 'helios.payment' | t -}}
 {%- when 'Chính sách giao hàng' -%}{{- 'helios.shipping' | t -}}
 {%- when 'Chính sách bảo hành' -%}{{- 'helios.warranty' | t -}}
@@ -57,7 +57,7 @@
 {%- when 'Câu Hỏi Thường Gặp!' -%}{{- 'helios.faq' | t -}}
 {%- when '10 NĂM RÈN BẠC - MỘT ĐỜI TẠC BẢN LĨNH' -%}{{- 'helios.film_heading' | t -}}
 {%- when 'ĐÁNH SÁNG TRỌN ĐỜI' -%}{{- 'helios.announcement_one' | t -}}
-{%- when 'HELIOS LÀM DẤU ẤN CỦA BẢN LĨNH' -%}{{- 'helios.announcement_two' | t -}}
+{%- when 'HELIOS LÀM DẤU ẤN CỦA BẢN LĨNH' or 'WES FREED LÀM DẤU ẤN CỦA BẢN LĨNH' -%}{{- 'helios.announcement_two' | t -}}
 {%- when 'Xem tất cả' -%}{{- 'helios.view_all' | t -}}
 {%- when 'Thông tin sản phẩm' -%}{{- 'helios.product_info' | t -}}
 {%- when 'Phóng to ảnh sản phẩm' -%}{{- 'helios.zoom' | t -}}
@@ -81,15 +81,15 @@
 {%- when 'SẢN PHẨM MỚI' -%}{{- 'helios.new_products' | t -}}
 {%- when 'NHẪN BẠC NAM' -%}{{- 'helios.mens_rings' | t -}}
 {%- when 'TẠP CHÍ 10 NĂM' -%}{{- 'helios.magazine' | t -}}
-{%- when 'Helios có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?' -%}{{- 'helios.faq_custom' | t -}}
-{%- when 'Helios có thu mua sản phẩm cũ không?' -%}{{- 'helios.faq_old' | t -}}
+{%- when 'Helios có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?' or 'WES FREED có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?' -%}{{- 'helios.faq_custom' | t -}}
+{%- when 'Helios có thu mua sản phẩm cũ không?' or 'WES FREED có thu mua sản phẩm cũ không?' -%}{{- 'helios.faq_old' | t -}}
 {%- when 'Sau bao lâu tôi sẽ nhận được hàng?' -%}{{- 'helios.faq_delivery' | t -}}
-{%- when 'Sản phẩm nhẫn của Helios có thể tăng hoặc hạ size không?' -%}{{- 'helios.faq_resize' | t -}}
-{%- when 'Helios có cung cấp dịch vụ gói quà không?' -%}{{- 'helios.faq_gift' | t -}}
-{%- when '<p>Vui lòng liên hệ HELIOS để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>' -%}{{- 'helios.faq_custom_answer' | t -}}
+{%- when 'Sản phẩm nhẫn của Helios có thể tăng hoặc hạ size không?' or 'Sản phẩm nhẫn của WES FREED có thể tăng hoặc hạ size không?' -%}{{- 'helios.faq_resize' | t -}}
+{%- when 'Helios có cung cấp dịch vụ gói quà không?' or 'WES FREED có cung cấp dịch vụ gói quà không?' -%}{{- 'helios.faq_gift' | t -}}
+{%- when '<p>Vui lòng liên hệ HELIOS để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>' or '<p>Vui lòng liên hệ WES FREED để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>' -%}{{- 'helios.faq_custom_answer' | t -}}
 {%- when '<p>Vui lòng liên hệ bộ phận chăm sóc khách hàng để kiểm tra chính sách áp dụng cho sản phẩm của bạn.</p>' -%}{{- 'helios.faq_old_answer' | t -}}
-{%- when '<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ HELIOS để xác nhận.</p>' -%}{{- 'helios.faq_delivery_answer' | t -}}
-{%- when '<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ HELIOS để được tư vấn về phạm vi, chi phí áp dụng.</p>' -%}{{- 'helios.faq_resize_answer' | t -}}
+{%- when '<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ HELIOS để xác nhận.</p>' or '<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ WES FREED để xác nhận.</p>' -%}{{- 'helios.faq_delivery_answer' | t -}}
+{%- when '<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ HELIOS để được tư vấn về phạm vi, chi phí áp dụng.</p>' or '<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ WES FREED để được tư vấn về phạm vi, chi phí áp dụng.</p>' -%}{{- 'helios.faq_resize_answer' | t -}}
 {%- when '<p>Nếu cần thiệp hoặc đóng gói quà, vui lòng trao đổi với bộ phận chăm sóc khách hàng trước khi đặt đơn.</p>' -%}{{- 'helios.faq_gift_answer' | t -}}
 {%- when '<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Việt, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>' -%}{{- 'helios.film_description' | t -}}
 {%- else -%}{%- if html -%}{{- value -}}{%- else -%}{{- value | escape -}}{%- endif -%}

@@ -38,7 +38,7 @@
 {% elsif request.design_mode %}<p class="helios-editor-notice">Cần ít nhất một sản phẩm khác đã xuất bản để hiển thị gợi ý.</p>{% endif %}
 {% schema %}
 {
-  "name": "HELIOS · Gợi ý",
+  "name": "WES FREED · Gợi ý",
   "enabled_on": { "templates": ["product"] },
   "settings": [
     { "type": "checkbox", "id": "media_motion", "label": "Chuyển động ảnh/video sản phẩm", "default": true },
@@ -47,6 +47,6 @@
     { "type": "collection", "id": "collection", "label": "Bộ sưu tập dự phòng" },
     { "type": "range", "id": "limit", "label": "Số sản phẩm tối đa", "min": 4, "max": 8, "step": 1, "default": 8 }
   ],
-  "presets": [{ "name": "HELIOS · Gợi ý" }]
+  "presets": [{ "name": "WES FREED · Gợi ý" }]
 }
 {% endschema %}

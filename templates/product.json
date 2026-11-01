@@ -291,15 +291,15 @@
         "question_1": {
           "type": "question",
           "settings": {
-            "question": "Helios có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?",
-            "answer": "<p>Vui lòng liên hệ HELIOS để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>",
+            "question": "WES FREED có nhận thiết kế/custom riêng sản phẩm theo yêu cầu không?",
+            "answer": "<p>Vui lòng liên hệ WES FREED để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>",
             "page": ""
           }
         },
         "question_2": {
           "type": "question",
           "settings": {
-            "question": "Helios có thu mua sản phẩm cũ không?",
+            "question": "WES FREED có thu mua sản phẩm cũ không?",
             "answer": "<p>Vui lòng liên hệ bộ phận chăm sóc khách hàng để kiểm tra chính sách áp dụng cho sản phẩm của bạn.</p>",
             "page": ""
           }
@@ -308,22 +308,22 @@
           "type": "question",
           "settings": {
             "question": "Sau bao lâu tôi sẽ nhận được hàng?",
-            "answer": "<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ HELIOS để xác nhận.</p>",
+            "answer": "<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ WES FREED để xác nhận.</p>",
             "page": ""
           }
         },
         "question_4": {
           "type": "question",
           "settings": {
-            "question": "Sản phẩm nhẫn của Helios có thể tăng hoặc hạ size không?",
-            "answer": "<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ HELIOS để được tư vấn về phạm vi, chi phí áp dụng.</p>",
+            "question": "Sản phẩm nhẫn của WES FREED có thể tăng hoặc hạ size không?",
+            "answer": "<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ WES FREED để được tư vấn về phạm vi, chi phí áp dụng.</p>",
             "page": ""
           }
         },
         "question_5": {
           "type": "question",
           "settings": {
-            "question": "Helios có cung cấp dịch vụ gói quà không?",
+            "question": "WES FREED có cung cấp dịch vụ gói quà không?",
             "answer": "<p>Nếu cần thiệp hoặc đóng gói quà, vui lòng trao đổi với bộ phận chăm sóc khách hàng trước khi đặt đơn.</p>",
             "page": ""
           }

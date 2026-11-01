@@ -1,6 +1,6 @@
 {
   "type": "header",
-  "name": "HELIOS Header",
+  "name": "WES FREED Header",
   "sections": {
     "helios_header": {
       "type": "helios-header",

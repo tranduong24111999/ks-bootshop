@@ -28,23 +28,23 @@
       <nav aria-label="{{ 'helios.about_nav' | t | escape }}"><h2>{{ 'helios.about' | t }}</h2>
         <a href="{{ routes.root_url }}#helios-story">{{ 'helios.story' | t }}</a>
         {% assign about_handles = 'he-thong-cua-hang|helios-tuyen-dung|membership-by-helios|quy-trinh-phat-trien-san-pham|helios-partnership' | split: '|' %}
-        {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by Helios|Xưởng Online|Collab' | split: '|' %}
+        {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by WES FREED|Xưởng Online|Collab' | split: '|' %}
         {% for handle in about_handles %}{% assign label = about_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
       </nav>
       <nav aria-label="{{ 'helios.customers_nav' | t | escape }}"><h2>{{ 'helios.customers' | t }}</h2>
         {% if blogs['news'].url != blank %}<a href="{{ blogs['news'].url }}">Blog</a>{% else %}<a href="{{ routes.search_url }}?type=article&amp;q=helios">Blog</a>{% endif %}
         {% render 'helios-link', kind: 'page', handle: 'huong-dan-bao-quan', label: 'Hướng dẫn bảo quản sản phẩm', query: 'bảo quản' %}
         {% render 'helios-link', kind: 'page', handle: 'size-chart', label: 'Hướng dẫn đo Size', query: 'size' %}
-        {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'Helios Partnership', query: 'partnership' %}
+        {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'WES FREED Partnership', query: 'partnership' %}
         {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'helios.contact' | t }}</a>{% endif %}
       </nav>
     </div>
-    <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} HELIOS. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>
+    <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} WES FREED. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>
   </div>
 </footer>
 {% schema %}
 {
-  "name": "HELIOS · Footer",
+  "name": "WES FREED · Footer",
   "limit": 1,
   "enabled_on": {
     "groups": [

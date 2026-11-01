@@ -55,20 +55,20 @@
 </helios-carousel>
 {% schema %}
 {
-  "name": "HELIOS · Banner",
+  "name": "WES FREED · Banner",
   "enabled_on": { "templates": ["index"] },
   "max_blocks": 5,
-  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề trang", "default": "HELIOS — Dấu ấn của bản lĩnh" }, { "type": "range", "id": "autoplay", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 7, "label": "Tự chuyển banner (0: tắt)" }],
+  "settings": [{ "type": "text", "id": "heading", "label": "Tiêu đề trang", "default": "WES FREED — Dấu ấn của bản lĩnh" }, { "type": "range", "id": "autoplay", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 7, "label": "Tự chuyển banner (0: tắt)" }],
   "blocks": [{
     "type": "slide", "name": "Banner",
     "settings": [
-      { "type": "text", "id": "title", "label": "Mô tả banner", "default": "HELIOS Signature Collections" },
-      { "type": "select", "id": "artwork", "label": "Ảnh HELIOS có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }], "default": "signature" },
+      { "type": "text", "id": "title", "label": "Mô tả banner", "default": "WES FREED Signature Collections" },
+      { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }], "default": "signature" },
       { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
       { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
       { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }
     ]
   }],
-  "presets": [{ "name": "HELIOS · Banner", "blocks": [{ "type": "slide" }] }]
+  "presets": [{ "name": "WES FREED · Banner", "blocks": [{ "type": "slide" }] }]
 }
 {% endschema %}
