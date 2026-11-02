@@ -3,6 +3,7 @@
   <div class="helios-hero__slides">
     {% for block in section.blocks %}
       {% liquid
+        assign motion_asset = blank
         assign desktop_asset = 'helios-hero-desktop.jpg'
         assign mobile_asset = 'helios-hero-mobile.jpg'
         assign desktop_width = 1900
@@ -15,6 +16,14 @@
           assign mobile_asset = 'helios-bird-mobile.webp'
           assign desktop_width = 1592
           assign desktop_height = 754
+        endif
+        if block.settings.artwork contains 'korean-'
+          assign motion_name = block.settings.artwork | remove: 'korean-'
+          assign motion_asset = 'wes-hero-' | append: motion_name | append: '.mp4'
+          assign desktop_asset = 'wes-hero-' | append: motion_name | append: '.jpg'
+          assign mobile_asset = desktop_asset
+          assign desktop_width = 1600
+          assign desktop_height = 758
         endif
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
         assign image_alt = block.settings.title
@@ -37,6 +46,11 @@
               <img src="{{ desktop_asset | asset_url }}" alt="{{ image_alt | escape }}" width="{{ desktop_width }}" height="{{ desktop_height }}" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
             {% endif %}
           </picture>
+          {% if motion_asset != blank %}
+            <video class="wes-hero-motion" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
+              <source data-src="{{ motion_asset | asset_url }}" type="video/mp4">
+            </video>
+          {% endif %}
           <span class="helios-hero__title" hidden>{% render 'helios-text', value: block.settings.title %}</span>
           <span class="helios-hero__cta" hidden>KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
         </a>
@@ -63,7 +77,7 @@
     "type": "slide", "name": "Banner",
     "settings": [
       { "type": "text", "id": "title", "label": "Mô tả banner", "default": "WES FREED Signature Collections" },
-      { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }], "default": "signature" },
+      { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }, { "value": "korean-silver", "label": "Korean · Silver" }, { "value": "korean-pearls", "label": "Korean · Pearls" }, { "value": "korean-gold", "label": "Korean · Gold" }], "default": "signature" },
       { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
       { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
       { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }

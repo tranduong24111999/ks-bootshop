@@ -43,7 +43,38 @@ class HeliosCarousel extends HTMLElement {
       if (index >= 0) { this.editorPaused = true; this.show(index) }
     }, { signal })
     document.addEventListener('shopify:block:deselect', () => { this.editorPaused = false; this.updateAutoplay() }, { signal })
+    this.heroVisible = true
+    this.videoObserver?.disconnect()
+    if (this.querySelector('[data-hero-video]')) {
+      this.heroVisible = false
+      this.videoObserver = new IntersectionObserver(entries => {
+        this.heroVisible = entries[0].isIntersecting
+        this.syncVideos()
+      })
+      this.videoObserver.observe(this)
+      this.querySelectorAll('[data-hero-video]').forEach(video => {
+        video.addEventListener('playing', () => video.classList.add('is-ready'), { signal })
+        video.addEventListener('error', () => video.classList.remove('is-ready'), { signal })
+      })
+    }
     this.updateAutoplay()
+  }
+
+  syncVideos () {
+    this.slides.forEach((slide, index) => {
+      const video = slide.querySelector('[data-hero-video]')
+      if (!video) return
+      const play = index === this.index && this.heroVisible && !this.paused && !this.focused && !this.editorPaused && !document.hidden && !this.motion.matches && !navigator.connection?.saveData
+      if (!play) { video.pause(); return }
+      const source = video.querySelector('source[data-src]')
+      if (source) {
+        source.src = source.dataset.src
+        source.removeAttribute('data-src')
+        video.load()
+      }
+      video.muted = true
+      video.play().catch(() => video.classList.remove('is-ready'))
+    })
   }
 
   show (index, automatic = false) {
@@ -87,6 +118,7 @@ class HeliosCarousel extends HTMLElement {
 
   updateAutoplay () {
     window.clearInterval(this.timer)
+    this.syncVideos()
     const eligible = this.interval > 0 && this.slides.length > 1 && !this.motion.matches
     const toggle = this.querySelector('[data-helios-toggle]')
     if (toggle) {
@@ -108,6 +140,8 @@ class HeliosCarousel extends HTMLElement {
     this.transition?.cancel()
     this.exitTransition?.cancel()
     this.controller?.abort()
+    this.videoObserver?.disconnect()
+    this.querySelectorAll('[data-hero-video]').forEach(video => video.pause())
   }
 }
 if (!customElements.get('helios-carousel')) customElements.define('helios-carousel', HeliosCarousel)

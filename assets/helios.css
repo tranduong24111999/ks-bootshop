@@ -324,3 +324,8 @@
 @media (min-width:375px) and (max-width:767px) {
  .helios-logo img.wes-freed-logo { width:180px; }
 }
+
+/* Videos sit over their static fallback and never receive pointer events. */
+.helios-hero .wes-hero-motion { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; opacity:0; }
+.helios-hero .wes-hero-motion.is-ready { opacity:1; }
+@media (prefers-reduced-motion:reduce) { .helios-hero .wes-hero-motion { display:none; } }

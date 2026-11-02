@@ -6,22 +6,22 @@
         "jack": {
           "type": "slide",
           "settings": {
-            "title": "Withered Jack Pendant",
-            "artwork": "jack"
+            "title": "WES FREED — Minimal Silver",
+            "artwork": "korean-silver"
           }
         },
         "signature": {
           "type": "slide",
           "settings": {
-            "title": "WES FREED Signature Collections",
-            "artwork": "signature"
+            "title": "WES FREED — Modern Pearls",
+            "artwork": "korean-pearls"
           }
         },
         "bird": {
           "type": "slide",
           "settings": {
-            "title": "Chu Tước — Vermilion Bird",
-            "artwork": "bird"
+            "title": "WES FREED — Everyday Gold",
+            "artwork": "korean-gold"
           }
         }
       },
