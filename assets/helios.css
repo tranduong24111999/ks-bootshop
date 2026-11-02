@@ -329,3 +329,72 @@
 .helios-hero .wes-hero-motion { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; opacity:0; }
 .helios-hero .wes-hero-motion.is-ready { opacity:1; }
 @media (prefers-reduced-motion:reduce) { .helios-hero .wes-hero-motion { display:none; } }
+
+/* WES FREED: warm white, quiet typography and soft editorial transitions. */
+.helios-theme { --bs-body-bg:#faf9f6; --bs-body-bg-rgb:250,249,246; --bs-body-color:#282621; --bs-body-color-rgb:40,38,33; --bs-primary:#282621; --bs-primary-rgb:40,38,33; --bs-secondary:#e9e5de; --bs-secondary-rgb:233,229,222; --bs-headings-font-family:'Helios Futura',sans-serif; background:#faf9f6; color:#282621; }
+.helios-theme h1,.helios-theme h2,.helios-theme h3,.helios-theme h4,.helios-theme h5,.helios-theme h6 { font-family:'Helios Futura',sans-serif; font-weight:400; letter-spacing:.08em; }
+.helios-theme :focus-visible { outline-color:#76634d; }
+.helios-theme.page-type-index #header-group { margin-bottom:0; }
+.helios-header,.page-type-index .helios-header,
+.helios-header__inner,.page-type-index .helios-header__inner,
+.page-type-index .helios-header__inner:hover,
+.page-type-index .helios-header__inner:has(:focus-visible),
+.helios-theme.page-type-index.helios-menu-open .helios-header__inner,
+.helios-menu-open .helios-header__inner { background:#faf9f6; color:#282621; }
+.helios-header__inner { border-bottom:1px solid #e9e5de; }
+.helios-logo img { filter:invert(1); }
+.helios-topbar { background:#eeebe5; color:#49443d; }
+.helios-cart .cart-count-badge { background:#faf9f6; color:#282621; }
+.helios-menu__panel,.helios-discover nav,.helios-language__options { background:#faf9f6; color:#282621; border-color:#ded8cf; }
+.helios-mega__group > summary,.helios-mega__group a:hover,.helios-language__options button { color:#49443d; }
+.helios-language select { background:#faf9f6; color:#282621; }
+.helios-language__options button:hover,.helios-language__options button:focus-visible { background:#eeebe5; color:#282621; }
+.helios-mega__group { border-color:#ded8cf; }
+.helios-hero { background:#eeeae3; color:#282621; }
+.helios-hero__slide { overflow:hidden; }
+.helios-hero__slide > a { transform-origin:center; }
+.helios-hero__controls { bottom:20px; gap:12px; }
+.helios-hero__dots { gap:0; padding:0 6px; border-radius:24px; background:#faf9f6e6; }
+.helios-hero__dot { position:relative; display:grid; place-items:center; width:44px; height:44px; min-width:44px; background:transparent; opacity:1; border:0; border-radius:0; }
+.helios-hero__dot::after { content:''; width:18px; height:2px; background:#aaa298; transition:width .5s ease,background-color .5s ease; }
+.helios-hero__dot[aria-current=true] { transform:none; background:transparent; border:0; }
+.helios-hero__dot[aria-current=true]::after { width:28px; background:#282621; }
+.helios-hero__controls [data-helios-prev],.helios-hero__controls [data-helios-next] { width:44px; min-height:44px; background:#faf9f6e6; color:#282621; border-radius:50%; }
+.helios-hero__controls [data-helios-toggle] { right:76px; width:44px; height:44px; padding:0; border-radius:50%; background:#faf9f6e6; color:#282621; }
+.helios-products { padding:64px 4vw; }
+.helios-product-grid { gap:36px 20px; }
+.helios-product-card__media { background:#efede7; }
+.helios-product-card__caption { padding:16px 0 0; }
+.helios-product-card h3 { font-family:'Helios Futura',sans-serif; letter-spacing:.04em; }
+.helios-product-card__price { color:#6c665d; }
+.helios-collection-grid { gap:20px; padding:0 4vw 64px; }
+.helios-collection-tile { background:#efede7; text-decoration:none; }
+.helios-collection-tile__caption { position:static; display:block; padding:20px 16px; color:#282621; background:#f2f0eb; font-family:'Helios Futura',sans-serif; letter-spacing:.08em; }
+.helios-story,.helios-footer { background:#f2f0eb; color:#49443d; }
+.helios-newsletter { background-image:none!important; background:#eeebe5; min-height:300px; }
+.helios-newsletter h2,.helios-newsletter__field input,.helios-newsletter__field button,.helios-footer__grid h2 { color:#282621; font-family:'Helios Futura',sans-serif; }
+.helios-newsletter__field { border-color:#8b8378; }
+.helios-newsletter__field input::placeholder { color:#6c665d; }
+.helios-footer__frame { border:0; border-top:1px solid #ded8cf; padding:64px 4vw 40px; }
+.helios-footer__grid nav a:hover,.helios-footer__social a { color:#49443d; }
+.helios-theme .btn-primary,.helios-theme .btn-atc { --bs-btn-bg:#282621; --bs-btn-color:#faf9f6; --bs-btn-border-color:#282621; --bs-btn-hover-bg:#49443d; --bs-btn-hover-color:#fff; --bs-btn-hover-border-color:#49443d; }
+.helios-theme .form-control,.helios-theme .form-select { background-color:#faf9f6; color:#282621; border-color:#aaa298; }
+.helios-theme .offcanvas,.helios-theme .modal-content,.helios-theme .offcanvas-header,.helios-theme .collection-header { background:#faf9f6; color:#282621; border-color:#ded8cf; }
+.helios-theme .btn-close { filter:none; }
+.helios-theme .product-main .product-option-button,.helios-theme .product-main .btn-outline-secondary,.helios-theme .product-block-collapse button { color:#282621; border-color:#aaa298; }
+.helios-tabs__list { border-color:#ded8cf; }
+.helios-tabs__list [aria-selected=true] { color:#282621; border-color:#282621; }
+#offcanvas-search.helios-search { background:#faf9f6; color:#282621; }
+.helios-search .form-control-wrapper::after { background:#282621; }
+.helios-search .form-control-wrapper .form-control,.helios-search .form-control::placeholder,
+#offcanvas-search .form-control-wrapper button[type="submit"],.helios-search .btn-close { color:#282621; }
+@media (hover:none) { .helios-hero__controls [data-helios-prev],.helios-hero__controls [data-helios-next] { opacity:1; } }
+@media (max-width:767px) {
+ .helios-hero__controls { bottom:16px; }
+ .helios-hero__controls [data-helios-toggle] { right:16px; }
+ .helios-products { padding:40px 20px; }
+ .helios-product-grid { gap:28px 12px; }
+ .helios-collection-grid { gap:16px; padding:0 20px 40px; }
+ .helios-footer__frame { padding:40px 20px; }
+}
+

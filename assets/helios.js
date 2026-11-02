@@ -1,20 +1,41 @@
 /* HELIOS progressive enhancements. Commerce APIs remain owned by KS BootShop. */
 class HeliosCarousel extends HTMLElement {
   connectedCallback () {
+    window.clearInterval(this.timer)
+    this.zoom?.cancel()
     this.controller?.abort()
     this.controller = new AbortController()
     const { signal } = this.controller
     this.slides = Array.from(this.querySelectorAll('[data-helios-slide]'))
     this.slides.forEach((slide, index) => {
+      slide.hidden = index !== 0
       slide.classList.toggle('is-active', index === 0)
       slide.inert = index !== 0
+      slide.setAttribute('aria-hidden', String(index !== 0))
     })
     this.index = 0
+    this.request = 0
     this.interval = Number(this.dataset.autoplay) * 1000 || 0
     this.paused = false
     this.focused = false
     this.editorPaused = false
     this.motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (this.classList.contains('helios-hero')) {
+      let touch
+      this.addEventListener('touchstart', event => {
+        const point = event.touches[0]
+        touch = event.touches.length === 1 ? { x: point.clientX, y: point.clientY } : null
+      }, { signal, passive: true })
+      this.addEventListener('touchend', event => {
+        if (!touch) return
+        const point = event.changedTouches[0]
+        const dx = point.clientX - touch.x
+        const dy = point.clientY - touch.y
+        touch = null
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) this.show(this.index + (dx < 0 ? 1 : -1))
+      }, { signal, passive: true })
+      this.addEventListener('touchcancel', () => { touch = null }, { signal, passive: true })
+    }
     const controls = this.querySelector('[data-helios-controls]')
     if (controls && this.slides.length > 1) controls.hidden = false
     this.querySelector('[data-helios-prev]')?.addEventListener('click', () => this.show(this.index - 1), { signal })
@@ -57,7 +78,24 @@ class HeliosCarousel extends HTMLElement {
         video.addEventListener('error', () => video.classList.remove('is-ready'), { signal })
       })
     }
+    this.startZoom()
     this.updateAutoplay()
+  }
+
+  startZoom () {
+    if (this.zoom) {
+      const outgoing = this.zoom.effect.target
+      outgoing.style.transform = getComputedStyle(outgoing).transform
+    }
+    this.zoom?.cancel()
+    const media = this.slides[this.index]?.querySelector('a')
+    if (media) media.style.transform = ''
+    if (!media || !this.classList.contains('helios-hero') || this.motion.matches) return
+    this.zoom = media.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.035)' }], {
+      duration: Math.max(this.interval, 10000) + 1100,
+      easing: 'linear',
+      fill: 'forwards'
+    })
   }
 
   syncVideos () {
@@ -77,13 +115,22 @@ class HeliosCarousel extends HTMLElement {
     })
   }
 
-  show (index, automatic = false) {
+  async show (index, automatic = false) {
     if (!this.slides.length) return
+    const request = ++this.request
+    const next = (index % this.slides.length + this.slides.length) % this.slides.length
+    if (next === this.index) return
+    const image = this.slides[next].querySelector('img')
+    if (this.classList.contains('helios-hero') && image) {
+      image.loading = 'eager'
+      try { await image.decode() } catch (_) { /* Keep navigation available if an image fails. */ }
+      if (request !== this.request || !this.isConnected) return
+    }
     const previous = this.slides[this.index]
     const direction = index < this.index ? -1 : 1
-    this.transition?.cancel()
-    this.exitTransition?.cancel()
-    this.index = (index + this.slides.length) % this.slides.length
+    this.transition?.finish()
+    this.exitTransition?.finish()
+    this.index = next
     const current = this.slides[this.index]
     const animated = !this.motion.matches && current !== previous
     this.slides.forEach((slide, position) => {
@@ -97,7 +144,7 @@ class HeliosCarousel extends HTMLElement {
       if (this.classList.contains('helios-hero')) {
         // Keep the outgoing image fully visible underneath: the blend never passes through black.
         this.transition = current.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 1400,
+          duration: 1100,
           easing: 'cubic-bezier(.4,0,.2,1)'
         })
       } else {
@@ -105,7 +152,10 @@ class HeliosCarousel extends HTMLElement {
         this.transition = current.animate([{ transform: `translateX(${direction * 100}%)` }, { transform: 'translateX(0)' }], timing)
         this.exitTransition = previous.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${-direction * 100}%)` }], timing)
       }
-      this.transition.finished.then(() => { if (previous !== this.slides[this.index]) previous.hidden = true }).catch(() => {})
+      const transition = this.transition
+      transition.finished.then(() => {
+        if (this.transition === transition && previous !== this.slides[this.index]) previous.hidden = true
+      }).catch(() => {})
     }
     this.querySelectorAll('[data-helios-dot]').forEach(dot => dot.setAttribute('aria-current', String(Number(dot.dataset.heliosDot) === this.index)))
     const status = this.querySelector('[data-helios-status]')
@@ -113,12 +163,18 @@ class HeliosCarousel extends HTMLElement {
       status.setAttribute('aria-live', automatic ? 'off' : 'polite')
       status.textContent = `${this.index + 1} / ${this.slides.length}`
     }
+    this.startZoom()
     this.updateAutoplay()
   }
 
   updateAutoplay () {
     window.clearInterval(this.timer)
     this.syncVideos()
+    if (this.motion.matches) this.zoom?.cancel()
+    else if (this.zoom) {
+      if (this.paused || this.focused || this.editorPaused || document.hidden) this.zoom.pause()
+      else this.zoom.play()
+    }
     const eligible = this.interval > 0 && this.slides.length > 1 && !this.motion.matches
     const toggle = this.querySelector('[data-helios-toggle]')
     if (toggle) {
@@ -136,6 +192,8 @@ class HeliosCarousel extends HTMLElement {
   }
 
   disconnectedCallback () {
+    this.request++
+    this.zoom?.cancel()
     window.clearInterval(this.timer)
     this.transition?.cancel()
     this.exitTransition?.cancel()
@@ -232,3 +290,4 @@ class HeliosTabs extends HTMLElement {
   disconnectedCallback () { this.controller?.abort() }
 }
 if (!customElements.get('helios-tabs')) customElements.define('helios-tabs', HeliosTabs)
+

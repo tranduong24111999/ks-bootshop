@@ -31,7 +31,7 @@
         "bird"
       ],
       "settings": {
-        "autoplay": 7
+        "autoplay": 10
       }
     },
     "helios_products": {
@@ -116,3 +116,4 @@
     "helios_story"
   ]
 }
+
