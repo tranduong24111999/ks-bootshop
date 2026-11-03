@@ -358,5 +358,25 @@
     "reviews_setup": "Thêm block Review Widget của Judge.me và bật App embed trong trình chỉnh sửa theme.",
     "product_motion_pause": "Tạm dừng chuyển động ảnh sản phẩm",
     "product_motion_resume": "Tiếp tục chuyển động ảnh sản phẩm"
+  },
+  "wes_footer": {
+    "store": "VỀ WES FREED",
+    "description": "WES FREED mang đến trang sức và phụ kiện dành cho phong cách hằng ngày. Khám phá những thiết kế thể hiện gu thẩm mỹ và cá tính của bạn.",
+    "about": "GIỚI THIỆU",
+    "brand": "Câu chuyện WES FREED",
+    "inquiry": "Liên hệ",
+    "faq": "Câu hỏi thường gặp",
+    "service": "DỊCH VỤ",
+    "cart": "Giỏ hàng",
+    "account": "Tài khoản của tôi",
+    "privacy": "Chính sách bảo mật",
+    "shipping": "Chính sách giao hàng",
+    "returns": "Đổi trả và hoàn tiền",
+    "contact": "LIÊN HỆ & HỖ TRỢ",
+    "contact_note": "Liên hệ qua email hoặc Instagram để được hỗ trợ về sản phẩm và đơn hàng.",
+    "country": "Quốc gia / khu vực",
+    "language": "Ngôn ngữ",
+    "apply": "Áp dụng",
+    "payments": "Phương thức thanh toán"
   }
 }

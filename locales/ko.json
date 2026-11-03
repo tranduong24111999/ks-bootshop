@@ -382,5 +382,25 @@
         }
       }
     }
+  },
+  "wes_footer": {
+    "store": "저희 매장",
+    "description": "WES FREED는 일상에 특별한 빛을 더하는 주얼리와 액세서리를 소개합니다. 나만의 취향과 개성을 담은 스타일을 만나보세요.",
+    "about": "회사 소개",
+    "brand": "WES FREED 소개",
+    "inquiry": "문의하기",
+    "faq": "자주 묻는 질문",
+    "service": "서비스",
+    "cart": "장바구니",
+    "account": "내 계정",
+    "privacy": "개인정보처리방침",
+    "shipping": "배송 안내",
+    "returns": "반품 및 환불",
+    "contact": "연락처 및 지원",
+    "contact_note": "제품 및 주문 문의는 이메일이나 Instagram으로 연락해 주세요.",
+    "country": "국가 / 지역",
+    "language": "언어",
+    "apply": "적용",
+    "payments": "사용 가능한 결제 수단"
   }
 }

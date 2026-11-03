@@ -358,5 +358,25 @@
     "reviews_setup": "Judge.me Review Widgetブロックを追加し、テーマエディターでアプリ埋め込みを有効にしてください。",
     "product_motion_pause": "商品メディアを一時停止",
     "product_motion_resume": "商品メディアを再生"
+  },
+  "wes_footer": {
+    "store": "私たちのショップ",
+    "description": "WES FREEDは、毎日のスタイルに彩りを添えるジュエリーとアクセサリーをご紹介します。自分らしさを表現するアイテムをお楽しみください。",
+    "about": "ブランドについて",
+    "brand": "WES FREEDについて",
+    "inquiry": "お問い合わせ",
+    "faq": "よくある質問",
+    "service": "サービス",
+    "cart": "カート",
+    "account": "マイアカウント",
+    "privacy": "プライバシーポリシー",
+    "shipping": "配送について",
+    "returns": "返品・返金について",
+    "contact": "お問い合わせ・サポート",
+    "contact_note": "商品やご注文に関するお問い合わせは、メールまたはInstagramでご連絡ください。",
+    "country": "国 / 地域",
+    "language": "言語",
+    "apply": "適用",
+    "payments": "ご利用可能なお支払い方法"
   }
 }

@@ -358,5 +358,25 @@
     "reviews_setup": "Add the Judge.me Review Widget block and enable its app embed in the theme editor.",
     "product_motion_pause": "Pause product media",
     "product_motion_resume": "Resume product media"
+  },
+  "wes_footer": {
+    "store": "OUR STORE",
+    "description": "WES FREED brings jewelry and accessories to your everyday style. Discover pieces that reflect your taste and individuality.",
+    "about": "ABOUT US",
+    "brand": "About WES FREED",
+    "inquiry": "Contact us",
+    "faq": "Frequently asked questions",
+    "service": "SERVICE",
+    "cart": "Cart",
+    "account": "My account",
+    "privacy": "Privacy policy",
+    "shipping": "Shipping policy",
+    "returns": "Returns & refunds",
+    "contact": "CONTACT & SUPPORT",
+    "contact_note": "For product and order inquiries, contact us by email or Instagram.",
+    "country": "Country / region",
+    "language": "Language",
+    "apply": "Apply",
+    "payments": "Accepted payment methods"
   }
 }
