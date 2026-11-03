@@ -14,11 +14,10 @@
     "helios_footer": {
       "type": "helios-footer",
       "settings": {
-        "social_facebook": "https://www.facebook.com/Official.Heliosvn/",
-        "social_youtube": "https://www.youtube.com/@heliosbrand_official",
         "social_instagram": "https://www.instagram.com/wesfreedkr/",
-        "social_tiktok": "https://tiktok.com/@heliosjewels",
-        "social_pinterest": "https://www.pinterest.com/Heliosjewelsvn/"
+        "company_name": "Công ty TNHH wesfreed",
+        "company_address": "1217 Meyrin, Switzerland",
+        "contact_email": "wesfreedkr@gmail.com"
       }
     }
   },
