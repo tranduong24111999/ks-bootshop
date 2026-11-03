@@ -438,3 +438,15 @@
 .helios-announcement a[data-helios-slide] { color:inherit; text-decoration:none; }
 .helios-announcement a[data-helios-slide]:hover,.helios-announcement a[data-helios-slide]:focus-visible { text-decoration:underline; text-underline-offset:3px; }
 .helios-announcement a[data-helios-slide]:focus-visible { outline-offset:-2px; }
+
+/* Halve vertical whitespace in the existing footer sections. */
+.helios-footer .helios-newsletter { min-height:150px; }
+.helios-footer .helios-newsletter__content { padding:17.5px 0; }
+.helios-footer .helios-newsletter h2 { margin-bottom:16px; }
+.helios-footer .helios-newsletter p { margin-bottom:14px; }
+.helios-footer .helios-newsletter .helios-newsletter__notice { margin:7px 0 0; }
+.helios-footer .helios-footer__frame { padding-top:32px; padding-bottom:20px; }
+@media(max-width:767px) {
+ .helios-footer .helios-newsletter h2 { margin-bottom:10px; }
+ .helios-footer .helios-footer__frame { padding-top:20px; padding-bottom:20px; }
+}
