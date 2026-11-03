@@ -3,42 +3,22 @@
   <div class="helios-hero__slides">
     {% for block in section.blocks %}
       {% liquid
-        assign desktop_asset = 'helios-hero-desktop.jpg'
-        assign mobile_asset = 'helios-hero-mobile.jpg'
-        assign desktop_width = 1900
-        assign desktop_height = 900
-        if block.settings.artwork == 'jack'
-          assign desktop_asset = 'helios-jack-desktop.jpg'
-          assign mobile_asset = 'helios-jack-mobile.jpg'
-        elsif block.settings.artwork == 'bird'
-          assign desktop_asset = 'helios-bird-desktop.webp'
-          assign mobile_asset = 'helios-bird-mobile.webp'
-          assign desktop_width = 1592
-          assign desktop_height = 754
-        endif
+        assign film = block.settings.film | default: 'rings'
+        assign film_prefix = 'helios-film-' | append: film
+        assign desktop_video = film_prefix | append: '-desktop.mp4'
+        assign mobile_video = film_prefix | append: '-mobile.mp4'
+        assign desktop_poster = film_prefix | append: '-desktop.jpg'
+        assign mobile_poster = film_prefix | append: '-mobile.jpg'
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
-        assign image_alt = block.settings.title
       %}
-      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
-        <a href="{{ destination }}" aria-label="{{ block.settings.title | escape }} — Khám phá bộ sưu tập">
-          <picture>
-            {% if block.settings.mobile != blank %}
-              <source media="(max-width: 749px)" srcset="{{ block.settings.mobile | image_url: width: 800 }} 800w, {{ block.settings.mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
-            {% else %}
-              <source media="(max-width: 749px)" srcset="{{ mobile_asset | asset_url }}">
-            {% endif %}
-            {% if block.settings.desktop != blank %}
-              {% if forloop.first %}
-                {{ block.settings.desktop | image_url: width: 2400 | image_tag: widths: '1000,1500,2000,2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
-              {% else %}
-                {{ block.settings.desktop | image_url: width: 2400 | image_tag: widths: '1000,1500,2000,2400', sizes: '100vw', loading: 'lazy', alt: image_alt }}
-              {% endif %}
-            {% else %}
-              <img src="{{ desktop_asset | asset_url }}" alt="{{ image_alt | escape }}" width="{{ desktop_width }}" height="{{ desktop_height }}" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
-            {% endif %}
-          </picture>
-          <span class="helios-hero__title" hidden>{{ block.settings.title | escape }}</span>
-          <span class="helios-hero__cta" hidden>KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+        <video class="helios-hero__video" muted loop playsinline controls preload="none" poster="{{ desktop_poster | asset_url }}" data-desktop="{{ desktop_video | asset_url }}" data-mobile="{{ mobile_video | asset_url }}" data-poster-desktop="{{ desktop_poster | asset_url }}" data-poster-mobile="{{ mobile_poster | asset_url }}" aria-label="{{ block.settings.title | escape }}">
+        </video>
+        <noscript><style>.helios-hero__video { display:none; }.helios-hero__editorial { pointer-events:none; }.helios-hero__cta { pointer-events:auto; }</style><video class="helios-hero__video-fallback" aria-label="{{ block.settings.title | escape }}" controls muted loop playsinline preload="none" poster="{{ desktop_poster | asset_url }}"><source src="{{ desktop_video | asset_url }}" type="video/mp4"></video></noscript>
+        <a class="helios-hero__editorial" href="{{ destination }}" aria-label="{{ block.settings.title | escape }} — Khám phá bộ sưu tập">
+          <span class="helios-hero__eyebrow">HELIOS · FINE CRAFTSMANSHIP</span>
+          <span class="helios-hero__title">{{ block.settings.title | escape }}</span>
+          <span class="helios-hero__cta">KHÁM PHÁ BỘ SƯU TẬP <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
         </a>
       </div>
     {% endfor %}
@@ -63,9 +43,7 @@
     "type": "slide", "name": "Banner",
     "settings": [
       { "type": "text", "id": "title", "label": "Mô tả banner", "default": "HELIOS Signature Collections" },
-      { "type": "select", "id": "artwork", "label": "Ảnh HELIOS có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }], "default": "signature" },
-      { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
-      { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
+      { "type": "select", "id": "film", "label": "Phim trang sức", "options": [{ "value": "rings", "label": "Nhẫn bạc trên đá" }, { "value": "diamond", "label": "Ánh sáng kim cương" }, { "value": "case", "label": "Đường nét nhẫn bạc" }], "default": "rings" },
       { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }
     ]
   }],

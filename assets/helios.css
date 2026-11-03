@@ -74,7 +74,14 @@
 .helios-hero__slide[hidden],.helios-hero__controls[hidden] { display:none; }
 .helios-hero__slide > a,.helios-hero picture { display:block; width:100%; height:100%; }
 .helios-hero img { display:block; width:100%; height:100%; object-fit:cover; }
-.helios-hero__title,.helios-hero__cta { display:none; }
+.helios-hero__video,.helios-hero__video-fallback { display:block; width:100%; height:100%; object-fit:cover; }
+.helios-hero__editorial { position:absolute; inset:0; display:flex !important; flex-direction:column; align-items:center; justify-content:flex-end; padding:80px 24px; text-align:center; color:#fff; background:linear-gradient(transparent 35%,#000b 100%); text-decoration:none; }
+.helios-hero__eyebrow { font-size:10px; letter-spacing:.28em; margin-bottom:16px; }
+.helios-hero__title { display:block; max-width:760px; font:clamp(25px,3.1vw,48px)/1.2 Georgia,serif; font-weight:400; }
+.helios-hero__cta { display:flex; align-items:center; gap:12px; margin-top:24px; font-size:10px; letter-spacing:.16em; border-bottom:1px solid #ffffff80; padding-bottom:9px; }
+.helios-hero__cta svg { width:22px; }
+.helios-hero__editorial:hover { color:#fff; }
+.helios-hero__editorial:focus-visible { outline:2px solid #fff; outline-offset:-6px; }
 .helios-hero__controls { position:absolute; inset:auto 0 25px; z-index:3; display:flex; align-items:center; justify-content:center; gap:20px; }
 .helios-hero__dots { display:flex; align-items:center; gap:22px; }
 .helios-hero__dot { border:0; background:#f2f2f2; width:10px; height:10px; min-width:10px; padding:0; border-radius:50%; opacity:.7; transition:opacity .3s,transform .3s; }
@@ -221,6 +228,10 @@
  .helios-mega__promo > span { font-size:17px; gap:12px; padding:10px; }
  .helios-mega__button { font-size:12px; padding:8px; }
  .helios-hero__slides { aspect-ratio:4/5; }
+ .helios-hero__editorial { padding:55px 24px; }
+ .helios-hero__eyebrow { font-size:8px; letter-spacing:.2em; margin-bottom:12px; }
+ .helios-hero__title { max-width:300px; }
+ .helios-hero__cta { margin-top:16px; font-size:9px; }
  .helios-hero__controls { bottom:24px; }
  .helios-hero__controls [data-helios-toggle] { right:15px; }
  .helios-hero__controls [data-helios-prev],.helios-hero__controls [data-helios-next] { display:none; }

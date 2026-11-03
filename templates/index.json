@@ -6,22 +6,22 @@
         "jack": {
           "type": "slide",
           "settings": {
-            "title": "Withered Jack Pendant",
-            "artwork": "jack"
+            "title": "Vẻ đẹp vượt thời gian",
+            "film": "rings"
           }
         },
         "signature": {
           "type": "slide",
           "settings": {
-            "title": "HELIOS Signature Collections",
-            "artwork": "signature"
+            "title": "Ánh sáng trên từng đường nét",
+            "film": "diamond"
           }
         },
         "bird": {
           "type": "slide",
           "settings": {
-            "title": "Chu Tước — Vermilion Bird",
-            "artwork": "bird"
+            "title": "Dấu ấn riêng của bạn",
+            "film": "case"
           }
         }
       },

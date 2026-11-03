@@ -43,7 +43,42 @@ class HeliosCarousel extends HTMLElement {
       if (index >= 0) { this.editorPaused = true; this.show(index) }
     }, { signal })
     document.addEventListener('shopify:block:deselect', () => { this.editorPaused = false; this.updateAutoplay() }, { signal })
+    this.mobile = window.matchMedia('(max-width: 767px)')
+    this.mobile.addEventListener('change', () => this.updateAutoplay(), { signal })
+    this.querySelectorAll('video').forEach(video => {
+      video.controls = false
+    })
+    this.inViewport = true
+    this.observer?.disconnect()
+    if (this.querySelector('video') && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver(entries => {
+        this.inViewport = entries[0].isIntersecting
+        this.updateAutoplay()
+      })
+      this.observer.observe(this)
+    }
     this.updateAutoplay()
+  }
+
+  syncVideos () {
+    this.slides.forEach((slide, index) => {
+      const video = slide.querySelector('video')
+      if (!video) return
+      const mobile = this.mobile?.matches
+      video.poster = mobile ? video.dataset.posterMobile : video.dataset.posterDesktop
+      const active = index === this.index
+      const playing = active && !this.motion.matches && !this.paused && !this.focused && !document.hidden && this.inViewport
+      if (!playing) { video.pause(); return }
+      const source = mobile ? video.dataset.mobile : video.dataset.desktop
+      if (video.getAttribute('src') !== source) {
+        video.src = source
+        video.muted = true
+        video.load()
+      }
+      video.play().then(() => {
+        if (index !== this.index || this.paused || document.hidden || !this.inViewport || this.motion.matches) video.pause()
+      }).catch(() => {})
+    })
   }
 
   show (index, automatic = false) {
@@ -86,7 +121,9 @@ class HeliosCarousel extends HTMLElement {
 
   updateAutoplay () {
     window.clearInterval(this.timer)
-    const eligible = this.interval > 0 && this.slides.length > 1 && !this.motion.matches
+    this.syncVideos()
+    const canRotate = this.interval > 0 && this.slides.length > 1 && !this.motion.matches
+    const eligible = !this.motion.matches && (canRotate || Boolean(this.querySelector('video')))
     const toggle = this.querySelector('[data-helios-toggle]')
     if (toggle) {
       toggle.hidden = !eligible
@@ -94,7 +131,7 @@ class HeliosCarousel extends HTMLElement {
       const label = this.classList.contains('helios-announcement') ? 'thông báo' : 'banner'
       toggle.setAttribute('aria-label', `${this.paused ? 'Tiếp tục' : 'Tạm dừng'} tự động chuyển ${label}`)
     }
-    if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
+    if (canRotate && !this.paused && !this.focused && !this.editorPaused && !document.hidden && this.inViewport !== false) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
       if (nextImage) nextImage.loading = 'eager'
       this.timer = window.setInterval(() => this.show(this.index + 1, true), this.interval)
@@ -106,6 +143,8 @@ class HeliosCarousel extends HTMLElement {
     this.transition?.cancel()
     this.exitTransition?.cancel()
     this.controller?.abort()
+    this.observer?.disconnect()
+    this.querySelectorAll('video').forEach(video => video.pause())
   }
 }
 if (!customElements.get('helios-carousel')) customElements.define('helios-carousel', HeliosCarousel)

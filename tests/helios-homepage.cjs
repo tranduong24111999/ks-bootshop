@@ -109,7 +109,7 @@ async function main () {
     '<script src="/assets/vendor-bootstrap.bundle.min.js" defer></script><script src="/assets/helios.js" defer></script></head><body class="helios-theme page-type-index">' + markup +
     '<div class="offcanvas offcanvas-end" id="offcanvas-cart" tabindex="-1" aria-label="Giỏ hàng"><div class="offcanvas-body">Giỏ hàng<button data-bs-dismiss="offcanvas">Đóng</button></div></div><div class="offcanvas offcanvas-top" id="offcanvas-search" tabindex="-1" aria-label="Tìm kiếm"><div class="offcanvas-body"><form action="/search" role="search"><input name="q" type="search" aria-label="Tìm kiếm chế tác"><button>Tìm kiếm</button></form><button data-bs-dismiss="offcanvas">Đóng tìm kiếm</button></div></div></body></html>'
   fs.writeFileSync(path.join(artifacts, 'rendered.html'), html)
-  const mime = { '.css': 'text/css', '.js': 'application/javascript', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }
+  const mime = { '.mp4': 'video/mp4', '.css': 'text/css', '.js': 'application/javascript', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.png': 'image/png', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }
   const server = http.createServer((req, res) => {
     if (req.url.startsWith('/reference-assets/') && process.env.HELIOS_REFERENCE_IMAGE_CACHE && !req.url.includes('..')) {
       const file = path.join(process.env.HELIOS_REFERENCE_IMAGE_CACHE, path.basename(req.url))
@@ -180,9 +180,24 @@ async function main () {
         await page.evaluate(() => scrollTo(0, 0))
       }
       const hero = page.locator('.helios-hero')
+      for (let slide = 0; slide < 3; slide++) {
+        await hero.locator(`[data-helios-dot="${slide}"]`).click()
+        const video = hero.locator('.is-active video')
+        await video.evaluate(video => video.play())
+        await page.waitForTimeout(350)
+        const before = await video.evaluate(video => ({ time: video.currentTime, frames: video.getVideoPlaybackQuality().totalVideoFrames }))
+        await page.waitForTimeout(350)
+        const after = await video.evaluate(video => ({ time: video.currentTime, frames: video.getVideoPlaybackQuality().totalVideoFrames, muted: video.muted, inline: video.playsInline, source: video.currentSrc, width: video.videoWidth, height: video.videoHeight }))
+        assert(after.time > before.time && after.frames > before.frames, 'Video must decode moving frames')
+        assert(after.muted && after.inline, 'Video must play silently inline')
+        assert(after.source.includes(width < 768 ? 'mobile' : 'desktop'), 'Incorrect video source at ' + width)
+        assert.equal(after.width, width < 768 ? 640 : 1280)
+        assert.equal(after.height, width < 768 ? 800 : 606)
+        assert(await hero.locator('video').evaluateAll(videos => videos.filter(v => !v.closest('.is-active')).every(v => v.paused)), 'Inactive videos must pause')
+      }
+      await hero.locator('[data-helios-dot="0"]').click()
       await hero.locator('[data-helios-toggle]').click()
-      const heroSource = await hero.locator('.is-active img').evaluate(img => img.currentSrc)
-      assert(heroSource.includes(width < 768 ? 'mobile' : 'desktop'), 'Incorrect hero source at ' + width)
+      assert(await hero.locator('video').evaluateAll(videos => videos.every(v => v.paused)), 'Pause control must stop all videos')
       await hero.locator('[data-helios-dot="1"]').click()
       assert.equal(await hero.locator('[data-helios-status]').textContent(), '2 / 3')
       await hero.locator('[data-helios-dot="2"]').click()
@@ -254,7 +269,8 @@ async function main () {
     await page.locator('#tab-test-fixture').evaluate(el => { el.hidden = true })
     console.log('PASS: configurable product tabs, mouse selection and keyboard arrows/Home/End')
     // Exercise the real timer deterministically, including suspension conditions.
-    await page.clock.install()
+    await page.clock.install({ time: new Date('2026-01-01T00:00:00Z') })
+    await page.clock.pauseAt(new Date('2026-01-01T00:00:01Z'))
     await page.goto(origin)
     await page.mouse.move(0, 0)
     const rotating = page.locator('.helios-hero')
@@ -304,6 +320,7 @@ async function main () {
     const reducedIndex = await activeIndex()
     await page.clock.fastForward(10000)
     assert.equal(await activeIndex(), reducedIndex, 'Reduced motion must disable autoplay')
+    assert(await rotating.locator('video').evaluateAll(videos => videos.every(video => video.paused)), 'Reduced motion must pause videos')
     assert.equal(await rotating.locator('[data-helios-toggle]').isVisible(), false)
     console.log('PASS: seven-second autoplay while hovered, keyboard focus pause, pointer pause/resume control, reduced-motion timer suppression')
     const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 900 } })
