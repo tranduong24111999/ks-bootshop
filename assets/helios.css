@@ -353,14 +353,15 @@
 .helios-hero { background:#eeeae3; color:#282621; }
 .helios-hero__slide { overflow:hidden; }
 .helios-hero__slide > a { transform-origin:center; }
-.helios-hero__controls { bottom:20px; gap:12px; }
-.helios-hero__dots { gap:0; padding:0 6px; border-radius:24px; background:#faf9f6e6; }
-.helios-hero__dot { position:relative; display:grid; place-items:center; width:44px; height:44px; min-width:44px; background:transparent; opacity:1; border:0; border-radius:0; }
-.helios-hero__dot::after { content:''; width:18px; height:2px; background:#aaa298; transition:width .5s ease,background-color .5s ease; }
+/* Small HELIOS-style dots; keep the touch targets larger than the visible dots. */
+.helios-hero__controls { bottom:20px; gap:0; }
+.helios-hero__dots { gap:0; padding:0; border-radius:0; background:transparent; box-shadow:none; }
+.helios-hero__dot { position:relative; display:grid; place-items:center; width:24px; height:32px; min-width:24px; padding:0; background:transparent; opacity:1; border:0; border-radius:0; }
+.helios-hero__dot::after { content:''; box-sizing:border-box; width:8px; height:8px; border:0; border-radius:50%; background:#fff; box-shadow:0 1px 3px #0006; transition:background-color .2s ease; }
 .helios-hero__dot[aria-current=true] { transform:none; background:transparent; border:0; }
-.helios-hero__dot[aria-current=true]::after { width:28px; background:#282621; }
-.helios-hero__controls [data-helios-prev],.helios-hero__controls [data-helios-next] { width:44px; min-height:44px; background:#faf9f6e6; color:#282621; border-radius:50%; }
-.helios-hero__controls [data-helios-toggle] { right:76px; width:44px; height:44px; padding:0; border-radius:50%; background:#faf9f6e6; color:#282621; }
+.helios-hero__dot[aria-current=true]::after { width:8px; height:8px; border:1px solid #fff; background:transparent; }
+.helios-hero__controls [data-helios-prev],.helios-hero__controls [data-helios-next] { width:32px; min-height:32px; padding:0; border-radius:0; background:transparent; color:#fff; font:20px/1 Arial,sans-serif; text-shadow:0 1px 3px #0009; }
+.helios-hero__controls [data-helios-toggle] { right:20px; top:50%; transform:translateY(-50%); width:28px; height:28px; padding:0; border-radius:0; background:transparent; color:#fff; font:14px/1 Arial,sans-serif; text-shadow:0 1px 3px #0009; }
 .helios-products { padding:64px 4vw; }
 .helios-product-grid { gap:36px 20px; }
 .helios-product-card__media { background:#efede7; }
