@@ -17,8 +17,8 @@
           "settings": {
             "title": "WES FREED — Jewelry in Motion",
             "artwork": "jewelry-film",
-            "collection": "",
-            "duration": 16
+            "duration": 16,
+            "collection": ""
           }
         },
         "signature": {
@@ -26,8 +26,8 @@
           "settings": {
             "title": "WES FREED — Precious Details",
             "artwork": "jewelry-film-2",
-            "collection": "",
-            "duration": 27
+            "duration": 27,
+            "collection": ""
           }
         },
         "bird": {
@@ -35,8 +35,8 @@
           "settings": {
             "title": "WES FREED — Light in Motion",
             "artwork": "jewelry-film-3",
-            "collection": "",
-            "duration": 35
+            "duration": 35,
+            "collection": ""
           }
         }
       },
@@ -67,7 +67,7 @@
             "title": "SẢN PHẨM MỚI",
             "collection": "",
             "query": "",
-            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_5553.jpg",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_3e48.jpg",
             "artwork": "1"
           }
         },
