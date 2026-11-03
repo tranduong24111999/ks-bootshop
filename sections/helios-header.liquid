@@ -43,11 +43,11 @@
       <a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a><details class="helios-discover" data-helios-disclosure><summary>DISCOVER</summary><nav aria-label="{{ 'helios.explore' | t | escape }}">{% capture journal_url %}{% render 'helios-journal-url' %}{% endcapture %}<a href="{{ journal_url | strip }}">WORLD OF WES FREED</a><a href="{{ routes.root_url }}#helios-story">ABOUT WES FREED</a><a href="{{ routes.collections_url }}">{{ 'helios.collections' | t }}</a>{% render 'helios-link', handle: '10-nam-ren-bac-magazine', label: 'TẠP CHÍ 10 NĂM', query: '10 năm', kind: 'page' %}</nav></details>
     </nav>
     </div>
-    <a class="helios-logo" href="{{ routes.root_url }}" aria-label="WES FREED">
+    <a class="helios-logo{% if section.settings.logo == blank %} helios-logo--crisp{% endif %}" href="{{ routes.root_url }}" aria-label="WES FREED">
       {% if section.settings.logo != blank %}
         {{ section.settings.logo | image_url: width: 500 | image_tag: width: 220, loading: 'eager', alt: 'WES FREED' }}
       {% else %}
-        <img class="wes-freed-logo" src="{{ 'wes-freed-header-logo.png' | asset_url }}" style="--wes-freed-mask: url('{{ 'wes-freed-header-logo.png' | asset_url }}');" alt="WES FREED" width="2048" height="683" loading="eager">
+        <img class="wes-freed-wordmark" src="{{ 'wes-freed-black-registered.png' | asset_url }}" alt="WES FREED®" width="2172" height="724" loading="eager" fetchpriority="high">
       {% endif %}
     </a>
     <div class="helios-header__actions">

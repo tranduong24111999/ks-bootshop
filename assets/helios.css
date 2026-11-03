@@ -398,3 +398,9 @@
  .helios-footer__frame { padding:40px 20px; }
 }
 
+
+/* High-resolution black wordmark; fit the artwork bounds without changing the source image. */
+.helios-logo--crisp { position:relative; display:block; width:200px; aspect-ratio:2008/484; overflow:hidden; }
+.helios-logo--crisp img.wes-freed-wordmark { position:absolute; display:block; width:108.167331%; max-width:none; height:auto; left:-3.237052%; top:-34.297521%; filter:none; mask-image:none; }
+@media (max-width:1199px) and (min-width:768px) { .helios-logo--crisp { width:180px; } }
+@media (max-width:767px) { .helios-logo--crisp { width:160px; } }
