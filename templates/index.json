@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "helios_hero": {
@@ -7,21 +16,24 @@
           "type": "slide",
           "settings": {
             "title": "WES FREED — Minimal Silver",
-            "artwork": "korean-silver"
+            "artwork": "korean-silver",
+            "collection": ""
           }
         },
         "signature": {
           "type": "slide",
           "settings": {
             "title": "WES FREED — Modern Pearls",
-            "artwork": "korean-pearls"
+            "artwork": "korean-pearls",
+            "collection": ""
           }
         },
         "bird": {
           "type": "slide",
           "settings": {
             "title": "WES FREED — Everyday Gold",
-            "artwork": "korean-gold"
+            "artwork": "korean-gold",
+            "collection": ""
           }
         }
       },
@@ -31,6 +43,7 @@
         "bird"
       ],
       "settings": {
+        "heading": "WES FREED — Dấu ấn của bản lĩnh",
         "autoplay": 10
       }
     },
@@ -38,6 +51,7 @@
       "type": "helios-products",
       "settings": {
         "heading": "CHẾ TÁC NỔI BẬT",
+        "collection": "",
         "limit": 8
       }
     },
@@ -48,7 +62,9 @@
           "type": "collection",
           "settings": {
             "title": "SẢN PHẨM MỚI",
+            "collection": "",
             "query": "",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_5553.jpg",
             "artwork": "1"
           }
         },
@@ -56,7 +72,9 @@
           "type": "collection",
           "settings": {
             "title": "NHẪN BẠC NAM",
+            "collection": "",
             "query": "nhẫn",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_00bb.jpg",
             "artwork": "2"
           }
         },
@@ -64,7 +82,9 @@
           "type": "collection",
           "settings": {
             "title": "MẶT DÂY CHUYỀN BẠC",
+            "collection": "",
             "query": "mặt dây chuyền",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_bdbd.jpg",
             "artwork": "3"
           }
         },
@@ -72,24 +92,29 @@
           "type": "collection",
           "settings": {
             "title": "KHUYÊN TAI BẠC",
+            "collection": "",
             "query": "khuyên tai",
             "artwork": "4"
-          }
-        },
-        "category_5": {
-          "type": "collection",
-          "settings": {
-            "title": "VÒNG TAY BẠC",
-            "query": "vòng tay",
-            "artwork": "5"
           }
         },
         "category_6": {
           "type": "collection",
           "settings": {
             "title": "TẤT CẢ SẢN PHẨM",
+            "collection": "",
             "query": "",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_8e0b.jpg",
             "artwork": "6"
+          }
+        },
+        "category_5": {
+          "type": "collection",
+          "settings": {
+            "title": "VÒNG TAY BẠC",
+            "collection": "",
+            "query": "vòng tay",
+            "image": "shopify://shop_images/FDown.vn_Instagram_Video_Downloader_5521.jpg",
+            "artwork": "5"
           }
         }
       },
@@ -101,12 +126,18 @@
         "category_6",
         "category_5"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "KHÁM PHÁ CHẾ TÁC"
+      }
     },
     "helios_story": {
       "type": "helios-story",
-      "settings": {},
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "heading": "DẤU ẤN CỦA BẢN LĨNH",
+        "text": "<p>WES FREED là thương hiệu trang sức bạc thủ công cho nam, tạo nên những dấu ấn mang tính biểu tượng của bản lĩnh và hành trình trưởng thành, dành cho những người đàn ông dám lựa chọn, dám giữ lấy khác biệt và sống tự do theo cách của mình.</p><p>Mỗi chế tác mang một tinh thần riêng, được hoàn thiện bằng tay bởi nghệ nhân Việt.</p>",
+        "page": ""
+      }
     }
   },
   "order": [
@@ -116,4 +147,3 @@
     "helios_story"
   ]
 }
-
