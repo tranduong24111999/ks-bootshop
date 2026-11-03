@@ -399,11 +399,31 @@
 }
 
 
-/* High-resolution WF lockup; preserve its proportions and all lettering. */
-.helios-logo--crisp { position:relative; display:block; width:160px; aspect-ratio:1420/939; overflow:hidden; }
-.helios-logo--crisp img.wes-freed-wordmark { position:absolute; display:block; width:108.169014%; max-width:none; height:auto; left:-3.802817%; top:-5.218317%; filter:none; mask-image:none; }
-@media (max-width:1199px) and (min-width:768px) { .helios-logo--crisp { width:140px; } }
-@media (max-width:767px) { .helios-logo--crisp { width:120px; } }
+/* Reuse the exact original artwork; only the two display windows are rearranged. */
+.helios-logo--crisp { display:flex; align-items:center; justify-content:center; column-gap:4.615385%; width:260px; aspect-ratio:260/44; }
+.wes-logo-part { position:relative; display:block; overflow:hidden; }
+.wes-logo-mark { flex:0 0 27.568323%; aspect-ratio:1049/644; }
+.wes-logo-text { flex:1; min-width:0; aspect-ratio:1432/274; }
+.helios-logo--crisp .wes-logo-part > img { position:absolute; display:block; max-width:none; height:auto; filter:none; mask-image:none; }
+.wes-logo-mark > img { width:146.425167%; left:-24.404194%; top:-6.677019%; }
+.wes-logo-text > img { width:107.262570%; left:-3.351955%; top:-261.678832%; }
+.helios-header__inner:has(.helios-logo--crisp) { grid-template-columns:minmax(0,1fr) 260px minmax(0,1fr); }
+@media (min-width:1200px) and (max-width:1279px) {
+ .helios-logo--crisp { width:240px; }
+ .helios-header__inner:has(.helios-logo--crisp) { grid-template-columns:minmax(0,1fr) 240px minmax(0,1fr); }
+}
+@media (max-width:1199px) and (min-width:768px) {
+ .helios-logo--crisp { width:200px; }
+ .helios-header__inner:has(.helios-logo--crisp) { grid-template-columns:minmax(0,1fr) 200px minmax(0,1fr); }
+}
+@media (min-width:768px) and (max-width:1023px) {
+ .helios-header__inner:has(.helios-logo--crisp) .helios-header__links { display:none; }
+}
+@media (max-width:767px) {
+ .helios-logo--crisp { width:min(180px,calc(100vw - 170px)); }
+ .helios-header__inner:has(.helios-logo--crisp) { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); }
+}
+
 
 
 /* The edited landscape film fills the hero on desktop and mobile. */
