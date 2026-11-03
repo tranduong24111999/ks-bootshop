@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "WES FREED Footer",
@@ -7,7 +16,7 @@
       "settings": {
         "social_facebook": "https://www.facebook.com/Official.Heliosvn/",
         "social_youtube": "https://www.youtube.com/@heliosbrand_official",
-        "social_instagram": "https://www.instagram.com/heliosofficial__/",
+        "social_instagram": "https://www.instagram.com/wesfreedkr/",
         "social_tiktok": "https://tiktok.com/@heliosjewels",
         "social_pinterest": "https://www.pinterest.com/Heliosjewelsvn/"
       }
