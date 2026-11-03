@@ -24,17 +24,19 @@
         "signature": {
           "type": "slide",
           "settings": {
-            "title": "WES FREED — Modern Pearls",
-            "artwork": "korean-pearls",
-            "collection": ""
+            "title": "WES FREED — Precious Details",
+            "artwork": "jewelry-film-2",
+            "collection": "",
+            "duration": 27
           }
         },
         "bird": {
           "type": "slide",
           "settings": {
-            "title": "WES FREED — Everyday Gold",
-            "artwork": "korean-gold",
-            "collection": ""
+            "title": "WES FREED — Light in Motion",
+            "artwork": "jewelry-film-3",
+            "collection": "",
+            "duration": 14
           }
         }
       },
