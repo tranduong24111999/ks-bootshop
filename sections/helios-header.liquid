@@ -23,7 +23,7 @@
     <div class="helios-topbar__contact"><a href="tel:0981956116">{% render 'svg-icons', icon: 'phone', size: 15 %} Hotline: 0981.956.116</a><a href="mailto:support@helios.vn">{% render 'svg-icons', icon: 'mail', size: 15 %} Email: support@helios.vn</a></div>
     <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="{{ 'helios.announcements' | t | escape }}">
       <button type="button" data-helios-prev aria-label="{{ 'helios.announcement_prev' | t | escape }}">‹</button>
-      <div><span data-helios-slide>{% render 'helios-text', value: section.settings.announcement %}</span><span data-helios-slide hidden>{% render 'helios-text', value: section.settings.secondary_announcement %}</span></div>
+      <div><a data-helios-slide href="{{ section.settings.announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.announcement %}</a><a data-helios-slide hidden href="{{ section.settings.secondary_announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.secondary_announcement %}</a></div>
       <button type="button" data-helios-next aria-label="{{ 'helios.announcement_next' | t | escape }}">›</button>
       <button class="helios-announcement__pause" type="button" data-helios-toggle aria-label="{{ 'helios.announcement_pause' | t | escape }}">Ⅱ</button>
     </helios-carousel>
@@ -69,6 +69,8 @@
   "settings": [
     { "type": "text", "id": "announcement", "label": "Thông điệp", "default": "ĐÁNH SÁNG TRỌN ĐỜI" },
     { "type": "text", "id": "secondary_announcement", "label": "Thông báo thứ hai", "default": "WES FREED LÀM DẤU ẤN CỦA BẢN LĨNH" },
+    { "type": "url", "id": "announcement_link", "label": "Đường dẫn thông điệp (trống: tất cả sản phẩm)" },
+    { "type": "url", "id": "secondary_announcement_link", "label": "Đường dẫn thông báo thứ hai (trống: tất cả sản phẩm)" },
     { "type": "range", "id": "announcement_autoplay", "label": "Tự chuyển thông báo (0: tắt)", "min": 0, "max": 10, "step": 1, "unit": "s", "default": 5 },
     { "type": "page", "id": "feedback_page", "label": "Trang Feedback" },
     { "type": "page", "id": "collab_page", "label": "Trang Collab" },

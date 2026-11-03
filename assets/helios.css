@@ -412,3 +412,8 @@
 
 /* Preserve the full proportional video canvas, including the foreground artwork. */
 .helios-hero .wes-hero-motion--proportional { object-fit:contain; }
+
+/* Announcement text remains a keyboard-accessible link on every slide. */
+.helios-announcement a[data-helios-slide] { color:inherit; text-decoration:none; }
+.helios-announcement a[data-helios-slide]:hover,.helios-announcement a[data-helios-slide]:focus-visible { text-decoration:underline; text-underline-offset:3px; }
+.helios-announcement a[data-helios-slide]:focus-visible { outline-offset:-2px; }
