@@ -378,5 +378,16 @@
     "language": "Ngôn ngữ",
     "apply": "Áp dụng",
     "payments": "Phương thức thanh toán"
+  },
+  "wes_footer_bottom": {
+    "services": "Dịch vụ khách hàng",
+    "shipping": "Thông tin giao hàng",
+    "returns": "Đổi trả sản phẩm",
+    "gift": "Gói quà",
+    "country": "Quốc gia / khu vực",
+    "language": "Ngôn ngữ",
+    "apply": "Áp dụng",
+    "payments": "Phương thức thanh toán",
+    "privacy": "Chính sách bảo mật"
   }
 }

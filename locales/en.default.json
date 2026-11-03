@@ -378,5 +378,16 @@
     "language": "Language",
     "apply": "Apply",
     "payments": "Accepted payment methods"
+  },
+  "wes_footer_bottom": {
+    "services": "Customer services",
+    "shipping": "Shipping information",
+    "returns": "Exchanges & returns",
+    "gift": "Gift wrapping",
+    "country": "Country / region",
+    "language": "Language",
+    "apply": "Apply",
+    "payments": "Accepted payment methods",
+    "privacy": "Privacy policy"
   }
 }

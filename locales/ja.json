@@ -378,5 +378,16 @@
     "language": "言語",
     "apply": "適用",
     "payments": "ご利用可能なお支払い方法"
+  },
+  "wes_footer_bottom": {
+    "services": "カスタマーサービス",
+    "shipping": "配送について",
+    "returns": "交換・返品について",
+    "gift": "ギフトラッピング",
+    "country": "国 / 地域",
+    "language": "言語",
+    "apply": "適用",
+    "payments": "ご利用可能なお支払い方法",
+    "privacy": "プライバシーポリシー"
   }
 }
