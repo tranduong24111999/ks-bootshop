@@ -1,4 +1,4 @@
-<helios-carousel class="helios-hero" data-autoplay="{{ section.settings.autoplay }}" role="region" aria-roledescription="băng chuyền" aria-label="{{ 'helios.hero_label' | t | escape }}">
+<helios-carousel class="helios-hero{% if section.blocks.first.settings.artwork == 'jewelry-film' %} helios-hero--landscape{% endif %}" data-autoplay="{{ section.settings.autoplay }}" role="region" aria-roledescription="băng chuyền" aria-label="{{ 'helios.hero_label' | t | escape }}">
   <h1 class="visually-hidden">{% render 'helios-text', value: section.settings.heading %}</h1>
   <div class="helios-hero__slides">
     {% for block in section.blocks %}
@@ -26,9 +26,9 @@
           assign desktop_height = 758
         endif
         if block.settings.artwork == 'jewelry-film'
-          assign motion_asset = 'wes-hero-first-jewelry.mp4'
-          assign desktop_asset = 'wes-hero-first-jewelry-desktop.jpg'
-          assign mobile_asset = 'wes-hero-first-jewelry-mobile.jpg'
+          assign motion_asset = 'wes-hero-first-landscape.mp4'
+          assign desktop_asset = 'wes-hero-first-landscape.jpg'
+          assign mobile_asset = 'wes-hero-first-landscape.jpg'
           assign desktop_width = 1900
           assign desktop_height = 900
         endif
@@ -54,7 +54,7 @@
             {% endif %}
           </picture>
           {% if motion_asset != blank %}
-            <video class="wes-hero-motion{% if block.settings.artwork == 'jewelry-film' %} wes-hero-motion--portrait{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
+            <video class="wes-hero-motion{% if block.settings.artwork == 'jewelry-film' %} wes-hero-motion--landscape{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
               <source data-src="{{ motion_asset | asset_url }}" type="video/mp4">
             </video>
           {% endif %}

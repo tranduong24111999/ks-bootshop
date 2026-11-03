@@ -90,7 +90,7 @@ class HeliosCarousel extends HTMLElement {
     this.zoom?.cancel()
     const media = this.slides[this.index]?.querySelector('a')
     if (media) media.style.transform = ''
-    if (!media || !this.classList.contains('helios-hero') || this.motion.matches || this.slides[this.index]?.querySelector('.wes-hero-motion--portrait')) return
+    if (!media || !this.classList.contains('helios-hero') || this.motion.matches || this.slides[this.index]?.querySelector('.wes-hero-motion--landscape')) return
     this.zoom = media.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.035)' }], {
       duration: Math.max(this.interval, 10000) + 1100,
       easing: 'linear',
