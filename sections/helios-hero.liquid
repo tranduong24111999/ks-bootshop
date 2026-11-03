@@ -40,11 +40,11 @@
           assign desktop_height = 682
         endif
         if block.settings.artwork == 'jewelry-film-3'
-          assign motion_asset = 'wes-hero-third-proportional.mp4'
-          assign desktop_asset = 'wes-hero-third-proportional.jpg'
+          assign motion_asset = 'wes-hero-third-venice.mp4'
+          assign desktop_asset = 'wes-hero-third-venice.jpg'
           assign mobile_asset = desktop_asset
-          assign desktop_width = 1620
-          assign desktop_height = 768
+          assign desktop_width = 1710
+          assign desktop_height = 810
         endif
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
         assign image_alt = block.settings.title
@@ -101,7 +101,7 @@
       { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jewelry-film", "label": "Video trang sức đầu trang" }, { "value": "jewelry-film-2", "label": "Video trang sức thứ hai" }, { "value": "jewelry-film-3", "label": "Video trang sức thứ ba" }, { "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }, { "value": "korean-silver", "label": "Korean · Silver" }, { "value": "korean-pearls", "label": "Korean · Pearls" }, { "value": "korean-gold", "label": "Korean · Gold" }], "default": "signature" },
       { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
       { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
-      { "type": "range", "id": "duration", "label": "Thời gian banner (0: dùng cấu hình chung)", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 0 },
+      { "type": "range", "id": "duration", "label": "Thời gian banner (0: dùng cấu hình chung)", "min": 0, "max": 60, "step": 1, "unit": "s", "default": 0 },
       { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }
     ]
   }],
