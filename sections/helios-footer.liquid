@@ -1,3 +1,4 @@
+{{ 'wes-footer-bottom.css' | asset_url | stylesheet_tag }}
 <footer class="helios-footer">
   {% unless request.page_type == 'product' %}
   <section class="helios-newsletter" aria-labelledby="helios-newsletter-heading" style="background-image: url({{ 'helios-newsletter.jpg' | asset_url }});">
@@ -39,7 +40,65 @@
         {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'helios.contact' | t }}</a>{% endif %}
       </nav>
     </div>
-    <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} WES FREED. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>
+  </div>
+  {% liquid
+    assign footer_support_email = section.settings.service_email | default: 'wesfreedkr@gmail.com'
+    assign support_mailto = 'mailto:' | append: footer_support_email
+    assign shipping_destination = support_mailto
+    if shop.shipping_policy.body != blank
+      assign shipping_destination = shop.shipping_policy.url
+    endif
+    assign returns_destination = support_mailto
+    if shop.refund_policy.body != blank
+      assign returns_destination = shop.refund_policy.url
+    endif
+  %}
+  <div class="wes-footer-extras">
+    <section class="wes-footer-services" aria-label="{{ 'wes_footer_bottom.services' | t | escape }}">
+      <a class="wes-footer-service" href="{{ shipping_destination | escape }}">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 8h15v15H9M20 13h5l4 6v4h-4M20 23h-5M3 13h8M1 17h7M4 21h3"/><circle cx="11" cy="24" r="3"/><circle cx="23" cy="24" r="3"/></svg>
+        <span>{{ 'wes_footer_bottom.shipping' | t }}</span>
+      </a>
+      <a class="wes-footer-service" href="{{ returns_destination | escape }}">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M26 12A11 11 0 0 0 8 7L4 11M4 5v6h6M6 20a11 11 0 0 0 18 5l4-4M28 27v-6h-6"/></svg>
+        <span>{{ 'wes_footer_bottom.returns' | t }}</span>
+      </a>
+      <a class="wes-footer-service" href="{{ routes.all_products_collection_url }}">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h22v6H5zM7 18v11h18V18M16 12v17"/><path d="M16 12c-7 0-9-3-7-6s7 0 7 6Zm0 0c7 0 9-3 7-6s-7 0-7 6Z"/></svg>
+        <span>{{ 'wes_footer_bottom.gift' | t }}</span>
+      </a>
+    </section>
+    <div class="wes-footer-legal">
+      <div class="wes-footer-legal__left">
+        {% if localization.available_countries.size > 0 or localization.available_languages.size > 0 %}
+          {% assign footer_localization_id = 'WesFooterBottomLocalization-' | append: section.id %}
+          {% form 'localization', id: footer_localization_id, class: 'wes-footer-legal__localization' %}
+            {% if localization.available_countries.size > 0 %}
+              <label class="visually-hidden" for="WesFooterBottomCountry-{{ section.id }}">{{ 'wes_footer_bottom.country' | t }}</label>
+              <select name="country_code" id="WesFooterBottomCountry-{{ section.id }}">
+                {% for country in localization.available_countries %}<option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>{{ country.name | escape }} | {{ country.currency.iso_code }} {{ country.currency.symbol }}</option>{% endfor %}
+              </select>
+            {% endif %}
+            {% if localization.available_languages.size > 0 %}
+              <label class="visually-hidden" for="WesFooterBottomLanguage-{{ section.id }}">{{ 'wes_footer_bottom.language' | t }}</label>
+              <select name="language_code" id="WesFooterBottomLanguage-{{ section.id }}">
+                {% for language in localization.available_languages %}<option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | escape }}</option>{% endfor %}
+              </select>
+            {% endif %}
+            <button type="submit">{{ 'wes_footer_bottom.apply' | t }}</button>
+          {% endform %}
+        {% endif %}
+        <small>© {{ 'now' | date: '%Y' }}, WES FREED.</small>
+      </div>
+      <div class="wes-footer-legal__right">
+        {% if shop.enabled_payment_types.size > 0 %}
+          <ul class="wes-footer-legal__payments" aria-label="{{ 'wes_footer_bottom.payments' | t | escape }}">
+            {% for payment_type in shop.enabled_payment_types %}<li>{{ payment_type | payment_type_svg_tag: class: 'wes-footer-legal__payment-icon' }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+        {% if shop.privacy_policy.body != blank %}<a href="{{ shop.privacy_policy.url }}">{{ 'wes_footer_bottom.privacy' | t }}</a>{% endif %}
+      </div>
+    </div>
   </div>
 </footer>
 {% schema %}
@@ -92,6 +151,12 @@
       "type": "url",
       "id": "social_pinterest",
       "label": "Pinterest"
+    },
+    {
+      "type": "text",
+      "id": "service_email",
+      "label": "Email hỗ trợ giao hàng và đổi trả",
+      "default": "wesfreedkr@gmail.com"
     }
   ]
 }
