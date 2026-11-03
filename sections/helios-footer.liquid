@@ -1,5 +1,4 @@
-{{ 'wes-footer.css' | asset_url | stylesheet_tag }}
-<footer class="helios-footer wes-footer">
+<footer class="helios-footer">
   {% unless request.page_type == 'product' %}
   <section class="helios-newsletter" aria-labelledby="helios-newsletter-heading" style="background-image: url({{ 'helios-newsletter.jpg' | asset_url }});">
     <div class="helios-newsletter__content" data-helios-reveal><h2 id="helios-newsletter-heading">{{ 'helios.newsletter' | t }}</h2><p>{{ 'helios.newsletter_description' | t }}</p>
@@ -15,97 +14,32 @@
     </div>
   </section>
   {% endunless %}
-  {% liquid
-    assign contact_email = section.settings.contact_email | default: 'wesfreedkr@gmail.com'
-    assign company_name = section.settings.company_name | default: 'Công ty TNHH wesfreed'
-    assign company_address = section.settings.company_address | default: '1217 Meyrin, Switzerland'
-    assign faq_page = section.settings.faq_page
-    if faq_page == blank
-      assign faq_page = pages['faq']
-    endif
-    if faq_page == blank
-      assign faq_page = pages['faqs']
-    endif
-  %}
-  <div class="helios-footer__frame wes-footer__frame">
-    <div class="wes-footer__grid">
-      <div class="wes-footer__brand" id="helios-story">
-        <h2>{{ 'wes_footer.store' | t }}</h2>
-        <p class="wes-footer__intro">{{ 'wes_footer.description' | t }}</p>
-        <div class="wes-footer__company">
-          <p>{{ company_name | escape }}</p>
-          <address>{{ company_address | escape }}</address>
-        </div>
-        {% if section.settings.social_facebook != blank or section.settings.social_instagram != blank %}
-          <div class="wes-footer__social">
-            {% if section.settings.social_facebook != blank and section.settings.social_facebook != '#' %}
-              <a href="{{ section.settings.social_facebook | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook WES FREED">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M13.7 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6H17V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.5v3.2h2.8V21z"/></svg>
-              </a>
-            {% endif %}
-            {% if section.settings.social_instagram != blank and section.settings.social_instagram != '#' %}
-              <a href="{{ section.settings.social_instagram | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram @wesfreedkr">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              </a>
-            {% endif %}
-          </div>
+  <div class="helios-footer__frame">
+    <div class="helios-footer__grid">
+      <div class="helios-footer__brand" id="helios-story"><h2>{{ 'helios.connect' | t }}</h2><p>{{ 'wes_footer.description' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
+      <nav aria-label="{{ 'helios.support_nav' | t | escape }}"><h2>{{ 'helios.support' | t }}</h2>
+        {% if section.settings.support_menu.links != blank %}{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}
+          {% assign support_handles = 'huong-dan-thanh-toan|giao-hang|chinh-sach-bao-hanh|chinh-sach-doi-tra-san-pham|chinh-sach-doi-tra-dip-sale|chinh-sach-bao-mat-moi|bang-gia-phi-dieu-chinh-san-pham|feedback' | split: '|' %}
+          {% assign support_labels = 'Hướng dẫn thanh toán|Chính sách giao hàng|Chính sách bảo hành|Chính sách đổi trả|Chính sách đổi trả dịp sale|Chính sách bảo mật|Bảng giá phí điều chỉnh sản phẩm|Feedback' | split: '|' %}
+          {% for handle in support_handles %}{% assign label = support_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
         {% endif %}
-      </div>
-      <nav class="wes-footer__nav" aria-label="{{ 'wes_footer.about' | t | escape }}">
-        <h2>{{ 'wes_footer.about' | t }}</h2>
-        {% if section.settings.about_menu.links != blank %}
-          {% for link in section.settings.about_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}
-        {% else %}
-          <a href="{{ routes.root_url }}#helios-story">{{ 'wes_footer.brand' | t }}</a>
-          {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'wes_footer.inquiry' | t }}</a>{% else %}<a href="mailto:{{ contact_email | escape }}">{{ 'wes_footer.inquiry' | t }}</a>{% endif %}
-          {% if faq_page.url != blank %}<a href="{{ faq_page.url }}">{{ 'wes_footer.faq' | t }}</a>{% endif %}
-        {% endif %}
+        {% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}
       </nav>
-      <nav class="wes-footer__nav" aria-label="{{ 'wes_footer.service' | t | escape }}">
-        <h2>{{ 'wes_footer.service' | t }}</h2>
-        <a href="{{ routes.cart_url }}">{{ 'wes_footer.cart' | t }}</a>
-        {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">{{ 'wes_footer.account' | t }}</a>{% endif %}
-        {% if shop.privacy_policy.body != blank %}<a href="{{ shop.privacy_policy.url }}">{{ 'wes_footer.privacy' | t }}</a>{% endif %}
-        {% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">{{ 'wes_footer.shipping' | t }}</a>{% endif %}
-        {% if shop.refund_policy.body != blank %}<a href="{{ shop.refund_policy.url }}">{{ 'wes_footer.returns' | t }}</a>{% endif %}
+      <nav aria-label="{{ 'helios.about_nav' | t | escape }}"><h2>{{ 'helios.about' | t }}</h2>
+        <a href="{{ routes.root_url }}#helios-story">{{ 'helios.story' | t }}</a>
+        {% assign about_handles = 'he-thong-cua-hang|helios-tuyen-dung|membership-by-helios|quy-trinh-phat-trien-san-pham|helios-partnership' | split: '|' %}
+        {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by WES FREED|Xưởng Online|Collab' | split: '|' %}
+        {% for handle in about_handles %}{% assign label = about_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
       </nav>
-      <div class="wes-footer__contact">
-        <h2>{{ 'wes_footer.contact' | t }}</h2>
-        <a class="wes-footer__email" href="mailto:{{ contact_email | escape }}">{{ contact_email | escape }}</a>
-        <p>{{ 'wes_footer.contact_note' | t }}</p>
-      </div>
+      <nav aria-label="{{ 'helios.customers_nav' | t | escape }}"><h2>{{ 'helios.customers' | t }}</h2>
+        {% if blogs['news'].url != blank %}<a href="{{ blogs['news'].url }}">Blog</a>{% else %}<a href="{{ routes.search_url }}?type=article&amp;q=helios">Blog</a>{% endif %}
+        {% render 'helios-link', kind: 'page', handle: 'huong-dan-bao-quan', label: 'Hướng dẫn bảo quản sản phẩm', query: 'bảo quản' %}
+        {% render 'helios-link', kind: 'page', handle: 'size-chart', label: 'Hướng dẫn đo Size', query: 'size' %}
+        {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'WES FREED Partnership', query: 'partnership' %}
+        {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'helios.contact' | t }}</a>{% endif %}
+      </nav>
     </div>
-    <div class="wes-footer__bottom">
-      <div class="wes-footer__preferences">
-        {% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
-          {% assign footer_localization_id = 'WesFooterLocalization-' | append: section.id %}
-          {% form 'localization', id: footer_localization_id, class: 'wes-footer__localization' %}
-            {% if localization.available_countries.size > 1 %}
-              <label class="visually-hidden" for="WesFooterCountry-{{ section.id }}">{{ 'wes_footer.country' | t }}</label>
-              <select name="country_code" id="WesFooterCountry-{{ section.id }}">
-                {% for country in localization.available_countries %}<option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>{{ country.name | escape }} | {{ country.currency.iso_code }} {{ country.currency.symbol }}</option>{% endfor %}
-              </select>
-            {% endif %}
-            {% if localization.available_languages.size > 1 %}
-              <label class="visually-hidden" for="WesFooterLanguage-{{ section.id }}">{{ 'wes_footer.language' | t }}</label>
-              <select name="language_code" id="WesFooterLanguage-{{ section.id }}">
-                {% for language in localization.available_languages %}<option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | escape }}</option>{% endfor %}
-              </select>
-            {% endif %}
-            <button type="submit">{{ 'wes_footer.apply' | t }}</button>
-          {% endform %}
-        {% endif %}
-        <small>© {{ 'now' | date: '%Y' }}, WES FREED.</small>
-      </div>
-      <div class="wes-footer__checkout">
-        {% if shop.enabled_payment_types.size > 0 %}
-          <ul class="wes-footer__payments" aria-label="{{ 'wes_footer.payments' | t | escape }}">
-            {% for payment_type in shop.enabled_payment_types %}<li>{{ payment_type | payment_type_svg_tag: class: 'wes-footer__payment-icon' }}</li>{% endfor %}
-          </ul>
-        {% endif %}
-        {% if shop.privacy_policy.body != blank %}<a href="{{ shop.privacy_policy.url }}">{{ 'wes_footer.privacy' | t }}</a>{% endif %}
-      </div>
-    </div>
+    <div class="helios-footer__bottom"><span>© {{ 'now' | date: '%Y' }} WES FREED. All Rights Reserved.</span><div><a href="{{ routes.root_url }}#helios-story">ABOUT US</a>{% render 'helios-link', kind: 'page', handle: 'he-thong-cua-hang', label: 'STORE', query: 'hệ thống cửa hàng' %}</div></div>
   </div>
 </footer>
 {% schema %}
@@ -119,37 +53,30 @@
   },
   "settings": [
     {
-      "type": "text",
-      "id": "company_name",
-      "label": "Tên công ty",
-      "default": "Công ty TNHH wesfreed"
-    },
-    {
-      "type": "text",
-      "id": "company_address",
-      "label": "Địa chỉ",
-      "default": "1217 Meyrin, Switzerland"
-    },
-    {
-      "type": "text",
-      "id": "contact_email",
-      "label": "Email liên hệ",
-      "default": "wesfreedkr@gmail.com"
-    },
-    {
       "type": "link_list",
-      "id": "about_menu",
-      "label": "Menu giới thiệu (tùy chọn)"
+      "id": "support_menu",
+      "label": "Menu chăm sóc khách hàng"
     },
     {
       "type": "page",
       "id": "contact_page",
-      "label": "Trang liên hệ (tùy chọn)"
+      "label": "Trang liên hệ có sẵn"
     },
     {
-      "type": "page",
-      "id": "faq_page",
-      "label": "Trang câu hỏi thường gặp (tùy chọn)"
+      "type": "richtext",
+      "id": "contact",
+      "label": "Thông tin liên hệ đã xác minh",
+      "default": "<p>Công ty TNHH wesfreed</p><p>1217 Meyrin, Switzerland</p><p>Email: <a href=\"mailto:wesfreedkr@gmail.com\">wesfreedkr@gmail.com</a></p>"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook",
+      "label": "Facebook"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube",
+      "label": "Youtube"
     },
     {
       "type": "url",
@@ -158,8 +85,13 @@
     },
     {
       "type": "url",
-      "id": "social_facebook",
-      "label": "Facebook"
+      "id": "social_tiktok",
+      "label": "Tiktok"
+    },
+    {
+      "type": "url",
+      "id": "social_pinterest",
+      "label": "Pinterest"
     }
   ]
 }
