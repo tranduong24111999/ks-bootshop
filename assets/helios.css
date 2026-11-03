@@ -450,3 +450,9 @@
  .helios-footer .helios-newsletter h2 { margin-bottom:10px; }
  .helios-footer .helios-footer__frame { padding-top:20px; padding-bottom:20px; }
 }
+
+/* Custom-order notice replaces the former desktop hotline/email text. */
+.helios-topbar__contact.wes-custom-order-notice { display:block; max-width:100%; white-space:normal; font-size:11px; line-height:1.4; }
+.wes-custom-order-notice a { white-space:nowrap; text-decoration:underline; text-underline-offset:2px; }
+@media(min-width:768px) and (max-width:1199px) { .helios-topbar__contact.wes-custom-order-notice { font-size:10px; } }
+@media(max-width:767px) { .helios-topbar__contact.wes-custom-order-notice { display:none; } }

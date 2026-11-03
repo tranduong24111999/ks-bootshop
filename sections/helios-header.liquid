@@ -20,7 +20,7 @@
 %}
 <header class="helios-header">
   <div class="helios-topbar">
-    <div class="helios-topbar__contact"><a href="tel:0981956116">{% render 'svg-icons', icon: 'phone', size: 15 %} Hotline: 0981.956.116</a><a href="mailto:wesfreedkr@gmail.com">{% render 'svg-icons', icon: 'mail', size: 15 %} Email: wesfreedkr@gmail.com</a></div>
+    <div class="helios-topbar__contact wes-custom-order-notice" lang="ko">주문 제작 가능합니다 — 사진을 보내주세요! 이메일: <a href="mailto:wesfreedkr@gmail.com">wesfreedkr@gmail.com</a></div>
     <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="{{ 'helios.announcements' | t | escape }}">
       <button type="button" data-helios-prev aria-label="{{ 'helios.announcement_prev' | t | escape }}">‹</button>
       <div><a data-helios-slide href="{{ section.settings.announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.announcement %}</a><a data-helios-slide hidden href="{{ section.settings.secondary_announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.secondary_announcement %}</a></div>
