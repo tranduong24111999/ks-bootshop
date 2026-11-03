@@ -405,3 +405,6 @@
 @media (max-width:1199px) and (min-width:768px) { .helios-logo--crisp { width:140px; } }
 @media (max-width:767px) { .helios-logo--crisp { width:120px; } }
 
+
+/* Keep the supplied portrait film intact in the horizontal hero. */
+.helios-hero .wes-hero-motion--portrait { object-fit:contain; background:#080a0b; }

@@ -25,10 +25,17 @@
           assign desktop_width = 1600
           assign desktop_height = 758
         endif
+        if block.settings.artwork == 'jewelry-film'
+          assign motion_asset = 'wes-hero-first-jewelry.mp4'
+          assign desktop_asset = 'wes-hero-first-jewelry-desktop.jpg'
+          assign mobile_asset = 'wes-hero-first-jewelry-mobile.jpg'
+          assign desktop_width = 1900
+          assign desktop_height = 900
+        endif
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
         assign image_alt = block.settings.title
       %}
-      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide data-duration="{{ block.settings.duration | default: 0 }}" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
         <a href="{{ destination }}" aria-label="{% render 'helios-text', value: block.settings.title %} — Khám phá bộ sưu tập">
           <picture>
             {% if block.settings.mobile != blank %}
@@ -47,7 +54,7 @@
             {% endif %}
           </picture>
           {% if motion_asset != blank %}
-            <video class="wes-hero-motion" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
+            <video class="wes-hero-motion{% if block.settings.artwork == 'jewelry-film' %} wes-hero-motion--portrait{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
               <source data-src="{{ motion_asset | asset_url }}" type="video/mp4">
             </video>
           {% endif %}
@@ -77,9 +84,10 @@
     "type": "slide", "name": "Banner",
     "settings": [
       { "type": "text", "id": "title", "label": "Mô tả banner", "default": "WES FREED Signature Collections" },
-      { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }, { "value": "korean-silver", "label": "Korean · Silver" }, { "value": "korean-pearls", "label": "Korean · Pearls" }, { "value": "korean-gold", "label": "Korean · Gold" }], "default": "signature" },
+      { "type": "select", "id": "artwork", "label": "Ảnh WES FREED có sẵn", "options": [{ "value": "jewelry-film", "label": "Video trang sức đầu trang" }, { "value": "jack", "label": "Withered Jack" }, { "value": "signature", "label": "Signature Collections" }, { "value": "bird", "label": "Chu Tước" }, { "value": "korean-silver", "label": "Korean · Silver" }, { "value": "korean-pearls", "label": "Korean · Pearls" }, { "value": "korean-gold", "label": "Korean · Gold" }], "default": "signature" },
       { "type": "image_picker", "id": "desktop", "label": "Ảnh desktop thay thế (tỉ lệ 19:9)" },
       { "type": "image_picker", "id": "mobile", "label": "Ảnh mobile thay thế (tỉ lệ 4:5)" },
+      { "type": "range", "id": "duration", "label": "Thời gian banner (0: dùng cấu hình chung)", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 0 },
       { "type": "collection", "id": "collection", "label": "Bộ sưu tập đích (để trống: tất cả sản phẩm)" }
     ]
   }],

@@ -90,7 +90,7 @@ class HeliosCarousel extends HTMLElement {
     this.zoom?.cancel()
     const media = this.slides[this.index]?.querySelector('a')
     if (media) media.style.transform = ''
-    if (!media || !this.classList.contains('helios-hero') || this.motion.matches) return
+    if (!media || !this.classList.contains('helios-hero') || this.motion.matches || this.slides[this.index]?.querySelector('.wes-hero-motion--portrait')) return
     this.zoom = media.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.035)' }], {
       duration: Math.max(this.interval, 10000) + 1100,
       easing: 'linear',
@@ -187,7 +187,8 @@ class HeliosCarousel extends HTMLElement {
     if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
       if (nextImage) nextImage.loading = 'eager'
-      this.timer = window.setInterval(() => this.show(this.index + 1, true), this.interval)
+      const delay = Number(this.slides[this.index]?.dataset.duration) * 1000 || this.interval
+      this.timer = window.setInterval(() => this.show(this.index + 1, true), delay)
     }
   }
 
@@ -290,4 +291,3 @@ class HeliosTabs extends HTMLElement {
   disconnectedCallback () { this.controller?.abort() }
 }
 if (!customElements.get('helios-tabs')) customElements.define('helios-tabs', HeliosTabs)
-
