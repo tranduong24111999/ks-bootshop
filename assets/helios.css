@@ -399,8 +399,9 @@
 }
 
 
-/* High-resolution black wordmark; fit the artwork bounds without changing the source image. */
-.helios-logo--crisp { position:relative; display:block; width:200px; aspect-ratio:2008/484; overflow:hidden; }
-.helios-logo--crisp img.wes-freed-wordmark { position:absolute; display:block; width:108.167331%; max-width:none; height:auto; left:-3.237052%; top:-34.297521%; filter:none; mask-image:none; }
-@media (max-width:1199px) and (min-width:768px) { .helios-logo--crisp { width:180px; } }
-@media (max-width:767px) { .helios-logo--crisp { width:160px; } }
+/* High-resolution WF lockup; preserve its proportions and all lettering. */
+.helios-logo--crisp { position:relative; display:block; width:160px; aspect-ratio:1420/939; overflow:hidden; }
+.helios-logo--crisp img.wes-freed-wordmark { position:absolute; display:block; width:108.169014%; max-width:none; height:auto; left:-3.802817%; top:-5.218317%; filter:none; mask-image:none; }
+@media (max-width:1199px) and (min-width:768px) { .helios-logo--crisp { width:140px; } }
+@media (max-width:767px) { .helios-logo--crisp { width:120px; } }
+
