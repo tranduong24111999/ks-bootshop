@@ -40,11 +40,11 @@
           assign desktop_height = 682
         endif
         if block.settings.artwork == 'jewelry-film-3'
-          assign motion_asset = 'wes-hero-third-gemstone.mp4'
-          assign desktop_asset = 'wes-hero-third-gemstone.jpg'
+          assign motion_asset = 'wes-hero-third-proportional.mp4'
+          assign desktop_asset = 'wes-hero-third-proportional.jpg'
           assign mobile_asset = desktop_asset
-          assign desktop_width = 1280
-          assign desktop_height = 606
+          assign desktop_width = 1620
+          assign desktop_height = 768
         endif
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
         assign image_alt = block.settings.title
@@ -68,7 +68,7 @@
             {% endif %}
           </picture>
           {% if motion_asset != blank %}
-            <video class="wes-hero-motion{% if block.settings.artwork contains 'jewelry-film' %} wes-hero-motion--landscape{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
+            <video class="wes-hero-motion{% if block.settings.artwork contains 'jewelry-film' %} wes-hero-motion--landscape{% endif %}{% if block.settings.artwork == 'jewelry-film-3' %} wes-hero-motion--proportional{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
               <source data-src="{{ motion_asset | asset_url }}" type="video/mp4">
             </video>
           {% endif %}

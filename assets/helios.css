@@ -409,3 +409,6 @@
 /* The edited landscape film fills the hero on desktop and mobile. */
 .helios-hero--landscape .helios-hero__slides { aspect-ratio:1900/900; }
 .helios-hero .wes-hero-motion--landscape { object-fit:cover; background:#080a0b; }
+
+/* Preserve the full proportional video canvas, including the foreground artwork. */
+.helios-hero .wes-hero-motion--proportional { object-fit:contain; }
