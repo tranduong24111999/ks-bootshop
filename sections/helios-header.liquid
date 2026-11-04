@@ -36,7 +36,12 @@
       <nav class="helios-menu__panel" aria-label="{{ 'helios.menu_main' | t | escape }}">
         <button class="helios-menu__close" type="button" data-helios-menu-close aria-label="{{ 'helios.menu_close' | t | escape }}">{{ 'helios.close_upper' | t }} <span aria-hidden="true">×</span></button>
         {% render 'helios-mega-menu', menu: main_menu, stores_url: stores_url, newest_url: newest_url, feedback_url: feedback_url, collab_url: collab_url %}
-        <div class="helios-mobile-language">{% assign mobile_language_form_id = 'HeliosMobileLanguage-' | append: section.id %}{% render 'helios-language', form_id: mobile_language_form_id %}</div>
+        <div class="helios-mobile-language">
+          {% assign mobile_country_form_id = 'WesMobileCountry-' | append: section.id %}
+          {% render 'wes-country-selector', form_id: mobile_country_form_id %}
+          {% assign mobile_language_form_id = 'HeliosMobileLanguage-' | append: section.id %}
+          {% render 'helios-language', form_id: mobile_language_form_id %}
+        </div>
       </nav>
     </details>
     <nav class="helios-header__links" aria-label="{{ 'helios.discover' | t | escape }}">
@@ -52,6 +57,8 @@
       {% endif %}
     </a>
     <div class="helios-header__actions">
+      {% assign country_form_id = 'WesHeaderCountry-' | append: section.id %}
+      {% render 'wes-country-selector', form_id: country_form_id %}
       {% assign language_form_id = 'HeliosLanguage-' | append: section.id %}
       {% render 'helios-language', form_id: language_form_id %}
       <a href="{{ routes.search_url }}" aria-label="{{ 'helios.search' | t | escape }}" class="helios-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search" aria-controls="offcanvas-search">{% render 'svg-icons', icon: 'search' %}</a>
