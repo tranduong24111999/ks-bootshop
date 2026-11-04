@@ -1,3 +1,28 @@
+{% liquid
+  case request.locale.iso_code
+    when 'ko'
+      assign prompt_one = '주문은 어떻게 하나요?'
+      assign prompt_two = '구매 또는 제품 상담이 필요하시면 Instagram으로 메시지를 보내주세요.'
+      assign prompt_close = '안내 닫기'
+    when 'vi'
+      assign prompt_one = 'Bạn cần tư vấn đặt hàng?'
+      assign prompt_two = 'Nhắn Instagram để được tư vấn sản phẩm và hướng dẫn mua hàng.'
+      assign prompt_close = 'Đóng lời nhắc'
+    when 'ja'
+      assign prompt_one = 'ご注文についてお困りですか？'
+      assign prompt_two = '商品やご購入のご相談はInstagramのメッセージでどうぞ。'
+      assign prompt_close = '案内を閉じる'
+    else
+      assign prompt_one = 'Need help placing an order?'
+      assign prompt_two = 'Message us on Instagram for product advice and help with your order.'
+      assign prompt_close = 'Dismiss reminder'
+  endcase
+%}
+<div class="wes-instagram-widget" data-wes-instagram-widget>
+  <div class="wes-instagram-prompt" hidden>
+    <a href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer" data-wes-prompt-text>{{ prompt_one | escape }}</a>
+    <button type="button" class="wes-instagram-prompt__close" aria-label="{{ prompt_close | escape }}">×</button>
+  </div>
 <a class="wes-instagram-button" href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @wesfreedkr" title="Instagram @wesfreedkr">
   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
     <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -27,3 +52,58 @@
   }
   @media print { .wes-instagram-button { display:none; } }
 </style>
+
+</div>
+<style>
+.wes-instagram-prompt { position:fixed; right:20px; bottom:calc(166px + env(safe-area-inset-bottom, 0px)); z-index:999; width:280px; max-width:calc(100vw - 32px); padding:16px 32px 16px 18px; box-sizing:border-box; border:1px solid #e5e2dc; border-radius:12px; background:#fff; color:#222; box-shadow:0 4px 20px #0002; opacity:0; transform:translateY(8px); transition:opacity .28s ease,transform .28s ease; }
+.wes-instagram-prompt[hidden] { display:none; }
+.wes-instagram-prompt.is-visible { opacity:1; transform:translateY(0); }
+.wes-instagram-prompt::after { content:''; position:absolute; bottom:-7px; right:21px; width:12px; height:12px; background:#fff; border-right:1px solid #e5e2dc; border-bottom:1px solid #e5e2dc; transform:rotate(45deg); }
+.wes-instagram-prompt a { display:block; color:inherit; text-decoration:none; font:13px/1.6 Arial,sans-serif; }
+.wes-instagram-prompt__close { position:absolute; right:3px; top:3px; width:28px; height:28px; padding:0; border:0; background:transparent; color:#666; font:20px/1 Arial,sans-serif; cursor:pointer; }
+.wes-instagram-prompt a:focus-visible,.wes-instagram-prompt__close:focus-visible { outline:2px solid #262626; outline-offset:2px; }
+@media(max-width:767px) { .wes-instagram-prompt { right:16px; bottom:calc(158px + env(safe-area-inset-bottom, 0px)); width:260px; } }
+@media(prefers-reduced-motion:reduce) { .wes-instagram-prompt { transition:none; transform:none; } }
+@media print { .wes-instagram-prompt { display:none; } }
+</style>
+<script>
+(() => {
+  const widget = document.querySelector('[data-wes-instagram-widget]');
+  if (!widget || widget.dataset.ready) return;
+  widget.dataset.ready = 'true';
+  const bubble = widget.querySelector('.wes-instagram-prompt');
+  const text = widget.querySelector('[data-wes-prompt-text]');
+  const messages = [{{ prompt_one | json }}, {{ prompt_two | json }}];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index = 0, timer, transitionTimer, dismissed = false;
+  try { dismissed = sessionStorage.getItem('wes-instagram-reminder-dismissed') === '1'; } catch (_) {}
+  const schedule = () => {
+    clearTimeout(timer);
+    if (dismissed || reduced || document.hidden) return;
+    timer = setTimeout(() => {
+      if (widget.matches(':hover') || widget.contains(document.activeElement)) return schedule();
+      bubble.classList.remove('is-visible');
+      transitionTimer = setTimeout(() => {
+        index = (index + 1) % messages.length;
+        text.textContent = messages[index];
+        bubble.classList.add('is-visible');
+        schedule();
+      }, 300);
+    }, 7000);
+  };
+  if (!dismissed) timer = setTimeout(() => {
+    bubble.hidden = false;
+    requestAnimationFrame(() => { bubble.classList.add('is-visible'); schedule(); });
+  }, 1500);
+  widget.querySelector('.wes-instagram-prompt__close').addEventListener('click', () => {
+    dismissed = true;
+    clearTimeout(timer); clearTimeout(transitionTimer);
+    bubble.hidden = true;
+    try { sessionStorage.setItem('wes-instagram-reminder-dismissed', '1'); } catch (_) {}
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { clearTimeout(timer); clearTimeout(transitionTimer); }
+    else if (!dismissed) { bubble.hidden = false; bubble.classList.add('is-visible'); schedule(); }
+  });
+})();
+</script>
