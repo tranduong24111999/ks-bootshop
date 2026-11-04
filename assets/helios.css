@@ -460,3 +460,54 @@
  .helios-topbar__contact.wes-custom-order-notice { display:block; width:100%; max-width:none; padding:5px 0; font-size:11px; line-height:1.5; text-align:center; }
  .helios-topbar .helios-announcement { flex:none; min-height:30px; }
 }
+
+/* Shopify Markets country/currency selector next to the language selector. */
+.wes-country-selector { position:relative; min-width:0; color:#282621; font:400 12px/1.4 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+.wes-country-selector > summary { display:flex; align-items:center; gap:6px; min-height:38px; max-width:240px; padding:8px 10px; border:1px solid #ddd; background:#fff; cursor:pointer; list-style:none; box-sizing:border-box; }
+.wes-country-selector > summary::-webkit-details-marker { display:none; }
+.wes-country-selector > summary svg { flex:none; transition:transform .15s ease; }
+.wes-country-selector[open] > summary svg { transform:rotate(180deg); }
+.wes-country-selector__name { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.wes-country-selector__currency { flex:none; white-space:nowrap; }
+.wes-country-selector__options { position:absolute; top:calc(100% + 1px); right:0; z-index:30; width:250px; max-width:calc(100vw - 32px); max-height:240px; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; margin:0; padding:6px 0; border:1px solid #ddd; background:#fff; box-shadow:0 5px 15px #0002; }
+.wes-country-selector__options button { display:flex; align-items:center; width:100%; min-height:36px; padding:8px 14px; gap:8px; border:0; background:#fff; color:#111; cursor:pointer; text-align:left; font:400 13px/1.4 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+.wes-country-selector__options button:hover,.wes-country-selector__options button:focus-visible { background:#f3f3f3; }
+.wes-country-selector__check { flex:0 0 14px; }
+.wes-country-selector__label { flex:1; text-align:center; padding-right:14px; }
+.wes-country-selector summary:focus-visible,.wes-country-selector button:focus-visible { outline:2px solid #282621; outline-offset:-2px; }
+.helios-header__actions > .helios-language > summary,.helios-mobile-language > .helios-language > summary { min-height:38px; padding:8px 10px; border:1px solid #ddd; background:#fff; color:#282621; font-size:12px; box-sizing:border-box; }
+@media(min-width:768px) and (max-width:1439px) {
+ .helios-header__actions .helios-account__label { display:none; }
+ .helios-header__actions .helios-account__icon { display:inline; }
+}
+@media(min-width:768px) and (max-width:1279px) {
+ .helios-header__actions > .wes-country-selector > summary { width:70px; max-width:70px; padding:8px 5px; gap:4px; font-size:11px; }
+ .helios-header__actions > .wes-country-selector .wes-country-selector__name { display:none; }
+}
+@media(min-width:768px) and (max-width:1023px) { .helios-header__actions { gap:4px; } }
+@media(max-width:767px) {
+ .helios-header__actions > .wes-country-selector { display:none; }
+ .helios-mobile-language { display:flex; align-items:flex-start; gap:10px; grid-column:1/-1; }
+ .helios-mobile-language > .wes-country-selector { flex:1.6; min-width:0; }
+ .helios-mobile-language > .helios-language { flex:1; min-width:0; }
+ .helios-mobile-language > .wes-country-selector > summary { min-height:44px; max-width:none; width:100%; padding:8px; gap:4px; font-size:11px; }
+ .helios-mobile-language > .helios-language > summary { min-height:44px; padding:8px; font-size:12px; }
+ .helios-mobile-language .wes-country-selector__options { position:static; width:100%; max-width:none; max-height:220px; margin-top:6px; box-shadow:none; }
+ .helios-mobile-language .wes-country-selector__options button { min-height:42px; padding:9px 8px; font-size:12px; }
+ .helios-mobile-language .wes-country-selector__label { text-align:left; padding-right:0; }
+}
+
+.helios-header__actions > .wes-country-selector > summary { max-width:200px; }
+@media(min-width:768px) and (max-width:1023px) {
+ .helios-header__actions > .wes-country-selector > summary { width:60px; max-width:60px; }
+ .helios-header__actions > .wes-country-selector .wes-country-selector__symbol { display:none; }
+ .helios-header__actions > .helios-language > summary { padding:8px 4px; gap:4px; font-size:11px; }
+}
+@media(max-width:767px) {
+ .helios-mobile-language .helios-language__options { min-width:0; width:100%; box-sizing:border-box; }
+ .helios-mobile-language .helios-language__options button { padding:10px 8px; font-size:12px; }
+}
+
+@media(max-width:767px) {
+ .helios-mobile-language .wes-country-selector__options,.helios-mobile-language .helios-language__options { position:absolute; top:auto; bottom:calc(100% + 6px); right:0; margin:0; max-height:220px; overflow-y:auto; z-index:30; background:#fff; box-shadow:0 4px 12px #0002; }
+}
