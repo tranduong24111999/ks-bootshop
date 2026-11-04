@@ -1,0 +1,11 @@
+/* Judge.me revamp (v3) uses jm-* components and inline theme variables. */
+.helios-theme .jm-review-widget,
+.helios-theme .jm-review-widget * {
+  --jm-review-widget-text-color:#000 !important;
+  --jm-review-widget-lighter-text-color:#000 !important;
+}
+.helios-theme .jm-review-widget,
+.helios-theme .jm-review-widget :is(.jm-review-content__title,.jm-review-content__body,.jdgm-review-content__body-content,.jm-reviewer-info,.jm-reviewer-avatar,.jm-location,.jm-shop-reply-content),
+.helios-theme .jm-review-widget :is(.jm-review-content__title,.jm-review-content__body,.jdgm-review-content__body-content,.jm-reviewer-info,.jm-reviewer-avatar,.jm-shop-reply-content) * {
+  color:#000 !important;
+}
