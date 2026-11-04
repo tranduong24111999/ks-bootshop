@@ -389,5 +389,18 @@
     "apply": "Apply",
     "payments": "Accepted payment methods",
     "privacy": "Privacy policy"
+  },
+  "wes_header": {
+    "custom_order": "Custom orders available — send your photos!",
+    "email": "Email",
+    "menu": "MENU",
+    "new_in": "NEW IN",
+    "feedback": "FEEDBACK",
+    "collab": "COLLAB",
+    "discover": "DISCOVER",
+    "world": "WORLD OF WES FREED",
+    "about": "ABOUT WES FREED",
+    "jewelry": "JEWELRY",
+    "accessories": "ACCESSORIES"
   }
 }

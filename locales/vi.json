@@ -389,5 +389,18 @@
     "apply": "Áp dụng",
     "payments": "Phương thức thanh toán",
     "privacy": "Chính sách bảo mật"
+  },
+  "wes_header": {
+    "custom_order": "Nhận đặt làm theo yêu cầu — vui lòng gửi ảnh!",
+    "email": "Email",
+    "menu": "DANH MỤC",
+    "new_in": "HÀNG MỚI",
+    "feedback": "ĐÁNH GIÁ",
+    "collab": "HỢP TÁC",
+    "discover": "KHÁM PHÁ",
+    "world": "THẾ GIỚI WES FREED",
+    "about": "VỀ WES FREED",
+    "jewelry": "TRANG SỨC",
+    "accessories": "PHỤ KIỆN"
   }
 }

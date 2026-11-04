@@ -1,20 +1,20 @@
 <div class="helios-mega__columns">
   {% if menu.links != blank %}
     {% for link in menu.links %}
-      <details class="helios-mega__group" open><summary>{{ link.title | escape }}</summary><div>
-        <a href="{{ link.url }}">Xem tất cả {{ link.title | escape }}</a>
-        {% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% for grandchild in child.links %}<a class="helios-submenu__child" href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a>{% endfor %}{% endfor %}
+      <details class="helios-mega__group" open><summary>{% render 'helios-text', value: link.title %}</summary><div>
+        <a href="{{ link.url }}">{% render 'helios-text', value: link.title %} — {{ 'helios.view_all' | t }}</a>
+        {% for child in link.links %}<a href="{{ child.url }}">{% render 'helios-text', value: child.title %}</a>{% for grandchild in child.links %}<a class="helios-submenu__child" href="{{ grandchild.url }}">{% render 'helios-text', value: grandchild.title %}</a>{% endfor %}{% endfor %}
       </div></details>
     {% endfor %}
   {% else %}
-    <details class="helios-mega__group" open><summary>ALL PRODUCTS</summary><div>
+    <details class="helios-mega__group" open><summary>{{ 'helios.all_products' | t }}</summary><div>
       <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">{{ 'helios.newest' | t }}</a>
       {% render 'helios-link', handle: 'nguoi-moi-nen-chon', label: 'NGƯỜI MỚI NÊN CHỌN', query: 'bạc' %}
       {% render 'helios-link', handle: 'san-pham-an-tuong', label: 'ẤN TƯỢNG NHẤT', query: 'bạc' %}
       {% render 'helios-link', handle: 'nhan-bac-doi', label: 'NHẪN ĐÔI', query: 'nhẫn đôi' %}
       <a class="helios-menu-mobile-only" href="{{ routes.all_products_collection_url }}">{{ 'helios.all_products' | t }}</a>
     </div></details>
-    <details class="helios-mega__group" open><summary>JEWELRY</summary><div>
+    <details class="helios-mega__group" open><summary>{{ 'wes_header.jewelry' | t }}</summary><div>
       {% render 'helios-link', handle: 'nhan-bac-nam', label: 'NHẪN BẠC', query: 'nhẫn' %}
       {% render 'helios-link', handle: 'vong-tay-bac-nam', label: 'VÒNG TAY BẠC', query: 'vòng tay' %}
       {% render 'helios-link', handle: 'day-chuyen-bac-s925', label: 'DÂY CHUYỀN BẠC', query: 'dây chuyền' %}
@@ -23,7 +23,7 @@
       {% render 'helios-link', handle: 'khuyen-tai-bac-nam', label: 'KHUYÊN TAI BẠC', query: 'khuyên tai' %}
       {% render 'helios-link', handle: 'trang-suc-vang', label: 'TRANG SỨC VÀNG', query: 'vàng' %}
     </div></details>
-    <details class="helios-mega__group" open><summary>ACCESSORIES</summary><div>
+    <details class="helios-mega__group" open><summary>{{ 'wes_header.accessories' | t }}</summary><div>
       {% render 'helios-link', handle: 'kinh-mat', label: 'KÍNH MẮT', query: 'kính' %}
       {% render 'helios-link', handle: 'leather-items', label: 'CHẾ TÁC DA', query: 'da' %}
       {% render 'helios-link', handle: 'accessories', label: 'PHỤ KIỆN KHÁC', query: 'phụ kiện' %}
@@ -34,4 +34,4 @@
   <a href="{{ routes.all_products_collection_url }}" class="helios-mega__promo"><img src="{{ 'helios-story.jpg' | asset_url }}" width="1000" height="1250" alt="{{ 'helios.craft_image' | t | escape }}" loading="lazy"><span>{{ 'helios.craft' | t }}<span class="helios-mega__button">{{ 'helios.discover' | t }}</span></span></a>
   <a href="{{ stores_url }}" class="helios-mega__promo"><img src="{{ 'helios-store.jpg' | asset_url }}" width="800" height="1066" alt="{{ 'helios.store_image' | t | escape }}" loading="lazy"><span>{{ 'helios.stores_upper' | t }}<span class="helios-mega__button">{{ 'helios.find' | t }}</span></span></a>
 </div>
-<div class="helios-menu-mobile-only helios-menu-mobile-links"><a href="{{ newest_url }}">NEW IN</a><a href="{{ feedback_url }}">FEEDBACK</a><a href="{{ collab_url }}">COLLAB</a>{% capture journal_url %}{% render 'helios-journal-url' %}{% endcapture %}<a href="{{ journal_url | strip }}">WORLD OF WES FREED</a><a href="{{ routes.root_url }}#helios-story">ABOUT WES FREED</a><a href="{{ stores_url }}">{{ 'helios.stores_upper' | t }}</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">{{ 'helios.login' | t }}</a>{% endif %}</div>
+<div class="helios-menu-mobile-only helios-menu-mobile-links"><a href="{{ newest_url }}">{{ 'wes_header.new_in' | t }}</a><a href="{{ feedback_url }}">{{ 'wes_header.feedback' | t }}</a><a href="{{ collab_url }}">{{ 'wes_header.collab' | t }}</a>{% capture journal_url %}{% render 'helios-journal-url' %}{% endcapture %}<a href="{{ journal_url | strip }}">{{ 'wes_header.world' | t }}</a><a href="{{ routes.root_url }}#helios-story">{{ 'wes_header.about' | t }}</a><a href="{{ stores_url }}">{{ 'helios.stores_upper' | t }}</a>{% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}">{{ 'helios.login' | t }}</a>{% endif %}</div>

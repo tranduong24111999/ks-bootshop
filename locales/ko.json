@@ -413,5 +413,18 @@
     "apply": "적용",
     "payments": "사용 가능한 결제 수단",
     "privacy": "개인정보처리방침"
+  },
+  "wes_header": {
+    "custom_order": "주문 제작 가능합니다 — 사진을 보내주세요!",
+    "email": "이메일",
+    "menu": "메뉴",
+    "new_in": "신상품",
+    "feedback": "고객 후기",
+    "collab": "협업",
+    "discover": "둘러보기",
+    "world": "WES FREED의 세계",
+    "about": "WES FREED 소개",
+    "jewelry": "주얼리",
+    "accessories": "액세서리"
   }
 }

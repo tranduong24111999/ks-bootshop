@@ -389,5 +389,18 @@
     "apply": "適用",
     "payments": "ご利用可能なお支払い方法",
     "privacy": "プライバシーポリシー"
+  },
+  "wes_header": {
+    "custom_order": "オーダーメイド対応 — 写真をお送りください！",
+    "email": "メール",
+    "menu": "メニュー",
+    "new_in": "新着商品",
+    "feedback": "お客様の声",
+    "collab": "コラボ",
+    "discover": "ブランドを見る",
+    "world": "WES FREEDの世界",
+    "about": "WES FREEDについて",
+    "jewelry": "ジュエリー",
+    "accessories": "アクセサリー"
   }
 }

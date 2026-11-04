@@ -1,4 +1,32 @@
 {%- case value -%}
+{%- when 'MENU' or '메뉴' or 'DANH MỤC' or 'メニュー' or 'Menu' -%}{{- 'wes_header.menu' | t -}}
+{%- when 'NEW IN' or '신상품' or 'HÀNG MỚI' or '新着商品' or 'New In' or 'New in' or 'New arrivals' -%}{{- 'wes_header.new_in' | t -}}
+{%- when 'FEEDBACK' or '고객 후기' or 'ĐÁNH GIÁ' or 'お客様の声' or 'Feedback' -%}{{- 'wes_header.feedback' | t -}}
+{%- when 'COLLAB' or '협업' or 'HỢP TÁC' or 'コラボ' or 'Collab' -%}{{- 'wes_header.collab' | t -}}
+{%- when 'DISCOVER' or '둘러보기' or 'KHÁM PHÁ' or 'ブランドを見る' or 'Discover' -%}{{- 'wes_header.discover' | t -}}
+{%- when 'WORLD OF WES FREED' or 'WES FREED의 세계' or 'THẾ GIỚI WES FREED' or 'WES FREEDの世界' or 'World of WES FREED' -%}{{- 'wes_header.world' | t -}}
+{%- when 'ABOUT WES FREED' or 'WES FREED 소개' or 'VỀ WES FREED' or 'WES FREEDについて' or 'About WES FREED' -%}{{- 'wes_header.about' | t -}}
+{%- when 'JEWELRY' or '주얼리' or 'TRANG SỨC' or 'ジュエリー' or 'Jewelry' -%}{{- 'wes_header.jewelry' | t -}}
+{%- when 'ACCESSORIES' or '액세서리' or 'PHỤ KIỆN' or 'アクセサリー' or 'Accessories' -%}{{- 'wes_header.accessories' | t -}}
+{%- when 'LIFETIME POLISHING' or '평생 폴리싱 서비스' or 'ĐÁNH SÁNG TRỌN ĐỜI' or '生涯ポリッシングサービス' -%}{{- 'helios.announcement_one' | t -}}
+{%- when 'WES FREED — MAKE YOUR MARK' or 'WES FREED — 나만의 흔적을 남기다' or 'WES FREED LÀM DẤU ẤN CỦA BẢN LĨNH' or 'WES FREED — 自分だけの証を刻む' -%}{{- 'helios.announcement_two' | t -}}
+{%- when 'ALL PRODUCTS' or '전체 상품' or 'TẤT CẢ SẢN PHẨM' or 'すべての商品' -%}{{- 'helios.all_products' | t -}}
+{%- when 'NEWEST' or 'MỚI NHẤT' -%}{{- 'helios.newest' | t -}}
+{%- when 'Stores' or '매장 안내' or 'Hệ thống cửa hàng' or '店舗案内' -%}{{- 'helios.stores' | t -}}
+{%- when 'OUR STORES' or 'HỆ THỐNG CỬA HÀNG' -%}{{- 'helios.stores_upper' | t -}}
+{%- when 'SILVER RINGS' or '실버 반지' or 'NHẪN BẠC' or 'シルバーリング' -%}{{- 'helios.rings' | t -}}
+{%- when 'SILVER BRACELETS' or '실버 팔찌' or 'VÒNG TAY BẠC' or 'シルバーブレスレット' -%}{{- 'helios.bracelets' | t -}}
+{%- when 'SILVER NECKLACES' or '실버 목걸이' or 'DÂY CHUYỀN BẠC' or 'シルバーネックレス' -%}{{- 'helios.necklaces' | t -}}
+{%- when 'SILVER PENDANTS' or '실버 펜던트' or 'MẶT DÂY CHUYỀN BẠC' or 'シルバーペンダント' -%}{{- 'helios.pendants' | t -}}
+{%- when 'SILVER CHARMS' or '실버 참' or 'CHARM BẠC' or 'シルバーチャーム' -%}{{- 'helios.charms' | t -}}
+{%- when 'SILVER EARRINGS' or '실버 귀걸이' or 'KHUYÊN TAI BẠC' or 'シルバーピアス' -%}{{- 'helios.earrings' | t -}}
+{%- when 'GOLD JEWELRY' or '골드 주얼리' or 'TRANG SỨC VÀNG' or 'ゴールドジュエリー' -%}{{- 'helios.gold' | t -}}
+{%- when 'EYEWEAR' or '아이웨어' or 'KÍNH MẮT' or 'アイウェア' -%}{{- 'helios.eyewear' | t -}}
+{%- when 'LEATHER GOODS' or '가죽 제품' or 'CHẾ TÁC DA' or 'レザーアイテム' -%}{{- 'helios.leather' | t -}}
+{%- when 'COUPLE RINGS' or '커플 반지' or 'NHẪN ĐÔI' or 'ペアリング' -%}{{- 'helios.couple_rings' | t -}}
+{%- when 'START HERE' or '처음 만나는 WES FREED' or 'NGƯỜI MỚI NÊN CHỌN' or '初めての方へ' -%}{{- 'helios.beginners' | t -}}
+{%- when 'STATEMENT PIECES' or '시선을 사로잡는 주얼리' or 'ẤN TƯỢNG NHẤT' or '存在感のあるジュエリー' -%}{{- 'helios.statement' | t -}}
+{%- when '10-YEAR MAGAZINE' or '10주년 매거진' or 'TẠP CHÍ 10 NĂM' or '10周年マガジン' -%}{{- 'helios.magazine' | t -}}
 {%- when 'Hệ thống cửa hàng' -%}{{- 'helios.stores' | t -}}
 {%- when 'Đóng' -%}{{- 'helios.close' | t -}}
 {%- when 'ĐÓNG' -%}{{- 'helios.close_upper' | t -}}
