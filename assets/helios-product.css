@@ -95,3 +95,15 @@ helios-product-media.is-video-ready video { opacity:1; }
 .page-type-product .jdgm-rev-widg :is(p,h1,h2,h3,h4,h5,h6,label,input,textarea,select),
 .page-type-product .jdgm-rev-widg :is(.jdgm-rev__author,.jdgm-rev__title,.jdgm-rev__body,.jdgm-rev__timestamp,.jdgm-rev__location,.jdgm-rev__icon,.jdgm-rev-widg__summary-text,.jdgm-rev-widg__sort-wrapper,.jdgm-sort-dropdown,.jdgm-histogram__row,.jdgm-rev__reply-content,.jdgm-rev__reply-author,.jdgm-rev__buyer-badge),
 .page-type-product .jdgm-rev-widg :is(.jdgm-rev__author,.jdgm-rev__title,.jdgm-rev__body,.jdgm-rev__reply-content) * { color:#000 !important; }
+
+/* Judge.me revamp (v3) uses jm-* components and inline theme variables. */
+.helios-theme .jm-review-widget,
+.helios-theme .jm-review-widget * {
+  --jm-review-widget-text-color:#000 !important;
+  --jm-review-widget-lighter-text-color:#000 !important;
+}
+.helios-theme .jm-review-widget,
+.helios-theme .jm-review-widget :is(.jm-review-content__title,.jm-review-content__body,.jdgm-review-content__body-content,.jm-reviewer-info,.jm-reviewer-avatar,.jm-location,.jm-shop-reply-content),
+.helios-theme .jm-review-widget :is(.jm-review-content__title,.jm-review-content__body,.jdgm-review-content__body-content,.jm-reviewer-info,.jm-reviewer-avatar,.jm-shop-reply-content) * {
+  color:#000 !important;
+}
