@@ -70,7 +70,7 @@ class HeliosCarousel extends HTMLElement {
       this.heroVisible = false
       this.videoObserver = new IntersectionObserver(entries => {
         this.heroVisible = entries[0].isIntersecting
-        this.syncVideos()
+        this.updateAutoplay()
       })
       this.videoObserver.observe(this)
       this.querySelectorAll('[data-hero-video]').forEach(video => {
@@ -106,10 +106,11 @@ class HeliosCarousel extends HTMLElement {
       if (!play) { video.pause(); return }
       const source = video.querySelector('source[data-src]')
       if (source) {
-        source.src = source.dataset.src
+        source.src = window.matchMedia('(max-width: 767px)').matches && source.dataset.mobileSrc ? source.dataset.mobileSrc : source.dataset.src
         source.removeAttribute('data-src')
         video.load()
       }
+      if (!video.paused) return
       video.muted = true
       video.play().catch(() => video.classList.remove('is-ready'))
     })
@@ -172,7 +173,7 @@ class HeliosCarousel extends HTMLElement {
     this.syncVideos()
     if (this.motion.matches) this.zoom?.cancel()
     else if (this.zoom) {
-      if (this.paused || this.focused || this.editorPaused || document.hidden) this.zoom.pause()
+      if (this.paused || this.focused || this.editorPaused || document.hidden || !this.heroVisible) this.zoom.pause()
       else this.zoom.play()
     }
     const eligible = this.interval > 0 && this.slides.length > 1 && !this.motion.matches
@@ -184,7 +185,7 @@ class HeliosCarousel extends HTMLElement {
       const label = window.theme?.locales?.helios?.[key]
       if (label) toggle.setAttribute('aria-label', label)
     }
-    if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden) {
+    if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden && this.heroVisible) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
       if (nextImage) nextImage.loading = 'eager'
       const delay = Number(this.slides[this.index]?.dataset.duration) * 1000 || this.interval

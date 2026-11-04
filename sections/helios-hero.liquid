@@ -4,6 +4,7 @@
     {% for block in section.blocks %}
       {% liquid
         assign motion_asset = blank
+        assign mobile_motion_asset = blank
         assign desktop_asset = 'helios-hero-desktop.jpg'
         assign mobile_asset = 'helios-hero-mobile.jpg'
         assign desktop_width = 1900
@@ -27,6 +28,7 @@
         endif
         if block.settings.artwork == 'jewelry-film'
           assign motion_asset = 'wes-hero-first-landscape.mp4'
+          assign mobile_motion_asset = 'wes-hero-first-landscape-mobile.mp4'
           assign desktop_asset = 'wes-hero-first-landscape.jpg'
           assign mobile_asset = 'wes-hero-first-landscape.jpg'
           assign desktop_width = 1900
@@ -34,6 +36,7 @@
         endif
         if block.settings.artwork == 'jewelry-film-2'
           assign motion_asset = 'wes-hero-second-landscape.mp4'
+          assign mobile_motion_asset = 'wes-hero-second-landscape-mobile.mp4'
           assign desktop_asset = 'wes-hero-second-landscape.jpg'
           assign mobile_asset = desktop_asset
           assign desktop_width = 1440
@@ -41,6 +44,7 @@
         endif
         if block.settings.artwork == 'jewelry-film-3'
           assign motion_asset = 'wes-hero-third-cadco.mp4'
+          assign mobile_motion_asset = 'wes-hero-third-cadco-mobile.mp4'
           assign desktop_asset = 'wes-hero-third-cadco.jpg'
           assign mobile_asset = desktop_asset
           assign desktop_width = 1520
@@ -69,7 +73,7 @@
           </picture>
           {% if motion_asset != blank %}
             <video class="wes-hero-motion{% if block.settings.artwork contains 'jewelry-film' %} wes-hero-motion--landscape{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
-              <source data-src="{{ motion_asset | asset_url }}" type="video/mp4">
+              <source data-src="{{ motion_asset | asset_url }}" {% if mobile_motion_asset != blank %}data-mobile-src="{{ mobile_motion_asset | asset_url }}"{% endif %} type="video/mp4">
             </video>
           {% endif %}
           <span class="helios-hero__title" hidden>{% render 'helios-text', value: block.settings.title %}</span>
