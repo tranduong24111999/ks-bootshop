@@ -88,3 +88,10 @@ helios-product-media.is-video-ready video { opacity:1; }
 .helios-related [data-card-motion-toggle][hidden] { display:none; }
 @media(hover:none) { .helios-related [data-card-motion-toggle] { opacity:1; } }
 @media(prefers-reduced-motion:reduce) { helios-product-media video,helios-product-media .helios-product-card__second,.helios-related [data-card-motion-toggle] { transition:none; } }
+
+/* Readable review text on the light product-page background. */
+.page-type-product .jdgm-review-widget,
+.page-type-product .jdgm-rev-widg { color:#000 !important; }
+.page-type-product .jdgm-rev-widg :is(p,h1,h2,h3,h4,h5,h6,label,input,textarea,select),
+.page-type-product .jdgm-rev-widg :is(.jdgm-rev__author,.jdgm-rev__title,.jdgm-rev__body,.jdgm-rev__timestamp,.jdgm-rev__location,.jdgm-rev__icon,.jdgm-rev-widg__summary-text,.jdgm-rev-widg__sort-wrapper,.jdgm-sort-dropdown,.jdgm-histogram__row,.jdgm-rev__reply-content,.jdgm-rev__reply-author,.jdgm-rev__buyer-badge),
+.page-type-product .jdgm-rev-widg :is(.jdgm-rev__author,.jdgm-rev__title,.jdgm-rev__body,.jdgm-rev__reply-content) * { color:#000 !important; }
