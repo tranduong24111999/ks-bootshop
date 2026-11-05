@@ -12,7 +12,7 @@
       {% render 'helios-feedback-defaults' %}
     {% endif %}
   </div>
-  {% if section.blocks.size == 0 %}<p class="helios-feedback__source"><a href="https://helios.vn/pages/feedback" target="_blank" rel="noopener">{{ 'helios.feedback_source' | t }} ↗</a></p>{% endif %}
+  {% if section.blocks.size == 0 %}<p class="helios-feedback__source"><a href="{{ routes.all_products_collection_url }}">{{ 'helios.feedback_source' | t }} ↗</a></p>{% endif %}
 </section>
 {% schema %}
 {
