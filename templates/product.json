@@ -36,6 +36,10 @@
             "pb": 2
           }
         },
+        "judge_me_reviews_preview_badge_J3NUWe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
         "095886ab-f46a-4a25-9d3d-e7c79235921b": {
           "type": "price",
           "settings": {
@@ -214,10 +218,6 @@
             "pt": 3,
             "pb": 3
           }
-        },
-        "judge_me_reviews_preview_badge_J3NUWe": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
         }
       },
       "block_order": [
@@ -253,25 +253,23 @@
         "pb": 10
       }
     },
-    "1710322973d29fae05": {
-      "type": "helios-product-reviews",
-      "disabled": true,
+    "17934359457af1e718": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_77dHUP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_77dHUP"
+      ],
       "settings": {}
-    },
-    "8b8acb35-e69e-4471-a6cb-d0a09485fb41": {
-      "type": "helios-product-recommendations",
-      "settings": {
-        "header_title": "CÓ THỂ BẠN SẼ THÍCH",
-        "products": [
-          "toba-lotus-spinning-ring",
-          "hawaii-helios-silver",
-          "floris-helios-black-silver",
-          "michigan-lotus-helios-black-silver"
-        ],
-        "collection": "",
-        "limit": 4,
-        "media_motion": true
-      }
     },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
       "type": "separator",
@@ -338,38 +336,40 @@
       ],
       "settings": {
         "heading": "10 NĂM RÈN BẠC - MỘT ĐỜI TẠC BẢN LĨNH",
-        "description": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Việt, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>",
+        "description": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Italy, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>",
         "film_url": "https://helios.vn/cdn/shop/videos/c/vp/c9f006cb17ef468da3ab4d6b24ea7d05/c9f006cb17ef468da3ab4d6b24ea7d05.HD-720p-4.5Mbps-95845063.mp4?v=0",
         "faq_heading": "Câu Hỏi Thường Gặp!"
       }
     },
-    "17934359457af1e718": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_77dHUP": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_77dHUP"
-      ],
+    "8b8acb35-e69e-4471-a6cb-d0a09485fb41": {
+      "type": "helios-product-recommendations",
+      "settings": {
+        "media_motion": true,
+        "header_title": "CÓ THỂ BẠN SẼ THÍCH",
+        "products": [
+          "toba-lotus-spinning-ring",
+          "hawaii-helios-silver",
+          "floris-helios-black-silver",
+          "michigan-lotus-helios-black-silver"
+        ],
+        "collection": "",
+        "limit": 4
+      }
+    },
+    "1710322973d29fae05": {
+      "type": "helios-product-reviews",
+      "disabled": true,
       "settings": {}
     },
     "17934361130fdd24f4": {
       "type": "apps",
-      "settings": {},
-      "disabled": true
+      "disabled": true,
+      "settings": {}
     },
     "1793436127403c7acc": {
       "type": "apps",
-      "settings": {},
-      "disabled": true
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
