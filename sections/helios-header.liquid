@@ -20,7 +20,7 @@
 %}
 <header class="helios-header">
   <div class="helios-topbar">
-    <div class="helios-topbar__contact wes-custom-order-notice" lang="{{ request.locale.iso_code | default: 'en' | escape }}">{{ 'wes_header.custom_order' | t }} {{ 'wes_header.email' | t }}: <a href="mailto:wesfreedkr@gmail.com">wesfreedkr@gmail.com</a></div>
+    <div class="helios-topbar__contact wes-custom-order-notice" lang="{{ request.locale.iso_code | default: 'en' | escape }}">{{ 'wes_header.custom_order' | t }} Instagram: <a href="https://www.instagram.com/wesfreedkr/">@wesfreedkr</a></div>
     <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="{{ 'helios.announcements' | t | escape }}">
       <button type="button" data-helios-prev aria-label="{{ 'helios.announcement_prev' | t | escape }}">‹</button>
       <div><a data-helios-slide href="{{ section.settings.announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.announcement %}</a><a data-helios-slide hidden href="{{ section.settings.secondary_announcement_link | default: routes.all_products_collection_url | escape }}">{% render 'helios-text', value: section.settings.secondary_announcement %}</a></div>
