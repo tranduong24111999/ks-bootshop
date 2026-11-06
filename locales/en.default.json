@@ -784,4 +784,6 @@
   }
 ,
   "wes_buyers": {"today_html":"<strong>{{ count }} people</strong> purchased today!"}
+,
+  "wes_brand_signature": {"tagline":"Jewelry that brings out your individuality"}
 }

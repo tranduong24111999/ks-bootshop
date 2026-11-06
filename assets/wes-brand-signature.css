@@ -1,0 +1,10 @@
+.wes-brand-signature { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin:0 0 22px; color:#fff; }
+.wes-brand-signature__portraits { display:flex; flex:none; padding-right:1px; }
+.wes-brand-signature__portrait { position:relative; flex:none; display:block; box-sizing:border-box; width:46px; height:46px; overflow:hidden; border:2px solid #fff; border-radius:50%; background:#222; }
+.wes-brand-signature__portrait + .wes-brand-signature__portrait { margin-left:-10px; }
+.wes-brand-signature__portrait img { position:absolute; display:block; width:300%; max-width:none; height:auto; top:-10%; left:-25%; }
+.wes-brand-signature__portrait--2 img,.wes-brand-signature__portrait--4 img { left:-175%; }
+.wes-brand-signature__portrait--3 img,.wes-brand-signature__portrait--4 img { top:-235%; }
+.wes-brand-signature__text { min-width:0; }
+.helios-footer__grid .wes-brand-signature__title { margin:0 0 4px; color:#fff; font:700 14px/1.25 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:0; }
+.helios-footer__brand .wes-brand-signature__tagline { margin:0; color:#fff; font:400 11px/1.5 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:.02em; }

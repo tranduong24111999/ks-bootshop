@@ -17,7 +17,7 @@
   {% endunless %}
   <div class="helios-footer__frame">
     <div class="helios-footer__grid">
-      <div class="helios-footer__brand" id="helios-story"><h2>{{ 'helios.connect' | t }}</h2><p>{{ 'wes_footer.description' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
+      <div class="helios-footer__brand" id="helios-story">{% render 'wes-brand-signature' %}<p>{{ 'wes_footer.description' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
       <nav aria-label="{{ 'helios.support_nav' | t | escape }}"><h2>{{ 'helios.support' | t }}</h2>
         {% if section.settings.support_menu.links != blank %}{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}
           {% assign support_handles = 'huong-dan-thanh-toan|giao-hang|chinh-sach-bao-hanh|chinh-sach-doi-tra-san-pham|chinh-sach-doi-tra-dip-sale|chinh-sach-bao-mat-moi|bang-gia-phi-dieu-chinh-san-pham|feedback' | split: '|' %}

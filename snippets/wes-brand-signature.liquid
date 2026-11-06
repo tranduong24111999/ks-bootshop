@@ -1,0 +1,15 @@
+{% doc %}
+  Displays the WES FREED brand signature with four editorial model portraits.
+{% enddoc %}
+{{ 'wes-brand-signature.css' | asset_url | stylesheet_tag }}
+<div class="wes-brand-signature">
+  <div class="wes-brand-signature__portraits" aria-hidden="true">
+    {% for portrait in (1..4) %}
+      <span class="wes-brand-signature__portrait wes-brand-signature__portrait--{{ portrait }}"><img src="https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-1.png?v=1793958770&width=256" width="256" height="384" alt="" loading="lazy" decoding="async"></span>
+    {% endfor %}
+  </div>
+  <div class="wes-brand-signature__text">
+    <h2 class="wes-brand-signature__title">WES FREED JEWELRY</h2>
+    <p class="wes-brand-signature__tagline">{{ 'wes_brand_signature.tagline' | t }}</p>
+  </div>
+</div>
