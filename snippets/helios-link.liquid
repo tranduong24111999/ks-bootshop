@@ -21,7 +21,34 @@
     if query == blank
       assign destination = routes.all_products_collection_url
     else
-      assign encoded_query = query | url_encode
+      assign localized_query = query
+      case query
+        when 'bạc'
+          assign localized_query = 'wes_search_terms.term_0' | t
+        when 'nhẫn đôi'
+          assign localized_query = 'wes_search_terms.term_1' | t
+        when 'nhẫn'
+          assign localized_query = 'wes_search_terms.term_2' | t
+        when 'vòng tay'
+          assign localized_query = 'wes_search_terms.term_3' | t
+        when 'dây chuyền'
+          assign localized_query = 'wes_search_terms.term_4' | t
+        when 'mặt dây chuyền'
+          assign localized_query = 'wes_search_terms.term_5' | t
+        when 'charm'
+          assign localized_query = 'wes_search_terms.term_6' | t
+        when 'khuyên tai'
+          assign localized_query = 'wes_search_terms.term_7' | t
+        when 'vàng'
+          assign localized_query = 'wes_search_terms.term_8' | t
+        when 'kính'
+          assign localized_query = 'wes_search_terms.term_9' | t
+        when 'da'
+          assign localized_query = 'wes_search_terms.term_10' | t
+        when 'phụ kiện'
+          assign localized_query = 'wes_search_terms.term_11' | t
+      endcase
+      assign encoded_query = localized_query | url_encode
       assign search_type = 'product'
       if kind == 'page'
         assign search_type = 'page'
