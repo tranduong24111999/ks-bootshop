@@ -406,5 +406,5 @@
 ,
   "wes_buyers": {"today_html":"Hôm nay có <strong>{{ count }} người</strong> đã mua!"}
 ,
-  "wes_brand_signature": {"tagline":"Trang sức tôn lên cá tính","pause":"Tạm dừng ảnh tự chạy"}
+  "wes_brand_signature": {"tagline":"Trang sức tôn lên cá tính","pause":"Tạm dừng ảnh tự chạy","title":"TRANG SỨC WES FREED"}
 }
