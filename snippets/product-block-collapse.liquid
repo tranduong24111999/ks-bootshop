@@ -47,7 +47,7 @@
     <div id="collapse-{{ block.id }}" class="collapse {% if block.settings.open_by_default %}show{% endif %}">
       <div class="collapse-inner description rte mb-0 {{ block.settings.description_font_size }}">
         {% if block.settings.description contains '[page' %}
-          {% assign page_handle = block.settings.description | split: '[page:' | last | split: ']' | first %}
+          {% assign page_handle = block.settings.description | split: '[page:' | last | split: ']' | first | strip %}
           {% if pages[page_handle].content != blank %}
             {{ pages[page_handle].content }}
           {% else %}
