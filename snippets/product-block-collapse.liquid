@@ -48,7 +48,20 @@
       <div class="collapse-inner description rte mb-0 {{ block.settings.description_font_size }}">
         {% if block.settings.description contains '[page' %}
           {% assign page_handle = block.settings.description | split: '[page:' | last | split: ']' | first %}
-          {% if pages[page_handle].content != blank %}{{ pages[page_handle].content }}{% else %}{% render 'helios-link', kind: 'page', handle: page_handle, label: block.settings.title, query: block.settings.title %}{% endif %}
+          {% if pages[page_handle].content != blank %}
+            {{ pages[page_handle].content }}
+          {% else %}
+            {% case page_handle %}
+              {% when 'giao-hang' %}
+                {{ 'wes_product_panels.purchase_html' | t }}
+              {% when 'chinh-sach-bao-hanh' %}
+                {{ 'wes_product_panels.warranty_html' | t }}
+              {% when 'huong-dan-bao-quan' %}
+                {{ 'wes_product_panels.care_html' | t }}
+              {% else %}
+                {% render 'helios-link', kind: 'page', handle: page_handle, label: block.settings.title, query: block.settings.title %}
+            {% endcase %}
+          {% endif %}
         {% elsif block.settings.product_description %}
           {{ product.description }}
         {% else %}
