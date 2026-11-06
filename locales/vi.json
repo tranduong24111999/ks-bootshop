@@ -403,4 +403,6 @@
     "jewelry": "TRANG SỨC",
     "accessories": "PHỤ KIỆN"
   }
+,
+  "wes_buyers": {"today_html":"Hôm nay có <strong>{{ count }} người</strong> đã mua!"}
 }

@@ -782,4 +782,6 @@
     "term_10": "leather",
     "term_11": "accessories"
   }
+,
+  "wes_buyers": {"today_html":"<strong>{{ count }} people</strong> purchased today!"}
 }

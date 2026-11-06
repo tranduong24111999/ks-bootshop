@@ -1,0 +1,7 @@
+wes-daily-buyers { display:block; margin:12px 0 7px; }
+wes-daily-buyers[hidden] { display:none !important; }
+.wes-daily-buyers__bubble { position:relative; display:inline-block; padding:6px 12px; border:1px solid #b9b9b9; border-radius:18px; background:#fff; color:#555; font-size:12px; line-height:1.4; }
+.wes-daily-buyers__bubble::before,.wes-daily-buyers__bubble::after { content:''; position:absolute; left:24px; width:0; height:0; border-style:solid; }
+.wes-daily-buyers__bubble::before { bottom:-8px; border-width:8px 6px 0; border-color:#b9b9b9 transparent transparent; }
+.wes-daily-buyers__bubble::after { bottom:-6px; margin-left:1px; border-width:6px 5px 0; border-color:#fff transparent transparent; }
+.wes-daily-buyers__bubble strong { color:#00a9c5; font-weight:700; }

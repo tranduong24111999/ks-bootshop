@@ -1,0 +1,10 @@
+{% doc %}
+  @param {product} product - Product with verified daily purchase statistics.
+  @param {string} section_id - Section used to refresh the purchase count.
+{% enddoc %}
+{% assign stats = product.metafields.custom.wes_daily_buyers.value %}
+{{ 'wes-daily-buyers.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'wes-daily-buyers.js' | asset_url }}" defer></script>
+<wes-daily-buyers hidden data-product-id="{{ product.id }}" data-section-id="{{ section_id | escape }}" data-product-url="{{ product.url | escape }}" data-date="{{ stats.date | escape }}" data-count="{{ stats.count | default: 0 }}" data-updated-at="{{ stats.updated_at | escape }}">
+  <span class="wes-daily-buyers__bubble">{{ 'wes_buyers.today_html' | t: count: stats.count }}</span>
+</wes-daily-buyers>

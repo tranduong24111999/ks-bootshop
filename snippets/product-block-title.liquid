@@ -3,6 +3,7 @@
   assign pb = block.settings.pb | prepend: 'pb-'
 %}
 
+{% render 'wes-daily-buyers', product: product, section_id: section.id %}
 <h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }}>
   {{ product.title }}
 </h1>

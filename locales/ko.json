@@ -806,4 +806,6 @@
     "term_10": "가죽",
     "term_11": "액세서리"
   }
+,
+  "wes_buyers": {"today_html":"오늘 <strong>{{ count }}명</strong>이 구매했어요!"}
 }
