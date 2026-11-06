@@ -42,9 +42,23 @@
     {{ 'wes-reviews-colors.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'helios-product.js' | asset_url }}" defer></script>
   {% endif %}
+  {% unless request.design_mode %}
+    {{ 'wes-page-transition.css' | asset_url | stylesheet_tag }}
+    <script>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.dataset.wesPageTransition = 'loading';
+        window.wesPageTransitionStarted = performance.now();
+        window.wesPageTransitionFailSafe = setTimeout(function () {
+          document.documentElement.removeAttribute('data-wes-page-transition');
+        }, 4000);
+      }
+    </script>
+    <script src="{{ 'wes-page-transition.js' | asset_url }}" defer></script>
+  {% endunless %}
 </head>
 
 <body class="helios-theme {% if template.suffix contains 'journal-' %}page-type-journal{% elsif template.suffix == 'collab' or template.suffix == 'collab-story' %}page-type-collab{% elsif template.suffix == 'feedback' %}page-type-feedback{% else %}{{ request.page_type | prepend: 'page-type-' }}{% endif %}">
+  {% unless request.design_mode %}<div class="wes-page-transition" aria-hidden="true"><span class="wes-page-transition__line"></span></div>{% endunless %}
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>
