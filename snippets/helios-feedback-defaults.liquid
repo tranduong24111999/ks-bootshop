@@ -1,6 +1,18 @@
-{% assign feedback_records = 'helios-feedback-1.jpg~Helios x Á Hậu Hoàng Oanh~~mat-day-chuyen-bac-s925-summer-lotus-helios-silver-original|helios-feedback-2.jpg~Helios x Ca Sĩ Ali Hoàng Dương~https://www.instagram.com/alihoangduong/~day-chuyen-bac-nam-secluded-necklace-helios-original-s925|helios-feedback-3.jpg~Helios x Ca Sĩ Anh Tú~~|helios-feedback-4.webp~Helios x Ca Sĩ Anh Tú Atus~~horse-shoe-chrysaber-helios-black-silver|helios-feedback-5.webp~Helios x Ca Sĩ Cường Seven~~day-chuyen-bac-nam-secluded-necklace-helios-original-s925|helios-feedback-6.jpg~Helios x Ca Sĩ Duy Mạnh~https://www.facebook.com/profile.php?id=100084236087709~|helios-feedback-7.jpg~Helios x Ca Sĩ GreyD~https://www.instagram.com/grey_dtl/~day-chuyen-bac-nam-secluded-necklace-helios-original-s925|helios-feedback-8.jpg~Helios x Ca Sĩ Hải Đăng Doo~https://www.facebook.com/babysharkdoodoodoohoohoo~|helios-feedback-9.jpg~Helios x Ca Sĩ Hoàng Dũng~~|helios-feedback-10.jpg~Helios x Ca Sĩ Kisu~~superior-lotus-helios-black-silver,hoia-baciu-sunflower-helios-black-silver|helios-feedback-11.jpg~Helios x Ca Sĩ Lý Hải~~|helios-feedback-12.jpg~Helios x Ca Sĩ Nicky~~entalula-chrysaber-helios-black-silver,ontario-lotus-helios-black-silver,navagio-chrysaber-helios-black-silver|helios-feedback-13.jpg~Helios x Ca Sĩ Phạm Anh Duy~~|helios-feedback-14.webp~Helios x Ca Sĩ Quân AP~~|helios-feedback-15.jpg~Helios x Ca Sĩ RIO~https://www.facebook.com/RIO.NOT.RYO~|helios-feedback-16.jpg~Helios x Ca Sĩ Tăng Duy Tân~https://www.facebook.com/therealtangduytan~' | split: '|' %}
-{% for record in feedback_records %}
-  {% assign fields = record | split: '~' %}
-  {% assign handles = fields[3] | split: ',' %}
-  {% render 'helios-feedback-card', artwork: fields[0], caption: fields[1], profile: fields[2], handles: handles %}
+{% assign editorial_sheets = 'https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-1.png?v=1793958770|https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-2.png?v=1793958784|https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-3.png?v=1793958799|https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-4.png?v=1793958815' | split: '|' %}
+<p class="wes-lookbook__note">{{ 'wes_lookbook.note' | t }}</p>
+{% assign look_number = 0 %}
+{% for sheet in editorial_sheets %}
+  {% for quadrant in (1..4) %}
+    {% assign look_number = look_number | plus: 1 %}
+    {% assign crop_x = '0%' %}
+    {% assign crop_y = '0%' %}
+    {% if quadrant == 2 or quadrant == 4 %}{% assign crop_x = '-100%' %}{% endif %}
+    {% if quadrant > 2 %}{% assign crop_y = '-100%' %}{% endif %}
+    <article class="helios-feedback__card">
+      <a class="wes-lookbook__image" href="{{ routes.all_products_collection_url }}" style="--crop-x:{{ crop_x }};--crop-y:{{ crop_y }};">
+        <img src="{{ sheet | escape }}" width="1024" height="1536" alt="{{ 'wes_lookbook.portrait_alt' | t: number: look_number | escape }}" loading="lazy">
+      </a>
+      <a class="wes-lookbook__caption" href="{{ routes.all_products_collection_url }}">{{ 'wes_lookbook.look_label' | t: number: look_number }}</a>
+    </article>
+  {% endfor %}
 {% endfor %}

@@ -431,5 +431,11 @@
     "purchase_html": "<p>주문 전에 상품 설명을 확인하고 선택한 사이즈, 색상, 수량을 확인해 주세요. 이용 가능한 결제 수단, 배송 옵션 및 최종 결제 금액은 결제 단계에서 확인할 수 있습니다. 주문 확인 내역을 보관해 주세요.</p><p>상품이나 주문에 관한 문의는 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p><p><strong>구매 후 10일 이내 교환:</strong> WES FREED에서는 구매 후 10일 이내에 다른 사이즈나 스타일로 교환할 수 있습니다. 교환을 원하시면 상품을 보내기 전에 주문 번호와 함께 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p>",
     "warranty_html": "<p><strong>도금 및 폴리싱 평생 지원:</strong> WES FREED는 주얼리의 아름다운 상태를 유지할 수 있도록 도금 및 광택 관리에 대한 평생 지원을 제공합니다.</p><p>주문 번호와 선명한 사진을 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 보내 주세요. 상품을 보내기 전에 소재와 상태에 맞는 서비스, 서비스 및 배송 비용의 유무, 예상 소요 기간을 문의해 주세요.</p>",
     "care_html": "<ul><li>향수, 화장품, 세제 및 기타 화학 물질과의 접촉을 피하세요.</li><li>수영, 목욕 또는 격렬한 운동 전에는 주얼리를 빼 주세요.</li><li>착용 후 부드럽고 마른 천으로 가볍게 닦아 주세요. 특히 도금 표면과 스톤에는 연마성 세정제를 사용하지 마세요.</li><li>습기와 직사광선을 피해 건조한 파우치나 주얼리 상자에 각각 따로 보관하세요.</li><li>상품별 관리 방법은 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 문의해 주세요.</li></ul>"
+  },
+  "wes_lookbook": {
+    "title": "스타일 갤러리",
+    "note": "스타일링 영감을 위한 AI 생성 화보 이미지입니다.",
+    "look_label": "WES FREED · 스타일 {{ number }}",
+    "portrait_alt": "실버 주얼리를 착용한 한국인 모델의 스타일링 이미지 {{ number }}"
   }
 }

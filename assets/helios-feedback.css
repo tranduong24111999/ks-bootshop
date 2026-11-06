@@ -23,3 +23,10 @@
  .helios-feedback__products { position:static; transform:none; visibility:visible; padding:8px; }
 }
 @media(prefers-reduced-motion:reduce) { .helios-feedback__products { transition:none; } }
+
+.wes-lookbook__note { grid-column:1/-1; margin:0; color:var(--bs-body-color,#292723); font-size:13px; text-align:center; }
+.wes-lookbook__image { position:relative; display:block; overflow:hidden; aspect-ratio:2/3; background:#dedbd6; }
+.wes-lookbook__image > img { position:absolute; left:var(--crop-x,0%); top:var(--crop-y,0%); display:block; width:200%; max-width:none; height:200%; object-fit:fill; }
+.wes-lookbook__caption { display:block; padding-top:12px; font-size:13px; color:var(--bs-body-color,#292723); text-decoration:none; }
+.wes-lookbook__image:focus-visible,.wes-lookbook__caption:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+@media(max-width:767.98px) { .wes-lookbook__caption { font-size:11px; padding-top:8px; } }

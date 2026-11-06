@@ -1,7 +1,7 @@
 {{ 'helios-feedback.css' | asset_url | stylesheet_tag }}
 <section class="helios-feedback" aria-labelledby="HeliosFeedback-{{ section.id }}">
-  <nav class="helios-feedback__breadcrumbs" aria-label="{{ 'general.accessibility.pagination' | t | escape }}"><a href="{{ routes.root_url }}">{{ 'helios.home_short' | t }}</a><span aria-hidden="true">/</span><span aria-current="page">Feedback</span></nav>
-  <h1 id="HeliosFeedback-{{ section.id }}">Feedback</h1>
+  <nav class="helios-feedback__breadcrumbs" aria-label="{{ 'general.accessibility.pagination' | t | escape }}"><a href="{{ routes.root_url }}">{{ 'helios.home_short' | t }}</a><span aria-hidden="true">/</span><span aria-current="page">{{ 'wes_lookbook.title' | t }}</span></nav>
+  <h1 id="HeliosFeedback-{{ section.id }}">{{ 'wes_lookbook.title' | t }}</h1>
   {% if page.content != blank %}<div class="helios-feedback__intro rte">{{ page.content }}</div>{% endif %}
   <div class="helios-feedback__grid">
     {% if section.blocks.size > 0 %}
