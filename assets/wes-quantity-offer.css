@@ -1,0 +1,9 @@
+.wes-quantity-offer { box-sizing:border-box; padding:15px 16px; margin:14px 0 20px; border:1px solid #383838; border-radius:9px; background:linear-gradient(120deg,#1a1a1a,#101010); color:#fff; font:400 12px/1.65 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:0; }
+.wes-quantity-offer .wes-quantity-offer__heading { display:flex; align-items:flex-start; gap:9px; margin:0 0 12px; color:inherit; font-size:13px; line-height:1.5; }
+.wes-quantity-offer__heading svg { flex:none; margin-top:2px; color:#ccc; }
+.wes-quantity-offer .wes-quantity-offer__tiers { display:grid; gap:8px; padding:0; margin:0; list-style:none; }
+.wes-quantity-offer__tiers li { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; }
+.wes-quantity-offer__tiers strong { font-weight:700; }
+.wes-quantity-offer__notes { margin-top:13px; padding-top:10px; border-top:1px solid #373737; color:#ddd; font-size:11px; line-height:1.6; }
+.wes-quantity-offer .wes-quantity-offer__notes p { margin:0; color:inherit; }
+.wes-quantity-offer__notes p + p { margin-top:3px; }

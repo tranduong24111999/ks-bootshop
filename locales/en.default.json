@@ -786,4 +786,6 @@
   "wes_buyers": {"today_html":"<strong>{{ count }} people</strong> purchased today!"}
 ,
   "wes_brand_signature": {"tagline":"Jewelry that brings out your individuality","pause":"Pause portrait scrolling","title":"WES FREED JEWELRY"}
+,
+  "wes_quantity_offer": {"title":"BUY MORE, SAVE MORE","two_items":"Buy 2 items","five_off":"5% OFF","three_items":"Buy 3+ items","ten_shipping":"10% OFF + FREE SHIPPING","mix_note":"Mix & match any products · Automatically applied in your cart and at checkout","shipping_note":"Free worldwide shipping on 3+ items · Highest discount tier applies; tiers do not stack."}
 }

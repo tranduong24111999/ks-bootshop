@@ -407,4 +407,6 @@
   "wes_buyers": {"today_html":"Hôm nay có <strong>{{ count }} người</strong> đã mua!"}
 ,
   "wes_brand_signature": {"tagline":"Trang sức tôn lên cá tính","pause":"Tạm dừng ảnh tự chạy","title":"TRANG SỨC WES FREED"}
+,
+  "wes_quantity_offer": {"title":"MUA NHIỀU, GIẢM NHIỀU","two_items":"Mua 2 sản phẩm","five_off":"Giảm 5%","three_items":"Mua từ 3 sản phẩm","ten_shipping":"Giảm 10% + miễn phí vận chuyển","mix_note":"Được kết hợp các sản phẩm khác nhau · Tự động áp dụng trong giỏ hàng và khi thanh toán","shipping_note":"Từ 3 sản phẩm: miễn phí vận chuyển toàn cầu · Áp dụng mức giảm cao nhất, không cộng dồn."}
 }
