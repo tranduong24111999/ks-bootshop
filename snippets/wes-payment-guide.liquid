@@ -1,0 +1,15 @@
+{% doc %}
+  Displays expandable guidance for WES FREED checkout and payment.
+{% enddoc %}
+{{ 'wes-payment-guide.css' | asset_url | stylesheet_tag }}
+<details class="wes-payment-guide">
+  <summary class="wes-payment-guide__summary">
+    <span class="wes-payment-guide__copy"><span class="wes-payment-guide__eyebrow">{{ 'wes_payment_guide.eyebrow' | t }}</span><span class="wes-payment-guide__title">{{ 'wes_payment_guide.title' | t }}</span><span class="wes-payment-guide__action">{{ 'wes_payment_guide.action' | t }} <span aria-hidden="true">›</span></span></span>
+    <svg class="wes-payment-guide__art" width="82" height="80" viewBox="0 0 100 96" aria-hidden="true" focusable="false"><g transform="rotate(8 65 27)"><rect x="39" y="10" width="47" height="32" rx="4" fill="#fff"/><rect x="66" y="21" width="11" height="7" rx="1.5" fill="#d9d5cd"/></g><g transform="rotate(-28 59 64)"><rect x="32" y="46" width="54" height="34" rx="4" fill="#45433f"/><path d="M38 55h42" stroke="#6d6a64" stroke-width="5"/><path d="M39 69h11" stroke="#c2beb6" stroke-width="2"/></g><path d="M29 28 44 34v12c0 11-8 18-15 21-7-3-15-10-15-21V34z" fill="#e58c7d"/><path d="m22 46 5 5 9-11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="wes-payment-guide__body">
+    <p>{{ 'wes_payment_guide.checkout' | t }}</p>
+    <ul><li>{{ 'wes_payment_guide.methods' | t }}</li><li>{{ 'wes_payment_guide.review' | t }}</li><li>{{ 'wes_payment_guide.discounts' | t }}</li></ul>
+    <a href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer">{{ 'wes_payment_guide.contact' | t }}</a>
+  </div>
+</details>

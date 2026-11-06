@@ -407,4 +407,6 @@
   "wes_brand_signature": {"tagline":"個性を引き立てるジュエリー","pause":"写真の自動スクロールを一時停止","title":"WES FREED ジュエリー"}
 ,
   "wes_quantity_offer": {"title":"まとめ買い特典","two_items":"2点購入","five_off":"5% OFF","three_items":"3点以上","ten_shipping":"10% OFF + 送料無料","mix_note":"異なる商品も組み合わせOK · カート・決済時に自動適用","shipping_note":"3点以上で全世界送料無料 · 割引率は重複せず、最大の割引が適用されます。"}
+,
+  "wes_payment_guide": {"eyebrow":"WES FREED お支払いガイド","title":"この商品の支払い方法は？","action":"確認する","checkout":"お支払いはShopifyのチェックアウトで行います。","methods":"利用可能なお支払い方法は決済画面に表示されます。","review":"お支払い前に商品オプション、数量、最終金額、お届け先をご確認ください。","discounts":"数量割引と送料無料は条件を満たすと自動適用されます。","contact":"お支払いのお問い合わせ：Instagram @wesfreedkr"}
 }
