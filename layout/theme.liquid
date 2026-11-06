@@ -55,7 +55,7 @@
 
   <main id="main">
     {% if request.page_type == 'policy' %}
-      {{ content_for_layout | replace: 'tranduong24111999@gmail.com', 'wesfreedkr@gmail.com' }}
+      {{ content_for_layout | replace: 'tranduong24111999@gmail.com', 'wesfreedkr@gmail.com' | replace: 'HELIOS', 'WES FREED' | replace: 'Helios', 'WES FREED' }}
     {% else %}
       {{ content_for_layout }}
     {% endif %}
