@@ -402,5 +402,10 @@
     "about": "ABOUT WES FREED",
     "jewelry": "JEWELRY",
     "accessories": "ACCESSORIES"
+  },
+  "wes_product_panels": {
+    "purchase_html": "<p>Before ordering, review the product description and check your selected size, color and quantity. Available payment methods, shipping options and the final total are shown at checkout.</p><p>For product or order questions, contact us on Instagram: <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>.</p>",
+    "warranty_html": "<p>For product condition or after-sales support, contact us on Instagram: <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>. Include your order number, a description of the issue and clear photos.</p><p>Please contact us before sending an item so we can confirm the available support options and any applicable conditions.</p>",
+    "care_html": "<ul><li>Avoid contact with perfume, cosmetics, cleaning products and other chemicals.</li><li>Remove jewelry before swimming, bathing or strenuous exercise.</li><li>After wearing, gently wipe with a soft, dry cloth. Avoid abrasive cleaners, especially on plated surfaces and stones.</li><li>Store each piece separately in a dry pouch or jewelry box, away from moisture and direct sunlight.</li><li>For care advice specific to your item, contact <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>.</li></ul>"
   }
 }
