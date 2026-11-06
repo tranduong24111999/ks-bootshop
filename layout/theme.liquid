@@ -54,7 +54,11 @@
   </div>
 
   <main id="main">
-    {{ content_for_layout }}
+    {% if request.page_type == 'policy' %}
+      {{ content_for_layout | replace: 'tranduong24111999@gmail.com', 'wesfreedkr@gmail.com' }}
+    {% else %}
+      {{ content_for_layout }}
+    {% endif %}
   </main>
 
   <div id="footer-group">
