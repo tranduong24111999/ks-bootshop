@@ -11,7 +11,10 @@
   assign destination = article.url
   if destination == blank
     assign destination = routes.root_url | append: '?view=journal-story-' | append: story_id
-    assign summary = source_excerpt
+    assign localized_title_key = 'wes_journal.story_' | append: story_id | append: '.title'
+    assign localized_excerpt_key = 'wes_journal.story_' | append: story_id | append: '.excerpt'
+    assign headline = localized_title_key | t
+    assign summary = localized_excerpt_key | t
   endif
 %}
 <article class="helios-journal__banner">
