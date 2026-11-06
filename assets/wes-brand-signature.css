@@ -1,16 +1,21 @@
-.wes-brand-signature { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin:0 0 22px; color:#fff; }
-.wes-brand-signature__portraits { display:flex; flex:none; padding-right:1px; }
-.wes-brand-signature__portrait { position:relative; flex:none; display:block; box-sizing:border-box; width:46px; height:46px; overflow:hidden; border:2px solid #fff; border-radius:50%; background:#222; }
-.wes-brand-signature__portrait + .wes-brand-signature__portrait { margin-left:-10px; }
-.wes-brand-signature__portrait img { position:absolute; display:block; width:300%; max-width:none; height:auto; top:-10%; left:-25%; }
-.wes-brand-signature__portrait--2 img,.wes-brand-signature__portrait--4 img { left:-175%; }
-.wes-brand-signature__portrait--3 img,.wes-brand-signature__portrait--4 img { top:-235%; }
-.wes-brand-signature__text { min-width:0; }
-.wes-brand-signature .wes-brand-signature__title { margin:0 0 4px; color:#fff; font:700 14px/1.25 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:0; }
-.wes-brand-signature .wes-brand-signature__tagline { margin:0; color:#fff; font:400 11px/1.5 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:.02em; }
-
-.wes-product-brand { box-sizing:border-box; max-width:100%; padding:16px; margin:0 0 16px; background:#000; color:#fff; }
-.wes-product-brand .wes-brand-signature { gap:12px; margin:0; }
-.wes-product-brand .wes-brand-signature__portrait { width:36px; height:36px; }
-.wes-product-brand .wes-brand-signature__title { font-size:12px; }
-.wes-product-brand .wes-brand-signature__tagline { font-size:10px; }
+.wes-brand-signature { --portrait-size:38px; --portrait-step:30px; box-sizing:border-box; display:flex; align-items:center; gap:12px; padding:12px; margin:0 0 22px; background:#fff; color:#111; }
+.wes-brand-signature__motion { position:relative; display:block; flex:1 1 140px; min-width:76px; max-width:176px; }
+.wes-brand-signature__viewport { overflow:hidden; height:42px; padding:2px 0; box-sizing:border-box; }
+.wes-brand-signature__track { display:flex; width:max-content; animation:wes-brand-portraits-scroll 20s linear infinite; }
+.wes-brand-signature__group { display:flex; flex:none; }
+.wes-brand-signature__slot { position:relative; display:block; flex:0 0 var(--portrait-step); width:var(--portrait-step); height:var(--portrait-size); }
+.wes-brand-signature__portrait { position:absolute; top:0; left:0; display:block; box-sizing:border-box; width:var(--portrait-size); height:var(--portrait-size); overflow:hidden; border:2px solid #fff; border-radius:50%; background:#eee; box-shadow:0 0 0 1px #ddd; }
+.wes-brand-signature__portrait img { position:absolute; display:block; width:400%; max-width:none; height:200%; }
+.wes-brand-signature__motion:hover .wes-brand-signature__track,.wes-brand-signature__motion:focus-within .wes-brand-signature__track,.wes-brand-signature__motion.is-paused .wes-brand-signature__track { animation-play-state:paused; }
+.wes-brand-signature__pause { position:absolute; right:0; bottom:-5px; display:grid; place-items:center; width:19px; height:19px; padding:0; border:1px solid #ddd; border-radius:50%; background:#fff; color:#333; cursor:pointer; z-index:2; }
+.wes-brand-signature__pause:focus-visible { outline:2px solid #111; outline-offset:2px; }
+.wes-brand-signature__play-icon { display:none; }
+.is-paused .wes-brand-signature__pause-icon { display:none; }
+.is-paused .wes-brand-signature__play-icon { display:block; }
+.wes-brand-signature__text { flex:1 1 auto; min-width:0; }
+.wes-brand-signature .wes-brand-signature__title { margin:0 0 4px; color:#111; font:700 12px/1.25 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:0; white-space:nowrap; }
+.wes-brand-signature .wes-brand-signature__tagline { margin:0; color:#333; font:400 10px/1.5 Arial,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; letter-spacing:0; }
+.wes-product-brand { box-sizing:border-box; max-width:100%; padding:0; margin:0 0 16px; background:#fff; color:#111; }
+.wes-product-brand .wes-brand-signature { margin:0; }
+@keyframes wes-brand-portraits-scroll { to { transform:translateX(-50%); } }
+@media(prefers-reduced-motion:reduce) { .wes-brand-signature__track { animation:none; } .wes-brand-signature__pause { display:none; } .wes-brand-signature__viewport { overflow-x:auto; scrollbar-width:none; } }

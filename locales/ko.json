@@ -809,5 +809,5 @@
 ,
   "wes_buyers": {"today_html":"오늘 <strong>{{ count }}명</strong>이 구매했어요!"}
 ,
-  "wes_brand_signature": {"tagline":"개성을 돋보이게 하는 주얼리"}
+  "wes_brand_signature": {"tagline":"개성을 돋보이게 하는 주얼리","pause":"사진 자동 스크롤 일시 정지"}
 }

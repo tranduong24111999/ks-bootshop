@@ -1,13 +1,25 @@
 {% doc %}
-  Displays the WES FREED brand signature with four editorial model portraits.
+  Displays eight color editorial portraits in a continuous horizontal brand strip.
 {% enddoc %}
 {{ 'wes-brand-signature.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'wes-brand-signature.js' | asset_url }}" defer></script>
 <div class="wes-brand-signature">
-  <div class="wes-brand-signature__portraits" aria-hidden="true">
-    {% for portrait in (1..4) %}
-      <span class="wes-brand-signature__portrait wes-brand-signature__portrait--{{ portrait }}"><img src="https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-korean-editorial-1.png?v=1793958770&width=256" width="256" height="384" alt="" loading="lazy" decoding="async"></span>
-    {% endfor %}
-  </div>
+  <wes-brand-marquee class="wes-brand-signature__motion">
+    <div class="wes-brand-signature__viewport" aria-hidden="true">
+      <div class="wes-brand-signature__track">
+        {% for copy in (1..2) %}
+          <div class="wes-brand-signature__group">
+            {% for portrait in (0..7) %}
+              {% assign column = portrait | modulo: 4 %}
+              {% assign row = portrait | divided_by: 4 | floor %}
+              <span class="wes-brand-signature__slot"><span class="wes-brand-signature__portrait"><img src="https://cdn.shopify.com/s/files/1/0836/2724/5625/files/wes-freed-color-portraits-eight.png?v=1793969702&width=512" width="512" height="256" alt="" loading="lazy" decoding="async" style="left:-{{ column | times: 100 }}%;top:-{{ row | times: 100 }}%;"></span></span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <button class="wes-brand-signature__pause" type="button" aria-label="{{ 'wes_brand_signature.pause' | t | escape }}" aria-pressed="false"><svg width="10" height="10" viewBox="0 0 12 12" aria-hidden="true"><path class="wes-brand-signature__pause-icon" d="M3 2v8M9 2v8" stroke="currentColor" stroke-width="2"/><path class="wes-brand-signature__play-icon" d="M3 1l8 5-8 5z" fill="currentColor"/></svg></button>
+  </wes-brand-marquee>
   <div class="wes-brand-signature__text">
     <h2 class="wes-brand-signature__title">WES FREED JEWELRY</h2>
     <p class="wes-brand-signature__tagline">{{ 'wes_brand_signature.tagline' | t }}</p>
