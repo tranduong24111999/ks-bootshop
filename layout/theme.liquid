@@ -1,3 +1,4 @@
+{% assign wes_page_title = page_title | replace: 'HELIOS', 'WES FREED' | replace: 'Helios', 'WES FREED' %}
 <!doctype html>
 <html
   lang="{{ request.locale.iso_code }}"
@@ -18,10 +19,10 @@
   {%- endunless -%}
 
   <title>
-    {{ page_title }}
+    {{ wes_page_title }}
     {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
     {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- unless wes_page_title contains 'WES FREED' %} &ndash; WES FREED{% endunless -%}
   </title>
 
   {% if page_description %}
@@ -74,4 +75,5 @@
   %}
 </body>
 </html>
+
 

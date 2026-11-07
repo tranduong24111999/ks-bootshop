@@ -15,7 +15,7 @@
     "color_body_color": "#212529",
     "container_max_width": 1350,
     "border_radius": 0.3,
-    "logo": "shopify://shop_images/logo.png",
+    "logo": "shopify://shop_images/quality_restoration_20261031194948362.jpg",
     "favicon": "shopify://shop_images/wes-freed-wf-favicon.png",
     "font_body": "sans-serif",
     "font_headings": "ubuntu_n4",
@@ -53,12 +53,12 @@
     "cart_upsells_limit": 5,
     "cart_gift_upsell_product": "gift-wrap",
     "recently_viewed": true,
-    "social_facebook": "#",
-    "social_instagram": "#",
-    "social_x": "#",
-    "social_tiktok": "#",
-    "social_youtube": "#",
-    "checkout_logo_image": "shopify://shop_images/logo.png",
+    "social_facebook": "",
+    "social_instagram": "https://www.instagram.com/wesfreedkr/",
+    "social_x": "",
+    "social_tiktok": "",
+    "social_youtube": "",
+    "checkout_logo_image": "shopify://shop_images/quality_restoration_20261031194948362.jpg",
     "checkout_logo_size": "small",
     "checkout_accent_color": "#dc3545",
     "checkout_button_color": "#dc3545",
@@ -106,3 +106,4 @@
     }
   }
 }
+

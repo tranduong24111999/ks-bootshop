@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ba94d905-ea2f-4198-8472-5296b1853fb5": {
@@ -14,9 +23,9 @@
         "container_max_width": "",
         "header_title": "Contact form",
         "header_title_font_size": "h1",
-        "header_description": "<p>Add on optional description for this section<\/p>",
+        "header_description": "",
         "header_description_font_size": "",
-        "img": "shopify:\/\/shop_images\/product-1_d69f3fea-71ab-46c3-a095-43b62ba2a441.jpg",
+        "img": "",
         "img_orientation": "ratio-3x4",
         "img_border": "img-thumbnail",
         "pt": 10,
@@ -51,17 +60,18 @@
         "text_align": "text-center",
         "title": "Looking for FAQs?",
         "title_font_size": "h3",
-        "description": "<p>View answers to some of the most common questions.<\/p>",
+        "description": "<p>View answers to some of the most common questions.</p>",
         "description_font_size": "",
         "btn_primary_text": "Read FAQs",
-        "btn_primary_url": "shopify:\/\/pages\/faqs",
+        "btn_primary_url": "shopify://pages/faqs",
         "btn_primary_color": "btn-outline-primary",
         "btn_secondary_text": "",
         "btn_secondary_url": "",
         "btn_secondary_color": "btn-secondary",
         "pt": 8,
         "pb": 12
-      }
+      },
+      "disabled": true
     }
   },
   "order": [
@@ -70,3 +80,4 @@
     "9b5ef318-8d23-40cd-a163-d1f62c2d0834"
   ]
 }
+

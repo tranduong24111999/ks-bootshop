@@ -1,8 +1,11 @@
 {%- liquid
-  assign og_title = page_title | default: shop.name
+  assign og_title = page_title | default: 'WES FREED'
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_description = page_description | default: shop.description | default: 'WES FREED'
+
+  assign og_title = og_title | replace: 'HELIOS', 'WES FREED' | replace: 'Helios', 'WES FREED'
+  assign og_description = og_description | replace: 'HELIOS', 'WES FREED' | replace: 'Helios', 'WES FREED'
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -13,7 +16,7 @@
   endif
 %}
 
-<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:site_name" content="WES FREED">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">

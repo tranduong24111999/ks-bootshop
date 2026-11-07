@@ -25,7 +25,9 @@
         </div>
       {% endif %}
       <div class="{% if section.settings.img == nil %}col-desktop-18{% else %}col-desktop-11{% endif %}">
-        {% render 'section-header' %}
+        {% if request.page_type == 'page' and page.handle == 'contact' %}
+          <header class="section-header text-center"><h1>{{ 'wes_sales_audit.contact_title' | t }}</h1><p>{{ 'wes_sales_audit.contact_intro' | t }}</p><p><a href="mailto:wesfreedkr@gmail.com">wesfreedkr@gmail.com</a> · <a href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer">@wesfreedkr</a></p></header>
+        {% else %}{% render 'section-header' %}{% endif %}
         {% form 'contact' %}
           {% if form.posted_successfully? %}
             <p class="form-success alert alert-success mb-5" role="alert">
@@ -69,7 +71,6 @@
               name="contact[phone]"
               value="{{ customer.phone }}"  
               placeholder="{{ 'general.contact_form.phone' | t }}"
-              pattern="[0-9\-]*"
               autocomplete="tel">
             <label for="contact-form-phone">
               {{ 'general.contact_form.phone' | t }}
@@ -80,7 +81,6 @@
               id="contact-form-message"
               class="form-control"
               name="contact[message]"
-              value="{{ customer.phone }}"  
               placeholder="{{ 'general.contact_form.message' | t }}"
               required
               style="height: 200px">

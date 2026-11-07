@@ -408,7 +408,10 @@
 ,
   "wes_brand_signature": {"tagline":"Trang sức tôn lên cá tính","pause":"Tạm dừng ảnh tự chạy","title":"TRANG SỨC WES FREED"}
 ,
-  "wes_quantity_offer": {"title":"MUA NHIỀU, GIẢM NHIỀU","two_items":"Mua 2 sản phẩm","five_off":"Giảm 5%","three_items":"Mua từ 3 sản phẩm","ten_shipping":"Giảm 10% + miễn phí vận chuyển","mix_note":"Được kết hợp các sản phẩm khác nhau · Tự động áp dụng trong giỏ hàng và khi thanh toán","shipping_note":"Từ 3 sản phẩm: miễn phí vận chuyển toàn cầu · Áp dụng mức giảm cao nhất, không cộng dồn."}
+  "wes_quantity_offer": {"title":"MUA NHIỀU, GIẢM NHIỀU","two_items":"Mua 2 sản phẩm","five_off":"Giảm 5%","three_items":"Mua từ 3 sản phẩm","ten_shipping":"Giảm 10% + miễn phí vận chuyển","mix_note":"Được kết hợp các sản phẩm khác nhau · Tự động áp dụng trong giỏ hàng và khi thanh toán","shipping_note":"Từ 3 sản phẩm: miễn phí vận chuyển tới quốc gia có thể chọn khi thanh toán. Không cộng dồn mức giảm."}
 ,
   "wes_payment_guide": {"eyebrow":"HƯỚNG DẪN THANH TOÁN WES FREED","title":"Thanh toán sản phẩm này như thế nào?","action":"Xem hướng dẫn","checkout":"Thanh toán được thực hiện qua trang thanh toán Shopify.","methods":"Các phương thức khả dụng được hiển thị khi thanh toán.","review":"Kiểm tra phân loại, số lượng, tổng tiền và địa chỉ giao hàng trước khi trả tiền.","discounts":"Giảm giá theo số lượng và miễn phí vận chuyển tự áp dụng khi đủ điều kiện.","contact":"Hỏi về thanh toán: Instagram @wesfreedkr"}
+,
+  "wes_sales_audit": {"contact_title":"Liên hệ WES FREED","contact_intro":"Để hỏi về sản phẩm, đơn hàng, giao hàng hoặc đổi hàng, dùng thông tin liên hệ hoặc biểu mẫu bên dưới.","home":"Trang chủ","breadcrumb":"Điều hướng trang","variant":"Phân loại / kích thước"}
 }
+

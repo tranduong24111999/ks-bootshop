@@ -787,7 +787,10 @@
 ,
   "wes_brand_signature": {"tagline":"Jewelry that brings out your individuality","pause":"Pause portrait scrolling","title":"WES FREED JEWELRY"}
 ,
-  "wes_quantity_offer": {"title":"BUY MORE, SAVE MORE","two_items":"Buy 2 items","five_off":"5% OFF","three_items":"Buy 3+ items","ten_shipping":"10% OFF + FREE SHIPPING","mix_note":"Mix & match any products · Automatically applied in your cart and at checkout","shipping_note":"Free worldwide shipping on 3+ items · Highest discount tier applies; tiers do not stack."}
+  "wes_quantity_offer": {"title":"BUY MORE, SAVE MORE","two_items":"Buy 2 items","five_off":"5% OFF","three_items":"Buy 3+ items","ten_shipping":"10% OFF + FREE SHIPPING","mix_note":"Mix & match any products · Automatically applied in your cart and at checkout","shipping_note":"Free shipping on 3+ items to destinations available at checkout. Discount tiers do not stack."}
 ,
   "wes_payment_guide": {"eyebrow":"WES FREED PAYMENT GUIDE","title":"How do I pay for this item?","action":"View guide","checkout":"Payment is completed through Shopify checkout.","methods":"Available payment methods are shown at checkout.","review":"Review your options, quantities, final total and delivery address before paying.","discounts":"Quantity discounts and free shipping apply automatically when the requirements are met.","contact":"Payment questions: Instagram @wesfreedkr"}
+,
+  "wes_sales_audit": {"contact_title":"Contact WES FREED","contact_intro":"For product, order, delivery or exchange questions, use the contact details or form below.","home":"Home","breadcrumb":"Breadcrumb","variant":"Variant / size"}
 }
+
