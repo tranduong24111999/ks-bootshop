@@ -1,6 +1,7 @@
 {% doc %}
   Renders two complementary product suggestions for a nonempty cart.
 {% enddoc %}
+<span hidden data-wes-debug-count="{{ cart.item_count }}" data-wes-debug-pool="{{ collections.all.products.size }}" data-wes-debug-available="{{ all_products['classic-screw-bangle'].available }}"></span>
 {%- if cart.item_count > 0 -%}
   {%- liquid
     assign cart_product_ids = cart.items | map: 'product_id'
@@ -10,6 +11,7 @@
   -%}
   {%- for line_item in cart.items -%}
     {%- capture item_category -%}{%- render 'wes-product-category', item: line_item.product -%}{%- endcapture -%}
+    {%- assign item_category = item_category | strip -%}
     {%- assign cart_categories = cart_categories | append: item_category | append: ',' -%}
     {%- if style_family == blank -%}
       {%- for family in families -%}
@@ -51,6 +53,8 @@
         {%- unless candidate.available -%}{%- continue -%}{%- endunless -%}
         {%- if cart_product_ids contains candidate.id -%}{%- continue -%}{%- endif -%}
         {%- capture candidate_category -%}{%- render 'wes-product-category', item: candidate -%}{%- endcapture -%}
+        {%- assign candidate_category = candidate_category | strip -%}
+        <span hidden data-wes-debug-category="{{ candidate_category | escape }}" data-wes-debug-target="{{ target }}" data-wes-debug-handle="{{ candidate.handle }}"></span>
         {%- unless candidate_category == target -%}{%- continue -%}{%- endunless -%}
         {%- if suggestion == nil -%}{%- assign suggestion = candidate -%}{%- endif -%}
         {%- if style_family != blank and candidate.handle contains style_family -%}
