@@ -357,7 +357,13 @@
     "no_reviews": "이 상품에는 아직 리뷰가 없습니다.",
     "reviews_setup": "Judge.me Review Widget 블록을 추가하고 테마 편집기에서 앱 임베드를 활성화하세요.",
     "product_motion_pause": "상품 미디어 일시정지",
-    "product_motion_resume": "상품 미디어 다시 재생"
+    "product_motion_resume": "상품 미디어 다시 재생",
+    "film_description_html": "<p>이탈리아 장인의 손으로 완성되는 주얼리. 자신만의 개성을 지키며 자유롭게 살아가는 이들과 함께합니다.</p>",
+    "faq_custom_answer_html": "<p>맞춤 제작 또는 기업 주문은 WES FREED에 문의해 주세요.</p>",
+    "faq_old_answer_html": "<p>제품에 적용되는 정책은 고객 지원팀에 문의해 주세요.</p>",
+    "faq_delivery_answer_html": "<p>배송 기간은 배송지와 주문 상태에 따라 달라집니다. 배송 정책을 확인하거나 WES FREED에 문의해 주세요.</p>",
+    "faq_resize_answer_html": "<p>사이즈 조절 가능 여부는 디자인에 따라 다릅니다. 주문 전 사이즈를 확인하고 조절 범위와 비용은 WES FREED에 문의해 주세요.</p>",
+    "faq_gift_answer_html": "<p>카드 또는 선물 포장이 필요하시면 주문 전에 고객 지원팀에 문의해 주세요.</p>"
   },
   "shopify": {
     "checkout": {
@@ -805,16 +811,44 @@
     "term_9": "안경",
     "term_10": "가죽",
     "term_11": "액세서리"
+  },
+  "wes_buyers": {
+    "today_html": "오늘 <strong>{{ count }}명</strong>이 구매했어요!"
+  },
+  "wes_brand_signature": {
+    "tagline": "개성을 돋보이게 하는 주얼리",
+    "pause": "사진 자동 스크롤 일시 정지",
+    "title": "WES FREED 주얼리"
+  },
+  "wes_quantity_offer": {
+    "title": "함께 구매하고 더 할인받으세요",
+    "two_items": "2개 구매",
+    "five_off": "5% 할인",
+    "three_items": "3개 이상 구매",
+    "ten_shipping": "10% 할인 + 무료배송",
+    "mix_note": "서로 다른 상품도 함께 구매 가능 · 장바구니와 결제 시 자동 적용",
+    "shipping_note": "3개 이상 구매 시 결제 화면에서 선택 가능한 배송 국가에 무료배송이 적용됩니다. 할인율은 중복되지 않습니다."
+  },
+  "wes_payment_guide": {
+    "eyebrow": "WES FREED 결제 안내",
+    "title": "이 상품, 어떻게 결제하나요?",
+    "action": "확인하기",
+    "checkout": "결제는 Shopify 체크아웃에서 진행됩니다.",
+    "methods": "사용 가능한 결제수단은 결제 화면에서 확인할 수 있습니다.",
+    "review": "결제 전 상품 옵션, 수량, 최종 금액과 배송지를 확인해 주세요.",
+    "discounts": "수량별 할인과 무료배송 혜택은 조건 충족 시 자동 적용됩니다.",
+    "contact": "결제 문의: Instagram @wesfreedkr"
+  },
+  "wes_sales_audit": {
+    "contact_title": "WES FREED 문의",
+    "contact_intro": "상품, 주문, 배송 및 교환 문의는 아래 연락처 또는 문의 양식을 이용해 주세요.",
+    "home": "홈",
+    "breadcrumb": "현재 위치",
+    "variant": "옵션 / 사이즈"
+  },
+  "wes_artisans": {
+    "signature": "WES FREED · 이탈리아 장인의 수작업",
+    "story_link": "WES FREED 이야기",
+    "explore": "주얼리 살펴보기"
   }
-,
-  "wes_buyers": {"today_html":"오늘 <strong>{{ count }}명</strong>이 구매했어요!"}
-,
-  "wes_brand_signature": {"tagline":"개성을 돋보이게 하는 주얼리","pause":"사진 자동 스크롤 일시 정지","title":"WES FREED 주얼리"}
-,
-  "wes_quantity_offer": {"title":"함께 구매하고 더 할인받으세요","two_items":"2개 구매","five_off":"5% 할인","three_items":"3개 이상 구매","ten_shipping":"10% 할인 + 무료배송","mix_note":"서로 다른 상품도 함께 구매 가능 · 장바구니와 결제 시 자동 적용","shipping_note":"3개 이상 구매 시 결제 화면에서 선택 가능한 배송 국가에 무료배송이 적용됩니다. 할인율은 중복되지 않습니다."}
-,
-  "wes_payment_guide": {"eyebrow":"WES FREED 결제 안내","title":"이 상품, 어떻게 결제하나요?","action":"확인하기","checkout":"결제는 Shopify 체크아웃에서 진행됩니다.","methods":"사용 가능한 결제수단은 결제 화면에서 확인할 수 있습니다.","review":"결제 전 상품 옵션, 수량, 최종 금액과 배송지를 확인해 주세요.","discounts":"수량별 할인과 무료배송 혜택은 조건 충족 시 자동 적용됩니다.","contact":"결제 문의: Instagram @wesfreedkr"}
-,
-  "wes_sales_audit": {"contact_title":"WES FREED 문의","contact_intro":"상품, 주문, 배송 및 교환 문의는 아래 연락처 또는 문의 양식을 이용해 주세요.","home":"홈","breadcrumb":"현재 위치","variant":"옵션 / 사이즈"}
 }
-
