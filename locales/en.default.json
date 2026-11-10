@@ -357,7 +357,13 @@
     "no_reviews": "There are no reviews for this product yet.",
     "reviews_setup": "Add the Judge.me Review Widget block and enable its app embed in the theme editor.",
     "product_motion_pause": "Pause product media",
-    "product_motion_resume": "Resume product media"
+    "product_motion_resume": "Resume product media",
+    "film_description_html": "<p>Each creation is finished by hand by Italian artisans, accompanying those who embrace their individuality and live freely on their own terms.</p>",
+    "faq_custom_answer_html": "<p>Please contact WES FREED for advice on custom designs or corporate orders.</p>",
+    "faq_old_answer_html": "<p>Please contact customer care to check the policy applicable to your product.</p>",
+    "faq_delivery_answer_html": "<p>Delivery time depends on your address and order status. Check our shipping policy or contact WES FREED for confirmation.</p>",
+    "faq_resize_answer_html": "<p>Resizing depends on the design. Check your size before ordering and contact WES FREED for available adjustments and fees.</p>",
+    "faq_gift_answer_html": "<p>If you need a card or gift wrapping, please contact customer care before ordering.</p>"
   },
   "wes_footer": {
     "store": "OUR STORE",
@@ -781,16 +787,44 @@
     "term_9": "glasses",
     "term_10": "leather",
     "term_11": "accessories"
+  },
+  "wes_buyers": {
+    "today_html": "<strong>{{ count }} people</strong> purchased today!"
+  },
+  "wes_brand_signature": {
+    "tagline": "Jewelry that brings out your individuality",
+    "pause": "Pause portrait scrolling",
+    "title": "WES FREED JEWELRY"
+  },
+  "wes_quantity_offer": {
+    "title": "BUY MORE, SAVE MORE",
+    "two_items": "Buy 2 items",
+    "five_off": "5% OFF",
+    "three_items": "Buy 3+ items",
+    "ten_shipping": "10% OFF + FREE SHIPPING",
+    "mix_note": "Mix & match any products · Automatically applied in your cart and at checkout",
+    "shipping_note": "Free shipping on 3+ items to destinations available at checkout. Discount tiers do not stack."
+  },
+  "wes_payment_guide": {
+    "eyebrow": "WES FREED PAYMENT GUIDE",
+    "title": "How do I pay for this item?",
+    "action": "View guide",
+    "checkout": "Payment is completed through Shopify checkout.",
+    "methods": "Available payment methods are shown at checkout.",
+    "review": "Review your options, quantities, final total and delivery address before paying.",
+    "discounts": "Quantity discounts and free shipping apply automatically when the requirements are met.",
+    "contact": "Payment questions: Instagram @wesfreedkr"
+  },
+  "wes_sales_audit": {
+    "contact_title": "Contact WES FREED",
+    "contact_intro": "For product, order, delivery or exchange questions, use the contact details or form below.",
+    "home": "Home",
+    "breadcrumb": "Breadcrumb",
+    "variant": "Variant / size"
+  },
+  "wes_artisans": {
+    "signature": "WES FREED · Crafted by Italian artisans",
+    "story_link": "The WES FREED story",
+    "explore": "Explore the craftsmanship"
   }
-,
-  "wes_buyers": {"today_html":"<strong>{{ count }} people</strong> purchased today!"}
-,
-  "wes_brand_signature": {"tagline":"Jewelry that brings out your individuality","pause":"Pause portrait scrolling","title":"WES FREED JEWELRY"}
-,
-  "wes_quantity_offer": {"title":"BUY MORE, SAVE MORE","two_items":"Buy 2 items","five_off":"5% OFF","three_items":"Buy 3+ items","ten_shipping":"10% OFF + FREE SHIPPING","mix_note":"Mix & match any products · Automatically applied in your cart and at checkout","shipping_note":"Free shipping on 3+ items to destinations available at checkout. Discount tiers do not stack."}
-,
-  "wes_payment_guide": {"eyebrow":"WES FREED PAYMENT GUIDE","title":"How do I pay for this item?","action":"View guide","checkout":"Payment is completed through Shopify checkout.","methods":"Available payment methods are shown at checkout.","review":"Review your options, quantities, final total and delivery address before paying.","discounts":"Quantity discounts and free shipping apply automatically when the requirements are met.","contact":"Payment questions: Instagram @wesfreedkr"}
-,
-  "wes_sales_audit": {"contact_title":"Contact WES FREED","contact_intro":"For product, order, delivery or exchange questions, use the contact details or form below.","home":"Home","breadcrumb":"Breadcrumb","variant":"Variant / size"}
 }
-
