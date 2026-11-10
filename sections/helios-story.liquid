@@ -1,19 +1,20 @@
+{% assign story_image_alt = 'helios.craft_world' | t %}
 <section id="helios-brand-story" class="helios-story" aria-labelledby="helios-story-title">
   <div class="helios-story__image">
     {% if section.settings.image != blank %}
-      {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '500,800,1000,1400', sizes: '(max-width: 749px) 100vw, 50vw', loading: 'lazy', alt: 'Thế giới chế tác WES FREED' }}
+      {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '500,800,1000,1400', sizes: '(max-width: 749px) 100vw, 50vw', loading: 'lazy', alt: story_image_alt }}
     {% else %}
       <img src="{{ 'helios-story.jpg' | asset_url }}" alt="{{ 'helios.craft_world' | t | escape }}" width="1000" height="1250" loading="lazy">
     {% endif %}
   </div>
   <div class="helios-story__content">
-    <p class="helios-eyebrow">WES FREED · HANDCRAFTED IN VIETNAM</p>
+    <p class="helios-eyebrow">{{ 'wes_artisans.signature' | t }}</p>
     <h2 id="helios-story-title">{% render 'helios-text', value: section.settings.heading %}</h2>
-    <div class="helios-story__text">{{ section.settings.text }}</div>
+    <div class="helios-story__text"><p>{{ 'helios.brand_story' | t }}</p></div>
     {% if section.settings.page != blank %}
-      <a class="helios-button helios-button--light" href="{{ section.settings.page.url }}">CÂU CHUYỆN WES FREED <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
+      <a class="helios-button helios-button--light" href="{{ section.settings.page.url }}">{{ 'wes_artisans.story_link' | t }} <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
     {% else %}
-      <a class="helios-button helios-button--light" href="{{ routes.all_products_collection_url }}">KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
+      <a class="helios-button helios-button--light" href="{{ routes.all_products_collection_url }}">{{ 'wes_artisans.explore' | t }} <span aria-hidden="true">{% render 'helios-arrow' %}</span></a>
     {% endif %}
     <span class="helios-story__signature" aria-hidden="true">WES FREED</span>
   </div>
