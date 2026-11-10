@@ -1,7 +1,7 @@
 <section class="helios-product-editorial" aria-labelledby="HeliosEditorial-{{ section.id }}">
   <helios-brand-film class="helios-brand-film">
     {% if section.settings.film_url != blank %}<video controls muted playsinline loop preload="none" poster="{{ 'helios-craft-poster.jpg' | asset_url }}" aria-label="{{ 'helios.artisans' | t | escape }}"><source src="{{ section.settings.film_url }}" type="video/mp4"></video>{% else %}<img src="{{ 'helios-craft-poster.jpg' | asset_url }}" width="1600" height="682" loading="lazy" alt="{{ 'helios.artisan_image' | t | escape }}">{% endif %}
-    <div class="helios-brand-film__caption"><h2 id="HeliosEditorial-{{ section.id }}">{{ 'helios.film_heading' | t }}</h2><div>{{ 'helios.film_description' | t }}</div></div>
+    <div class="helios-brand-film__caption"><h2 id="HeliosEditorial-{{ section.id }}">{{ 'helios.film_heading' | t }}</h2><div>{{ 'helios.film_description_html' | t }}</div></div>
   </helios-brand-film>
   {% if section.blocks.size > 0 %}
     <div class="helios-product-faq"><h2>{% render 'helios-text', value: section.settings.faq_heading %}</h2>
@@ -20,7 +20,7 @@
           when 'question_5'
             assign faq_key = 'helios.faq_gift'
         endcase
-        assign answer_key = faq_key | append: '_answer'
+        assign answer_key = faq_key | append: '_answer_html'
       %}
       <details class="helios-product-faq__item" {{ block.shopify_attributes }}><summary>{% if faq_key != blank %}{{ faq_key | t }}{% else %}{% render 'helios-text', value: block.settings.question %}{% endif %}<span aria-hidden="true">+</span></summary><div>{% if block.settings.page != blank %}{{ block.settings.page.content }}{% elsif faq_key != blank %}{{ answer_key | t }}{% else %}{% render 'helios-text', value: block.settings.answer, html: true %}{% endif %}</div></details>
       {% endfor %}
