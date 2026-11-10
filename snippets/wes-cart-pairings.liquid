@@ -1,7 +1,6 @@
 {% doc %}
   Renders two complementary product suggestions for a nonempty cart.
 {% enddoc %}
-<span hidden data-wes-debug-count="{{ cart.item_count }}" data-wes-debug-pool="{{ collections.all.products.size }}" data-wes-debug-available="{{ all_products['classic-screw-bangle'].available }}"></span>
 {%- if cart.item_count > 0 -%}
   {%- liquid
     assign cart_product_ids = cart.items | map: 'product_id'
@@ -54,7 +53,6 @@
         {%- if cart_product_ids contains candidate.id -%}{%- continue -%}{%- endif -%}
         {%- capture candidate_category -%}{%- render 'wes-product-category', item: candidate -%}{%- endcapture -%}
         {%- assign candidate_category = candidate_category | strip -%}
-        <span hidden data-wes-debug-category="{{ candidate_category | escape }}" data-wes-debug-target="{{ target }}" data-wes-debug-handle="{{ candidate.handle }}"></span>
         {%- unless candidate_category == target -%}{%- continue -%}{%- endunless -%}
         {%- if suggestion == nil -%}{%- assign suggestion = candidate -%}{%- endif -%}
         {%- if style_family != blank and candidate.handle contains style_family -%}
