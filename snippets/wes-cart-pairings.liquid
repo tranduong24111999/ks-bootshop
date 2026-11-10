@@ -34,8 +34,20 @@
   -%}
   {%- capture suggestion_cards -%}
     {%- for target in targets -%}
-      {%- assign suggestion = nil -%}
-      {%- for candidate in collections.all.products limit: 50 -%}
+      {%- liquid
+        assign suggestion = nil
+        case target
+          when 'bracelet'
+            assign candidate_handles = 'classic-screw-bangle,cubic-nail-bangle,vintage-blue-sunburst-gold-clover-station-bracelet,sarpenti-viperar-bracelet,monogram-chain-colors-bracelet'
+          when 'necklace'
+            assign candidate_handles = 'bouche-white-edition-necklace,bouche-black-edition-necklace,circle-screw-necklace,b-zaro1-necklace,nail-pendant-necklace'
+          when 'ring'
+            assign candidate_handles = 'bouche-white-gold-edition-ring,plain-screw-ring,nail-ring,sarpenti-vipera-ring,the-vintage-floral-cross-ring'
+        endcase
+        assign candidate_handles = candidate_handles | split: ','
+      -%}
+      {%- for candidate_handle in candidate_handles -%}
+        {%- assign candidate = all_products[candidate_handle] -%}
         {%- unless candidate.available -%}{%- continue -%}{%- endunless -%}
         {%- if cart_product_ids contains candidate.id -%}{%- continue -%}{%- endif -%}
         {%- capture candidate_category -%}{%- render 'wes-product-category', item: candidate -%}{%- endcapture -%}
