@@ -357,7 +357,13 @@
     "no_reviews": "この商品にはまだレビューがありません。",
     "reviews_setup": "Judge.me Review Widgetブロックを追加し、テーマエディターでアプリ埋め込みを有効にしてください。",
     "product_motion_pause": "商品メディアを一時停止",
-    "product_motion_resume": "商品メディアを再生"
+    "product_motion_resume": "商品メディアを再生",
+    "film_description_html": "<p>イタリアの職人が一つひとつ手作業で仕上げる作品。自分らしさを大切にし、自由に生きる人々に寄り添います。</p>",
+    "faq_custom_answer_html": "<p>オーダーメイドや法人注文については、WES FREEDまでお問い合わせください。</p>",
+    "faq_old_answer_html": "<p>お持ちの商品に適用されるポリシーについては、カスタマーサポートまでお問い合わせください。</p>",
+    "faq_delivery_answer_html": "<p>お届けまでの日数は配送先と注文状況によって異なります。配送ポリシーをご確認いただくか、WES FREEDまでお問い合わせください。</p>",
+    "faq_resize_answer_html": "<p>サイズ直しの可否はデザインによって異なります。ご注文前にサイズをご確認のうえ、対応範囲と料金についてはWES FREEDまでお問い合わせください。</p>",
+    "faq_gift_answer_html": "<p>メッセージカードやギフトラッピングをご希望の場合は、ご注文前にカスタマーサポートへご相談ください。</p>"
   },
   "wes_footer": {
     "store": "私たちのショップ",
@@ -402,14 +408,41 @@
     "about": "WES FREEDについて",
     "jewelry": "ジュエリー",
     "accessories": "アクセサリー"
+  },
+  "wes_brand_signature": {
+    "tagline": "個性を引き立てるジュエリー",
+    "pause": "写真の自動スクロールを一時停止",
+    "title": "WES FREED ジュエリー"
+  },
+  "wes_quantity_offer": {
+    "title": "まとめ買い特典",
+    "two_items": "2点購入",
+    "five_off": "5% OFF",
+    "three_items": "3点以上",
+    "ten_shipping": "10% OFF + 送料無料",
+    "mix_note": "異なる商品も組み合わせOK · カート・決済時に自動適用",
+    "shipping_note": "3点以上で決済画面で選択できる配送先への送料が無料になります。割引率は重複しません。"
+  },
+  "wes_payment_guide": {
+    "eyebrow": "WES FREED お支払いガイド",
+    "title": "この商品の支払い方法は？",
+    "action": "確認する",
+    "checkout": "お支払いはShopifyのチェックアウトで行います。",
+    "methods": "利用可能なお支払い方法は決済画面に表示されます。",
+    "review": "お支払い前に商品オプション、数量、最終金額、お届け先をご確認ください。",
+    "discounts": "数量割引と送料無料は条件を満たすと自動適用されます。",
+    "contact": "お支払いのお問い合わせ：Instagram @wesfreedkr"
+  },
+  "wes_sales_audit": {
+    "contact_title": "WES FREEDへのお問い合わせ",
+    "contact_intro": "商品、ご注文、配送、交換については、下記の連絡先またはフォームをご利用ください。",
+    "home": "ホーム",
+    "breadcrumb": "現在の位置",
+    "variant": "オプション / サイズ"
+  },
+  "wes_artisans": {
+    "signature": "WES FREED · イタリアの職人による手仕事",
+    "story_link": "WES FREEDの物語",
+    "explore": "クラフトマンシップを見る"
   }
-,
-  "wes_brand_signature": {"tagline":"個性を引き立てるジュエリー","pause":"写真の自動スクロールを一時停止","title":"WES FREED ジュエリー"}
-,
-  "wes_quantity_offer": {"title":"まとめ買い特典","two_items":"2点購入","five_off":"5% OFF","three_items":"3点以上","ten_shipping":"10% OFF + 送料無料","mix_note":"異なる商品も組み合わせOK · カート・決済時に自動適用","shipping_note":"3点以上で決済画面で選択できる配送先への送料が無料になります。割引率は重複しません。"}
-,
-  "wes_payment_guide": {"eyebrow":"WES FREED お支払いガイド","title":"この商品の支払い方法は？","action":"確認する","checkout":"お支払いはShopifyのチェックアウトで行います。","methods":"利用可能なお支払い方法は決済画面に表示されます。","review":"お支払い前に商品オプション、数量、最終金額、お届け先をご確認ください。","discounts":"数量割引と送料無料は条件を満たすと自動適用されます。","contact":"お支払いのお問い合わせ：Instagram @wesfreedkr"}
-,
-  "wes_sales_audit": {"contact_title":"WES FREEDへのお問い合わせ","contact_intro":"商品、ご注文、配送、交換については、下記の連絡先またはフォームをご利用ください。","home":"ホーム","breadcrumb":"現在の位置","variant":"オプション / サイズ"}
 }
-
