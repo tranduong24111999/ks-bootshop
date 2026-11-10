@@ -851,5 +851,12 @@
     "signature": "WES FREED · 이탈리아 장인의 수작업",
     "story_link": "WES FREED 이야기",
     "explore": "주얼리 살펴보기"
+  },
+  "wes_cart_pairings": {
+    "title": "함께 매치하면 좋은 주얼리",
+    "subtitle": "선택하신 주얼리와 함께 스타일링해 보세요.",
+    "options": "옵션 선택",
+    "add": "장바구니 담기",
+    "error": "상품을 추가하지 못했습니다. 다시 시도해 주세요."
   }
 }

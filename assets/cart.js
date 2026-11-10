@@ -176,3 +176,47 @@ class CartNote extends HTMLElement {
   }
 }
 customElements.define('cart-note', CartNote)
+
+class WesCartPairings extends HTMLElement {
+  connectedCallback () {
+    this.controller?.abort()
+    this.controller = new AbortController()
+    const { signal } = this.controller
+    this.addEventListener('change', event => {
+      const select = event.target.closest('[data-pairing-variant]')
+      if (!select) return
+      const option = select.selectedOptions[0]
+      const card = select.closest('.wes-cart-pairing')
+      card.querySelector('[data-pairing-price]').textContent = option.dataset.price
+      card.querySelector('[name="quantity"]').value = option.dataset.minimum
+    }, { signal })
+    this.addEventListener('submit', async event => {
+      const form = event.target.closest('[data-pairing-form]')
+      if (!form) return
+      event.preventDefault()
+      if (this.busy || !form.reportValidity()) return
+      const cart = this.closest('cart-container')
+      if (!cart) { form.submit(); return }
+      this.busy = true
+      this.setAttribute('aria-busy', 'true')
+      this.querySelectorAll('button, select').forEach(control => { control.disabled = true })
+      const data = new FormData(form)
+      const variant = form.querySelector('[name="id"]')
+      data.set('id', variant.value)
+      try {
+        await cart.add(data)
+      } catch {
+        cart.showError(this.dataset.error)
+      } finally {
+        this.busy = false
+        this.removeAttribute('aria-busy')
+        if (this.isConnected) this.querySelectorAll('button, select').forEach(control => { control.disabled = false })
+      }
+    }, { signal })
+  }
+
+  disconnectedCallback () {
+    this.controller?.abort()
+  }
+}
+customElements.define('wes-cart-pairings', WesCartPairings)

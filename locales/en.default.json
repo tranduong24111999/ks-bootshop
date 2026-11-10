@@ -827,5 +827,12 @@
     "signature": "WES FREED · Crafted by Italian artisans",
     "story_link": "The WES FREED story",
     "explore": "Explore the craftsmanship"
+  },
+  "wes_cart_pairings": {
+    "title": "Complete your look",
+    "subtitle": "Two pieces to pair with your selection.",
+    "options": "Choose an option",
+    "add": "Add to cart",
+    "error": "Unable to add this item. Please try again."
   }
 }

@@ -445,5 +445,12 @@
     "signature": "WES FREED · イタリアの職人による手仕事",
     "story_link": "WES FREEDの物語",
     "explore": "クラフトマンシップを見る"
+  },
+  "wes_cart_pairings": {
+    "title": "コーディネートにおすすめ",
+    "subtitle": "お選びのジュエリーと合わせたい2点。",
+    "options": "オプションを選択",
+    "add": "カートに追加",
+    "error": "商品を追加できませんでした。もう一度お試しください。"
   }
 }

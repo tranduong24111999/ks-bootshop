@@ -448,5 +448,12 @@
     "signature": "WES FREED · Chế tác bởi nghệ nhân Ý",
     "story_link": "Câu chuyện WES FREED",
     "explore": "Khám phá chế tác"
+  },
+  "wes_cart_pairings": {
+    "title": "Phối cùng phong cách của bạn",
+    "subtitle": "Hai gợi ý để kết hợp cùng món bạn đã chọn.",
+    "options": "Chọn phân loại",
+    "add": "Thêm vào giỏ",
+    "error": "Không thể thêm sản phẩm. Vui lòng thử lại."
   }
 }

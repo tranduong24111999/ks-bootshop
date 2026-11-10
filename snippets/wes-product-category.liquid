@@ -1,0 +1,16 @@
+{% doc %}
+  Classifies a product by its stable handle for cart styling suggestions.
+  @param {product} item - The product to classify.
+{% enddoc %}
+{%- assign category_handle = item.handle | downcase -%}
+{%- if category_handle contains 'bracelet' or category_handle contains 'bangle' -%}
+  bracelet
+{%- elsif category_handle contains 'necklace' or category_handle contains 'pendant' -%}
+  necklace
+{%- elsif category_handle contains 'earring' -%}
+  earring
+{%- elsif category_handle contains 'ring' or category_handle == 'golden-heritage-band' or category_handle == 'tif-knox' -%}
+  ring
+{%- else -%}
+  other
+{%- endif -%}

@@ -1,0 +1,86 @@
+{% doc %}
+  Renders two complementary product suggestions for a nonempty cart.
+{% enddoc %}
+{%- if cart.item_count > 0 -%}
+  {%- liquid
+    assign cart_product_ids = cart.items | map: 'product_id'
+    assign cart_categories = ''
+    assign style_family = nil
+    assign families = 'bouche,screw,nail,clover,sarpenti,b-zaro1' | split: ','
+  -%}
+  {%- for line_item in cart.items -%}
+    {%- capture item_category -%}{%- render 'wes-product-category', item: line_item.product -%}{%- endcapture -%}
+    {%- assign cart_categories = cart_categories | append: item_category | append: ',' -%}
+    {%- if style_family == blank -%}
+      {%- for family in families -%}
+        {%- if line_item.product.handle contains family -%}{%- assign style_family = family -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- liquid
+    assign target_categories = 'bracelet,necklace'
+    if cart_categories contains 'ring'
+      unless cart_categories contains 'necklace'
+        if cart_categories contains 'bracelet'
+          assign target_categories = 'necklace,bracelet'
+        endif
+      endunless
+    elsif cart_categories contains 'bracelet'
+      assign target_categories = 'ring,necklace'
+    elsif cart_categories contains 'necklace'
+      assign target_categories = 'bracelet,ring'
+    endif
+    assign targets = target_categories | split: ','
+  -%}
+  {%- capture suggestion_cards -%}
+    {%- for target in targets -%}
+      {%- assign suggestion = nil -%}
+      {%- for candidate in collections.all.products limit: 50 -%}
+        {%- unless candidate.available -%}{%- continue -%}{%- endunless -%}
+        {%- if cart_product_ids contains candidate.id -%}{%- continue -%}{%- endif -%}
+        {%- capture candidate_category -%}{%- render 'wes-product-category', item: candidate -%}{%- endcapture -%}
+        {%- unless candidate_category == target -%}{%- continue -%}{%- endunless -%}
+        {%- if suggestion == nil -%}{%- assign suggestion = candidate -%}{%- endif -%}
+        {%- if style_family != blank and candidate.handle contains style_family -%}
+          {%- assign suggestion = candidate -%}{%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if suggestion != nil -%}
+        {%- assign suggested_variant = suggestion.selected_or_first_available_variant -%}
+        <li class="wes-cart-pairing" data-product-handle="{{ suggestion.handle }}" data-product-category="{{ target }}">
+          <a class="wes-cart-pairing__image" href="{{ suggestion.url }}">
+            {{ suggestion.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', width: 76, height: 76, alt: suggestion.title }}
+          </a>
+          <div class="wes-cart-pairing__content">
+            <a class="wes-cart-pairing__name" href="{{ suggestion.url }}">{{ suggestion.title | escape }}</a>
+            <p class="wes-cart-pairing__price" data-pairing-price>{{ suggested_variant.price | money }}</p>
+            <form method="post" action="{{ routes.cart_add_url }}" data-pairing-form>
+              <input type="hidden" name="quantity" value="{{ suggested_variant.quantity_rule.min | default: 1 }}">
+              {%- if suggestion.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ suggested_variant.id }}">
+              {%- else -%}
+                <label class="visually-hidden" for="WesPairing-{{ suggestion.id }}">{{ 'wes_cart_pairings.options' | t }}: {{ suggestion.title | escape }}</label>
+                <select id="WesPairing-{{ suggestion.id }}" name="id" data-pairing-variant required>
+                  {%- for variant in suggestion.variants -%}
+                    {%- if variant.available -%}
+                      <option value="{{ variant.id }}" data-price="{{ variant.price | money | escape }}" data-minimum="{{ variant.quantity_rule.min | default: 1 }}"{% if variant.id == suggested_variant.id %} selected{% endif %}>{{ variant.title | escape }}</option>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </select>
+              {%- endif -%}
+              <button type="submit" class="wes-cart-pairing__add">{{ 'wes_cart_pairings.add' | t }}</button>
+            </form>
+          </div>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign suggestion_cards = suggestion_cards | strip -%}
+  {%- if suggestion_cards != blank -%}
+    <wes-cart-pairings class="wes-cart-pairings" data-error="{{ 'wes_cart_pairings.error' | t | escape }}" aria-labelledby="WesCartPairingsTitle">
+      <h3 id="WesCartPairingsTitle">{{ 'wes_cart_pairings.title' | t }}</h3>
+      <p class="wes-cart-pairings__intro">{{ 'wes_cart_pairings.subtitle' | t }}</p>
+      <ul role="list">{{ suggestion_cards }}</ul>
+    </wes-cart-pairings>
+  {%- endif -%}
+{%- endif -%}
