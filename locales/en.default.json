@@ -809,11 +809,12 @@
     "eyebrow": "WES FREED PAYMENT GUIDE",
     "title": "How do I pay for this item?",
     "action": "View guide",
-    "checkout": "Payment is completed through Shopify checkout.",
+    "checkout": "Complete your payment on the WES FREED checkout page.",
     "methods": "Available payment methods are shown at checkout.",
     "review": "Review your options, quantities, final total and delivery address before paying.",
     "discounts": "Quantity discounts and free shipping apply automatically when the requirements are met.",
-    "contact": "Payment questions: Instagram @wesfreedkr"
+    "contact": "Payment questions: Instagram @wesfreedkr",
+    "checkout_notice": "Complete your payment on the WES FREED checkout page."
   },
   "wes_sales_audit": {
     "contact_title": "Contact WES FREED",
@@ -828,4 +829,3 @@
     "explore": "Explore the craftsmanship"
   }
 }
-

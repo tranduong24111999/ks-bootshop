@@ -430,11 +430,12 @@
     "eyebrow": "HƯỚNG DẪN THANH TOÁN WES FREED",
     "title": "Thanh toán sản phẩm này như thế nào?",
     "action": "Xem hướng dẫn",
-    "checkout": "Thanh toán được thực hiện qua trang thanh toán Shopify.",
+    "checkout": "Thanh toán được thực hiện tại trang thanh toán của WES FREED.",
     "methods": "Các phương thức khả dụng được hiển thị khi thanh toán.",
     "review": "Kiểm tra phân loại, số lượng, tổng tiền và địa chỉ giao hàng trước khi trả tiền.",
     "discounts": "Giảm giá theo số lượng và miễn phí vận chuyển tự áp dụng khi đủ điều kiện.",
-    "contact": "Hỏi về thanh toán: Instagram @wesfreedkr"
+    "contact": "Hỏi về thanh toán: Instagram @wesfreedkr",
+    "checkout_notice": "Thanh toán được thực hiện tại trang thanh toán của WES FREED."
   },
   "wes_sales_audit": {
     "contact_title": "Liên hệ WES FREED",
@@ -449,4 +450,3 @@
     "explore": "Khám phá chế tác"
   }
 }
-

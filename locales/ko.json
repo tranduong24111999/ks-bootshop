@@ -833,11 +833,12 @@
     "eyebrow": "WES FREED 결제 안내",
     "title": "이 상품, 어떻게 결제하나요?",
     "action": "확인하기",
-    "checkout": "결제는 Shopify 체크아웃에서 진행됩니다.",
+    "checkout": "결제는 WES FREED 결제 페이지에서 진행됩니다.",
     "methods": "사용 가능한 결제수단은 결제 화면에서 확인할 수 있습니다.",
     "review": "결제 전 상품 옵션, 수량, 최종 금액과 배송지를 확인해 주세요.",
     "discounts": "수량별 할인과 무료배송 혜택은 조건 충족 시 자동 적용됩니다.",
-    "contact": "결제 문의: Instagram @wesfreedkr"
+    "contact": "결제 문의: Instagram @wesfreedkr",
+    "checkout_notice": "결제는 WES FREED 결제 페이지에서 진행됩니다."
   },
   "wes_sales_audit": {
     "contact_title": "WES FREED 문의",
@@ -852,4 +853,3 @@
     "explore": "주얼리 살펴보기"
   }
 }
-

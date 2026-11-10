@@ -427,11 +427,12 @@
     "eyebrow": "WES FREED お支払いガイド",
     "title": "この商品の支払い方法は？",
     "action": "確認する",
-    "checkout": "お支払いはShopifyのチェックアウトで行います。",
+    "checkout": "お支払いはWES FREEDの決済ページで行います。",
     "methods": "利用可能なお支払い方法は決済画面に表示されます。",
     "review": "お支払い前に商品オプション、数量、最終金額、お届け先をご確認ください。",
     "discounts": "数量割引と送料無料は条件を満たすと自動適用されます。",
-    "contact": "お支払いのお問い合わせ：Instagram @wesfreedkr"
+    "contact": "お支払いのお問い合わせ：Instagram @wesfreedkr",
+    "checkout_notice": "お支払いはWES FREEDの決済ページで行います。"
   },
   "wes_sales_audit": {
     "contact_title": "WES FREEDへのお問い合わせ",
@@ -446,4 +447,3 @@
     "explore": "クラフトマンシップを見る"
   }
 }
-
