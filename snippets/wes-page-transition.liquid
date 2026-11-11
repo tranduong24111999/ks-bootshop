@@ -5,13 +5,13 @@
 {% enddoc %}
 {% unless request.design_mode %}
   <style>
-    html::before,html::after{content:'';position:fixed;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .24s ease,visibility 0s linear .24s}
+    html::before,html::after{content:'';position:fixed;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .1s ease,visibility 0s linear .1s}
     html::before{inset:0;z-index:2147483000;background:#3a3a3a}
     html::after{top:50%;left:calc(50% - min(120px,30vw));width:min(240px,60vw);height:2px;z-index:2147483001;background:#fff;transform:scaleX(1);transform-origin:left center}
     html[data-wes-page-transition]::before,html[data-wes-page-transition]::after{visibility:visible;opacity:1;transition:opacity .12s ease,visibility 0s}
-    html[data-wes-page-transition]::after{animation:wes-navigation-progress 5s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--wes-navigation-elapsed,0ms)}
+    html[data-wes-page-transition]::after{animation:wes-navigation-progress 1.2s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--wes-navigation-elapsed,0ms)}
     html[data-wes-page-transition="loading"]::before,html[data-wes-page-transition="loading"]::after{transition:none}
-    html[data-wes-page-transition="finishing"]::before,html[data-wes-page-transition="finishing"]::after{opacity:0;transition:opacity .24s ease .08s}
+    html[data-wes-page-transition="finishing"]::before,html[data-wes-page-transition="finishing"]::after{opacity:0;transition:opacity .1s ease}
     html[data-wes-page-transition="finishing"]::after{animation:none;transform:scaleX(1)}
     @keyframes wes-navigation-progress{from{transform:scaleX(.04)}to{transform:scaleX(.95)}}
     @media(prefers-reduced-motion:reduce){html::before,html::after,html[data-wes-page-transition]::before,html[data-wes-page-transition]::after{transition:none}html::after,html[data-wes-page-transition]::after{animation:none;transform:none}}
@@ -20,7 +20,6 @@
     (() => {
       const root = document.documentElement
       let failSafe
-      let imageTimer
       let finishTimer
       const storageKey = 'wes-navigation-pending'
       let started = Date.now()
@@ -31,32 +30,27 @@
       } catch (_) {}
       const reset = () => {
         clearTimeout(failSafe)
-        clearTimeout(imageTimer)
         clearTimeout(finishTimer)
         root.removeAttribute('data-wes-page-transition')
       }
       const show = (state, elapsed = 0) => {
         reset()
-        root.style.setProperty('--wes-navigation-elapsed', `-${Math.min(elapsed, 4800)}ms`)
+        root.style.setProperty('--wes-navigation-elapsed', `-${Math.min(elapsed, 1100)}ms`)
         root.dataset.wesPageTransition = state
-        failSafe = setTimeout(reset, 5000)
+        failSafe = setTimeout(reset, 1800)
       }
       const ready = () => {
         if (root.dataset.wesPageTransition !== 'loading') return
         const finish = () => {
           if (root.dataset.wesPageTransition !== 'loading') return
           clearTimeout(failSafe)
-          clearTimeout(imageTimer)
-          root.dataset.wesPageTransition = 'finishing'
-          finishTimer = setTimeout(reset, 340)
+            root.dataset.wesPageTransition = 'finishing'
+          finishTimer = setTimeout(reset, 110)
         }
-        const image = document.querySelector('#main img[fetchpriority="high"]')
-        if (!image || image.complete) { finish(); return }
-        image.addEventListener('load', finish, { once: true })
-        image.addEventListener('error', finish, { once: true })
-        imageTimer = setTimeout(finish, 900)
+        finish()
       }
       show('loading', Date.now() - started)
+      document.addEventListener('readystatechange', () => { if (document.readyState !== 'loading') ready() })
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, { once: true })
       else ready()
       window.addEventListener('pageshow', event => { if (event.persisted) reset() })
