@@ -34,7 +34,7 @@ class Cart extends HTMLElement {
   }
 
   async add (formData) {
-    if (this.pending) return { ok: false, error: window.theme.locales.helios?.cart_add_error }
+    if (this.pending || this.changing) return { ok: false, error: window.theme.locales.helios?.cart_add_error }
     this.pending = true
     this.setAttribute('aria-busy', 'true')
     const locked = [...this.querySelectorAll('.offcanvas-body, .offcanvas-footer')]
@@ -81,6 +81,10 @@ class Cart extends HTMLElement {
   }
 
   async change (id, quantity) {
+    if (!this.isConnected || this.changing || this.pending) return
+    this.changing = true
+    const locked = [...this.querySelectorAll('.offcanvas-body, .offcanvas-footer')]
+    locked.forEach(element => { element.inert = true })
     this.classList.add('loading')
     try {
       const { response, data } = await requestCart(`${window.Shopify.routes.cart_change_url}.js`, {
@@ -103,6 +107,8 @@ class Cart extends HTMLElement {
     } catch {
       this.showError((window.theme.locales.helios?.cart_update_error || 'Không thể cập nhật giỏ hàng. Vui lòng thử lại.'))
     } finally {
+      this.changing = false
+      locked.forEach(element => { element.inert = false })
       this.classList.remove('loading')
     }
   }
