@@ -187,7 +187,7 @@ class HeliosCarousel extends HTMLElement {
     }
     if (eligible && !this.paused && !this.focused && !this.editorPaused && !document.hidden && this.heroVisible) {
       const nextImage = this.slides[(this.index + 1) % this.slides.length].querySelector('img')
-      if (nextImage) nextImage.loading = 'eager'
+      if (nextImage && window.matchMedia('(min-width: 768px)').matches) nextImage.loading = 'eager'
       const delay = Number(this.slides[this.index]?.dataset.duration) * 1000 || this.interval
       this.timer = window.setInterval(() => this.show(this.index + 1, true), delay)
     }
@@ -292,3 +292,4 @@ class HeliosTabs extends HTMLElement {
   disconnectedCallback () { this.controller?.abort() }
 }
 if (!customElements.get('helios-tabs')) customElements.define('helios-tabs', HeliosTabs)
+

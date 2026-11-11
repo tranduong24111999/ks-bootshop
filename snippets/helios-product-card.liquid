@@ -17,7 +17,16 @@
     {% if animate_media %}<helios-product-media data-offset="{{ motion_offset | default: 0 }}">{% endif %}
     {% if product.featured_image != blank %}
       {{ product.featured_image | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__first', alt: product.title }}
-      {% if product.images.size > 1 %}{{ product.images[1] | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__second', alt: product.title }}{% endif %}
+      {% if product.images.size > 1 %}
+        {% if animate_media %}
+          {{ product.images[1] | image_url: width: 1000 | image_tag: widths: '240,360,500,750,1000', sizes: '(max-width: 767px) 50vw, 25vw', loading: 'lazy', class: 'helios-product-card__second', alt: product.title }}
+        {% else %}
+          <picture>
+            <source media="(hover: hover)" srcset="{{ product.images[1] | image_url: width: 240 }} 240w, {{ product.images[1] | image_url: width: 360 }} 360w, {{ product.images[1] | image_url: width: 500 }} 500w, {{ product.images[1] | image_url: width: 750 }} 750w, {{ product.images[1] | image_url: width: 1000 }} 1000w" sizes="(max-width: 767px) 50vw, 25vw">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1000" height="1000" class="helios-product-card__second" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          </picture>
+        {% endif %}
+      {% endif %}
     {% else %}<span class="helios-product-card__no-image">{{ product.title | escape }}</span>{% endif %}
     {% if animate_media %}
       {% if motion_url != blank %}<video muted playsinline loop preload="none" data-motion-video data-motion-src="{{ motion_url | escape }}" aria-hidden="true" tabindex="-1"></video>{% endif %}
@@ -30,3 +39,4 @@
     <div class="helios-product-card__price">{% if product.price_varies %}Từ {% endif %}{{ product.price | money_with_currency }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money_with_currency }}</s>{% endif %}</div>
   </a>
 </article>
+

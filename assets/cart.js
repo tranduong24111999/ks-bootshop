@@ -220,3 +220,16 @@ class WesCartPairings extends HTMLElement {
   }
 }
 customElements.define('wes-cart-pairings', WesCartPairings)
+
+
+window.addEventListener('pageshow', async event => {
+  if (!event.persisted) return
+  const cart = document.querySelector('cart-container')
+  if (!cart) return
+  const url = new URL(location.href)
+  url.searchParams.set('sections', 'cart-count-badge,offcanvas-cart')
+  try {
+    const { response, data } = await requestCart(url.href, { cache: 'no-store' })
+    if (response.ok && cart.isConnected) cart.reloadCartElements(data)
+  } catch (_) {}
+})

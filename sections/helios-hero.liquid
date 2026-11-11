@@ -72,7 +72,7 @@
             {% endif %}
           </picture>
           {% if motion_asset != blank %}
-            <video class="wes-hero-motion{% if block.settings.artwork contains 'jewelry-film' %} wes-hero-motion--landscape{% endif %}" muted loop playsinline preload="none" poster="{{ desktop_asset | asset_url }}" aria-hidden="true" tabindex="-1" data-hero-video>
+            <video class="wes-hero-motion{% if block.settings.artwork contains 'jewelry-film' %} wes-hero-motion--landscape{% endif %}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-hero-video>
               <source data-src="{{ motion_asset | asset_url }}" {% if mobile_motion_asset != blank %}data-mobile-src="{{ mobile_motion_asset | asset_url }}"{% endif %} type="video/mp4">
             </video>
           {% endif %}
@@ -112,3 +112,4 @@
   "presets": [{ "name": "WES FREED · Banner", "blocks": [{ "type": "slide" }] }]
 }
 {% endschema %}
+
