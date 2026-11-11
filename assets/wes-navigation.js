@@ -51,7 +51,7 @@
     if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) warm(event.target.closest('a[href]'))
   }, { passive: true })
   const prepareVisible = () => {
-    if (!('IntersectionObserver' in window)) return
+    if (window.matchMedia('(pointer: coarse)').matches || !('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
@@ -70,3 +70,4 @@
   if (document.readyState === 'complete') idle()
   else window.addEventListener('load', idle, { once: true })
 })()
+

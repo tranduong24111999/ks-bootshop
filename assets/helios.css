@@ -518,3 +518,10 @@
  .helios-topbar .helios-announcement > div { display:grid; height:auto; min-height:30px; overflow:visible; }
  .helios-topbar .helios-announcement [data-helios-slide] { position:static; grid-area:1 / 1; min-width:0; padding:2px 0; line-height:1.5; white-space:normal; overflow-wrap:anywhere; }
 }
+
+
+@media (max-width: 991.98px) {
+  html:has(body.helios-theme), body.helios-theme { overflow-x: clip; }
+  .helios-theme .product-media-gallery { transition: none; }
+  .helios-theme.helios-motion [data-helios-reveal] { opacity: 1; transform: none; transition: none; }
+}
