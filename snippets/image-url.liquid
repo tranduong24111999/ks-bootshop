@@ -66,7 +66,8 @@
   alt="{{ img.alt }}"
   width="{{ width }}"
   height="{{ height }}"
-  loading="{{ loading }}">
+  loading="{{ loading }}"
+  {% if fetch_priority != blank %}fetchpriority="{{ fetch_priority }}"{% endif %}>
 
 {% liquid
   # theme-check-enable ImgLazyLoading 

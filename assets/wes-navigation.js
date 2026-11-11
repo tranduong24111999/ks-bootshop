@@ -4,6 +4,30 @@
   const connection = navigator.connection
   if (connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '')) return
   const warmed = new Set()
+  const warmedImages = new Set()
+  const warmImage = anchor => {
+    const card = anchor?.closest('.product-card, .helios-product-card')
+    const image = card?.querySelector('img')
+    if (!image || warmedImages.size >= 2) return
+    let url
+    try { url = new URL(image.currentSrc || image.src, location.href) } catch (_) { return }
+    if (url.origin !== location.origin || !url.pathname.startsWith('/cdn/shop/files/')) return
+    if (url.searchParams.has('width')) url.searchParams.set('width', '800')
+    if (url.searchParams.has('height')) {
+      const width = Number(new URL(image.currentSrc || image.src, location.href).searchParams.get('width'))
+      const height = Number(url.searchParams.get('height'))
+      if (width > 0 && height > 0) url.searchParams.set('height', String(Math.round(height * 800 / width)))
+    }
+    if (warmedImages.has(url.href)) return
+    warmedImages.add(url.href)
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = url.href
+    link.fetchPriority = 'low'
+    document.head.append(link)
+  }
+  const documentPrefetch = document.createElement('link').relList.supports('prefetch')
   const nativePrefetch = typeof HTMLScriptElement.supports === 'function' && HTMLScriptElement.supports('speculationrules')
   const current = new URL(location.href)
   let automatic = 0
@@ -16,7 +40,9 @@
     return url.href
   }
   const warm = (anchor, background = false) => {
-    if (document.hidden || warmed.size >= 6 || background && automatic >= 2) return
+    if (document.hidden) return
+    if (!background && destination(anchor)) warmImage(anchor)
+    if (warmed.size >= 6 || background && automatic >= 2) return
     const url = destination(anchor)
     if (!url || warmed.has(url)) return
     warmed.add(url)
@@ -26,7 +52,7 @@
       rule.type = 'speculationrules'
       rule.textContent = JSON.stringify({ prefetch: [{ source: 'list', urls: [url], eagerness: 'immediate' }] })
       document.head.append(rule)
-    } else {
+    } else if (documentPrefetch) {
       const link = document.createElement('link')
       link.rel = 'prefetch'
       link.as = 'document'
@@ -47,9 +73,22 @@
     if (anchor && !anchor.contains(event.relatedTarget)) clearTimeout(hoverTimer)
   }, { passive: true })
   document.addEventListener('focusin', event => warm(event.target.closest('a[href]')))
+  let touchIntent
   document.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch') {
+      touchIntent = { anchor: event.target.closest('a[href]'), x: event.clientX, y: event.clientY, id: event.pointerId }
+      return
+    }
     if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) warm(event.target.closest('a[href]'))
   }, { passive: true })
+  document.addEventListener('pointermove', event => {
+    if (touchIntent && (Math.abs(event.clientX - touchIntent.x) > 8 || Math.abs(event.clientY - touchIntent.y) > 8)) touchIntent = null
+  }, { passive: true })
+  document.addEventListener('pointerup', event => {
+    if (touchIntent?.id === event.pointerId) warm(touchIntent.anchor)
+    touchIntent = null
+  }, { passive: true })
+  document.addEventListener('pointercancel', () => { touchIntent = null }, { passive: true })
   const prepareVisible = () => {
     if (window.matchMedia('(pointer: coarse)').matches || !('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver(entries => {
@@ -70,4 +109,5 @@
   if (document.readyState === 'complete') idle()
   else window.addEventListener('load', idle, { once: true })
 })()
+
 

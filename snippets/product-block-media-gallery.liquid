@@ -27,15 +27,17 @@
         <div class="swiper-wrapper">
           {% for media in product.media %}
             {% liquid 
-              assign media_loading = 'eager' 
-              if forloop.index > 2
-                assign media_loading = 'lazy' 
+              assign media_loading = 'lazy'
+              assign media_priority = 'low'
+              if forloop.index0 == initial_slide
+                assign media_loading = 'eager'
+                assign media_priority = 'high'
               endif
             %}
             <div class="swiper-slide" data-media-id="{{ media.id }}" lazy="{% if media_loading == 'lazy' %}true{% endif %}">
               {% case media.media_type %}
                 {% when 'image' %}
-                  {% render 'image-url', img: media, size: 800, orientation: block.settings.img_orientation, loading: media_loading, class: '' %}
+                  {% render 'image-url', img: media, size: 800, orientation: block.settings.img_orientation, loading: media_loading, fetch_priority: media_priority, class: '' %}
                 {% when 'video' %}
                   {{ media | video_tag: controls: true, image_size: '800x', loading: media_loading, class: 'bg-black w-100' }}
               {% endcase %}
@@ -65,10 +67,10 @@
           <div class="swiper-slide" data-media-type="{{ media.media_type }}">
             {% case media.media_type %}
               {% when 'image' %}
-                {% render 'image-url', img: media, size: 800, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
+                {% render 'image-url', img: media, size: 200, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
               {% when 'video' %}
                 {% render 'svg-icons', icon: 'play', size: '18', aria-hidden: 'true' %}
-                {% render 'image-url', img: media.preview_image, size: 800, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
+                {% render 'image-url', img: media.preview_image, size: 200, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
             {% endcase %}
           </div>
         {% endfor %}
@@ -77,3 +79,4 @@
     {% if block.settings.full_screen %}<dialog class="helios-gallery-dialog" aria-label="{{ 'helios.zoom_title' | t | escape }}"><button type="button" data-gallery-close aria-label="{{ 'helios.zoom_close' | t | escape }}">×</button>{% for media in product.media %}{% if media.media_type == 'image' %}<img data-zoom-media-id="{{ media.id }}" src="{{ media | image_url: width: 2000 }}" width="{{ media.width }}" height="{{ media.height }}" alt="{{ media.alt | default: product.title | escape }}" loading="lazy">{% endif %}{% endfor %}</dialog>{% endif %}
   </product-media-gallery>
 {% endif %}
+
