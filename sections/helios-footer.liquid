@@ -44,7 +44,7 @@
   {% liquid
     assign footer_support_email = section.settings.service_email | default: 'wesfreedkr@gmail.com'
     assign support_mailto = 'mailto:' | append: footer_support_email
-    assign shipping_destination = support_mailto
+    assign shipping_destination = pages['shipping-information'].url | default: support_mailto
     if shop.shipping_policy.body != blank
       assign shipping_destination = shop.shipping_policy.url
     endif

@@ -297,7 +297,7 @@
     "faq_gift": "Does WES FREED offer gift wrapping?",
     "faq_custom_answer": "<p>Please contact WES FREED for advice on custom designs or corporate orders.</p>",
     "faq_old_answer": "<p>Please contact customer care to check the policy applicable to your product.</p>",
-    "faq_delivery_answer": "<p>Delivery time depends on your address and order status. Check our shipping policy or contact WES FREED for confirmation.</p>",
+    "faq_delivery_answer": "<p>We deliver to South Korea only. Both shipping options have an estimated 8–15-day delivery window. Standard shipping costs ₩6,700 and express costs ₩9,400. Express uses a faster transport service, but earlier arrival or a specific delivery date is not guaranteed. Customs and local delivery conditions can affect timing.</p>",
     "faq_resize_answer": "<p>Resizing depends on the design. Check your size before ordering and contact WES FREED for available adjustments and fees.</p>",
     "faq_gift_answer": "<p>If you need a card or gift wrapping, please contact customer care before ordering.</p>",
     "film_description": "<p>Each creation is finished by hand by Italian artisans, accompanying those who embrace their individuality and live freely on their own terms.</p>",
@@ -361,7 +361,7 @@
     "film_description_html": "<p>Each creation is finished by hand by Italian artisans, accompanying those who embrace their individuality and live freely on their own terms.</p>",
     "faq_custom_answer_html": "<p>Please contact WES FREED for advice on custom designs or corporate orders.</p>",
     "faq_old_answer_html": "<p>Please contact customer care to check the policy applicable to your product.</p>",
-    "faq_delivery_answer_html": "<p>Delivery time depends on your address and order status. Check our shipping policy or contact WES FREED for confirmation.</p>",
+    "faq_delivery_answer_html": "<p>We deliver to South Korea only. Both shipping options have an estimated 8–15-day delivery window. Standard shipping costs ₩6,700 and express costs ₩9,400. Express uses a faster transport service, but earlier arrival or a specific delivery date is not guaranteed. Customs and local delivery conditions can affect timing.</p>",
     "faq_resize_answer_html": "<p>Resizing depends on the design. Check your size before ordering and contact WES FREED for available adjustments and fees.</p>",
     "faq_gift_answer_html": "<p>If you need a card or gift wrapping, please contact customer care before ordering.</p>"
   },
@@ -410,7 +410,7 @@
     "accessories": "ACCESSORIES"
   },
   "wes_product_panels": {
-    "purchase_html": "<p>Before ordering, review the product description and check your selected size, color and quantity. Available payment methods, shipping options and the final total are shown at checkout. Keep your order confirmation for reference.</p><p>For product or order questions, contact us on Instagram: <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>.</p><p><strong>10-day exchanges:</strong> WES FREED offers exchanges for a different size or style within 10 days of purchase. To arrange an exchange, contact <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a> with your order number before sending the item.</p>",
+    "purchase_html": "<p>Before ordering, review the product description and check your selected size, color and quantity. Available payment methods, shipping options and the final total are shown at checkout. Keep your order confirmation for reference.</p><p>For product or order questions, contact us on Instagram: <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>.</p><p><strong>10-day exchanges:</strong> WES FREED offers exchanges for a different size or style within 10 days of purchase. To arrange an exchange, contact <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a> with your order number before sending the item.</p><p><strong>Shipping:</strong> South Korea only, estimated 8–15 days. Standard ₩6,700 / Express ₩9,400. Express uses a faster transport service; a specific arrival date is not guaranteed. <a href=\"/pages/shipping-information\">View shipping information</a>.</p>",
     "warranty_html": "<p><strong>Lifetime plating and polishing support:</strong> WES FREED provides lifetime support for jewelry plating and polishing to help keep your pieces looking their best.</p><p>Contact us on Instagram at <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a> with your order number and clear photos. Before sending an item, contact us to confirm the service suitable for its material and condition, any service or shipping charges, and the expected turnaround time.</p>",
     "care_html": "<ul><li>Avoid contact with perfume, cosmetics, cleaning products and other chemicals.</li><li>Remove jewelry before swimming, bathing or strenuous exercise.</li><li>After wearing, gently wipe with a soft, dry cloth. Avoid abrasive cleaners, especially on plated surfaces and stones.</li><li>Store each piece separately in a dry pouch or jewelry box, away from moisture and direct sunlight.</li><li>For care advice specific to your item, contact <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>.</li></ul>"
   },
@@ -803,7 +803,7 @@
     "three_items": "Buy 3+ items",
     "ten_shipping": "10% OFF + FREE SHIPPING",
     "mix_note": "Mix & match any products · Automatically applied in your cart and at checkout",
-    "shipping_note": "Free shipping on 3+ items to destinations available at checkout. Discount tiers do not stack."
+    "shipping_note": "Free shipping on 3+ items within South Korea. Discount tiers do not stack."
   },
   "wes_payment_guide": {
     "eyebrow": "WES FREED PAYMENT GUIDE",
@@ -834,5 +834,9 @@
     "options": "Choose an option",
     "add": "Add to cart",
     "error": "Unable to add this item. Please try again."
+  },
+  "wes_shipping": {
+    "summary_html": "<strong>South Korea only · estimated 8–15 days</strong><br>Standard ₩6,700 · Express ₩9,400",
+    "details": "Shipping information"
   }
 }

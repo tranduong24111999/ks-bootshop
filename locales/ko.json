@@ -297,7 +297,7 @@
     "faq_gift": "WES FREED에서 선물 포장을 제공하나요?",
     "faq_custom_answer": "<p>맞춤 제작 또는 기업 주문은 WES FREED에 문의해 주세요.</p>",
     "faq_old_answer": "<p>제품에 적용되는 정책은 고객 지원팀에 문의해 주세요.</p>",
-    "faq_delivery_answer": "<p>배송 기간은 배송지와 주문 상태에 따라 달라집니다. 배송 정책을 확인하거나 WES FREED에 문의해 주세요.</p>",
+    "faq_delivery_answer": "<p>대한민국으로만 배송하며 두 배송 옵션 모두 예상 배송 기간은 8~15일입니다. 일반 배송은 ₩6,700, 빠른 배송은 ₩9,400입니다. 빠른 배송은 더 빠른 운송 서비스를 이용하지만 특정 도착일이나 더 이른 도착을 보장하지 않습니다. 통관 및 현지 배송 상황에 따라 달라질 수 있습니다.</p>",
     "faq_resize_answer": "<p>사이즈 조절 가능 여부는 디자인에 따라 다릅니다. 주문 전 사이즈를 확인하고 조절 범위와 비용은 WES FREED에 문의해 주세요.</p>",
     "faq_gift_answer": "<p>카드 또는 선물 포장이 필요하시면 주문 전에 고객 지원팀에 문의해 주세요.</p>",
     "film_description": "<p>이탈리아 장인의 손으로 완성되는 주얼리. 자신만의 개성을 지키며 자유롭게 살아가는 이들과 함께합니다.</p>",
@@ -361,7 +361,7 @@
     "film_description_html": "<p>이탈리아 장인의 손으로 완성되는 주얼리. 자신만의 개성을 지키며 자유롭게 살아가는 이들과 함께합니다.</p>",
     "faq_custom_answer_html": "<p>맞춤 제작 또는 기업 주문은 WES FREED에 문의해 주세요.</p>",
     "faq_old_answer_html": "<p>제품에 적용되는 정책은 고객 지원팀에 문의해 주세요.</p>",
-    "faq_delivery_answer_html": "<p>배송 기간은 배송지와 주문 상태에 따라 달라집니다. 배송 정책을 확인하거나 WES FREED에 문의해 주세요.</p>",
+    "faq_delivery_answer_html": "<p>대한민국으로만 배송하며 두 배송 옵션 모두 예상 배송 기간은 8~15일입니다. 일반 배송은 ₩6,700, 빠른 배송은 ₩9,400입니다. 빠른 배송은 더 빠른 운송 서비스를 이용하지만 특정 도착일이나 더 이른 도착을 보장하지 않습니다. 통관 및 현지 배송 상황에 따라 달라질 수 있습니다.</p>",
     "faq_resize_answer_html": "<p>사이즈 조절 가능 여부는 디자인에 따라 다릅니다. 주문 전 사이즈를 확인하고 조절 범위와 비용은 WES FREED에 문의해 주세요.</p>",
     "faq_gift_answer_html": "<p>카드 또는 선물 포장이 필요하시면 주문 전에 고객 지원팀에 문의해 주세요.</p>"
   },
@@ -434,7 +434,7 @@
     "accessories": "액세서리"
   },
   "wes_product_panels": {
-    "purchase_html": "<p>주문 전에 상품 설명을 확인하고 선택한 사이즈, 색상, 수량을 확인해 주세요. 이용 가능한 결제 수단, 배송 옵션 및 최종 결제 금액은 결제 단계에서 확인할 수 있습니다. 주문 확인 내역을 보관해 주세요.</p><p>상품이나 주문에 관한 문의는 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p><p><strong>구매 후 10일 이내 교환:</strong> WES FREED에서는 구매 후 10일 이내에 다른 사이즈나 스타일로 교환할 수 있습니다. 교환을 원하시면 상품을 보내기 전에 주문 번호와 함께 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p>",
+    "purchase_html": "<p>주문 전에 상품 설명을 확인하고 선택한 사이즈, 색상, 수량을 확인해 주세요. 이용 가능한 결제 수단, 배송 옵션 및 최종 결제 금액은 결제 단계에서 확인할 수 있습니다. 주문 확인 내역을 보관해 주세요.</p><p>상품이나 주문에 관한 문의는 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p><p><strong>구매 후 10일 이내 교환:</strong> WES FREED에서는 구매 후 10일 이내에 다른 사이즈나 스타일로 교환할 수 있습니다. 교환을 원하시면 상품을 보내기 전에 주문 번호와 함께 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 연락해 주세요.</p><p><strong>배송 안내:</strong> 대한민국 배송, 예상 8~15일. 일반 ₩6,700 / 빠른 ₩9,400. 빠른 배송은 더 빠른 운송 서비스를 이용하며 특정 도착일을 보장하지 않습니다. <a href=\"/pages/shipping-information\">배송 안내 보기</a>.</p>",
     "warranty_html": "<p><strong>도금 및 폴리싱 평생 지원:</strong> WES FREED는 주얼리의 아름다운 상태를 유지할 수 있도록 도금 및 광택 관리에 대한 평생 지원을 제공합니다.</p><p>주문 번호와 선명한 사진을 인스타그램 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 보내 주세요. 상품을 보내기 전에 소재와 상태에 맞는 서비스, 서비스 및 배송 비용의 유무, 예상 소요 기간을 문의해 주세요.</p>",
     "care_html": "<ul><li>향수, 화장품, 세제 및 기타 화학 물질과의 접촉을 피하세요.</li><li>수영, 목욕 또는 격렬한 운동 전에는 주얼리를 빼 주세요.</li><li>착용 후 부드럽고 마른 천으로 가볍게 닦아 주세요. 특히 도금 표면과 스톤에는 연마성 세정제를 사용하지 마세요.</li><li>습기와 직사광선을 피해 건조한 파우치나 주얼리 상자에 각각 따로 보관하세요.</li><li>상품별 관리 방법은 <a href=\"https://www.instagram.com/wesfreedkr/\">@wesfreedkr</a>로 문의해 주세요.</li></ul>"
   },
@@ -827,7 +827,7 @@
     "three_items": "3개 이상 구매",
     "ten_shipping": "10% 할인 + 무료배송",
     "mix_note": "서로 다른 상품도 함께 구매 가능 · 장바구니와 결제 시 자동 적용",
-    "shipping_note": "3개 이상 구매 시 결제 화면에서 선택 가능한 배송 국가에 무료배송이 적용됩니다. 할인율은 중복되지 않습니다."
+    "shipping_note": "3개 이상 구매 시 대한민국 무료배송이 적용됩니다. 할인율은 중복되지 않습니다."
   },
   "wes_payment_guide": {
     "eyebrow": "WES FREED 결제 안내",
@@ -858,5 +858,9 @@
     "options": "옵션 선택",
     "add": "장바구니 담기",
     "error": "상품을 추가하지 못했습니다. 다시 시도해 주세요."
+  },
+  "wes_shipping": {
+    "summary_html": "<strong>대한민국 배송 · 예상 8~15일</strong><br>일반 ₩6,700 · 빠른 ₩9,400",
+    "details": "배송 안내"
   }
 }

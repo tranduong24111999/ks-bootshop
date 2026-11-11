@@ -1,3 +1,4 @@
+{% assign shipping_information_url = routes.root_url | append: '/pages/shipping-information' | replace: '//', '/' %}
 {% if cart.items != empty %}
   <div class="offcanvas-footer pt-5">
     {% if cart.cart_level_discount_applications.size > 0 %}
@@ -28,6 +29,7 @@
         </b>
       </span>
     </p>
+    {% render 'wes-shipping-summary' %}
     {% form 'cart', cart %}
       <button 
         class="btn btn-checkout btn-primary btn-lg" 
@@ -39,7 +41,7 @@
       </button>
     {% endform %}
     <p class="small text-center mt-3 mb-n2 fst-italic">
-      {{ 'cart.taxes_shipping_at_checkout_html' | t }}
+      {{ 'cart.taxes_shipping_at_checkout_html' | t | replace: '/policies/shipping-policy', shipping_information_url }}
     </p>
   </div>
 {% endif %}

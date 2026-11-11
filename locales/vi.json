@@ -297,7 +297,7 @@
     "faq_gift": "WES FREED có cung cấp dịch vụ gói quà không?",
     "faq_custom_answer": "<p>Vui lòng liên hệ WES FREED để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>",
     "faq_old_answer": "<p>Vui lòng liên hệ bộ phận chăm sóc khách hàng để kiểm tra chính sách áp dụng cho sản phẩm của bạn.</p>",
-    "faq_delivery_answer": "<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ WES FREED để xác nhận.</p>",
+    "faq_delivery_answer": "<p>Chỉ giao tại Hàn Quốc. Cả hai phương thức đều dự kiến 8–15 ngày. Tiêu chuẩn ₩6.700, giao nhanh ₩9.400. Giao nhanh sử dụng dịch vụ vận chuyển nhanh hơn nhưng không bảo đảm đến sớm hơn hay vào một ngày cụ thể. Thời gian có thể thay đổi do thông quan và tình hình giao hàng địa phương.</p>",
     "faq_resize_answer": "<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ WES FREED để được tư vấn về phạm vi, chi phí áp dụng.</p>",
     "faq_gift_answer": "<p>Nếu cần thiệp hoặc đóng gói quà, vui lòng trao đổi với bộ phận chăm sóc khách hàng trước khi đặt đơn.</p>",
     "film_description": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Ý, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>",
@@ -361,7 +361,7 @@
     "film_description_html": "<p>Nơi mỗi chế tác được hoàn thiện bằng tay bởi nghệ nhân Ý, đồng hành cùng người đàn ông dám giữ lấy khác biệt, sống tự do theo cách của mình.</p>",
     "faq_custom_answer_html": "<p>Vui lòng liên hệ WES FREED để được tư vấn về yêu cầu thiết kế riêng hoặc đơn hàng doanh nghiệp.</p>",
     "faq_old_answer_html": "<p>Vui lòng liên hệ bộ phận chăm sóc khách hàng để kiểm tra chính sách áp dụng cho sản phẩm của bạn.</p>",
-    "faq_delivery_answer_html": "<p>Thời gian nhận hàng phụ thuộc địa chỉ giao hàng và tình trạng đơn hàng. Bạn có thể xem chính sách giao hàng hoặc liên hệ WES FREED để xác nhận.</p>",
+    "faq_delivery_answer_html": "<p>Chỉ giao tại Hàn Quốc. Cả hai phương thức đều dự kiến 8–15 ngày. Tiêu chuẩn ₩6.700, giao nhanh ₩9.400. Giao nhanh sử dụng dịch vụ vận chuyển nhanh hơn nhưng không bảo đảm đến sớm hơn hay vào một ngày cụ thể. Thời gian có thể thay đổi do thông quan và tình hình giao hàng địa phương.</p>",
     "faq_resize_answer_html": "<p>Khả năng điều chỉnh size phụ thuộc từng mẫu. Hãy kiểm tra size trước khi đặt và liên hệ WES FREED để được tư vấn về phạm vi, chi phí áp dụng.</p>",
     "faq_gift_answer_html": "<p>Nếu cần thiệp hoặc đóng gói quà, vui lòng trao đổi với bộ phận chăm sóc khách hàng trước khi đặt đơn.</p>"
   },
@@ -424,7 +424,7 @@
     "three_items": "Mua từ 3 sản phẩm",
     "ten_shipping": "Giảm 10% + miễn phí vận chuyển",
     "mix_note": "Được kết hợp các sản phẩm khác nhau · Tự động áp dụng trong giỏ hàng và khi thanh toán",
-    "shipping_note": "Từ 3 sản phẩm: miễn phí vận chuyển tới quốc gia có thể chọn khi thanh toán. Không cộng dồn mức giảm."
+    "shipping_note": "Từ 3 sản phẩm: miễn phí vận chuyển trong Hàn Quốc. Không cộng dồn các mức giảm."
   },
   "wes_payment_guide": {
     "eyebrow": "HƯỚNG DẪN THANH TOÁN WES FREED",
@@ -455,5 +455,12 @@
     "options": "Chọn phân loại",
     "add": "Thêm vào giỏ",
     "error": "Không thể thêm sản phẩm. Vui lòng thử lại."
+  },
+  "wes_shipping": {
+    "summary_html": "<strong>Chỉ giao Hàn Quốc · dự kiến 8–15 ngày</strong><br>Tiêu chuẩn ₩6.700 · Giao nhanh ₩9.400",
+    "details": "Thông tin giao hàng"
+  },
+  "wes_product_panels": {
+    "purchase_html": "<p><strong>Giao hàng:</strong> Chỉ Hàn Quốc, dự kiến 8–15 ngày. Tiêu chuẩn ₩6.700 / Giao nhanh ₩9.400. Giao nhanh sử dụng dịch vụ vận chuyển nhanh hơn; không cam kết ngày đến cụ thể. <a href=\"/pages/shipping-information\">Xem thông tin giao hàng</a>.</p>"
   }
 }
