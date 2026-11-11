@@ -7,11 +7,11 @@
   <style>
     html::before,html::after{content:'';position:fixed;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .18s ease,visibility 0s linear .18s}
     html::before{inset:0;z-index:2147483000;background:rgba(0,0,0,.55)}
-    html::after{top:50%;left:50%;margin-left:-35px;width:70px;height:2px;z-index:2147483001;background:#fff;transform:scaleX(.45);animation:wes-navigation-line 1s ease-in-out infinite;animation-play-state:paused}
+    html::after{top:50%;left:calc(50% - min(120px,30vw));width:min(240px,60vw);height:2px;z-index:2147483001;background:#fff;transform:scaleX(1);transform-origin:left center}
     html[data-wes-page-transition]::before,html[data-wes-page-transition]::after{visibility:visible;opacity:1;transition:opacity .12s ease,visibility 0s}
-    html[data-wes-page-transition]::after{animation-play-state:running}
-    @keyframes wes-navigation-line{0%,100%{transform:scaleX(.45)}50%{transform:scaleX(1)}}
-    @media(prefers-reduced-motion:reduce){html::before,html::after{transition:none}html::after{animation:none;transform:none}}
+    html[data-wes-page-transition]::after{animation:wes-navigation-progress 5s linear forwards}
+    @keyframes wes-navigation-progress{0%{transform:scaleX(.04)}15%{transform:scaleX(.35)}40%{transform:scaleX(.65)}75%{transform:scaleX(.85)}100%{transform:scaleX(.95)}}
+    @media(prefers-reduced-motion:reduce){html::before,html::after{transition:none}html::after,html[data-wes-page-transition]::after{animation:none;transform:none}}
   </style>
   <script>
     (() => {
