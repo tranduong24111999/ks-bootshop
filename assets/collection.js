@@ -38,7 +38,7 @@ class CollectionFilters extends HTMLElement {
       input.addEventListener('change', () => {
         const params = new URLSearchParams(new FormData(this.form))
         const url = `${window.location.pathname}?${params.toString()}`
-        window.history.replaceState({}, '', url)
+        window.history.replaceState(window.history.state, '', url)
 
         loadCollection()
       })
@@ -61,7 +61,7 @@ class CollectionFilters extends HTMLElement {
         }
 
         const url = `${window.location.pathname}?${params.toString()}`
-        window.history.replaceState({}, '', url)
+        window.history.replaceState(window.history.state, '', url)
         loadCollection()
       })
     })
@@ -86,7 +86,7 @@ class SortBy extends HTMLElement {
     params.set('sort_by', value)
     params.delete('page')
     const url = `${window.location.pathname}?${params.toString()}`
-    window.history.replaceState({}, '', url)
+    window.history.replaceState(window.history.state, '', url)
   }
 }
 customElements.define('sort-by', SortBy)
@@ -109,7 +109,8 @@ class Pagination extends HTMLElement {
     const params = new URLSearchParams(window.location.search)
     params.set('page', value)
     const url = `${window.location.pathname}?${params.toString()}`
-    window.history.replaceState({}, '', url)
+    window.history.replaceState(window.history.state, '', url)
   }
 }
 customElements.define('collection-pagination', Pagination)
+

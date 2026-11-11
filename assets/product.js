@@ -76,7 +76,7 @@ class ProductForm extends HTMLElement {
     if (this.selectedVariant && this.closest('.product-main')) {
       const url = new URL(window.location)
       url.searchParams.set('variant', this.selectedVariant.id)
-      window.history.replaceState({}, '', url)
+      window.history.replaceState(window.history.state, '', url)
     }
     if (this.selectedVariant) {
       window.dispatchEvent(new CustomEvent('kt.product.variant.change', {
@@ -295,3 +295,4 @@ const adjustShopifySubscriptionsStyling = () => {
 }
 adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
+
