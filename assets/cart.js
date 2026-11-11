@@ -34,32 +34,50 @@ class Cart extends HTMLElement {
   }
 
   async add (formData) {
-    formData.append('sections', ['cart-count-badge', 'offcanvas-cart'])
-    formData.append('sections_url', window.location.pathname)
-
-    const { response, data } = await requestCart(`${window.Shopify.routes.cart_add_url}.js`, {
-      method: 'POST',
-      body: formData
-    })
-
-    if (response.ok) {
-      window.dispatchEvent(new CustomEvent('kt.cart.added', { detail: data }))
-      if (!this.reloadCartElements(data.sections)) {
-        window.location.href = window.Shopify.routes.cart_url
-        return { ok: true }
-      }
-    } else {
-      this.showError(data.description)
-    }
-
+    if (this.pending) return { ok: false, error: window.theme.locales.helios?.cart_add_error }
+    this.pending = true
+    this.setAttribute('aria-busy', 'true')
+    const locked = [...this.querySelectorAll('.offcanvas-body, .offcanvas-footer')]
+    locked.forEach(element => { element.inert = true })
+    const progress = document.createElement('div')
+    progress.className = 'wes-cart-progress'
+    progress.setAttribute('role', 'status')
+    const spinner = document.createElement('span')
+    spinner.className = 'spinner-border spinner-border-sm'
+    spinner.setAttribute('aria-hidden', 'true')
+    const label = document.createElement('span')
+    label.textContent = `${window.theme.locales.product.add_to_cart}…`
+    progress.append(spinner, label)
+    this.append(progress)
     document.querySelectorAll('.offcanvas').forEach(offcanvas => {
-      if (offcanvas.id === 'offcanvas-cart') {
-        window.bootstrap.Offcanvas.getOrCreateInstance(offcanvas).show()
-      } else {
-        window.bootstrap.Offcanvas.getOrCreateInstance(offcanvas).hide()
-      }
+      const instance = window.bootstrap.Offcanvas.getOrCreateInstance(offcanvas)
+      if (offcanvas.id === 'offcanvas-cart') instance.show()
+      else instance.hide()
     })
-    return { ok: response.ok, error: data.description }
+    formData.set('sections', 'cart-count-badge,offcanvas-cart')
+    formData.set('sections_url', window.location.pathname)
+    try {
+      const { response, data } = await requestCart(`${window.Shopify.routes.cart_add_url}.js`, {
+        method: 'POST',
+        body: formData
+      })
+      if (response.ok) {
+        window.dispatchEvent(new CustomEvent('kt.cart.added', { detail: data }))
+        if (!this.reloadCartElements(data.sections)) {
+          window.location.href = window.Shopify.routes.cart_url
+          return { ok: true }
+        }
+      } else this.showError(data.description)
+      return { ok: response.ok, error: data.description }
+    } catch (error) {
+      this.showError(window.theme.locales.helios?.cart_network_error || window.theme.locales.helios?.cart_add_error)
+      throw error
+    } finally {
+      this.pending = false
+      this.removeAttribute('aria-busy')
+      locked.forEach(element => { element.inert = false })
+      progress.remove()
+    }
   }
 
   async change (id, quantity) {
@@ -233,3 +251,37 @@ window.addEventListener('pageshow', async event => {
     if (response.ok && cart.isConnected) cart.reloadCartElements(data)
   } catch (_) {}
 })
+
+
+class WesCartPairingsLoader extends HTMLElement {
+  connectedCallback () {
+    this.controller?.abort()
+    this.controller = new AbortController()
+    const panel = this.closest('.offcanvas')
+    const schedule = () => {
+      if ('requestIdleCallback' in window) requestIdleCallback(() => this.load(), { timeout: 700 })
+      else setTimeout(() => this.load(), 0)
+    }
+    panel?.addEventListener('shown.bs.offcanvas', schedule, { signal: this.controller.signal })
+    if (panel?.classList.contains('show') && !this.closest('cart-container')?.hasAttribute('aria-busy')) schedule()
+  }
+
+  async load () {
+    if (!this.isConnected || this.loading || this.loaded || this.closest('cart-container')?.hasAttribute('aria-busy')) return
+    this.loading = true
+    const url = new URL(window.Shopify.routes.cart_url, location.origin)
+    url.searchParams.set('section_id', 'wes-cart-pairings')
+    try {
+      const response = await fetch(url.href, { signal: this.controller.signal })
+      if (!response.ok) return
+      const doc = new DOMParser().parseFromString(await response.text(), 'text/html')
+      const suggestions = doc.querySelector('wes-cart-pairings')
+      if (!this.isConnected) return
+      if (suggestions) this.replaceChildren(suggestions)
+      this.loaded = true
+    } catch (_) {} finally { this.loading = false }
+  }
+
+  disconnectedCallback () { this.controller?.abort() }
+}
+customElements.define('wes-cart-pairings-loader', WesCartPairingsLoader)

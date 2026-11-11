@@ -81,3 +81,10 @@
 .offcanvas-cart .wes-cart-pairing__add{min-height:32px;padding:5px 12px;border:1px solid #26241f;border-radius:0;background:#26241f;color:#fff;font:inherit;font-size:12px;line-height:1.4}
 .offcanvas-cart .wes-cart-pairing__add:disabled{opacity:.55}
 .offcanvas-cart .wes-cart-pairing a:focus-visible,.offcanvas-cart .wes-cart-pairing button:focus-visible,.offcanvas-cart .wes-cart-pairing select:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+
+cart-container { position:relative; }
+.wes-cart-progress { position:absolute; inset:54px 0 0; z-index:5; display:flex; align-items:center; justify-content:center; gap:12px; background:var(--bs-body-bg,#fff); color:var(--bs-body-color,#111); font-size:13px; }
+wes-cart-pairings-loader { display:block; }
+#offcanvas-cart { --bs-offcanvas-transition:transform .12s ease-out; }
+@media(prefers-reduced-motion:reduce) { #offcanvas-cart { --bs-offcanvas-transition:none; } }

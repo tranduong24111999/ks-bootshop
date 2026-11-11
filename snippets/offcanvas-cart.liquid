@@ -24,9 +24,12 @@
       {% liquid 
         render 'cart-items' 
         render 'cart-note'
-        render 'wes-cart-pairings'
+        if cart.item_count > 0
+          echo '<wes-cart-pairings-loader></wes-cart-pairings-loader>'
+        endif
       %}
     </div>
     {% render 'cart-footer' %}
   </cart-container>
 </div>
+
