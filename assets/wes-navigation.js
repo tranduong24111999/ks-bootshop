@@ -81,6 +81,44 @@
   if (connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '')) return
   const warmed = new Set()
   const warmedImages = new Set()
+  const hints = new Set()
+  const controllers = new Set()
+  const automaticKinds = new Set()
+  const prepareResource = (value, as) => {
+    let url
+    try { url = new URL(value.replace(/&amp;/g, '&'), location.href) } catch (_) { return }
+    if (url.origin !== location.origin || !url.pathname.startsWith('/cdn/shop/') || hints.has(url.href)) return
+    if ([...document.querySelectorAll('script[src],link[href]')].some(element => (element.src || element.href) === url.href)) return
+    hints.add(url.href)
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = as
+    link.href = url.href
+    link.fetchPriority = 'low'
+    document.head.append(link)
+  }
+  const prepareDocument = async url => {
+    const controller = new AbortController()
+    controllers.add(controller)
+    const timer = setTimeout(() => controller.abort(), 3500)
+    try {
+      const response = await fetch(url, { credentials: 'same-origin', cache: 'default', priority: 'low', signal: controller.signal })
+      if (!response.ok || !response.headers.get('content-type')?.includes('text/html')) return
+      const html = await response.text()
+      if (document.hidden) return
+      const assets = html.matchAll(/(?:src|href)=["']([^"']*\/assets\/(?:helios-product\.css|wes-reviews-colors\.css|helios-product\.js)(?:\?[^"']*)?)["']/g)
+      for (const match of assets) prepareResource(match[1], match[1].includes('.js') ? 'script' : 'style')
+      const main = html.match(/<main\b[^>]*id=["']main["'][^>]*>([\s\S]*?)<\/main>/i)?.[1]
+      const images = main?.match(/<img\b[^>]*>/gi) || []
+      const image = images.find(tag => /fetchpriority=["']high["']/.test(tag)) || images[0]
+      const source = image?.match(/\bsrc=["']([^"']+)["']/)?.[1]
+      if (source) prepareResource(source, 'image')
+    } catch (_) {} finally { clearTimeout(timer); controllers.delete(controller) }
+  }
+  window.addEventListener('pagehide', () => {
+    controllers.forEach(controller => controller.abort())
+    controllers.clear()
+  })
   const warmImage = anchor => {
     const card = anchor?.closest('.product-card, .helios-product-card')
     const image = card?.querySelector('img')
@@ -121,8 +159,10 @@
     if (warmed.size >= 6 || background && automatic >= 2) return
     const url = destination(anchor)
     if (!url || warmed.has(url)) return
+    const kind = /\/products\//.test(new URL(url).pathname) ? 'product' : 'collection'
+    if (background && automaticKinds.has(kind)) return
     warmed.add(url)
-    if (background) automatic++
+    if (background) { automatic++; automaticKinds.add(kind) }
     if (nativePrefetch) {
       const rule = document.createElement('script')
       rule.type = 'speculationrules'
@@ -134,6 +174,8 @@
       link.as = 'document'
       link.href = url
       document.head.append(link)
+    } else {
+      void prepareDocument(url)
     }
   }
   let hoverTimer
@@ -166,25 +208,46 @@
   }, { passive: true })
   document.addEventListener('pointercancel', () => { touchIntent = null }, { passive: true })
   const prepareVisible = () => {
-    if (window.matchMedia('(pointer: coarse)').matches || !('IntersectionObserver' in window)) return
+    if (!('IntersectionObserver' in window)) return
+    const timers = new Map()
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
+        clearTimeout(timers.get(entry.target))
+        timers.delete(entry.target)
         if (!entry.isIntersecting) continue
-        warm(entry.target, true)
-        observer.unobserve(entry.target)
-        if (automatic >= 2 || warmed.size >= 6) { observer.disconnect(); break }
+        timers.set(entry.target, setTimeout(() => {
+          timers.delete(entry.target)
+          warm(entry.target, true)
+          observer.unobserve(entry.target)
+          if (automatic >= 2 || warmed.size >= 6) observer.disconnect()
+        }, 350))
       }
-    }, { threshold: 0.25 })
-    document.querySelectorAll('.helios-product-card__media, .helios-collection-tile, .product-card a[href]').forEach(anchor => observer.observe(anchor))
-    window.addEventListener('pagehide', () => observer.disconnect(), { once: true })
+    }, { threshold: 0.5 })
+    document.querySelectorAll('.helios-hero__slide.is-active a[href], .helios-product-card__media, .helios-collection-tile, .product-card a[href], .helios-header__links a[href]').forEach(anchor => observer.observe(anchor))
+    window.addEventListener('pagehide', () => {
+      observer.disconnect()
+      timers.forEach(timer => clearTimeout(timer))
+      timers.clear()
+    }, { once: true })
   }
+
   const idle = () => {
-    if ('requestIdleCallback' in window) requestIdleCallback(prepareVisible, { timeout: 2000 })
-    else setTimeout(prepareVisible, 500)
+    let begun = false
+    let timer
+    const begin = () => {
+      if (begun) return
+      begun = true
+      clearTimeout(timer)
+      if ('requestIdleCallback' in window) requestIdleCallback(prepareVisible, { timeout: 1200 })
+      else setTimeout(prepareVisible, 150)
+    }
+    const image = document.querySelector('#main img[fetchpriority="high"]')
+    if (image && !image.complete) {
+      image.addEventListener('load', begin, { once: true })
+      image.addEventListener('error', begin, { once: true })
+      timer = setTimeout(begin, 1500)
+    } else begin()
   }
-  if (document.readyState === 'complete') idle()
-  else window.addEventListener('load', idle, { once: true })
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', idle, { once: true })
+  else idle()
 })()
-
-
-
