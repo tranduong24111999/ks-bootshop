@@ -449,7 +449,9 @@
   },
   "wes_shipping": {
     "summary_html": "<strong>Chỉ giao Hàn Quốc · dự kiến 8–15 ngày</strong><br>Tiêu chuẩn ₩6.700 · Giao nhanh ₩9.400",
-    "details": "Thông tin giao hàng"
+    "details": "Thông tin giao hàng",
+    "preorder_summary_html": "<strong>Hàng đặt trước · Tổng dự kiến 13 ngày</strong><br>Chuẩn bị 5 ngày + giao hàng khoảng 8 ngày<br>Tiêu chuẩn ₩6.700 · Nhanh ₩9.400",
+    "cart_totals_note": "Phí giao hàng và ưu đãi cuối cùng được xác nhận tại bước thanh toán."
   },
   "wes_product_panels": {
     "purchase_html": "<p><strong>Giao hàng:</strong> Chỉ Hàn Quốc, dự kiến 8–15 ngày. Tiêu chuẩn ₩6.700 / Giao nhanh ₩9.400. Giao nhanh sử dụng dịch vụ vận chuyển nhanh hơn; không cam kết ngày đến cụ thể. <a href=\"/pages/shipping-information\">Xem thông tin giao hàng</a>.</p>"

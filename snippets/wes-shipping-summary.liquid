@@ -1,10 +1,25 @@
 {% doc %}
   Displays the current Korea-only shipping fees and delivery estimate.
 {% enddoc %}
+{% liquid
+  assign preorder_handles = 'l-o-v-e-unli-bracelet|da-mi-necklace-2|bouche-white-gold-edition-ring|bouche-bleu-edition-ring|bouche-black-gold-edition-ring|bouche-black-edition-ring' | split: '|'
+  assign has_preorder = false
+  if for_cart
+    for item in cart.items
+      if preorder_handles contains item.product.handle
+        assign has_preorder = true
+        break
+      endif
+    endfor
+  elsif preorder_handles contains product.handle
+    assign has_preorder = true
+  endif
+%}
 {% assign shipping_information_url = routes.root_url | append: '/pages/shipping-information' | replace: '//', '/' %}
-<p class="wes-shipping-summary">{{ 'wes_shipping.summary_html' | t }}<br><a href="{{ shipping_information_url }}">{{ 'wes_shipping.details' | t }}</a></p>
+<p class="wes-shipping-summary">{% if has_preorder %}{{ 'wes_shipping.preorder_summary_html' | t }}{% else %}{{ 'wes_shipping.summary_html' | t }}{% endif %}<br><a href="{{ shipping_information_url }}">{{ 'wes_shipping.details' | t }}</a></p>
 {% stylesheet %}
 .wes-shipping-summary{margin:12px 0;font-size:12px;line-height:1.65;font-weight:400;letter-spacing:0}
 .wes-shipping-summary strong{font-weight:500}
 .wes-shipping-summary a{color:inherit;text-underline-offset:3px}
 {% endstylesheet %}
+

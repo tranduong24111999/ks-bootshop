@@ -852,7 +852,9 @@
   },
   "wes_shipping": {
     "summary_html": "<strong>대한민국 배송 · 예상 8~15일</strong><br>일반 ₩6,700 · 빠른 ₩9,400",
-    "details": "배송 안내"
+    "details": "배송 안내",
+    "preorder_summary_html": "<strong>예약 주문 상품 · 총 약 13일</strong><br>준비 5일 + 배송 약 8일<br>일반 ₩6,700 · 빠른 ₩9,400",
+    "cart_totals_note": "배송비 및 최종 할인은 결제 단계에서 확인할 수 있습니다."
   },
   "wes_deferred": {
     "loading": "불러오는 중…"

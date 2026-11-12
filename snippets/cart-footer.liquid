@@ -29,7 +29,7 @@
         </b>
       </span>
     </p>
-    {% render 'wes-shipping-summary' %}
+    {% render 'wes-shipping-summary', for_cart: true %}
     {% form 'cart', cart %}
       <button 
         class="btn btn-checkout btn-primary btn-lg" 
@@ -41,7 +41,7 @@
       </button>
     {% endform %}
     <p class="small text-center mt-3 mb-n2 fst-italic">
-      {{ 'cart.taxes_shipping_at_checkout_html' | t | replace: '/policies/shipping-policy', shipping_information_url }}
+      {{ 'wes_shipping.cart_totals_note' | t | replace: '/policies/shipping-policy', shipping_information_url }}
     </p>
   </div>
 {% endif %}

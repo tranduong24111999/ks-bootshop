@@ -446,7 +446,9 @@
   },
   "wes_shipping": {
     "summary_html": "<strong>韓国国内のみ · お届け目安8〜15日</strong><br>通常 ₩6,700 · 速達 ₩9,400",
-    "details": "配送について"
+    "details": "配送について",
+    "preorder_summary_html": "<strong>予約商品 · 合計約13日</strong><br>準備5日 + 配送約8日<br>通常 ₩6,700 · 速達 ₩9,400",
+    "cart_totals_note": "送料と最終的な割引は購入手続きで確認できます。"
   },
   "wes_product_panels": {
     "purchase_html": "<p><strong>配送:</strong> 韓国国内のみ、目安8〜15日。通常₩6,700 / 速達₩9,400。速達は通常より速い運送サービスを利用しますが、特定の到着日は保証しません。<a href=\"/pages/shipping-information\">配送について</a>。</p>"

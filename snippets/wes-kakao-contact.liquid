@@ -36,7 +36,7 @@
   <a href="{{ qr_url | escape }}" target="_blank" rel="noopener noreferrer">{{ open_image | escape }}</a>
 </dialog>
 <style>
-.wes-kakao-button{right:152px;background:#fee500;color:#191919!important;padding:0;cursor:pointer}
+.wes-instagram-button.wes-kakao-button{right:16px;bottom:calc(180px + env(safe-area-inset-bottom,0px));background:#fee500;color:#191919!important;padding:0;cursor:pointer}
 .wes-kakao-dialog{width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:20px;border:0;border-radius:12px;background:#fff;color:#24231f;overflow:auto;overscroll-behavior:contain}
 .wes-kakao-dialog::backdrop{background:rgb(0 0 0/.45)}
 .wes-kakao-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -45,7 +45,7 @@
 .wes-kakao-dialog p{font-size:13px;line-height:1.7;margin:12px 0}
 .wes-kakao-dialog img{display:block;width:100%;height:auto}
 .wes-kakao-dialog>a{display:block;text-align:center;padding:14px 0;min-height:44px;color:inherit;text-decoration:underline}
-@media(max-width:767px){.wes-kakao-button{right:140px}}
+@media(max-width:767px){.wes-instagram-button.wes-kakao-button{right:12px}}
 </style>
 <script>
 (() => {
@@ -62,3 +62,4 @@
 })()
 </script>
 {% endif %}
+

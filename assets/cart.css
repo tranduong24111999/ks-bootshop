@@ -88,3 +88,8 @@ cart-container { position:relative; }
 wes-cart-pairings-loader { display:block; }
 #offcanvas-cart { --bs-offcanvas-transition:transform .12s ease-out; }
 @media(prefers-reduced-motion:reduce) { #offcanvas-cart { --bs-offcanvas-transition:none; } }
+
+
+#offcanvas-cart .offcanvas-header .btn-close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;opacity:1;color:#24231f;background:none;filter:none;flex-shrink:0}
+#offcanvas-cart .offcanvas-header .btn-close svg{width:24px;height:24px;stroke:currentColor}
+#offcanvas-cart .offcanvas-header .btn-close:focus-visible{outline:2px solid currentColor;outline-offset:-3px}

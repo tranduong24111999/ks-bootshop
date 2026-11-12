@@ -828,7 +828,9 @@
   },
   "wes_shipping": {
     "summary_html": "<strong>South Korea only · estimated 8–15 days</strong><br>Standard ₩6,700 · Express ₩9,400",
-    "details": "Shipping information"
+    "details": "Shipping information",
+    "preorder_summary_html": "<strong>Pre-order item · About 13 days total</strong><br>5 days preparation + about 8 days delivery<br>Standard ₩6,700 · Express ₩9,400",
+    "cart_totals_note": "Shipping charges and final discounts are confirmed at checkout."
   },
   "wes_deferred": {
     "loading": "Loading…"
