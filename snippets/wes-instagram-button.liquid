@@ -96,3 +96,10 @@
 .wes-contact-nudge{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);display:block;width:max-content;max-width:min(145px,calc(100vw - 80px));padding:5px 9px;border:1px solid #e5e1d8;border-radius:16px;background:#fff;color:#282621;font:500 12px/1.3 Arial,sans-serif;white-space:nowrap;box-shadow:0 2px 7px #0001}
 @media(max-width:767px){.wes-contact-nudge{font-size:11px;padding:5px 8px}}
 </style>
+
+<style>
+@keyframes wes-contact-nudge-pulse{0%,12%,78%,100%{opacity:0}24%,64%{opacity:1}}
+.wes-contact-nudge{animation:wes-contact-nudge-pulse 7s ease-in-out infinite}
+.wes-instagram-button:hover .wes-contact-nudge,.wes-instagram-button:focus-visible .wes-contact-nudge{animation:none;opacity:1}
+@media(prefers-reduced-motion:reduce){.wes-contact-nudge{animation:none;opacity:1}}
+</style>
