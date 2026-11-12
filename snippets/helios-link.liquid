@@ -17,6 +17,11 @@
     endcapture
     assign destination = destination | strip
   endif
+  if kind == 'page'
+    if handle == 'chinh-sach-doi-tra-san-pham' or handle == 'chinh-sach-doi-tra-dip-sale'
+      assign destination = pages['returns-and-refunds'].url
+    endif
+  endif
   if destination == blank
     if query == blank
       assign destination = routes.all_products_collection_url

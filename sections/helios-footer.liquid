@@ -48,7 +48,7 @@
     if shop.shipping_policy.body != blank
       assign shipping_destination = shop.shipping_policy.url
     endif
-    assign returns_destination = support_mailto
+    assign returns_destination = pages['returns-and-refunds'].url | default: support_mailto
     if shop.refund_policy.body != blank
       assign returns_destination = shop.refund_policy.url
     endif
@@ -97,6 +97,8 @@
           </ul>
         {% endif %}
         {% if shop.privacy_policy.body != blank %}<a href="{{ shop.privacy_policy.url }}">{{ 'wes_footer_bottom.privacy' | t }}</a>{% endif %}
+        {% if pages['returns-and-refunds'] != blank %}<a href="{{ pages['returns-and-refunds'].url }}">{{ pages['returns-and-refunds'].title | escape }}</a>{% endif %}
+        {% if pages['terms-of-service'] != blank %}<a href="{{ pages['terms-of-service'].url }}">{{ pages['terms-of-service'].title | escape }}</a>{% endif %}
       </div>
     </div>
   </div>
