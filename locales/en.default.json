@@ -832,5 +832,11 @@
   },
   "wes_deferred": {
     "loading": "Loading…"
+  },
+  "wes_purchase": {
+    "attributes": "Product details",
+    "sku": "SKU",
+    "payments": "Secure checkout",
+    "payment_note": "Available payment methods are shown at checkout."
   }
 }

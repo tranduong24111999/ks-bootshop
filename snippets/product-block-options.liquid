@@ -8,23 +8,34 @@
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
     aria-label="{{ 'product.product_options' | t }}">
     {% for option in product.options_with_values %}
-      <li class="py-3">
-        {% if block.settings.options_style == 'buttons' %}       
+      {% liquid
+        assign option_key = option.name | downcase | strip
+        assign color_keys = 'color,colour,색상,색,màu sắc,màu,カラー,色' | split: ','
+        assign is_color = false
+        if color_keys contains option_key
+          assign is_color = true
+        endif
+      %}
+      <li class="py-3{% if is_color %} wes-color-option{% endif %}" data-option-position="{{ option.position }}">
+        {% if is_color or block.settings.options_style == 'buttons' %}       
           <p class="mb-1">
-            {{ option.name }}
+            {{ option.name | escape }}: <span data-option-selected>{{ option.selected_value | escape }}</span>
           </p>
-          <ul class="size-buttons list-unstyled">
+          <ul class="size-buttons list-unstyled{% if is_color %} wes-color-swatches{% endif %}">
             {% for value in option.values %}
               <li>
                 <input 
                   class="visually-hidden" 
                   type="radio" 
                   name="option-{{ option.name | handleize }}" 
-                  id="option-{{ option.name | handleize }}-{{ value | handleize }}" 
+                  id="option-{{ section.id }}-{{ product.id }}-{{ option.position }}-{{ forloop.index }}" 
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked{% endif %}>
-                <label for="option-{{ option.name | handleize }}-{{ value | handleize }}">
-                  {{ value }}
+                <label for="option-{{ section.id }}-{{ product.id }}-{{ option.position }}-{{ forloop.index }}">
+                  {% if is_color %}
+                    {% render 'wes-color-swatch', value: value %}
+                    <span class="wes-swatch-name">{{ value | escape }}</span>
+                  {% else %}{{ value | escape }}{% endif %}
                 </label>
               </li>
             {% endfor %}
@@ -49,3 +60,4 @@
     {% endfor %}
   </ul>
 {% endunless %}
+

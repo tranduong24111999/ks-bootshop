@@ -1,0 +1,26 @@
+{% doc %}
+  @param {product_option_value} value - Existing color option value.
+{% enddoc %}
+{% liquid
+  assign color_key = value | downcase | strip | replace: '-', ' ' | replace: '_', ' '
+  assign tone = blank
+  case color_key
+    when 'gold', 'yellow gold', '골드', '옐로우 골드', 'vàng', 'ゴールド'
+      assign tone = '#d7b65b'
+    when 'rose gold', 'rosegold', '로즈 골드', '로즈골드', 'vàng hồng', 'ローズゴールド'
+      assign tone = '#d6aaa2'
+    when 'silver', 'white gold', '실버', '화이트 골드', 'bạc', 'シルバー'
+      assign tone = '#d8dadd'
+    when 'black', '블랙', '검정', 'đen', 'ブラック'
+      assign tone = '#262626'
+    when 'white', '화이트', '흰색', 'trắng', 'ホワイト'
+      assign tone = '#fafafa'
+  endcase
+%}
+{% if value.swatch.image %}
+  {{ value.swatch.image | image_url: width: 80 | image_tag: class: 'wes-swatch-chip', loading: 'lazy', alt: '' }}
+{% elsif value.swatch.color %}
+  <span class="wes-swatch-chip" style="--wes-swatch: {{ value.swatch.color }}" aria-hidden="true"></span>
+{% elsif tone != blank %}
+  <span class="wes-swatch-chip" style="--wes-swatch: {{ tone }}" aria-hidden="true"></span>
+{% endif %}

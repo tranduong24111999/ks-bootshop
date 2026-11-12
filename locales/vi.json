@@ -456,5 +456,11 @@
   },
   "wes_deferred": {
     "loading": "Đang tải…"
+  },
+  "wes_purchase": {
+    "attributes": "Thuộc tính sản phẩm",
+    "sku": "Mã sản phẩm (SKU)",
+    "payments": "Thanh toán an toàn",
+    "payment_note": "Các phương thức khả dụng được hiển thị tại bước thanh toán."
   }
 }

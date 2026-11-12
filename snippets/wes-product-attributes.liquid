@@ -1,0 +1,17 @@
+{% doc %}
+  @param {product} product - Product whose existing options and SKU are displayed.
+{% enddoc %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% unless product.has_only_default_variant and current_variant.sku == blank %}
+  <div class="wes-product-attributes">
+    <h3>{{ 'wes_purchase.attributes' | t }}</h3>
+    <dl>
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <div><dt>{{ option.name | escape }}</dt><dd data-attribute-option="{{ forloop.index0 }}">{{ option.selected_value | escape }}</dd></div>
+        {% endfor %}
+      {% endunless %}
+      <div data-attribute-sku-row {% if current_variant.sku == blank %}hidden{% endif %}><dt>{{ 'wes_purchase.sku' | t }}</dt><dd data-attribute-sku>{{ current_variant.sku | escape }}</dd></div>
+    </dl>
+  </div>
+{% endunless %}

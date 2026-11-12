@@ -121,3 +121,33 @@ wes-deferred-section[data-kind="editorial"][aria-busy="true"]{min-height:520px}
 @media(prefers-reduced-motion:reduce){.wes-deferred-state .spinner-border{animation:none}}
 
 .wes-deferred-state .spinner-border{animation:none}
+
+
+.page-type-product .product-main .wes-purchase-stack{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.page-type-product .product-main .wes-quantity-label{font-size:13px;margin:0 0 -6px}
+.page-type-product .product-main .wes-purchase-stack .qty-input-wrapper{align-self:flex-start;min-height:44px;margin:0 0 4px}
+.page-type-product .product-main .wes-purchase-stack .qty-input-wrapper input{font-size:16px}
+.page-type-product .product-main .wes-purchase-controls .btn-atc,.page-type-product .product-main .wes-purchase-controls .btn-buy{width:100%;min-height:48px;border-radius:0;font-size:14px;letter-spacing:.02em}
+.page-type-product .product-main .wes-purchase-controls .btn-atc{background:#24231f;color:#fff;border-color:#24231f}
+.page-type-product .product-main .wes-purchase-controls .btn-atc:disabled{background:#767676;border-color:#767676;opacity:1}
+.page-type-product .product-main .wes-purchase-controls .btn-buy{background:#fff;color:#24231f;border:1px solid #24231f}
+.page-type-product .product-main .size-buttons{display:flex;flex-wrap:wrap;gap:10px}
+.page-type-product .product-main .size-buttons label{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px 12px;background:#fff;color:#24231f;border:1px solid #c4c1ba;cursor:pointer}
+.page-type-product .product-main .size-buttons input:checked+label{background:#fff;color:#24231f;border-color:#24231f;box-shadow:0 0 0 1px #24231f}
+.page-type-product .product-main .size-buttons input:focus-visible+label{outline:2px solid #24231f;outline-offset:4px}
+.page-type-product .product-main .wes-color-swatches label{gap:8px;border-radius:24px;padding:7px 12px 7px 7px}
+.wes-swatch-chip{display:block;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--wes-swatch);border:1px solid #b6b4b0;object-fit:cover}
+.wes-swatch-name{font-size:13px;line-height:1.3}
+.wes-payment-methods{text-align:center;margin:20px 0}
+.wes-payment-methods p{font-size:13px;margin:0 0 8px}
+.wes-payment-methods ul{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 8px}
+.wes-payment-icon{width:38px;height:24px}
+.wes-payment-methods small{display:block;font-size:11px;color:#68665f;line-height:1.5}
+.wes-product-attributes{margin:20px 0 0;border-top:1px solid #d8d5ce;padding-top:16px}
+.wes-product-attributes h3{font-size:14px;margin:0 0 12px}
+.wes-product-attributes dl{margin:0;font-size:13px}
+.wes-product-attributes dl>div{display:grid;grid-template-columns:minmax(90px,1fr) 2fr;gap:12px;padding:6px 0}
+.wes-product-attributes dl>div[hidden]{display:none}
+.wes-product-attributes dt{font-weight:400;color:#68665f}
+.wes-product-attributes dd{margin:0;overflow-wrap:anywhere}
+.product-dynamic-buttons{--shopify-accelerated-checkout-button-block-size:48px;--shopify-accelerated-checkout-button-border-radius:0px}

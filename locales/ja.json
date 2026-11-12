@@ -453,5 +453,11 @@
   },
   "wes_deferred": {
     "loading": "読み込み中…"
+  },
+  "wes_purchase": {
+    "attributes": "商品オプション情報",
+    "sku": "商品コード (SKU)",
+    "payments": "安全なお支払い",
+    "payment_note": "利用可能なお支払い方法は購入手続きで確認できます。"
   }
 }

@@ -1,0 +1,14 @@
+{% doc %}
+  Displays the store's enabled payment methods.
+{% enddoc %}
+<div class="wes-payment-methods">
+  <p>{{ 'wes_purchase.payments' | t }}</p>
+  {% if shop.enabled_payment_types.size > 0 %}
+    <ul role="list">
+      {% for type in shop.enabled_payment_types %}
+        <li>{{ type | payment_type_svg_tag: class: 'wes-payment-icon' }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <small>{{ 'wes_purchase.payment_note' | t }}</small>
+</div>

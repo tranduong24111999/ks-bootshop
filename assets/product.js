@@ -71,6 +71,19 @@ class ProductForm extends HTMLElement {
       if (Number(quantity.value) < Number(quantity.min)) quantity.value = quantity.min
       this.updateQuantityButtons()
     }
+    this.form.querySelectorAll('[data-option-position]').forEach(group => {
+      const selected = group.querySelector('input:checked, select')
+      const label = group.querySelector('[data-option-selected]')
+      if (label && selected) label.textContent = selected.value
+    })
+    this.form.querySelectorAll('[data-attribute-option]').forEach(value => {
+      value.textContent = selectedOptions[Number(value.dataset.attributeOption)] || '—'
+    })
+    const skuRow = this.form.querySelector('[data-attribute-sku-row]')
+    if (skuRow) {
+      skuRow.hidden = !this.selectedVariant?.sku
+      skuRow.querySelector('[data-attribute-sku]').textContent = this.selectedVariant?.sku || ''
+    }
     this.adjustPricing(this.selectedVariant)
     this.adjustButtons(this.selectedVariant)
     if (this.selectedVariant && this.closest('.product-main')) {
@@ -115,6 +128,11 @@ class ProductForm extends HTMLElement {
     const available = variant === undefined ? !this.initialDisabled : !!variant?.available
     this.atcBtn.disabled = this.submitting || !available
     if (this.buyBtn) this.buyBtn.disabled = this.submitting || !available
+    const dynamic = this.form.querySelector('.product-dynamic-buttons')
+    if (dynamic) {
+      dynamic.inert = this.submitting || !available
+      dynamic.setAttribute('aria-disabled', String(this.submitting || !available))
+    }
     this.atcBtn.textContent = available ? this.labels.available : variant ? this.labels.soldOut : this.labels.unavailable
   }
 
@@ -295,4 +313,5 @@ const adjustShopifySubscriptionsStyling = () => {
 }
 adjustShopifySubscriptionsStyling()
 window.addEventListener('kt.product.quick_view.modal_shown', adjustShopifySubscriptionsStyling)
+
 

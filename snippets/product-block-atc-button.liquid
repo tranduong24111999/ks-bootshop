@@ -6,12 +6,13 @@
 %}
 
 <div 
-  class="product-block-atc {{ pt }} {{ pb }}" 
+  class="product-block-atc wes-purchase-controls {{ pt }} {{ pb }}" 
   {{ block.shopify_attributes }}>
-  <div class="d-flex">
+  <div class="wes-purchase-stack">
     {% if block.settings.show_qty_field %}
+      <p class="wes-quantity-label">{{ 'product.quantity' | t }}</p>
       <div 
-        class="qty-input-wrapper me-4"  
+        class="qty-input-wrapper"  
         role="group" 
         aria-label="{{ 'general.accessibility.quantity' | t }}">
         <button 
@@ -59,7 +60,7 @@
   </div>
 
   {% if block.settings.show_dynamic_buttons %}
-    <div class="product-dynamic-buttons mt-5 pb-2">
+    <div class="product-dynamic-buttons mt-4 pb-2" {% unless current_variant.available %}inert aria-disabled="true"{% endunless %}>
       {{ form | payment_button }}
     </div>
   {% endif %}
@@ -75,7 +76,10 @@
     </button>
   {% endif %}
 
+  {% render 'wes-payment-methods' %}
+  {% render 'wes-product-attributes', product: product %}
 </div>
 
 {% render 'wes-shipping-summary' %}
 {% render 'wes-payment-guide' %}
+
