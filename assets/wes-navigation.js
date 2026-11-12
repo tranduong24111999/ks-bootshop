@@ -87,7 +87,7 @@
   const prepareResource = (value, as) => {
     let url
     try { url = new URL(value.replace(/&amp;/g, '&'), location.href) } catch (_) { return }
-    if (url.origin !== location.origin || !url.pathname.startsWith('/cdn/shop/') || hints.has(url.href)) return
+    if (url.origin !== location.origin || !url.pathname.startsWith('/cdn/shop/') || hints.has(url.href) || hints.size >= 16) return
     if ([...document.querySelectorAll('script[src],link[href]')].some(element => (element.src || element.href) === url.href)) return
     hints.add(url.href)
     const link = document.createElement('link')
@@ -106,7 +106,7 @@
       if (!response.ok || !response.headers.get('content-type')?.includes('text/html')) return
       const html = await response.text()
       if (document.hidden) return
-      const assets = html.matchAll(/(?:src|href)=["']([^"']*\/assets\/(?:helios-product\.css|wes-reviews-colors\.css|helios-product\.js)(?:\?[^"']*)?)["']/g)
+      const assets = html.matchAll(/(?:src|href)=["']([^"']*\/cdn\/shop\/t\/\d+\/(?:assets|compiled_assets)\/[^"'<>]+\.(?:css|js)(?:\?[^"']*)?)["']/g)
       for (const match of assets) prepareResource(match[1], match[1].includes('.js') ? 'script' : 'style')
       const main = html.match(/<main\b[^>]*id=["']main["'][^>]*>([\s\S]*?)<\/main>/i)?.[1]
       const images = main?.match(/<img\b[^>]*>/gi) || []
@@ -251,3 +251,4 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', idle, { once: true })
   else idle()
 })()
+
