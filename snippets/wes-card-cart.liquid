@@ -1,0 +1,9 @@
+{% doc %}
+  @param {product} product - Product offered by the image cart control.
+{% enddoc %}
+<details class="wes-card-cart" data-single="{% if product.variants.size == 1 %}true{% else %}false{% endif %}" data-unavailable="{% if product.available %}false{% else %}true{% endif %}">
+  <summary aria-label="{% if product.available %}{% if product.variants.size == 1 %}{{ 'product.add_to_cart' | t | escape }}{% else %}{{ 'product.choose_options' | t | escape }}{% endif %}{% else %}{{ 'product.sold_out' | t | escape }}{% endif %}: {{ product.title | escape }}" {% unless product.available %}aria-disabled="true"{% endunless %}>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 3h2l2.2 12h13L22 6H5"/><circle cx="8" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+  </summary>
+  <div class="wes-card-cart__panel">{% render 'product-card-form', product: product %}</div>
+</details>

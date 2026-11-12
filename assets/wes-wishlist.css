@@ -6,3 +6,17 @@
 .wes-wishlist-item{position:relative;display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #ddd9d1}.wes-wishlist-item>a img{width:90px;height:100px;object-fit:contain}.wes-wishlist-item h3{font-size:14px;line-height:1.5;padding-right:38px;margin:0 0 8px}.wes-wishlist-item .wes-wishlist-toggle{position:absolute;right:0;top:12px;width:36px;height:36px}.wes-wishlist-item p{font-size:13px;margin:8px 0}.wes-wishlist-item select{width:100%;min-height:44px;font-size:16px;margin-bottom:10px;border:1px solid #c7c3ba;background:#fff;color:inherit}.wes-wishlist-item .btn-atc{width:100%;min-height:44px;background:#24231f;color:#fff;border:0;border-radius:0;font-size:13px}.wes-wishlist-item .btn-atc:disabled{opacity:.5}.wes-wishlist-item .product-form-error{color:#a52638}
 @media(max-width:767px){.helios-header__actions{gap:5px!important}.helios-header__actions .helios-icon{flex-shrink:0}.helios-header__actions .wes-wishlist-open{width:28px}.wes-wishlist-toggle{width:40px;height:40px}}
 @media(max-width:767px){.helios-theme .helios-header__inner:has(.helios-logo--crisp){grid-template-columns:36px minmax(0,1fr) auto;column-gap:8px}.helios-header__inner .helios-logo--crisp{width:min(180px,100%)}}
+
+
+.wes-card-cart{position:absolute;top:58px;right:8px;z-index:4}
+.wes-card-cart>summary{display:flex;align-items:center;justify-content:center;list-style:none;width:44px;height:44px;padding:0;border:1px solid #ddd9d1;border-radius:50%;background:#fff;color:#25241f;cursor:pointer}
+.wes-card-cart>summary::-webkit-details-marker{display:none}
+.wes-card-cart>summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wes-card-cart>summary[aria-disabled=true]{opacity:.5;cursor:default}
+.wes-card-cart[open]{z-index:7}
+.wes-card-cart__panel{position:absolute;top:50px;right:0;width:min(280px,calc(50vw - 36px));padding:10px;border:1px solid #d8d5ce;background:#fff;box-shadow:0 4px 14px rgb(0 0 0/.12)}
+.wes-card-cart__panel product-form{display:block;margin:0!important}
+.wes-card-cart__panel .btn-atc{width:100%;min-height:44px;font-size:13px;white-space:normal}
+.wes-card-cart__panel select{min-height:44px;font-size:16px}
+@media(min-width:768px){.wes-card-cart__panel{width:210px}}
+@media(max-width:767px){.wes-card-cart{top:54px}.wes-card-cart>summary{width:40px;height:40px}}

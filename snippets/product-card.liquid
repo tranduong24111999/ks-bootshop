@@ -44,7 +44,6 @@
     {% render 'product-card-price', product: product %}
   </a>
   {% render 'wes-wishlist-button', product: product %}
-  {% if product != blank %}
-    {% render 'product-card-form', product: product %}
-  {% endif %}
+  {% render 'wes-card-cart', product: product %}
 </div>
+

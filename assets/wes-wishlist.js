@@ -112,7 +112,20 @@
     await Promise.all([worker(), worker(), worker()])
     if (current === revision) status.textContent = saved.length ? '' : labels.empty
   }
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') document.querySelectorAll('.wes-card-cart[open]').forEach(detail => { detail.open = false; detail.querySelector('summary').focus() })
+  })
   document.addEventListener('click', event => {
+    document.querySelectorAll('.wes-card-cart[open]').forEach(detail => { if (!detail.contains(event.target)) detail.open = false })
+    const cartIcon = event.target.closest('.wes-card-cart > summary')
+    if (cartIcon) {
+      const detail = cartIcon.parentElement
+      if (detail.dataset.unavailable === 'true') { event.preventDefault(); return }
+      if (detail.dataset.single === 'true') {
+        event.preventDefault()
+        detail.querySelector('form')?.requestSubmit()
+      }
+    }
     const toggle = event.target.closest('[data-wes-wishlist-toggle]')
     if (toggle) {
       event.preventDefault()
@@ -138,3 +151,4 @@
   document.documentElement.classList.add('wes-wishlist-ready')
   sync()
 })()
+
