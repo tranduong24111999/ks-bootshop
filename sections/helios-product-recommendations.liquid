@@ -1,4 +1,4 @@
-{% liquid
+{% capture deferred_content %}{% liquid
   assign candidates = section.settings.products
   assign personalized = false
   assign manual = false
@@ -36,17 +36,76 @@
     <ul class="helios-related__items" data-recommendation-items role="list">{{ related_cards }}</ul>
   </helios-recommendations>
 {% elsif request.design_mode %}<p class="helios-editor-notice">Cần ít nhất một sản phẩm khác đã xuất bản để hiển thị gợi ý.</p>{% endif %}
+{% endcapture %}
+{% liquid
+  assign defer_section = false
+  if request.page_type == 'product' and section.settings.defer_loading and section.index > 1
+    unless request.design_mode
+      assign defer_section = true
+    endunless
+  endif
+%}
+{% if defer_section %}
+  {% assign deferred_endpoint = blank %}
+  {% if section.settings.products == blank %}
+    {% capture deferred_endpoint %}{{ routes.product_recommendations_url }}?section_id={{ section.id | url_encode }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent=related{% endcapture %}
+  {% endif %}
+  {% render 'wes-deferred-section', section: section, content: deferred_content, kind: 'related', endpoint: deferred_endpoint %}
+{% else %}
+  {{ deferred_content }}
+{% endif %}
 {% schema %}
 {
   "name": "WES FREED · Gợi ý",
-  "enabled_on": { "templates": ["product"] },
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
   "settings": [
-    { "type": "checkbox", "id": "media_motion", "label": "Chuyển động ảnh/video sản phẩm", "default": true },
-    { "type": "text", "id": "header_title", "label": "Tiêu đề", "default": "CÓ THỂ BẠN SẼ THÍCH" },
-    { "type": "product_list", "id": "products", "label": "Sản phẩm chọn thủ công (tùy chọn)", "limit": 8 },
-    { "type": "collection", "id": "collection", "label": "Bộ sưu tập dự phòng" },
-    { "type": "range", "id": "limit", "label": "Số sản phẩm tối đa", "min": 4, "max": 8, "step": 1, "default": 8 }
+    {
+      "type": "checkbox",
+      "id": "media_motion",
+      "label": "Chuyển động ảnh/video sản phẩm",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Tiêu đề",
+      "default": "CÓ THỂ BẠN SẼ THÍCH"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Sản phẩm chọn thủ công (tùy chọn)",
+      "limit": 8
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Bộ sưu tập dự phòng"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Số sản phẩm tối đa",
+      "min": 4,
+      "max": 8,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "defer_loading",
+      "label": "Load this section when near the screen",
+      "default": false
+    }
   ],
-  "presets": [{ "name": "WES FREED · Gợi ý" }]
+  "presets": [
+    {
+      "name": "WES FREED · Gợi ý"
+    }
+  ]
 }
 {% endschema %}

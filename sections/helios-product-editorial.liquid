@@ -1,4 +1,4 @@
-<section class="helios-product-editorial" aria-labelledby="HeliosEditorial-{{ section.id }}">
+{% capture deferred_content %}<section class="helios-product-editorial" aria-labelledby="HeliosEditorial-{{ section.id }}">
   <helios-brand-film class="helios-brand-film">
     {% if section.settings.film_url != blank %}<video controls muted playsinline loop preload="none" poster="{{ 'helios-craft-poster.jpg' | asset_url }}" aria-label="{{ 'helios.artisans' | t | escape }}"><source src="{{ section.settings.film_url }}" type="video/mp4"></video>{% else %}<img src="{{ 'helios-craft-poster.jpg' | asset_url }}" width="1600" height="682" loading="lazy" alt="{{ 'helios.artisan_image' | t | escape }}">{% endif %}
     <div class="helios-brand-film__caption"><h2 id="HeliosEditorial-{{ section.id }}">{{ 'helios.film_heading' | t }}</h2><div>{{ 'helios.film_description_html' | t }}</div></div>
@@ -27,6 +27,20 @@
     </div>
   {% endif %}
 </section>
+{% endcapture %}
+{% liquid
+  assign defer_section = false
+  if request.page_type == 'product' and section.settings.defer_loading and section.index > 1
+    unless request.design_mode
+      assign defer_section = true
+    endunless
+  endif
+%}
+{% if defer_section %}
+  {% render 'wes-deferred-section', section: section, content: deferred_content, kind: 'editorial' %}
+{% else %}
+  {{ deferred_content }}
+{% endif %}
 {% schema %}
 {
   "name": "WES FREED · Chế tác & FAQ",
@@ -58,6 +72,12 @@
       "id": "faq_heading",
       "label": "Tiêu đề FAQ",
       "default": "Câu Hỏi Thường Gặp!"
+    },
+    {
+      "type": "checkbox",
+      "id": "defer_loading",
+      "label": "Load this section when near the screen",
+      "default": false
     }
   ],
   "blocks": [
@@ -90,4 +110,3 @@
   ]
 }
 {% endschema %}
-

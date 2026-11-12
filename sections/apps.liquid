@@ -1,4 +1,38 @@
-<div class="container py-6">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% capture deferred_content %}<div class="container py-6">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% endcapture %}
+{% liquid
+  assign defer_section = false
+  if request.page_type == 'product' and section.settings.defer_loading and section.index > 1
+    unless request.design_mode
+      assign defer_section = true
+    endunless
+  endif
+%}
+{% if defer_section %}
+  {% render 'wes-deferred-section', section: section, content: deferred_content, kind: 'reviews' %}
+{% else %}
+  {{ deferred_content }}
+{% endif %}
 {% schema %}
-{ "name": "Apps", "settings": [], "blocks": [{ "type": "@app" }], "presets": [{ "name": "Apps" }] }
+{
+  "name": "Apps",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "defer_loading",
+      "label": "Load this section when near the screen",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Apps"
+    }
+  ]
+}
 {% endschema %}

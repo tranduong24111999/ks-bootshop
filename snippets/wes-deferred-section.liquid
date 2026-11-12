@@ -1,0 +1,32 @@
+{% doc %}
+  Defers a below-the-fold product section with a server-rendered fallback.
+  @param {section} section - The configured section.
+  @param {string} content - The complete section markup.
+  @param {string} kind - The section category.
+  @param {string} [endpoint] - Optional recommendation endpoint.
+{% enddoc %}
+{% assign structured_parts = content | split: '<script type="application/ld+json"' %}
+{% for part in structured_parts %}
+  {% unless forloop.first %}
+    {% assign structured_tail = part | split: '</script>' | first %}
+    {% capture structured_script %}<script type="application/ld+json"{{ structured_tail }}</script>{% endcapture %}
+    {{ structured_script }}
+    {% assign content = content | remove: structured_script %}
+  {% endunless %}
+{% endfor %}
+<wes-deferred-section data-section-id="{{ section.id }}" data-kind="{{ kind }}"{% if endpoint != blank %} data-endpoint="{{ endpoint | escape }}"{% endif %} data-loading-label="{{ 'wes_deferred.loading' | t | escape }}">
+  <div class="wes-deferred-state" role="status"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span>{{ 'wes_deferred.loading' | t }}</span></div>
+  <noscript data-deferred-fallback><style>wes-deferred-section[data-section-id="{{ section.id }}"] > .wes-deferred-state{display:none}</style>{{ content }}</noscript>
+</wes-deferred-section>
+{% if kind == 'reviews' %}
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search)
+      const direct = ['#judgeme', '#judgeme_product_reviews'].includes(location.hash) || ['judgeme_token', 'judgeme_review_uuid', 'judgeme_dynamic_form', 'judgeme_follow_up_token', 'judgeme_upload_pictures', 'judgeme_pre_verified'].some(key => params.has(key))
+      if (!direct) return
+      const host = document.currentScript.previousElementSibling
+      const fallback = host?.querySelector('noscript[data-deferred-fallback]')?.textContent
+      if (fallback) host.replaceWith(document.createRange().createContextualFragment(fallback))
+    })()
+  </script>
+{% endif %}

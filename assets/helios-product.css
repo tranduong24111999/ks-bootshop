@@ -107,3 +107,17 @@ helios-product-media.is-video-ready video { opacity:1; }
 .helios-theme .jm-review-widget :is(.jm-review-content__title,.jm-review-content__body,.jdgm-review-content__body-content,.jm-reviewer-info,.jm-reviewer-avatar,.jm-shop-reply-content) * {
   color:#000 !important;
 }
+
+
+wes-deferred-section{display:block}
+wes-deferred-section[aria-busy="true"]{min-height:180px}
+.wes-deferred-state{min-height:180px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;color:inherit}
+.wes-deferred-fallback .jdgm-legacy-widget-content{display:block!important}
+
+wes-deferred-section[data-kind="reviews"][aria-busy="true"]{min-height:720px}
+wes-deferred-section[data-kind="related"][aria-busy="true"]{min-height:360px}
+wes-deferred-section[data-kind="editorial"][aria-busy="true"]{min-height:520px}
+
+@media(prefers-reduced-motion:reduce){.wes-deferred-state .spinner-border{animation:none}}
+
+.wes-deferred-state .spinner-border{animation:none}
