@@ -20,6 +20,7 @@
 %}
 <header class="helios-header">
   <div class="helios-topbar">
+    {% render 'wes-back-button' %}
     <div class="helios-topbar__contact wes-custom-order-notice" lang="{{ request.locale.iso_code | default: 'en' | escape }}">{{ 'wes_header.custom_order' | t }} Instagram: <a href="https://www.instagram.com/wesfreedkr/">@wesfreedkr</a></div>
     <helios-carousel class="helios-announcement" data-autoplay="{{ section.settings.announcement_autoplay }}" aria-label="{{ 'helios.announcements' | t | escape }}">
       <button type="button" data-helios-prev aria-label="{{ 'helios.announcement_prev' | t | escape }}">‹</button>

@@ -1,0 +1,38 @@
+{% doc %}
+  Renders a history back button with a home fallback.
+{% enddoc %}
+{% liquid
+  case request.locale.iso_code
+    when 'ko'
+      assign label = '뒤로 가기'
+    when 'vi'
+      assign label = 'Quay lại'
+    when 'ja'
+      assign label = '戻る'
+    else
+      assign label = 'Go back'
+  endcase
+%}
+<button type="button" class="wes-back-button" data-wes-back data-home="{{ routes.root_url }}" aria-label="{{ label | escape }}" title="{{ label | escape }}" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+<noscript><a href="{{ routes.root_url }}" class="wes-back-button" aria-label="{{ label | escape }}">←</a></noscript>
+<style>
+.helios-topbar{position:relative;padding-left:48px!important;min-height:44px}
+.wes-back-button{position:absolute;left:2px;top:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;background:transparent;color:inherit;text-decoration:none;cursor:pointer;z-index:2}
+.wes-back-button[hidden]{display:none}
+.wes-back-button:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
+@media(max-width:767px){.helios-topbar{padding-left:44px!important}.helios-topbar__contact{padding-left:0!important}}
+</style>
+<script>
+(() => {
+  const button = document.querySelector('[data-wes-back]')
+  if (!button || button.dataset.ready) return
+  button.dataset.ready = 'true'
+  button.hidden = false
+  button.addEventListener('click', () => {
+    let internal = false
+    try { internal = new URL(document.referrer).origin === location.origin } catch {}
+    if (internal && history.length > 1) history.back()
+    else location.assign(button.dataset.home)
+  })
+})()
+</script>
