@@ -476,5 +476,29 @@
     "device": "Được lưu trong trình duyệt này.",
     "limit": "Bạn có thể lưu tối đa 100 sản phẩm.",
     "select": "Chọn mẫu"
+  },
+  "wes_polish": {
+    "customer_care": "Hỗ trợ khách hàng",
+    "terms": "Điều khoản",
+    "from": "Từ",
+    "care_intro": "Giao hàng · Đổi trả · Kích cỡ",
+    "care_heading": "Thông tin cần biết trước khi mua",
+    "delivery_brief": "Giao Hàn Quốc · Tiêu chuẩn ₩6.700 / Nhanh ₩9.400",
+    "returns_brief": "Yêu cầu trong 7 ngày từ khi nhận · Hướng dẫn riêng từng trường hợp",
+    "delivery_question": "Bao lâu tôi nhận được hàng?",
+    "delivery_answer": "Hàng thường dự kiến 8–15 ngày. Hàng ghi đặt trước 5 ngày cần 5 ngày chuẩn bị cộng khoảng 8 ngày giao, tổng khoảng 13 ngày. Thông quan và giao hàng địa phương có thể ảnh hưởng ngày nhận. Đơn từ 3 sản phẩm đủ điều kiện được tự động miễn phí giao hàng.",
+    "returns_question": "Tôi yêu cầu đổi trả như thế nào?",
+    "returns_answer": "Trong 7 ngày từ khi nhận hàng, gửi email wesfreedkr@gmail.com kèm mã đơn, sản phẩm, lựa chọn và lý do. Phí và địa chỉ trả sẽ được thông báo riêng trước khi gửi. Quyền theo luật đối với hàng lỗi hoặc giao sai vẫn được bảo đảm.",
+    "size_question": "Tôi kiểm tra size và chất liệu ở đâu?",
+    "size_answer": "Xem lựa chọn, mô tả và ảnh hướng dẫn size của từng sản phẩm. Nếu chưa rõ số cm của vòng tay là chu vi cổ tay hay kích thước sản phẩm, hoặc nhẫn dùng hệ size nào, hãy gửi tên sản phẩm và lựa chọn để hỏi trước khi đặt. Hãy hỏi trước nếu cần thêm thông tin chất liệu hoặc lớp mạ.",
+    "payment_question": "Thanh toán và giảm giá mua nhiều thế nào?",
+    "payment_answer": "Phương thức khả dụng và tổng tiền được hiển thị ở bước thanh toán. Đơn đủ điều kiện mua 2 giảm 5%; từ 3 giảm 10% và miễn phí giao hàng, áp dụng tự động. Hai mức phần trăm không cộng dồn. Kiểm tra màu, size, số lượng và ưu đãi trước khi trả tiền.",
+    "order_help": "Ghi mã đơn khi cần hỗ trợ đơn hàng. Không gửi số thẻ, mật khẩu hoặc mã thông quan cá nhân qua biểu mẫu này.",
+    "seller": "Thông tin người bán",
+    "business_address": "Địa chỉ doanh nghiệp",
+    "returns_address_note": "Địa chỉ nhận hàng trả được hướng dẫn riêng từng trường hợp.",
+    "hero_one": "WES FREED — Trang sức trong chuyển động",
+    "hero_two": "WES FREED — Chi tiết tinh tế",
+    "hero_three": "WES FREED — Khoảnh khắc ánh sáng"
   }
 }

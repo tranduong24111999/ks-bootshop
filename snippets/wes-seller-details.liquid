@@ -1,0 +1,11 @@
+{% doc %}
+  Displays the seller name and business address supplied by the merchant.
+{% enddoc %}
+<div class="wes-seller-details">
+  <p><strong>{{ 'wes_polish.seller' | t }}: Wesfreed Holdings LLC</strong></p>
+  <address>{{ 'wes_polish.business_address' | t }}: 30 N Gould St, Sheridan, WY 82801, United States</address>
+  <p>{{ 'wes_polish.returns_address_note' | t }}</p>
+</div>
+{% stylesheet %}
+.wes-seller-details{margin:18px 0;font-size:12px;line-height:1.7;overflow-wrap:anywhere}.wes-seller-details p{margin:0 0 6px}.wes-seller-details strong{font-weight:500}.wes-seller-details address{font-style:normal;margin:0 0 6px}
+{% endstylesheet %}

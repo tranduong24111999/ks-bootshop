@@ -4,7 +4,7 @@
       "type": "search-main",
       "settings": {
         "header_title_font_size": "h3",
-        "limit": 48,
+        "limit": 12,
         "breakpoint_mobile": 2,
         "breakpoint_tablet": 3,
         "breakpoint_desktop": 4,

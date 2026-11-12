@@ -1,0 +1,19 @@
+{% doc %}
+  Renders verified buying guidance and support links on the contact page.
+{% enddoc %}
+{% render 'wes-seller-details' %}
+<section class="wes-customer-care" aria-labelledby="WesCareHeading">
+  <h2 id="WesCareHeading">{{ 'wes_polish.care_heading' | t }}</h2>
+  <div class="wes-care-links">
+    <a href="{{ pages['shipping-information'].url }}"><strong>{{ 'helios.shipping' | t }}</strong><span>{{ 'wes_polish.delivery_brief' | t }}</span></a>
+    <a href="{{ pages['returns-and-refunds'].url }}"><strong>{{ 'helios.returns' | t }}</strong><span>{{ 'wes_polish.returns_brief' | t }}</span></a>
+  </div>
+  <details id="wes-care-delivery"><summary>{{ 'wes_polish.delivery_question' | t }}</summary><div>{{ 'wes_polish.delivery_answer' | t }}</div></details>
+  <details id="wes-care-returns"><summary>{{ 'wes_polish.returns_question' | t }}</summary><div>{{ 'wes_polish.returns_answer' | t }}</div></details>
+  <details id="wes-care-size"><summary>{{ 'wes_polish.size_question' | t }}</summary><div>{{ 'wes_polish.size_answer' | t }}</div></details>
+  <details id="wes-care-payment"><summary>{{ 'wes_polish.payment_question' | t }}</summary><div>{{ 'wes_polish.payment_answer' | t }}</div></details>
+  <p class="wes-care-request">{{ 'wes_polish.order_help' | t }}</p>
+</section>
+{% stylesheet %}
+.wes-customer-care{margin:24px 0 36px;text-align:left}.wes-customer-care h2{font-size:20px;margin:0 0 18px}.wes-care-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}.wes-care-links a{display:flex;flex-direction:column;gap:8px;padding:18px;background:#eeece6;color:#24231f;text-decoration:none}.wes-care-links strong{font-size:15px;font-weight:500}.wes-care-links span{font-size:13px;line-height:1.6}.wes-customer-care details{border-top:1px solid #d8d5ce;padding:0;scroll-margin-top:150px}.wes-customer-care details:last-of-type{border-bottom:1px solid #d8d5ce}.wes-customer-care summary{padding:16px 0;min-height:48px;font-size:14px;cursor:pointer}.wes-customer-care details>div{padding:0 0 18px;font-size:14px;line-height:1.8}.wes-care-request{margin:20px 0 0;font-size:13px;line-height:1.7;color:#5f5c55}@media(max-width:479px){.wes-care-links{grid-template-columns:1fr}}
+{% endstylesheet %}

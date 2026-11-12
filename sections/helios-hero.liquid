@@ -1,4 +1,4 @@
-<helios-carousel class="helios-hero{% if section.blocks.first.settings.artwork == 'jewelry-film' %} helios-hero--landscape{% endif %}" data-autoplay="{{ section.settings.autoplay }}" role="region" aria-roledescription="băng chuyền" aria-label="{{ 'helios.hero_label' | t | escape }}">
+<helios-carousel class="helios-hero{% if section.blocks.first.settings.artwork == 'jewelry-film' %} helios-hero--landscape{% endif %}" data-autoplay="{{ section.settings.autoplay }}" role="region" aria-label="{{ 'helios.hero_label' | t | escape }}">
   <h1 class="visually-hidden">{% render 'helios-text', value: section.settings.heading %}</h1>
   <div class="helios-hero__slides">
     {% for block in section.blocks %}
@@ -51,10 +51,13 @@
           assign desktop_height = 720
         endif
         assign destination = block.settings.collection.url | default: routes.all_products_collection_url
-        assign image_alt = block.settings.title
+        capture image_alt
+          render 'helios-text', value: block.settings.title
+        endcapture
+        assign image_alt = image_alt | strip
       %}
-      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide data-duration="{{ block.settings.duration | default: 0 }}" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-roledescription="trang chiếu" aria-label="{{ forloop.index }} / {{ forloop.length }}">
-        <a href="{{ destination }}" aria-label="{% render 'helios-text', value: block.settings.title %} — Khám phá bộ sưu tập">
+      <div class="helios-hero__slide{% if forloop.first %} is-active{% endif %}{% if block.settings.artwork == 'jack' %} helios-hero__slide--artwork{% endif %}" data-helios-slide data-duration="{{ block.settings.duration | default: 0 }}" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }} role="group" aria-label="{{ forloop.index }} / {{ forloop.length }}">
+        <a href="{{ destination }}" aria-label="{% render 'helios-text', value: block.settings.title %} — {{ 'helios.collections' | t }}">
           <picture>
             {% if block.settings.mobile != blank %}
               <source media="(max-width: 749px)" srcset="{{ block.settings.mobile | image_url: width: 800 }} 800w, {{ block.settings.mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
@@ -77,7 +80,7 @@
             </video>
           {% endif %}
           <span class="helios-hero__title" hidden>{% render 'helios-text', value: block.settings.title %}</span>
-          <span class="helios-hero__cta" hidden>KHÁM PHÁ CHẾ TÁC <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
+          <span class="helios-hero__cta" hidden>{{ 'helios.craft' | t }} <span aria-hidden="true">{% render 'helios-arrow' %}</span></span>
         </a>
       </div>
     {% endfor %}
@@ -85,7 +88,7 @@
   {% if section.blocks.size > 1 %}
     <div class="helios-hero__controls" hidden data-helios-controls>
       <button type="button" data-helios-prev aria-label="{{ 'helios.hero_prev' | t | escape }}">←</button>
-      <div class="helios-hero__dots">{% for block in section.blocks %}<button type="button" class="helios-hero__dot" data-helios-dot="{{ forloop.index0 }}" aria-label="Xem banner {{ forloop.index }}: {% render 'helios-text', value: block.settings.title %}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>{% endfor %}</div>
+      <div class="helios-hero__dots">{% for block in section.blocks %}<button type="button" class="helios-hero__dot" data-helios-dot="{{ forloop.index0 }}" aria-label="{{ 'helios.hero_label' | t | escape }} {{ forloop.index }}: {% render 'helios-text', value: block.settings.title %}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>{% endfor %}</div>
       <span class="visually-hidden" data-helios-status aria-live="off" aria-atomic="true">1 / {{ section.blocks.size }}</span>
       <button type="button" data-helios-next aria-label="{{ 'helios.hero_next' | t | escape }}">→</button>
       <button type="button" data-helios-toggle aria-label="{{ 'helios.hero_pause' | t | escape }}"><span aria-hidden="true">Ⅱ</span></button>
@@ -112,4 +115,5 @@
   "presets": [{ "name": "WES FREED · Banner", "blocks": [{ "type": "slide" }] }]
 }
 {% endschema %}
+
 

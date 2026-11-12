@@ -852,5 +852,29 @@
     "device": "Saved in this browser.",
     "limit": "You can save up to 100 products.",
     "select": "Choose a variant"
+  },
+  "wes_polish": {
+    "customer_care": "Customer care",
+    "terms": "Terms of service",
+    "from": "From",
+    "care_intro": "Delivery, returns and sizing",
+    "care_heading": "Helpful information before you buy",
+    "delivery_brief": "South Korea · Standard ₩6,700 / Express ₩9,400",
+    "returns_brief": "Request within 7 days of receipt · Individual return instructions",
+    "delivery_question": "When will my order arrive?",
+    "delivery_answer": "Regular items have an estimated 8–15-day delivery window. Items marked as a 5-day pre-order need 5 days preparation plus about 8 days delivery, approximately 13 days total. Customs and local delivery may affect arrival dates. Eligible orders of 3 or more items receive automatic free shipping.",
+    "returns_question": "How do I request a return or exchange?",
+    "returns_answer": "Within 7 days after receipt, email wesfreedkr@gmail.com with your order number, item and option, and reason for the request. The return cost and exact address are provided for your case before you send the parcel. Mandatory rights for defective or incorrect items remain unaffected.",
+    "size_question": "How do I check sizing and materials?",
+    "size_answer": "Read the product options, description and sizing images. If you are unsure whether a bracelet's cm measurement refers to wrist circumference or product dimensions, or which ring-size scale is used, contact us with the product and option before ordering. Ask before ordering if you need further material or plating information.",
+    "payment_question": "How do payment and bundle discounts work?",
+    "payment_answer": "Available payment methods and the final total are shown at checkout. Eligible orders of 2 items get 5% off; 3 or more get 10% off and free shipping automatically. The percentage tiers do not stack. Check color, size, quantity and discounts before paying.",
+    "order_help": "Include your order number for order-related questions. Do not send card numbers, passwords or personal customs-clearance codes through this contact form.",
+    "seller": "Seller information",
+    "business_address": "Business address",
+    "returns_address_note": "The return address is provided separately for each case.",
+    "hero_one": "WES FREED — Jewelry in Motion",
+    "hero_two": "WES FREED — Precious Details",
+    "hero_three": "WES FREED — Light in Motion"
   }
 }

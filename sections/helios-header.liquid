@@ -10,7 +10,7 @@
   assign collab_url = collab_url | strip
   assign stores_url = section.settings.stores_page.url | default: pages['he-thong-cua-hang'].url
   if stores_url == blank
-    assign stores_url = routes.search_url | append: '?type=page&q=he+thong+cua+hang'
+    assign stores_url = pages['contact'].url
   endif
   assign newest = collections['new-in']
   assign newest_url = newest.url
@@ -28,7 +28,7 @@
       <button type="button" data-helios-next aria-label="{{ 'helios.announcement_next' | t | escape }}">›</button>
       <button class="helios-announcement__pause" type="button" data-helios-toggle aria-label="{{ 'helios.announcement_pause' | t | escape }}">Ⅱ</button>
     </helios-carousel>
-    <a class="helios-topbar__store" href="{{ stores_url }}">{{ 'helios.stores' | t }}</a>
+    <a class="helios-topbar__store" href="{{ stores_url }}">{% if stores_url contains '/pages/contact' %}{{ 'wes_polish.customer_care' | t }}{% else %}{{ 'helios.stores' | t }}{% endif %}</a>
   </div>
   <div class="helios-header__inner">
     <div class="helios-header__left">
@@ -90,4 +90,5 @@
   ]
 }
 {% endschema %}
+
 

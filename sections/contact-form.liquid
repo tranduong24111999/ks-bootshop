@@ -28,6 +28,7 @@
         {% if request.page_type == 'page' and page.handle == 'contact' %}
           <header class="section-header text-center"><h1>{{ 'wes_sales_audit.contact_title' | t }}</h1><p>{{ 'wes_sales_audit.contact_intro' | t }}</p><p><a href="mailto:wesfreedkr@gmail.com">wesfreedkr@gmail.com</a> · <a href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer">@wesfreedkr</a></p></header>
         {% else %}{% render 'section-header' %}{% endif %}
+        {% if page.handle == 'contact' %}{% render 'wes-customer-care' %}{% endif %}
         {% form 'contact' %}
           {% if form.posted_successfully? %}
             <p class="form-success alert alert-success mb-5" role="alert">
@@ -40,7 +41,7 @@
               id="contact-form-name"
               class="form-control" 
               type="text" 
-              name="contact[name]"
+              name="contact[name]" autocomplete="name"
               value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"  
               placeholder="{{ 'general.contact_form.name' | t }}"
               required>
@@ -53,7 +54,7 @@
               id="contact-form-email"
               class="form-control" 
               type="email" 
-              name="contact[email]"
+              name="contact[email]" autocomplete="email"
               value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"  
               placeholder="{{ 'general.contact_form.email' | t }}"
               spellcheck="false"
@@ -313,3 +314,4 @@
   ]
 }
 {% endschema %}
+

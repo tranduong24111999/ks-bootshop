@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "ba94d905-ea2f-4198-8472-5296b1853fb5": {
@@ -20,7 +11,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "760",
         "header_title": "Contact form",
         "header_title_font_size": "h1",
         "header_description": "",
@@ -28,8 +19,8 @@
         "img": "",
         "img_orientation": "ratio-3x4",
         "img_border": "img-thumbnail",
-        "pt": 10,
-        "pb": 10
+        "pt": 6,
+        "pb": 8
       }
     },
     "5d7e9d3e-ba1d-498d-a3fd-144ce2e406e5": {
@@ -80,4 +71,3 @@
     "9b5ef318-8d23-40cd-a163-d1f62c2d0834"
   ]
 }
-

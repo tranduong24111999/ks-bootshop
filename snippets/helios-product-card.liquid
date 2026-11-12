@@ -32,15 +32,16 @@
       {% if motion_url != blank %}<video muted playsinline loop preload="none" data-motion-video data-motion-src="{{ motion_url | escape }}" aria-hidden="true" tabindex="-1"></video>{% endif %}
       </helios-product-media>
     {% endif %}
-    {% unless product.available %}<span class="helios-product-card__badge">HẾT HÀNG</span>{% else %}{% if product.tags contains 'new' or product.tags contains 'new-in' or product.tags contains 'Mới' %}<span class="helios-product-card__badge">MỚI</span>{% endif %}{% endunless %}
+    {% unless product.available %}<span class="helios-product-card__badge">{{ 'helios.sold_out' | t }}</span>{% else %}{% if product.tags contains 'new' or product.tags contains 'new-in' or product.tags contains 'Mới' %}<span class="helios-product-card__badge">{{ 'wes_header.new_in' | t }}</span>{% endif %}{% endunless %}
   </a>
   {% render 'wes-wishlist-button', product: product %}
   {% if animate_media %}<button type="button" data-card-motion-toggle hidden data-pause-label="{{ 'helios.product_motion_pause' | t | escape }}" data-resume-label="{{ 'helios.product_motion_resume' | t | escape }}" aria-label="{{ 'helios.product_motion_pause' | t | escape }}">Ⅱ</button>{% endif %}
-  <a href="{{ product.url }}" class="helios-product-card__caption"><div class="helios-product-card__title-row"><h3>{{ product.title | escape }}</h3>{% if product.metafields.reviews.rating.value != blank %}<span class="helios-product-card__rating" aria-label="Đánh giá {{ product.metafields.reviews.rating.value.rating }} trên {{ product.metafields.reviews.rating.value.scale_max }}">{{ product.metafields.reviews.rating.value.rating }} <span aria-hidden="true">★</span></span>{% endif %}</div>
-    <div class="helios-product-card__price">{% if product.price_varies %}Từ {% endif %}{{ product.price | money_with_currency }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money_with_currency }}</s>{% endif %}</div>
+  <a href="{{ product.url }}" class="helios-product-card__caption"><div class="helios-product-card__title-row"><h3>{{ product.title | escape }}</h3>{% if product.metafields.reviews.rating.value != blank %}<span class="helios-product-card__rating">{{ product.metafields.reviews.rating.value.rating }} <span aria-hidden="true">★</span></span>{% endif %}</div>
+    <div class="helios-product-card__price">{% if product.price_varies %}{{ 'wes_polish.from' | t }} {% endif %}{{ product.price | money_with_currency }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money_with_currency }}</s>{% endif %}</div>
   </a>
   {% render 'wes-card-cart', product: product %}
 </article>
+
 
 
 

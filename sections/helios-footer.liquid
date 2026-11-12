@@ -17,27 +17,25 @@
   {% endunless %}
   <div class="helios-footer__frame">
     <div class="helios-footer__grid">
-      <div class="helios-footer__brand" id="helios-story">{% render 'wes-brand-signature' %}<p>{{ 'wes_footer.description' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}<div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
+      <div class="helios-footer__brand" id="helios-story">{% render 'wes-brand-signature' %}<p>{{ 'wes_footer.description' | t }}</p>{% if section.settings.contact != blank %}<div>{{ section.settings.contact }}</div>{% endif %}{% render 'wes-seller-details' %}<div class="helios-footer__social">{% render 'social-icons', social_accounts: 'Facebook, YouTube, Instagram, Tiktok, Pinterest', settings: section.settings, icon_size: 18, show_title: false %}</div></div>
       <nav aria-label="{{ 'helios.support_nav' | t | escape }}"><h2>{{ 'helios.support' | t }}</h2>
-        {% if section.settings.support_menu.links != blank %}{% for link in section.settings.support_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}
-          {% assign support_handles = 'huong-dan-thanh-toan|giao-hang|chinh-sach-bao-hanh|chinh-sach-doi-tra-san-pham|chinh-sach-doi-tra-dip-sale|chinh-sach-bao-mat-moi|bang-gia-phi-dieu-chinh-san-pham|feedback' | split: '|' %}
-          {% assign support_labels = 'Hướng dẫn thanh toán|Chính sách giao hàng|Chính sách bảo hành|Chính sách đổi trả|Chính sách đổi trả dịp sale|Chính sách bảo mật|Bảng giá phí điều chỉnh sản phẩm|Feedback' | split: '|' %}
-          {% for handle in support_handles %}{% assign label = support_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
-        {% endif %}
-        {% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}
+        <a href="{{ pages['contact'].url }}">{{ 'wes_polish.customer_care' | t }}</a>
+        <a href="{{ pages['shipping-information'].url }}">{{ 'helios.shipping' | t }}</a>
+        <a href="{{ pages['returns-and-refunds'].url }}">{{ 'helios.returns' | t }}</a>
+        <a href="{{ pages['terms-of-service'].url }}">{{ 'wes_polish.terms' | t }}</a>
+        <a href="{{ shop.privacy_policy.url }}">{{ 'helios.privacy' | t }}</a>
       </nav>
       <nav aria-label="{{ 'helios.about_nav' | t | escape }}"><h2>{{ 'helios.about' | t }}</h2>
         <a href="{{ routes.root_url }}#helios-story">{{ 'helios.story' | t }}</a>
-        {% assign about_handles = 'he-thong-cua-hang|helios-tuyen-dung|membership-by-helios|quy-trinh-phat-trien-san-pham|helios-partnership' | split: '|' %}
-        {% assign about_labels = 'Hệ thống cửa hàng|Tuyển dụng|Membership by WES FREED|Xưởng Online|Collab' | split: '|' %}
-        {% for handle in about_handles %}{% assign label = about_labels[forloop.index0] %}{% render 'helios-link', kind: 'page', handle: handle, label: label, query: label %}{% endfor %}
+        <a href="{{ routes.all_products_collection_url }}">{{ 'helios.all_products' | t }}</a>
+        <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">{{ 'wes_header.new_in' | t }}</a>
+        {% capture feedback_url %}{% render 'helios-feedback-url' %}{% endcapture %}<a href="{{ feedback_url | strip }}">{{ 'wes_header.feedback' | t }}</a>
       </nav>
       <nav aria-label="{{ 'helios.customers_nav' | t | escape }}"><h2>{{ 'helios.customers' | t }}</h2>
-        {% if blogs['news'].url != blank %}<a href="{{ blogs['news'].url }}">Blog</a>{% else %}<a href="{{ routes.search_url }}?type=article&amp;q=helios">Blog</a>{% endif %}
-        {% render 'helios-link', kind: 'page', handle: 'huong-dan-bao-quan', label: 'Hướng dẫn bảo quản sản phẩm', query: 'bảo quản' %}
-        {% render 'helios-link', kind: 'page', handle: 'size-chart', label: 'Hướng dẫn đo Size', query: 'size' %}
-        {% render 'helios-link', kind: 'page', handle: 'helios-partnership', label: 'WES FREED Partnership', query: 'partnership' %}
-        {% if section.settings.contact_page != blank %}<a href="{{ section.settings.contact_page.url }}">{{ 'helios.contact' | t }}</a>{% endif %}
+        <a href="{{ pages['contact'].url }}#wes-care-size">{{ 'helios.size' | t }}</a>
+        <a href="{{ pages['contact'].url }}#wes-care-payment">{{ 'helios.payment' | t }}</a>
+        <a href="{{ pages['contact'].url }}#wes-care-returns">{{ 'helios.returns' | t }}</a>
+        <a href="mailto:wesfreedkr@gmail.com">wesfreedkr@gmail.com</a>
       </nav>
     </div>
   </div>
@@ -163,4 +161,5 @@
   ]
 }
 {% endschema %}
+
 
