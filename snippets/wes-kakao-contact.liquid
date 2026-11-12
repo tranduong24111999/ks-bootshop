@@ -4,21 +4,25 @@
 {% liquid
   case request.locale.iso_code
     when 'ko'
+      assign purchase_nudge = '구매 상담하기'
       assign title = 'KakaoTalk 문의'
       assign instructions = 'KakaoTalk에서 QR 코드를 스캔하여 Wesfreed를 친구로 추가해 주세요. 같은 휴대폰에서는 QR 이미지를 저장한 후 KakaoTalk QR 스캐너의 앨범에서 선택해 주세요.'
       assign open_image = 'QR 이미지 열기'
       assign close = '닫기'
     when 'vi'
+      assign purchase_nudge = 'Tư vấn mua hàng'
       assign title = 'Liên hệ KakaoTalk'
       assign instructions = 'Quét mã QR bằng KakaoTalk để thêm Wesfreed. Nếu dùng cùng điện thoại, lưu ảnh QR rồi chọn ảnh từ thư viện trong trình quét QR của KakaoTalk.'
       assign open_image = 'Mở ảnh QR'
       assign close = 'Đóng'
     when 'ja'
+      assign purchase_nudge = '購入のご相談'
       assign title = 'KakaoTalkでお問い合わせ'
       assign instructions = 'KakaoTalkでQRコードを読み取り、Wesfreedを友だちに追加してください。同じスマートフォンではQR画像を保存し、KakaoTalkのQRスキャナーからアルバムの画像を選択してください。'
       assign open_image = 'QR画像を開く'
       assign close = '閉じる'
     else
+      assign purchase_nudge = 'Ask before you buy'
       assign title = 'Contact on KakaoTalk'
       assign instructions = 'Scan the QR code in KakaoTalk to add Wesfreed. On the same phone, save the QR image, then select it from your album in the KakaoTalk QR scanner.'
       assign open_image = 'Open QR image'
@@ -26,7 +30,8 @@
   endcase
 %}
 {% if qr_url != blank %}
-<button type="button" class="wes-instagram-button wes-kakao-button" aria-label="{{ title | escape }}" aria-controls="WesKakaoQR" data-wes-kakao-open>
+<button type="button" class="wes-instagram-button wes-kakao-button" aria-label="{{ title | escape }} — {{ purchase_nudge | escape }}" aria-controls="WesKakaoQR" data-wes-kakao-open>
+  <span class="wes-contact-nudge" aria-hidden="true">{{ purchase_nudge | escape }}</span>
   <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path fill="currentColor" d="M14 3C6.8 3 1 7.3 1 12.7c0 3.4 2.3 6.4 5.8 8.1L5.3 26l6-3.9c.9.2 1.8.3 2.7.3 7.2 0 13-4.3 13-9.7S21.2 3 14 3Z"/><text x="14" y="16" text-anchor="middle" font-size="7" font-family="Arial,sans-serif" font-weight="bold" fill="#fee500">TALK</text></svg>
 </button>
 <dialog id="WesKakaoQR" class="wes-kakao-dialog" aria-labelledby="WesKakaoTitle">

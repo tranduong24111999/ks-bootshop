@@ -1,28 +1,38 @@
 {% liquid
   case request.locale.iso_code
     when 'ko'
+      assign facebook_nudge = '주문 도와드려요'
+      assign instagram_nudge = '스타일 추천받기'
       assign prompt_one = '주문은 어떻게 하나요?'
       assign prompt_two = '구매 또는 제품 상담이 필요하시면 Instagram으로 메시지를 보내주세요.'
       assign prompt_close = '안내 닫기'
     when 'vi'
+      assign facebook_nudge = 'Hỗ trợ đặt hàng'
+      assign instagram_nudge = 'Chọn mẫu hợp bạn'
       assign prompt_one = 'Bạn cần tư vấn đặt hàng?'
       assign prompt_two = 'Nhắn Instagram để được tư vấn sản phẩm và hướng dẫn mua hàng.'
       assign prompt_close = 'Đóng lời nhắc'
     when 'ja'
+      assign facebook_nudge = 'ご注文をサポート'
+      assign instagram_nudge = '似合う一品を相談'
       assign prompt_one = 'ご注文についてお困りですか？'
       assign prompt_two = '商品やご購入のご相談はInstagramのメッセージでどうぞ。'
       assign prompt_close = '案内を閉じる'
     else
+      assign facebook_nudge = 'Help with your order'
+      assign instagram_nudge = 'Find your style'
       assign prompt_one = 'Need help placing an order?'
       assign prompt_two = 'Message us on Instagram for product advice and help with your order.'
       assign prompt_close = 'Dismiss reminder'
   endcase
 %}
 <div class="wes-instagram-widget" data-wes-instagram-widget>
-<a class="wes-instagram-button wes-facebook-button" href="https://www.facebook.com/profile.php?id=61596233609365" target="_blank" rel="noopener noreferrer" aria-label="Facebook WES FREED" title="Facebook WES FREED">
+<a class="wes-instagram-button wes-facebook-button" href="https://www.facebook.com/profile.php?id=61596233609365" target="_blank" rel="noopener noreferrer" aria-label="Facebook WES FREED — {{ facebook_nudge | escape }}" title="Facebook WES FREED">
+  <span class="wes-contact-nudge" aria-hidden="true">{{ facebook_nudge | escape }}</span>
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.2 21v-8.2H17l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8v3.2h2.8V21Z"/></svg>
 </a>
-<a class="wes-instagram-button" href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @wesfreedkr" title="Instagram @wesfreedkr">
+<a class="wes-instagram-button" href="https://www.instagram.com/wesfreedkr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @wesfreedkr — {{ instagram_nudge | escape }}" title="Instagram @wesfreedkr">
+  <span class="wes-contact-nudge" aria-hidden="true">{{ instagram_nudge | escape }}</span>
   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4.2" />
@@ -80,4 +90,9 @@
 .wes-instagram-button svg{width:24px;height:24px}
 .wes-facebook-button{right:16px;bottom:calc(128px + env(safe-area-inset-bottom,0px))}
 @media(max-width:767px){.wes-instagram-button,.wes-facebook-button{right:12px}}
+</style>
+
+<style>
+.wes-contact-nudge{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);display:block;width:max-content;max-width:min(145px,calc(100vw - 80px));padding:5px 9px;border:1px solid #e5e1d8;border-radius:16px;background:#fff;color:#282621;font:500 12px/1.3 Arial,sans-serif;white-space:nowrap;box-shadow:0 2px 7px #0001}
+@media(max-width:767px){.wes-contact-nudge{font-size:11px;padding:5px 8px}}
 </style>
