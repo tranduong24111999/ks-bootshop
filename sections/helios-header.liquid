@@ -63,6 +63,7 @@
       {% render 'helios-language', form_id: language_form_id %}
       <a href="{{ routes.search_url }}" aria-label="{{ 'helios.search' | t | escape }}" class="helios-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search" aria-controls="offcanvas-search">{% render 'svg-icons', icon: 'search' %}</a>
       {% if shop.customer_accounts_enabled %}<a href="{{ routes.account_url }}" aria-label="{{ 'helios.account' | t | escape }}" class="helios-icon helios-account"><span class="helios-account__label">{{ 'helios.login' | t }}</span><span class="helios-account__icon">{% render 'svg-icons', icon: 'account' %}</span></a>{% endif %}
+      <button type="button" class="helios-icon wes-wishlist-open" data-wes-wishlist-open aria-controls="WesWishlist" aria-label="{{ 'wes_wishlist.title' | t | escape }}">{% render 'wes-heart-icon' %}<span data-wes-wishlist-count aria-hidden="true">0</span></button>
       <a href="{{ routes.cart_url }}" class="helios-icon helios-cart" aria-label="{{ 'helios.cart' | t | escape }}" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" aria-controls="offcanvas-cart">
         {% render 'svg-icons', icon: 'cart' %}{% render 'cart-count-badge' %}
       </a>
@@ -88,3 +89,4 @@
   ]
 }
 {% endschema %}
+

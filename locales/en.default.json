@@ -838,5 +838,17 @@
     "sku": "SKU",
     "payments": "Secure checkout",
     "payment_note": "Available payment methods are shown at checkout."
+  },
+  "wes_wishlist": {
+    "title": "Saved products",
+    "add": "Save product",
+    "remove": "Remove from saved products",
+    "empty": "No saved products yet.",
+    "close": "Close",
+    "loading": "Loading…",
+    "error": "Could not load this product. Open its page to check availability.",
+    "device": "Saved in this browser.",
+    "limit": "You can save up to 100 products.",
+    "select": "Choose a variant"
   }
 }

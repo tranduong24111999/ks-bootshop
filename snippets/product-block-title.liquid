@@ -5,6 +5,6 @@
 
 <div class="wes-product-brand">{% render 'wes-brand-signature' %}</div>
 {% render 'wes-daily-buyers', product: product, section_id: section.id %}
-<h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }}>
+<div class="wes-product-title-row"><h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }}>
   {{ product.title }}
-</h1>
+</h1>{% render 'wes-wishlist-button', product: product %}</div>

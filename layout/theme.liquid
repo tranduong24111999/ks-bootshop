@@ -39,6 +39,8 @@
   {% render 'helios-fonts' %}
   {{ 'helios.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'helios.js' | asset_url }}" defer></script>
+  {{ 'wes-wishlist.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'wes-wishlist.js' | asset_url }}" defer></script>
   <script src="{{ 'wes-navigation.js' | asset_url }}" defer></script>
   {% if request.page_type == 'product' %}
     {{ 'helios-product.css' | asset_url | stylesheet_tag }}
@@ -70,6 +72,7 @@
   </div>
 
   {% liquid
+    render 'wes-wishlist'
     render 'offcanvas-cart'
     render 'offcanvas-search'
     render 'modal-localization'
@@ -78,6 +81,7 @@
   %}
 </body>
 </html>
+
 
 
 

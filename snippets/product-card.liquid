@@ -43,7 +43,8 @@
     {% render 'product-rating-badge', product: product %}
     {% render 'product-card-price', product: product %}
   </a>
-  {% if settings.product_card_show_atc_form %}
+  {% render 'wes-wishlist-button', product: product %}
+  {% if product != blank %}
     {% render 'product-card-form', product: product %}
   {% endif %}
 </div>

@@ -462,5 +462,17 @@
     "sku": "Mã sản phẩm (SKU)",
     "payments": "Thanh toán an toàn",
     "payment_note": "Các phương thức khả dụng được hiển thị tại bước thanh toán."
+  },
+  "wes_wishlist": {
+    "title": "Sản phẩm yêu thích",
+    "add": "Lưu sản phẩm",
+    "remove": "Bỏ lưu sản phẩm",
+    "empty": "Bạn chưa lưu sản phẩm nào.",
+    "close": "Đóng",
+    "loading": "Đang tải…",
+    "error": "Không tải được sản phẩm. Mở trang sản phẩm để kiểm tra.",
+    "device": "Được lưu trong trình duyệt này.",
+    "limit": "Bạn có thể lưu tối đa 100 sản phẩm.",
+    "select": "Chọn mẫu"
   }
 }

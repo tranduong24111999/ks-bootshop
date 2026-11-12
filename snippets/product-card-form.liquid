@@ -16,7 +16,7 @@
 
 <product-form>
   {% form 'product', product, data-productid: product.id %}
-    {% if product.has_only_default_variant %}
+    {% if product.variants.size == 1 %}
       <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
     {% else %}
       <select 
@@ -24,7 +24,7 @@
         name="id" 
         aria-label="{{ 'product.select_variant' | t }}">
         {% for variant in product.variants %}
-          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+          <option value="{{ variant.id }}" {% if variant.id == product.selected_or_first_available_variant.id %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
             {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
           </option>
         {% endfor %}
@@ -43,3 +43,4 @@
     </button>
   {% endform %}
 </product-form>
+

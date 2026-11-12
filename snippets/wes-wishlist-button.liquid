@@ -1,0 +1,4 @@
+{% doc %}
+  @param {product} product - Product to save.
+{% enddoc %}
+<button type="button" class="wes-wishlist-toggle" data-wes-wishlist-toggle data-handle="{{ product.handle | escape }}" data-title="{{ product.title | escape }}" aria-pressed="false" aria-label="{{ 'wes_wishlist.add' | t | escape }}: {{ product.title | escape }}" data-add-label="{{ 'wes_wishlist.add' | t | escape }}" data-remove-label="{{ 'wes_wishlist.remove' | t | escape }}">{% render 'wes-heart-icon' %}</button>

@@ -1,0 +1,11 @@
+{% doc %}
+  Renders the saved product drawer and localized interface strings.
+{% enddoc %}
+<dialog id="WesWishlist" class="wes-wishlist-dialog" aria-labelledby="WesWishlistTitle" data-root="{{ routes.root_url }}" data-currency="{{ cart.currency.iso_code | escape }}">
+  <div class="wes-wishlist-heading"><h2 id="WesWishlistTitle">{{ 'wes_wishlist.title' | t }}</h2><button type="button" data-wes-wishlist-close aria-label="{{ 'wes_wishlist.close' | t | escape }}">×</button></div>
+  <p class="wes-wishlist-device">{{ 'wes_wishlist.device' | t }}</p>
+  <p data-wes-wishlist-status role="status"></p>
+  <div data-wes-wishlist-list></div>
+  <script type="application/json" data-wes-wishlist-labels>{"add":{{ 'wes_wishlist.add' | t | json }},"remove":{{ 'wes_wishlist.remove' | t | json }},"empty":{{ 'wes_wishlist.empty' | t | json }},"loading":{{ 'wes_wishlist.loading' | t | json }},"error":{{ 'wes_wishlist.error' | t | json }},"limit":{{ 'wes_wishlist.limit' | t | json }},"select":{{ 'wes_wishlist.select' | t | json }},"cart":{{ 'product.add_to_cart' | t | json }},"sold_out":{{ 'product.sold_out' | t | json }}}</script>
+</dialog>
+<div class="visually-hidden" data-wes-wishlist-announcement role="status"></div>
