@@ -1,13 +1,24 @@
 {% liquid
   assign featured_collection = section.settings.collection | default: collections.all
   assign heading = section.settings.heading
+  assign pinned_products = section.settings.pinned_products
+  assign pinned_handles = pinned_products | map: 'handle'
+  assign shown = 0
 %}
-{% if featured_collection.products_count > 0 %}
+{% if featured_collection.products_count > 0 or pinned_products.size > 0 %}
   <section class="helios-products helios-container" aria-labelledby="helios-products-{{ section.id }}">
     <h2 id="helios-products-{{ section.id }}" class="visually-hidden">{% render 'helios-text', value: heading %}</h2>
     <ul class="helios-product-grid" role="list">
-      {% for product in featured_collection.products limit: section.settings.limit %}
+      {% for product in pinned_products limit: section.settings.limit %}
         <li>{% render 'helios-product-card', product: product %}</li>
+        {% assign shown = shown | plus: 1 %}
+      {% endfor %}
+      {% for product in featured_collection.products %}
+        {% if shown >= section.settings.limit %}{% break %}{% endif %}
+        {% unless pinned_handles contains product.handle %}
+          <li>{% render 'helios-product-card', product: product %}</li>
+          {% assign shown = shown | plus: 1 %}
+        {% endunless %}
       {% endfor %}
     </ul>
   </section>
@@ -20,6 +31,7 @@
   "enabled_on": { "templates": ["index"] },
   "settings": [
     { "type": "text", "id": "heading", "label": "Tiêu đề", "default": "CHẾ TÁC NỔI BẬT" },
+    { "type": "product_list", "id": "pinned_products", "label": "Sản phẩm ưu tiên", "limit": 12 },
     { "type": "collection", "id": "collection", "label": "Bộ sưu tập (để trống: sản phẩm hiện có)" },
     { "type": "range", "id": "limit", "min": 4, "max": 12, "step": 4, "default": 8, "label": "Số sản phẩm tối đa" }
   ],
