@@ -525,3 +525,9 @@
   .helios-theme .product-media-gallery { transition: none; }
   .helios-theme.helios-motion [data-helios-reveal] { opacity: 1; transform: none; transition: none; }
 }
+
+@media (min-width: 750px) {
+  .helios-mega__columns--navigation {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

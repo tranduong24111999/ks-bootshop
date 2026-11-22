@@ -20,3 +20,13 @@
 .wes-card-cart__panel select{min-height:44px;font-size:16px}
 @media(min-width:768px){.wes-card-cart__panel{width:210px}}
 @media(max-width:767px){.wes-card-cart{top:54px}.wes-card-cart>summary{width:40px;height:40px}}
+
+.product-card:has(.product-sale-badge) > .wes-wishlist-toggle {
+  top: 108px;
+}
+
+@media (max-width: 767px) {
+  .product-card:has(.product-sale-badge) > .wes-wishlist-toggle {
+    top: 100px;
+  }
+}
