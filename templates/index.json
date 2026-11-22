@@ -54,14 +54,13 @@
       "type": "helios-products",
       "settings": {
         "heading": "CHẾ TÁC NỔI BẬT",
-        "collection": "",
+        "collection": "가방-bags",
         "limit": 8,
         "pinned_products": [
-          "vintage-radiant-gold-crystal-clover-bracelet",
-          "vintage-red-gold-clover-station-bracelet",
-          "vintage-sunburst-all-black-clover-bracelet",
-          "vintage-sunburst-rose-gold-clover-bracelet",
-          "vintage-sunburst-silver-clover-bracelet"
+          "데일리-토트백-스카이-블루",
+          "보스턴-토트백-모카-브라운",
+          "노트북-토트백-올리브",
+          "퍼퍼-토트백-에스프레소"
         ]
       }
     },
