@@ -531,3 +531,10 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+.helios-product-card__sale {
+  position: absolute;
+  inset: 0 0 auto auto;
+  z-index: 1;
+  background-color: var(--bs-success);
+}

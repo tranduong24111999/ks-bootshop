@@ -33,6 +33,10 @@
       </helios-product-media>
     {% endif %}
     {% unless product.available %}<span class="helios-product-card__badge">{{ 'helios.sold_out' | t }}</span>{% else %}{% if product.tags contains 'new' or product.tags contains 'new-in' or product.tags contains 'Mới' %}<span class="helios-product-card__badge">{{ 'wes_header.new_in' | t }}</span>{% endif %}{% endunless %}
+    {% if product.available and product.compare_at_price > product.price %}
+      {% assign savings_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
+      <span class="product-sale-badge badge helios-product-card__sale">{{ 'product.save' | t }} {{ savings_percent }}%</span>
+    {% endif %}
   </a>
   {% render 'wes-wishlist-button', product: product %}
   {% if animate_media %}<button type="button" data-card-motion-toggle hidden data-pause-label="{{ 'helios.product_motion_pause' | t | escape }}" data-resume-label="{{ 'helios.product_motion_resume' | t | escape }}" aria-label="{{ 'helios.product_motion_pause' | t | escape }}">Ⅱ</button>{% endif %}
