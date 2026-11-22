@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "helios_hero": {
@@ -92,10 +101,11 @@
         "category_4": {
           "type": "collection",
           "settings": {
-            "title": "KHUYÊN TAI BẠC",
-            "collection": "",
-            "query": "khuyên tai",
-            "artwork": "4"
+            "title": "TẤT CẢ TÚI XÁCH",
+            "collection": "가방-bags",
+            "query": "",
+            "artwork": "4",
+            "image": "shopify://shop_images/116_c78ed8fa-acc7-44f6-9db3-c1aa4373a230.jpg"
           }
         },
         "category_6": {
